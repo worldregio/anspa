@@ -1,0 +1,65 @@
+---
+title: "[COURS1] Introduction à l'analyse spatiale"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "01/09/2025"
+author: "Claude Grasland, Malika Madelin"
+format:
+  html:
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+execute:
+  warning: false
+  message: false 
+  cache: false   
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![](img/DistAccess_header2.png)
+
+# Objectifs
+
+------------------------------------------------------------------------
+
+::: {.callout-note title="A propos de ce document"}
+Ce support de cours a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne
+:::
+
+
+
+
+
+
+
+#### Références {.unnumbered}
+
+Chapelon L., 2014, "Accessibilité", [Hypergeo, encyclopédie en ligne](https://hypergeo.eu/accessibilite/){target="_blank"}
+
+Pumain D., Saint-Julien T., 2010, *Analyse spatiale : les localisations*, Paris : Cursus Armand Colin, p.31.
+
+::: {#refs}
+:::
+
+------------------------------------------------------------------------
+
+```{r sessionInfo}
+sessionInfo()
+```
+
+
+
+

@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Analyse Spatiale"
+  navbar:
+    left:
+      - text: Objectif
+        href: index.qmd
+      - text: 1.Introduction
+        menu:
+          - text: Cours
+            href: cours1.qmd
+          - text: TD
+            href: TD1.qmd
+    right: 
+      - icon: github # add icons as navbar buttons
+        href: https://github.com/worldregio/anspa
+        target: _blank
+  page-footer:
+    background: dark
+    left: Copyright 2025, Claude Grasland
+format:
+  html:
+    theme: 
+      light: minty    
+      dark: solar
+    css: styles.css
+    toc: true
+
+

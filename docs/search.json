@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Analyse spatiale",
+    "section": "",
+    "text": "L’objet de ce petit site web est de proposer une introduction à l’analyse spatiale destinée aux étudiants de master 1."
+  },
+  {
+    "objectID": "index.html#géométries",
+    "href": "index.html#géométries",
+    "title": "Minimum théorique",
+    "section": "Géométries",
+    "text": "Géométries\nCe chapitre s’intéresse aux différentes formes de géométrie du monde que l’on veut régionaliser. Cela revient à en définir la topologie et le type de distance que l’on peut mesurer entre des individus localisés en différentes positions de ce monde. Le nombre de position est supposé fini et forme l’oekoumène. A partir d’une distribution d’invidus localisé dans ce monde, on peut proposer des régionalisations fondées sur des potentiels d’accessibilité à condition de définir à la fois une distance et une fonction de décroissance des interactions avec cette distance"
+  },
+  {
+    "objectID": "cours1.html",
+    "href": "cours1.html",
+    "title": "[COURS1] Introduction à l’analyse spatiale",
+    "section": "",
+    "text": "Objectifs\n\n\n\n\n\n\n\nA propos de ce document\n\n\n\nCe support de cours a été créé pour la session 2025-26 du cours d’analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne\n\n\n\nRéférences\nChapelon L., 2014, “Accessibilité”, Hypergeo, encyclopédie en ligne\nPumain D., Saint-Julien T., 2010, Analyse spatiale : les localisations, Paris : Cursus Armand Colin, p.31.\n\n\n\n\n\nsessionInfo()\n\nR version 4.4.1 (2024-06-14)\nPlatform: x86_64-apple-darwin20\nRunning under: macOS 15.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Paris\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.5        \n [5] tools_4.4.1       htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10      \n [9] rmarkdown_2.29    knitr_1.49        jsonlite_2.0.0    xfun_0.49        \n[13] digest_0.6.37     rlang_1.1.6       evaluate_1.0.1"
+  },
+  {
+    "objectID": "TD1.html#distribution",
+    "href": "TD1.html#distribution",
+    "title": "[TD1] Introduction à l’analyse spatiale",
+    "section": "Distribution",
+    "text": "Distribution\nUne quarantaine d’étudiants entrent dans une salle de cours comportant 6 rangées de 8 chaises. Sans dire un mot, les enseignants leurs remettent silencieusement une carte à jouer tiré d’un jeu de 52 cartes d’où les rois ont été retirés et leurs demandent de s’installer. Les enseignants procèdent à l’appel en suivant l’ordre des rangées et chaque étudiant indique la carte à jour qui lui a été attribuée, tandis que l’enseignant lui indique sa position spatiale :\n\nEtudiant : Je suis Albert Dupont et ma carte est le 8 de Pique.\nEnseignant : Vous occupez la place C07."
+  },
+  {
+    "objectID": "TD1.html#représentation",
+    "href": "TD1.html#représentation",
+    "title": "[TD1] Introduction à l’analyse spatiale",
+    "section": "Représentation",
+    "text": "Représentation\nAprès avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l’écran.\n\n\n\n\n\n\nRéférences\nChapelon L., 2014, “Accessibilité”, Hypergeo, encyclopédie en ligne\nPumain D., Saint-Julien T., 2010, Analyse spatiale : les localisations, Paris : Cursus Armand Colin, p.31."
+  }
+]

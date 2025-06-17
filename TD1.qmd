@@ -1,0 +1,114 @@
+---
+title: "[TD1] Introduction à l'analyse spatiale"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "01/09/2025"
+author: "Claude Grasland, Malika Madelin"
+format:
+  html:
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+execute:
+  warning: false
+  message: false 
+  cache: false   
+  echo: false
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![](img/DistAccess_header2.png)
+
+# Objectifs
+
+------------------------------------------------------------------------
+
+::: {.callout-note title="A propos de ce document"}
+Ce support de cours a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne
+:::
+
+
+# Mise en place
+
+## Distribution 
+
+Une quarantaine d'étudiants entrent dans une salle de cours comportant 6 rangées de 8 chaises. Sans dire un mot, les enseignants leurs remettent silencieusement une carte à jouer tiré d'un jeu de 52 cartes d'où les rois ont été retirés et leurs demandent de s'installer. Les enseignants procèdent à l'appel en suivant l'ordre des rangées et chaque étudiant indique la carte à jour qui lui a été attribuée, tandis que l'enseignant lui indique sa position spatiale :
+
+- **Etudiant** : Je suis Albert Dupont et ma carte est le 8 de Pique.
+- **Enseignant** : Vous occupez la place C07.
+
+## Représentation
+
+Après avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l'écran. 
+
+```{r}
+library(sf)
+library(mapsf)
+# Chargement de la carte
+map <-readRDS("data1/space001.RDS")
+
+# Nombre de présent
+n<-40
+
+# Tirage au sort des positions
+set.seed(666)
+present<-runif(48)
+z<-quantile(present,n/48)
+map$occup<-as.factor(present<z)
+levels(map$occup) <- c("vide","occupé")
+
+par(mfrow=c(1,2))
+# Coordonnées
+# Attribut des individus
+mf_map(map, type="base", col="white")
+mf_label(map, var="ID", cex=1)
+mf_layout(title = "Position spatiale", 
+          scale = F,
+          arrow = F, 
+          credits="", 
+          frame=T)
+
+map2<-map[map$occup == "occupé",]
+# Attribut des individus
+mf_map(map, type="typo", var= "occup",pal=c("lightgray", "lightyellow"),leg_pos = NA)
+mf_label(map2, var="cards", col=map2$col, cex=1.2)
+mf_layout(title = "Position sociale", 
+          scale = F,
+          arrow = F, 
+          credits="", 
+          frame=T)
+```
+
+
+
+
+
+
+
+
+#### Références {.unnumbered}
+
+Chapelon L., 2014, "Accessibilité", [Hypergeo, encyclopédie en ligne](https://hypergeo.eu/accessibilite/){target="_blank"}
+
+Pumain D., Saint-Julien T., 2010, *Analyse spatiale : les localisations*, Paris : Cursus Armand Colin, p.31.
+
+::: {#refs}
+:::
+
+
+
+
+

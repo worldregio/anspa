@@ -1,24 +1,38 @@
 [
   {
+    "objectID": "cours1.html",
+    "href": "cours1.html",
+    "title": "[COURS1] Introduction à l’analyse spatiale",
+    "section": "",
+    "text": "A propos de ce document\n\n\n\nCe support de cours a été créé pour la session 2025-26 du cours d’analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne"
+  },
+  {
+    "objectID": "cours1.html#interaction-et-temps",
+    "href": "cours1.html#interaction-et-temps",
+    "title": "[COURS1] Introduction à l’analyse spatiale",
+    "section": "Interaction et temps",
+    "text": "Interaction et temps\nUne interaction est une relation qui se réalise à un instant donné ou pour une période donnée et qui modifie l’état d’un système social ou spatial. Une interaction implique donc plusieurs choses\n\nLe temps : Une interaction est nécessairement inscrite dans une histoire ce qui implique une conception du temps, que celui-ci soit linéaire ou cyclique. Ainsi en temps linéaire la découverte de l’Amérique par Christophe Colomb correspond à une interaction entre deux groupes sociaux (les européens et les amérindiens) et deux ensembles de lieux (l’Ancien Monde et le Nouveau Monde). En temps cyclique on pourrait prendre l’exemple des marées qui sont déclenchées par l’alignement de la Terre et de la Lune à intervalles réguliers."
+  },
+  {
+    "objectID": "cours1.html#population-et-interaction-sociale",
+    "href": "cours1.html#population-et-interaction-sociale",
+    "title": "[COURS1] Introduction à l’analyse spatiale",
+    "section": "Population et interaction sociale",
+    "text": "Population et interaction sociale\n\nLa population : Entendue comme un ensemble d’individus, une population est caractérisée par des interactions sociales c’est-à-dire des relations qui se nouent entre certains des individus à un moment donnée et/ou pour une période donnée. Ces interactions contribuent à l’évolution, la transformation, la reproduction et dans certains cas la disparition de la population concernée.\n\nRmq1 : Les populations concernées par les populations ne sont pas forcément humaines. On peut tout à fait appliquer le concet à des populations animales ou végétales. L’un des cas les plus connu est celui des fourmis qui ont souvent servi de modèles pour la simulation de systèmes complexes et la création d’algorithmes.\nRmq2 : Il existe des modèles d’interaction entre deux ou plusieurs populations. L’un des plus connu est le modèle de Voltera-Lotka aussi connu sous le nom de modèle proie-prédateur dont vous trouverez une présentation ici\n\n\n\nModèle proie-prédateur"
+  },
+  {
+    "objectID": "cours1.html#interaction-sociale-et-temps-le-diagramme-de-lexis",
+    "href": "cours1.html#interaction-sociale-et-temps-le-diagramme-de-lexis",
+    "title": "[COURS1] Introduction à l’analyse spatiale",
+    "section": "Interaction sociale et temps : le diagramme de Lexis",
+    "text": "Interaction sociale et temps : le diagramme de Lexis\nOn peut tout à fait imaginer des modèles d’interaction sociale ne faisant intervenir que le temps. Mais nous verrons par la suite que l’inverse n’est pas vrai et que tout modèle d’interaction spatiale implique obligatoirement la prise en compte du temps.\n\nLe diagramme de Lexis utilisé en démographie permet d’illustrer le cas d’interactions sociales se déroulant uniquement dans le temps. Prenons par exemple quatre géographes français et demandons nous s’ils ont eu l’occasion de se rencontrer au cours de leur vie et de débattre en face à face. Les notices Wikipedia nous indiquent ceci\nPaul Vidal de la Blache (22 Janvier 1845 - 5 Mars 2018)\nEmmanuel de Martonne (1er avril 1873 - 24 Juillet 1955)\nPierre Georges (11 Octobre 1909 - 11 septembre 2006)\nChristian Grataloup (12 Avril 1951 - présent)\n\nOn peut alors représenter la ligne de vie de chacun sur le diagramme de Lexis qui permet de croiser le temps historique (année) et le temps individuel (âge) :\n\n\n\n\n\n\nCommentaire : Paul Vidal de la Blache a pu dialoguer largement avec Emmanuel de Martonne dont il a fait son héritier spirituel. Les opportunités d’interaction correspondent à la possibilité de relier deux lignes de vie par une droite verticale. Mais il faut également que l’âge autorise l’interaction. Ainsi, Pierre Georges est certes contemporain de Paul Vidal de la Blache, mais il n’a que 9 ans au moment de la mort de ce dernier. Il a en revanche pu intragir avec son prédécesseur Emmanuel de Martonne et son successeur Pierre Georges, qui lui-même a pu rencontrer Christian Grataloup, ect.\n\nCe mécanisme de recouvrement des lignes de vie est selon le sociologue Georges Simmel Simmel (1950) un mécanisme essentiel de reproduction des sociétés, y compris celles dont les membres sont astreint au célibat comme le clergé catholique. Dès lors que les membres successifs d’une société partagent un temps de vie suffisant, ils peuvent échanger et transmettre des idées ou des pratiques.\n\nRéférences\nChapelon L., 2014, “Accessibilité”, Hypergeo, encyclopédie en ligne\nPumain D., Saint-Julien T., 2010, Analyse spatiale : les localisations, Paris : Cursus Armand Colin, p.31.\n\n\nSimmel, Georg. 1950. The Sociology of Georg Simmel. Free Press."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Analyse spatiale",
     "section": "",
     "text": "L’objet de ce petit site web est de proposer une introduction à l’analyse spatiale destinée aux étudiants de master 1."
-  },
-  {
-    "objectID": "index.html#géométries",
-    "href": "index.html#géométries",
-    "title": "Minimum théorique",
-    "section": "Géométries",
-    "text": "Géométries\nCe chapitre s’intéresse aux différentes formes de géométrie du monde que l’on veut régionaliser. Cela revient à en définir la topologie et le type de distance que l’on peut mesurer entre des individus localisés en différentes positions de ce monde. Le nombre de position est supposé fini et forme l’oekoumène. A partir d’une distribution d’invidus localisé dans ce monde, on peut proposer des régionalisations fondées sur des potentiels d’accessibilité à condition de définir à la fois une distance et une fonction de décroissance des interactions avec cette distance"
-  },
-  {
-    "objectID": "cours1.html",
-    "href": "cours1.html",
-    "title": "[COURS1] Introduction à l’analyse spatiale",
-    "section": "",
-    "text": "Objectifs\n\n\n\n\n\n\n\nA propos de ce document\n\n\n\nCe support de cours a été créé pour la session 2025-26 du cours d’analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne\n\n\n\nRéférences\nChapelon L., 2014, “Accessibilité”, Hypergeo, encyclopédie en ligne\nPumain D., Saint-Julien T., 2010, Analyse spatiale : les localisations, Paris : Cursus Armand Colin, p.31.\n\n\n\n\n\nsessionInfo()\n\nR version 4.4.1 (2024-06-14)\nPlatform: x86_64-apple-darwin20\nRunning under: macOS 15.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Paris\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] htmlwidgets_1.6.4 compiler_4.4.1    fastmap_1.2.0     cli_3.6.5        \n [5] tools_4.4.1       htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10      \n [9] rmarkdown_2.29    knitr_1.49        jsonlite_2.0.0    xfun_0.49        \n[13] digest_0.6.37     rlang_1.1.6       evaluate_1.0.1"
   },
   {
     "objectID": "TD1.html#distribution",
@@ -32,6 +46,20 @@
     "href": "TD1.html#représentation",
     "title": "[TD1] Introduction à l’analyse spatiale",
     "section": "Représentation",
-    "text": "Représentation\nAprès avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l’écran.\n\n\n\n\n\n\nRéférences\nChapelon L., 2014, “Accessibilité”, Hypergeo, encyclopédie en ligne\nPumain D., Saint-Julien T., 2010, Analyse spatiale : les localisations, Paris : Cursus Armand Colin, p.31."
+    "text": "Représentation\nAprès avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l’écran."
+  },
+  {
+    "objectID": "TD1.html#rouge-et-noir",
+    "href": "TD1.html#rouge-et-noir",
+    "title": "[TD1] Introduction à l’analyse spatiale",
+    "section": "Rouge et noir",
+    "text": "Rouge et noir\n\nQ1: Combien y-a-t-il d’individus rouges et noirs ?\n\n\n\n\nblack   red \n   21    19 \n\n\n\nQ2 : Combien y-a-t-il d’interactions possibles entre individus d’un même groupe ?\n\n\nAttention : un individu n’interagit pas avec lui-même !\nQ3 : Combien y-a-t-il d’interactions entre individus de groupes différents ?\n\n\n\n[1] 399"
+  },
+  {
+    "objectID": "TD1.html#pique-coeur-carreau-trèfle",
+    "href": "TD1.html#pique-coeur-carreau-trèfle",
+    "title": "[TD1] Introduction à l’analyse spatiale",
+    "section": "Pique, Coeur, Carreau, Trèfle",
+    "text": "Pique, Coeur, Carreau, Trèfle\n\nQ1: Combien y-a-t-il d’individus de chaque famille\n\n\n\n\n ♠  ♣  ♥  ♦ \n11 10  9 10 \n\n\n\nQ2 : Combien y-a-t-il d’interactions possibles entre individus d’un même groupe ?\n\n\n\n  ♠   ♣   ♥   ♦ \n110  90  72  90 \n\n\n[1] 362\n\n\n\nAttention : un individu n’interagit pas avec lui-même !\nQ3 : Combien y-a-t-il d’interactions entre individus de groupes différents ?\n\n\n\n[1] 1198\n\n\n\nRéférences\nChapelon L., 2014, “Accessibilité”, Hypergeo, encyclopédie en ligne\nPumain D., Saint-Julien T., 2010, Analyse spatiale : les localisations, Paris : Cursus Armand Colin, p.31."
   }
 ]

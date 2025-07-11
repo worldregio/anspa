@@ -18,7 +18,8 @@ format:
 execute:
   warning: false
   message: false 
-  cache: false   
+  cache: false  
+  echo: false 
 knitr:
   opts_chunk:
     out.width: "100%"
@@ -29,37 +30,151 @@ editor:
     wrap: 72
 ---
 
-![](img/DistAccess_header2.png)
+
+
+
+
+```{r}
+library(sf)
+library(mapsf)
+
+library(ggplot2)
+library(LexisPlotR)
+```
 
 # Objectifs
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 ::: {.callout-note title="A propos de ce document"}
-Ce support de cours a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne
+Ce support de cours a été créé pour la session 2025-26 du cours
+d'analyse spatiale des phénomènes sociaux destiné aux étudiants de
+géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne
 :::
 
 
+# Définitions
 
+::: {.callout-important title="Définition de l'analyse spatiale"}
+> L'**analyse spatiale** étudie les **interactions** qui se nouent entre
+> des **individus** et/ou des **lieux** en faisant l'hypothèse d'une
+> **décroissance des interactions** en fonction de la **distance** qui
+> sépare ces individus ou ces lieux.
+:::
+
+Chacun des termes contenus dans la précédente définition doit être
+précisé et discuté.
+
+## Interaction et temps
+
+Une interaction est une relation qui se réalise à un instant donné ou
+pour une période donnée et qui modifie l'état d'un système social ou
+spatial. Une interaction implique donc plusieurs choses
+
+-   **Le temps** : Une interaction est nécessairement inscrite dans une
+    **histoire** ce qui implique une conception du temps, que celui-ci
+    soit linéaire ou cyclique. Ainsi en temps linéaire la découverte de
+    l'Amérique par Christophe Colomb correspond à une interaction entre
+    deux groupes sociaux (les européens et les amérindiens) et deux
+    ensembles de lieux (l'Ancien Monde et le Nouveau Monde). En temps
+    cyclique on pourrait prendre l'exemple des marées qui sont
+    déclenchées par l'alignement de la Terre et de la Lune à intervalles
+    réguliers.
+
+## Population et interaction sociale
+
+-   **La population** : Entendue comme un ensemble d'**individus**, une
+    population est caractérisée par des **interactions sociales**
+    c'est-à-dire des relations qui se nouent entre certains des
+    individus à un moment donnée et/ou pour une période donnée. Ces
+    interactions contribuent à l'évolution, la transformation, la
+    reproduction et dans certains cas la disparition de la population
+    concernée.
+
+**Rmq1** : Les populations concernées par les populations ne sont pas
+forcément humaines. On peut tout à fait appliquer le concet à des
+populations animales ou végétales. L'un des cas les plus connu est celui
+des fourmis qui ont souvent servi de modèles pour la simulation de
+systèmes complexes et la création d'algorithmes.
+
+**Rmq2** : Il existe des modèles d'interaction entre deux ou plusieurs
+populations. L'un des plus connu est le modèle de Voltera-Lotka aussi
+connu sous le nom de **modèle proie-prédateur** dont vous trouverez une
+présentation [ici](https://www.youtube.com/watch?v=M0nRWcF1WJw)
+
+![Modèle proie-prédateur](img/prope-predateur.png)
+
+## Interaction sociale et temps : le diagramme de Lexis
+
+On peut tout à fait imaginer des modèles d'interaction sociale ne
+faisant intervenir que le temps. Mais nous verrons par la suite que l'inverse n'est pas vrai et que tout
+modèle d'interaction spatiale implique obligatoirement la prise en
+compte du temps.
+
+-   Le **diagramme de Lexis** utilisé en démographie permet d'illustrer
+    le cas d'interactions sociales se déroulant uniquement dans le
+    temps. Prenons par exemple quatre géographes français et demandons
+    nous s'ils ont eu l'occasion de se rencontrer au cours de leur vie
+    et de débattre en face à face. Les notices Wikipedia nous indiquent
+    ceci
+
+-   [Paul Vidal de la
+    Blache](https://fr.wikipedia.org/wiki/Paul_Vidal_de_La_Blache) (22
+    Janvier 1845 - 5 Mars 2018)
+
+-   [Emmanuel de
+    Martonne](https://fr.wikipedia.org/wiki/Emmanuel_de_Martonne) (1er
+    avril 1873 - 24 Juillet 1955)
+
+-   [Pierre Georges](https://fr.wikipedia.org/wiki/Pierre_George) (11
+    Octobre 1909 - 11 septembre 2006)
+
+-   [Christian
+    Grataloup](https://fr.wikipedia.org/wiki/Christian_Grataloup) (12
+    Avril 1951 - présent)
+
+On peut alors représenter la ligne de vie de chacun sur le diagramme de
+Lexis qui permet de croiser le temps historique (année) et le temps
+individuel (âge) :
+
+```{r}
+library(LexisPlotR)
+lg<-lexis_grid(year_start = 1840, year_end = 2020, age_start = 0, age_end = 100, delta = 10,lwd = 0.5)
+lg2<-lexis_lifeline(lg=lg, birth=c("1845-01-22","1873-04-01","1909-10-11","1951-04-12"),
+               exit = c("1918-04-05","1955-07-24","2006-09-11",NA),
+               colour = c("red","orange","green","blue"), 
+               lwd=2)
+lg2 +ggtitle("Diagramme de Lexis : ligne de vie de quatre géographes français", subtitle = 'Vidal (rouge), de Martonne (orange), George (vert), Grataloup (bleu)')
+
+```
+
+-   **Commentaire :** Paul Vidal de la Blache a pu dialoguer largement
+    avec Emmanuel de Martonne dont il a fait son héritier spirituel. Les
+    opportunités d'interaction correspondent à la possibilité de relier
+    deux lignes de vie par une droite verticale. Mais il faut également
+    que l'âge autorise l'interaction. Ainsi, Pierre Georges est certes
+    contemporain de Paul Vidal de la Blache, mais il n'a que 9 ans au
+    moment de la mort de ce dernier. Il a en revanche pu intragir avec
+    son prédécesseur Emmanuel de Martonne et son successeur Pierre
+    Georges, qui lui-même a pu rencontrer Christian Grataloup, ect.
+
+Ce mécanisme de recouvrement des lignes de vie est selon le sociologue
+Georges Simmel @simmel1950 un mécanisme essentiel de reproduction des
+sociétés, y compris celles dont les membres sont astreint au célibat
+comme le clergé catholique. Dès lors que les membres successifs d'une
+société partagent un temps de vie suffisant, ils peuvent échanger et
+transmettre des idées ou des pratiques.
 
 
 
 
 #### Références {.unnumbered}
 
-Chapelon L., 2014, "Accessibilité", [Hypergeo, encyclopédie en ligne](https://hypergeo.eu/accessibilite/){target="_blank"}
+Chapelon L., 2014, "Accessibilité", [Hypergeo, encyclopédie en
+ligne](https://hypergeo.eu/accessibilite/){target="_blank"}
 
-Pumain D., Saint-Julien T., 2010, *Analyse spatiale : les localisations*, Paris : Cursus Armand Colin, p.31.
+Pumain D., Saint-Julien T., 2010, *Analyse spatiale : les
+localisations*, Paris : Cursus Armand Colin, p.31.
 
 ::: {#refs}
 :::
-
-------------------------------------------------------------------------
-
-```{r sessionInfo}
-sessionInfo()
-```
-
-
-
-

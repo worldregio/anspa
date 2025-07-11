@@ -32,9 +32,20 @@ editor:
 
 ![](img/DistAccess_header2.png)
 
+```{r}
+library(ggplot2)
+library(LexisPlotR)
+
+library(sf)
+library(mapsf)
+```
+
+
+
+
 # Objectifs
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 ::: {.callout-note title="A propos de ce document"}
 Ce support de cours a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne
@@ -95,7 +106,67 @@ mf_layout(title = "Position sociale",
 
 
 
+# Des individus aux interactions
 
+
+## Rouge et noir
+
+- Q1: Combien y-a-t-il d'individus rouges et noirs ?
+
+```{r}
+tab<-table(map2$col)
+tab
+```
+
+
+- Q2 : Combien y-a-t-il d'interactions possibles entre individus d'un même groupe ?
+
+```{r}
+vec<-as.numeric(tab)
+int<-vec*(vec-1)
+names(int)<-names(tab)
+```
+
+- Attention : un individu n'interagit pas avec lui-même !
+
+
+- Q3 : Combien y-a-t-il d'interactions entre individus de groupes différents ?
+
+```{r}
+vec[1]*vec[2]
+```
+
+
+## Pique, Coeur, Carreau, Trèfle
+
+
+- Q1: Combien y-a-t-il d'individus de chaque famille
+
+```{r}
+tab<-table(map2$family)
+tab
+```
+
+
+- Q2 : Combien y-a-t-il d'interactions possibles entre individus d'un même groupe ?
+
+```{r}
+vec<-as.numeric(tab)
+int<-vec*(vec-1)
+names(int)<-names(tab)
+int
+sum(int)
+```
+
+- Attention : un individu n'interagit pas avec lui-même !
+
+
+- Q3 : Combien y-a-t-il d'interactions entre individus de groupes différents ?
+
+```{r}
+n<-dim(map2)[1]
+n*(n-1) - sum(int)
+```
 
 
 

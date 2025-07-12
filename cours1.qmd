@@ -15,6 +15,8 @@ format:
     bibliography: [bib.bib]
     css: custom.css
     crossrefs-hover: false
+    number-sections: true
+    number-depth: 3
 execute:
   warning: false
   message: false 
@@ -42,28 +44,55 @@ library(ggplot2)
 library(LexisPlotR)
 ```
 
-# Objectifs
+
 
 -----------------------------------------------------------------------
 
 ::: {.callout-note title="A propos de ce document"}
 Ce support de cours a été créé pour la session 2025-26 du cours
 d'analyse spatiale des phénomènes sociaux destiné aux étudiants de
-géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne
+géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne. 
 :::
 
 
-# Définitions
+# INTRODUCTION 
+
+Le terme *analyse spatiale* (en anglais *spatial analysis*) demeure largement employé par les spécialistes de géographie quantitative ou de géomatique. Mais son contenu est loin d'être clair. Il varie en effet dans le temps ou dans l'espace et constitue à cet égard un objet très intéressant d'épistémologie et d'histoire des sciences. 
 
 ::: {.callout-important title="Définition de l'analyse spatiale"}
-> L'**analyse spatiale** étudie les **interactions** qui se nouent entre
+> L'**analyse spatiale** étudie les **interactions** qui se nouent au cours du temps entre
 > des **individus** et/ou des **lieux** en faisant l'hypothèse d'une
 > **décroissance des interactions** en fonction de la **distance** qui
 > sépare ces individus ou ces lieux.
 :::
 
-Chacun des termes contenus dans la précédente définition doit être
-précisé et discuté.
+
+Plutôt que de retracer l'histoire du terme, nous chercherons davantage à en proposer un cadrage théorique en définissant une **axiomatique** permettant de construire un **minimum théorique** c'est-à-dire une abstraction préalable à toute application empirique.
+
+## Axiomatique
+
+Proposons une première axiomatique provisoire de ce que pourrait être un *monde*. 
+
+- **Axiome 1** : Il existe un **monde** à l'intéreur duquel des **individus** interagissent dans le **temps** et l'**espace**.
+
+- **Axiome 2** : Ce monde est **fini** dans chacune de ses trois dimensions :
+    + **Axiome 2.1** : Les individus qui compose le monde forment une **population** dénombrable munie d'attributs.
+    + **Axiome 2.2** : Le temps qui **ordonne** les événements se produisant à l'intérieur du monde est segmentable en **intervalles de temps** ou périodes. 
+    + **Axiome 2.3** : L'espace à l'intérieur duquel interagisse les individus est découpable en un nombre fini de **lieux** constituant une grille ou une régionalisation.
+    
+- **Axiome 3** : Les **trajectoires** des individus peuvent être décrits par des **événements** de différents types parmi lesquels
+  +  **3.1 Apparition** : naissance d'un nouvel individu
+  +  **3.2 Disprition** : disparition d'un individu
+  +  **3.3 Mutation** : changement d'attribut social
+  +  **3.4 Mobilité** : changement de position spatiale
+  
+- **Axiome 4** : les **interactions** entre les individus sont à la fois cause et conséquence des événements qui modifient la **structure** et la **dyamique** du monde.  
+  + **4.1 : Structure** : description du monde à un instant *t* permettant de définir des interactions potentielles
+  + **4.2 : Dynamique** : description du monde au cours d'une période passée *[t-1,t]* permettant d'examiner les interactions effectivement réalisées.
+
+- **Axiome 5** : Toute **description du monde**produite par des individus localisés à l'intérieur de celui-ci est nécessairement **incomplète** et **partiale**.
+  + **5.1 : Incomplétude** : Conséquence des deux [théorèmes de Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), un système axiomatique de description du monde ne peut être validé qu'à l'extérieur de celui-ci.
+  + **5.2 : Partialité** : Dès lors qu'il nexiste pas de théorie unique, différents groupes d'individus peuvent proposer des descriptions du monde concurrente sans qu'il soit possible de trancher en faveur de l'une plutôt que l'autre.
 
 ## Interaction et temps
 
@@ -71,52 +100,29 @@ Une interaction est une relation qui se réalise à un instant donné ou
 pour une période donnée et qui modifie l'état d'un système social ou
 spatial. Une interaction implique donc plusieurs choses
 
--   **Le temps** : Une interaction est nécessairement inscrite dans une
-    **histoire** ce qui implique une conception du temps, que celui-ci
-    soit linéaire ou cyclique. Ainsi en temps linéaire la découverte de
-    l'Amérique par Christophe Colomb correspond à une interaction entre
-    deux groupes sociaux (les européens et les amérindiens) et deux
-    ensembles de lieux (l'Ancien Monde et le Nouveau Monde). En temps
-    cyclique on pourrait prendre l'exemple des marées qui sont
-    déclenchées par l'alignement de la Terre et de la Lune à intervalles
-    réguliers.
+### Temps linéaire ou temps cyclique ?
 
-## Population et interaction sociale
+Une interaction est nécessairement inscrite dans une **histoire** ce qui implique une conception du temps, que celui-ci soit linéaire ou cyclique. 
 
--   **La population** : Entendue comme un ensemble d'**individus**, une
-    population est caractérisée par des **interactions sociales**
-    c'est-à-dire des relations qui se nouent entre certains des
-    individus à un moment donnée et/ou pour une période donnée. Ces
-    interactions contribuent à l'évolution, la transformation, la
-    reproduction et dans certains cas la disparition de la population
-    concernée.
+- Ainsi en **temps linéaire** la découverte de l'Amérique par Christophe Colomb correspond à une interaction entre deux groupes sociaux (les européens et les amérindiens) et deux ensembles de lieux (l'Ancien Monde et le Nouveau Monde). 
 
-**Rmq1** : Les populations concernées par les populations ne sont pas
-forcément humaines. On peut tout à fait appliquer le concet à des
-populations animales ou végétales. L'un des cas les plus connu est celui
-des fourmis qui ont souvent servi de modèles pour la simulation de
-systèmes complexes et la création d'algorithmes.
+- En **temps cyclique** on pourrait prendre l'exemple des marées qui sont déclenchées par l'alignement de la Terre et de la Lune à intervallesréguliers.
 
-**Rmq2** : Il existe des modèles d'interaction entre deux ou plusieurs
-populations. L'un des plus connu est le modèle de Voltera-Lotka aussi
-connu sous le nom de **modèle proie-prédateur** dont vous trouverez une
-présentation [ici](https://www.youtube.com/watch?v=M0nRWcF1WJw)
+### Temps et population
 
-![Modèle proie-prédateur](img/prope-predateur.png)
+ **La population** : Entendue comme un ensemble d'**individus**, une population est caractérisée par des **interactions sociales** c'est-à-dire des relations qui se nouent entre certains des individus à un moment donnée et/ou pour une période donnée. Ces interactions contribuent à l'évolution, la transformation, la reproduction et dans certains cas la disparition de la population concernée.
 
-## Interaction sociale et temps : le diagramme de Lexis
+**Rmq1** : Les populations concernées par les populations ne sont pas forcément humaines. On peut tout à fait appliquer le concet à des populations animales ou végétales. L'un des cas les plus connu est celui des fourmis qui ont souvent servi de modèles pour la simulation de systèmes complexes et la création d'algorithmes.
 
-On peut tout à fait imaginer des modèles d'interaction sociale ne
-faisant intervenir que le temps. Mais nous verrons par la suite que l'inverse n'est pas vrai et que tout
-modèle d'interaction spatiale implique obligatoirement la prise en
-compte du temps.
+**Rmq2** : Il existe des modèles d'interaction entre deux ou plusieurs populations. L'un des plus connu est le modèle de Voltera-Lotka aussi connu sous le nom de **modèle proie-prédateur** dont vous trouverez une présentation [ici](https://www.youtube.com/watch?v=M0nRWcF1WJw)
 
--   Le **diagramme de Lexis** utilisé en démographie permet d'illustrer
-    le cas d'interactions sociales se déroulant uniquement dans le
-    temps. Prenons par exemple quatre géographes français et demandons
-    nous s'ils ont eu l'occasion de se rencontrer au cours de leur vie
-    et de débattre en face à face. Les notices Wikipedia nous indiquent
-    ceci
+[![Modèle proie-prédateur](img/prope-predateur.png){width=400 fig-align="left"}](https://www.youtube.com/watch?v=M0nRWcF1WJw)
+
+### le diagramme de Lexis
+
+On peut tout à fait imaginer des modèles d'interaction sociale ne faisant intervenir que le temps. Mais nous verrons par la suite que l'inverse n'est pas vrai et que tout modèle d'interaction spatiale implique obligatoirement la prise en compte du temps.
+
+Le **diagramme de Lexis** utilisé en démographie permet d'illustrerle cas d'interactions sociales se déroulant uniquement dans le temps. Prenons par exemple quatre géographes français et demandons nous s'ils ont eu l'occasion de se rencontrer au cours de leur vie et de débattre en face à face. Les notices Wikipedia nous indiquent ceci :
 
 -   [Paul Vidal de la
     Blache](https://fr.wikipedia.org/wiki/Paul_Vidal_de_La_Blache) (22
@@ -164,6 +170,17 @@ sociétés, y compris celles dont les membres sont astreint au célibat
 comme le clergé catholique. Dès lors que les membres successifs d'une
 société partagent un temps de vie suffisant, ils peuvent échanger et
 transmettre des idées ou des pratiques.
+
+## Interaction et espace-temps
+
+Si l'on peut imaginer des interactions sociales se déroulant dans le temps sans faire intervenir l'espace, l'inverse est plus difficile à concevoir voire impossible. Les interactions spatiales qui constituent le coeur de l'analyse spatiale n'ont en effet de sens que si la **distance** séparant deux lieux constitue un **frein** aux interactions entre les individus **au cours de leur existence**. 
+
+Emmanuel de Martonne, Pierre Georges ou Christian Grataloup ont tous fréquenté au cours de leur vie l'Institut de Géographie localisé 191 rue Saint-Jacques et achevé en 1924. Ils ont peut-être même occupé les mêmes bureaux ou enseigné dans les mêmes amphithéâtres. Mais cette proximité spatiale n'aurait en aucun cas permis qu'ils ne se rencontrent s'ils n'avaient pas vécu également à la même époque.
+
+**L'interaction spatiale est donc toujours une interaction spatio-temporelle**. Toute géographie est en réalité une *time-geography*.
+
+
+
 
 
 

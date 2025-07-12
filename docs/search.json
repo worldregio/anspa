@@ -28,6 +28,55 @@
     "text": "Interaction sociale et temps : le diagramme de Lexis\nOn peut tout à fait imaginer des modèles d’interaction sociale ne faisant intervenir que le temps. Mais nous verrons par la suite que l’inverse n’est pas vrai et que tout modèle d’interaction spatiale implique obligatoirement la prise en compte du temps.\n\nLe diagramme de Lexis utilisé en démographie permet d’illustrer le cas d’interactions sociales se déroulant uniquement dans le temps. Prenons par exemple quatre géographes français et demandons nous s’ils ont eu l’occasion de se rencontrer au cours de leur vie et de débattre en face à face. Les notices Wikipedia nous indiquent ceci\nPaul Vidal de la Blache (22 Janvier 1845 - 5 Mars 2018)\nEmmanuel de Martonne (1er avril 1873 - 24 Juillet 1955)\nPierre Georges (11 Octobre 1909 - 11 septembre 2006)\nChristian Grataloup (12 Avril 1951 - présent)\n\nOn peut alors représenter la ligne de vie de chacun sur le diagramme de Lexis qui permet de croiser le temps historique (année) et le temps individuel (âge) :\n\n\n\n\n\n\nCommentaire : Paul Vidal de la Blache a pu dialoguer largement avec Emmanuel de Martonne dont il a fait son héritier spirituel. Les opportunités d’interaction correspondent à la possibilité de relier deux lignes de vie par une droite verticale. Mais il faut également que l’âge autorise l’interaction. Ainsi, Pierre Georges est certes contemporain de Paul Vidal de la Blache, mais il n’a que 9 ans au moment de la mort de ce dernier. Il a en revanche pu intragir avec son prédécesseur Emmanuel de Martonne et son successeur Pierre Georges, qui lui-même a pu rencontrer Christian Grataloup, ect.\n\nCe mécanisme de recouvrement des lignes de vie est selon le sociologue Georges Simmel Simmel (1950) un mécanisme essentiel de reproduction des sociétés, y compris celles dont les membres sont astreint au célibat comme le clergé catholique. Dès lors que les membres successifs d’une société partagent un temps de vie suffisant, ils peuvent échanger et transmettre des idées ou des pratiques.\n\nRéférences\nChapelon L., 2014, “Accessibilité”, Hypergeo, encyclopédie en ligne\nPumain D., Saint-Julien T., 2010, Analyse spatiale : les localisations, Paris : Cursus Armand Colin, p.31.\n\n\nSimmel, Georg. 1950. The Sociology of Georg Simmel. Free Press."
   },
   {
+    "objectID": "Syllabus2025.html",
+    "href": "Syllabus2025.html",
+    "title": "SYLLABUS 2025",
+    "section": "",
+    "text": "Claude Grasland : claude.grasland@parisgeo.cnrs.fr\nMalika Madelin : malika.madelin@u-paris.fr"
+  },
+  {
+    "objectID": "Syllabus2025.html#contacts",
+    "href": "Syllabus2025.html#contacts",
+    "title": "SYLLABUS 2025",
+    "section": "",
+    "text": "Claude Grasland : claude.grasland@parisgeo.cnrs.fr\nMalika Madelin : malika.madelin@u-paris.fr"
+  },
+  {
+    "objectID": "Syllabus2025.html#organisation-générale",
+    "href": "Syllabus2025.html#organisation-générale",
+    "title": "SYLLABUS 2025",
+    "section": "Organisation générale",
+    "text": "Organisation générale\n\n6 séances d’enseignement intégré de 2h30\n4 séances d’atelier projet d’analyse spatiale\n\nToutes les séances on une durée de 2h30 heures. Elles ont lieu le mercredi de 14h à 16h30 , dans le Nouvel Amphi situé au rez-de-chaussée de l’Institut de Géographie, 191 rue Saint-Jacques, 75005 Paris."
+  },
+  {
+    "objectID": "Syllabus2025.html#objectifs-du-cours",
+    "href": "Syllabus2025.html#objectifs-du-cours",
+    "title": "SYLLABUS 2025",
+    "section": "Objectifs du cours",
+    "text": "Objectifs du cours\nL’objectif de ce cours est double.\n\nD’une part, vous amener à découvrir ou à approfondir les concepts et méthodes d’analyse spatiale qui visent à mettre en évidence la différenciation spatiale de phénomènes de natures diverses (inégalités de répartition de groupes sociaux, d’équipements, d’échanges matériels ou immatériels, de polluants, et à en éclairer les processus sous jacents (ségrégation, polarisation, diffusion…).\nD’autre part, vous sensibiliser à la construction d’une démarche scientifique en analyse spatiale, depuis la formulation d’une question et d’hypothèses de recherche jusqu’à la discussion des résultats produits, à travers la préparation d’un micro projet qui sera mené à l’aide du logiciel R et d’autres outils tels que Visone (analyse de graphe).\n\nIl est impossible de courir tout le domaine de l’analyse spatiale. Le programme 2025-26 privilégiera trois thèmes :\n\nAnalyse de l’accessibilité spatiale (distance, potentiel, …)\nAnalyse de l’hétérogénéité spatiale (autocorrélation, lissage, …)\nAnalyse de l’interaction spatiale (flux, rseaux, …)"
+  },
+  {
+    "objectID": "Syllabus2025.html#calendrier",
+    "href": "Syllabus2025.html#calendrier",
+    "title": "SYLLABUS 2025",
+    "section": "Calendrier",
+    "text": "Calendrier\nCe calendrier prévisionne est susceptible de modifications et d’ajustements.\n\n17 sept. 2025 - Cours 1 : Introduction à l’analyse spatiale (CG & MM)\n24 sept. 2025 - Cours 2 : Accessibilité (CG)\n1er oct. 2025 - Cours 3 : Hétérogénéité et inégalités (MM)\n8 oct. 2025 - Cours 4 : Lissage et interpolation (MM)\n15 oct. 2025 - Cours 5 : Flux et interactions (CG)\n22 oct. 2025 - Cours 6 : Graphes et réseaux (CG)\n12 nov 2025 - Atelier 1 (CG & MM)\n19 nov. 2025 - Atelier 2 (CG & MM)\n26 nov 2025 - Atelier 3 (CG & MM)\n3 déc. 2025 - Atelier 4 (CG & MM)"
+  },
+  {
+    "objectID": "Syllabus2025.html#mode-dévaluation",
+    "href": "Syllabus2025.html#mode-dévaluation",
+    "title": "SYLLABUS 2025",
+    "section": "Mode d’évaluation",
+    "text": "Mode d’évaluation\n\nContrôle continu : 1 rendu écrit et 1 oral sur le micro projet et 1 partiel (en janvier) Chaque exercice compte pour 1/3 de la note finale.\n2e session : 1 écrit et 1 oral comptant chacun pour 50%"
+  },
+  {
+    "objectID": "Syllabus2025.html#bibliographie-et-ressources-générales",
+    "href": "Syllabus2025.html#bibliographie-et-ressources-générales",
+    "title": "SYLLABUS 2025",
+    "section": "Bibliographie et ressources générales",
+    "text": "Bibliographie et ressources générales\n\nManuels d’initiation à l’analyse spatiale :\n\nFeuillet T., Cossart E., Commenges H., 2019, Manuel de géographie quantitative, Cursus, Armand Colin, 237 p.\nPumain D., Saint-Julien T., 2010, L’analyse spatiale (1) : Localisations, Cursus, Armand-Colin, Paris, 190 p.\nPumain D., Saint-Julien T., 2010, L’analyse spatiale (2) : les interactions, Cursus, Armand-Colin, 218 p.\n\n\n\nManuels d’auteurs anglo-saxons :\n\nHaggett P., 1973, L’analyse spatiale en géographie humaine, Colin “U”, Paris, 390 p.\nTaylor P.J., 1977, Quantitative Methods in Geography: an introduction to Spatial Analysis, Waveland Press, 386 p.\nUnwin D., 1981, Introduction to Spatial Analysis, Methuen, London, 212 p.\nStimson R.J. (ed.), 2014, Handbook of Research Methods and Applications in Spatially Integrated Social Science, Elgar, 663 p.\n\n\n\nRegards sur l’analyse spatiale depuis les SIG, la modélisation de l’information géographique :\n\nAschan-Leygonie C., Cunty C., Davoine P.-A., 2019. Les systèmes d’information géographique : principes, concepts et méthodes, Armand Colin, Cursus : géographie, 272 p. (&gt; en particulier le chapitre 6)\nLongley P., Goodchild M., Maguire D., Rhind D., 2015, Geographic information Science and System, 4th edition, Wiley, 496 p. (en particulier chapitres 13 à 15)\nMathian H., Sanders L., 2014, Objets géographiques et processus de changement, ISTE éditions, 175 p. (en particulier le chapitre 1)\n\n\n\nPoint sur les concepts, définitions :\n\nBavoux J.J., Chapelon L. (dir), 2014, Dictionnaire d’analyse spatiale, Armand-Colin, Paris, 608 p.\nHypergeo, Encyclopédie de géographie en ligne.\n\n\n\nRevues :\nCybergeo, M@ppemonde, L’Espace géographique, Revue d’Economie Régionale et Urbaine, …\n\n\nRessources numériques sur l’analyse spatiale :\n\nGrasland C. (Université Paris Diderot), Vieilleries … Cours d’analyse spatiale dispensées en 1999-2006.\nPumain D., Finance O., Commenges H. (Université Paris1) : MOOC « Echanges et proximité, la 1ère loi de la géographie.\nCommenges H., Grasland C., Hachi R., Le Néchet F., Pumain D. et al., MOOC « Des réseaux pour comprendre le monde »\n\n\n\nPour les révisions de statistiques et de cartographie :\n\nGrasland C., 1998, Initiation aux statistiques univariées et bivariées appliquées à la géographie, Autre vieillerie\nLambert N., Zanin C., 2016, Manuel de cartographie, principes, méthodes, applications. Paris, A. Colin, 224 p.\nPumain D., Beguin M., 2014, La représentation des données géographiques, Paris, Cursus"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Analyse spatiale",

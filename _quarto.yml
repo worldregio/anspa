@@ -6,9 +6,9 @@ website:
   title: "Analyse Spatiale"
   navbar:
     left:
-      - text: Objectif
-        href: index.qmd
-      - text: 1.Introduction
+      - text: Syllabus
+        href: Syllabus2025.qmd
+      - text: 1. Introduction
         menu:
           - text: Cours
             href: cours1.qmd
@@ -20,7 +20,7 @@ website:
         target: _blank
   page-footer:
     background: dark
-    left: Copyright 2025, Claude Grasland
+    left: Copyright 2025-2026, Claude Grasland & Malika Madelin
 format:
   html:
     theme: 

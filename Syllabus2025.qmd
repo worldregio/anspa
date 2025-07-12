@@ -1,0 +1,134 @@
+---
+title: "SYLLABUS 2025"
+subtitle: "Analyse spatiale, formes et processus - M1 Carthageo & Geoprisme"
+date: "2025-09-01"
+author: "Claude Grasland, Malika Madelin"
+format:
+  html:
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+execute:
+  warning: false
+  message: false 
+  cache: false  
+  echo: false 
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Contacts 
+
+- Claude Grasland : [claude.grasland@parisgeo.cnrs.fr](mailto:claude.grasland@parisgeo.cnrs.fr)
+- Malika Madelin : [malika.madelin@u-paris.fr](mailto:malika.madelin@u-paris.fr)
+
+## Organisation générale
+
+- 6 séances d’enseignement intégré de 2h30 
+- 4 séances d’atelier projet d’analyse spatiale 
+
+Toutes les séances on une durée de 2h30 heures. Elles ont lieu le mercredi de 14h à 16h30 , dans le Nouvel Amphi situé au rez-de-chaussée de [l'Institut de Géographie](https://geographie.pantheonsorbonne.fr/lufr-ses-membres-et-ses-lieux/centres-cours-et-recherche), 191 rue Saint-Jacques, 75005 Paris. 
+
+## Objectifs du cours
+
+L’objectif de ce cours est double. 
+
+- D’une part, vous amener à découvrir ou à approfondir les **concepts et méthodes d’analyse spatial**e qui visent à mettre en évidence la différenciation spatiale de phénomènes de natures diverses (inégalités de répartition de groupes sociaux, d’équipements, d’échanges matériels ou immatériels, de polluants, et à en éclairer les processus sous jacents (ségrégation, polarisation, diffusion…).
+
+- D’autre part, vous sensibiliser à la **construction d’une démarche scientifique en analyse spatiale**, depuis la formulation d’une question et d’hypothèses de recherche jusqu’à la discussion des résultats produits, à travers la préparation d’un micro projet qui sera mené à l’aide du logiciel R et d'autres outils tels que Visone (analyse de graphe).
+
+Il est impossible de courir tout le domaine de l'analyse spatiale. Le programme 2025-26 privilégiera trois thèmes : 
+
+1. Analyse de l'**accessibilité spatiale** (distance, potentiel, ...)
+2. Analyse de l'**hétérogénéité spatiale** (autocorrélation, lissage, ...)
+3. Analyse de l'**interaction spatiale** (flux, rseaux, ...)
+
+
+## Calendrier
+
+*Ce calendrier prévisionne est susceptible de modifications et d'ajustements.*
+
+- **17 sept. 2025** -  Cours 1 : Introduction à l'analyse spatiale (*CG & MM*)
+
+- **24 sept. 2025** - Cours 2 : Accessibilité (*CG*)
+
+- **1er oct. 2025** - Cours 3 : Hétérogénéité et inégalités (*MM*)
+
+- **8 oct. 2025** - Cours 4 : Lissage et interpolation (*MM*)
+
+- **15 oct. 2025** - Cours 5 : Flux et interactions (*CG*)
+
+- **22 oct. 2025** - Cours 6 : Graphes et réseaux (*CG*)
+
+- **12 nov 2025** - Atelier 1 (*CG & MM*)
+
+- **19 nov. 2025** - Atelier 2 (*CG & MM*)
+
+- **26 nov 2025** - Atelier 3 (*CG & MM*)
+
+- **3 déc. 2025** - Atelier 4 (*CG & MM*)
+
+
+## Mode d'évaluation
+
+- Contrôle continu :  1 rendu écrit et 1 oral sur le micro
+projet et 1 partiel (en janvier) Chaque exercice compte pour 1/3 de la note finale.
+- 2e session : 1 écrit et 1 oral comptant chacun pour 50%
+
+
+
+## Bibliographie et ressources générales
+
+### Manuels d’initiation à l’analyse spatiale :
+
+- Feuillet T., Cossart E., Commenges H., 2019, *Manuel de géographie quantitative*, Cursus, Armand Colin, 237 p.
+- Pumain D., Saint-Julien T., 2010, *L'analyse spatiale (1) : Localisations*, Cursus, Armand-Colin, Paris, 190 p.
+- Pumain D., Saint-Julien T., 2010, *L'analyse spatiale (2) : les interactions*, Cursus, Armand-Colin, 218 p.
+
+### Manuels d’auteurs anglo-saxons :
+
+- Haggett P., 1973, *L'analyse spatiale en géographie humaine*, Colin "U", Paris, 390 p.
+- Taylor P.J., 1977, *Quantitative Methods in Geography: an introduction to Spatial Analysis*, Waveland Press, 386 p.
+- Unwin D., 1981, *Introduction to Spatial Analysis*, Methuen, London, 212 p.
+- Stimson R.J. (ed.), 2014, *Handbook of Research Methods and Applications in Spatially Integrated Social Science*, Elgar, 663 p.
+
+### Regards sur l’analyse spatiale depuis les SIG, la modélisation de l’information géographique :
+
+- Aschan-Leygonie C., Cunty C., Davoine P.-A., 2019. *Les systèmes d'information géographique : principes, concepts et méthodes*, Armand Colin, Cursus : géographie, 272 p. (> en particulier le chapitre 6)
+- Longley P., Goodchild M., Maguire D., Rhind D., 2015, *Geographic information Science and System*, 4th edition, Wiley, 496 p. (en particulier chapitres 13 à 15)
+- Mathian H., Sanders L., 2014, *Objets géographiques et processus de changement*, ISTE éditions, 175 p. (en particulier le chapitre 1)
+
+### Point sur les concepts, définitions :
+
+- Bavoux J.J., Chapelon L. (dir), 2014, *Dictionnaire d’analyse spatiale*, Armand-Colin, Paris, 608 p.
+
+- [Hypergeo](www.hypergeo.eu), *Encyclopédie de géographie en ligne*.
+
+### Revues :
+
+[Cybergeo](https://journals.openedition.org/cybergeo/), [M@ppemonde](https://mappemonde.mgm.fr/nouvelle-plateforme-open-editions-journals/), [L’Espace géographique](https://shs.cairn.info/revue-espace-geographique?lang=fr), [Revue d’Economie Régionale et Urbaine](https://www.reru.fr/), ...
+
+### Ressources numériques sur l’analyse spatiale :
+
+- Grasland C. (Université Paris Diderot), [Vieilleries ... Cours d’analyse spatiale dispensées en 1999-2006](http://grasland.script.univ-paris7.fr/).
+- Pumain D., Finance O., Commenges H. (Université Paris1) : [MOOC « Echanges et proximité, la 1ère loi de la géographie](www.funmooc.fr/courses/Paris1/16004/session01/about).
+- Commenges H., Grasland C., Hachi R., Le Néchet F., Pumain D. et al., [MOOC « Des réseaux pour comprendre le monde »](https://www.fun-mooc.fr/fr/cours/des-reseaux-pour-comprendre-le-monde/)
+
+### Pour les révisions de statistiques et de cartographie :
+
+- Grasland C., 1998, [Initiation aux statistiques univariées et bivariées appliquées à la géographie, Autre vieillerie](grasland.script.univ-paris-diderot.fr/STAT98/STAT98.htm)
+- Lambert N., Zanin C., 2016, *Manuel de cartographie, principes, méthodes, applications*. Paris, A. Colin, 224 p.
+- Pumain D., Beguin M., 2014, *La représentation des données géographiques*, Paris, Cursus

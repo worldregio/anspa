@@ -179,9 +179,67 @@ Emmanuel de Martonne, Pierre Georges ou Christian Grataloup ont tous fréquenté
 
 **L'interaction spatiale est donc toujours une interaction spatio-temporelle**. Toute géographie est en réalité une *time-geography*.
 
+**Exemple (simple) de time-geography** : Le monde se réduit à une route unique de 70 lieues (une lieue fait environ 4 km). Cendrillon (en bleu) réside au point n°20 dispose d'un carosse qui lui permet de franchir 20 lieux en 12 heures. Le Prince Charmant (en rose) résode au point n°50. Il n'est pas très sportif et peut franchir 5 lieux en 12 heures. Ils sont donc situés à 30 lieux de distance l'un de l'autre. Chacun d'eux part de chez lui à minuit et doit impérativement rentrer à son domicile avant le lendemen à minuit. Pourront-ils se rencontrer ?
 
 
+```{r}
+x1 <- c(20,40,20,0,20)
+y1 <- c(0,12,24,12,0)
+pol1<-cbind(x1,y1)
 
+x2 <- c(50,55,50,45,50)
+y2 <- c(0,12,24,12,0)
+pol2<-cbind(x2,y2)
+
+x3 <- c(35,40,35,30,35)
+y3 <- c(9,12,15,12,9)
+pol3<-cbind(x3,y3)
+
+par(mar=c(4,4,4,4))
+plot(rbind(pol1,pol2), cex=0.01,
+     xlim=c(0,70),
+     ylim=c(0,24),
+     ylab = "Temps : en heures",
+     xlab = "Espace : en lieues",
+     main = "Rencontre impossible")
+
+polygon(pol1, col="lightblue")
+polygon(pol2, col="pink")
+grid(,nx = 16, ny=24)
+```
+
+- **Commentaire** : Les losanges bleus et roses indiquent la portion d'espace-temps que chacun peut parcourir en assurant le retour à son domicile dans un délais de 24h. On voit que la rencontre est impossible car **les deux espaces-temps n'ont pas d'intersection commune**. 
+
+Supposons maintenant que le Prince charmant ait réussi à voler le carosse de son père ...
+
+```{r}
+x1 <- c(20,40,20,0,20)
+y1 <- c(0,12,24,12,0)
+pol1<-cbind(x1,y1)
+
+x2 <- c(50,70,50,30,50)
+y2 <- c(0,12,24,12,0)
+pol2<-cbind(x2,y2)
+
+x3 <- c(35,40,35,30,35)
+y3 <- c(9,12,15,12,9)
+pol3<-cbind(x3,y3)
+
+par(mar=c(4,4,4,4))
+plot(rbind(pol1,pol2), cex=0.01,
+     xlim=c(0,70),
+     ylim=c(0,24),
+     ylab = "Temps : en heures",
+     xlab = "Espace : en lieues",
+     main = "Rencontre possible")
+
+polygon(pol1, col="lightblue")
+polygon(pol2, col="pink")
+polygon(pol3, col="yellow",lwd=2)
+grid(,nx = 16, ny=24)
+```
+
+- **Commentaire** : Les deux espaces temps se recoupent désormais et indique (en jaune)  la zone de l'espace-temps où Cendrillon et le Prince peuvent se retrouver. Spatialement, il s'agit de la zone comprise entre les kilomètres 30 et 40. Le point de rencontre optimal est le kilomètre 25 où ils pourront passer six heures ensembles, de 9h à 15h avant de devoir retourner à leur domicile. 
 
 
 

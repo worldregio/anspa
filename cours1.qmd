@@ -308,7 +308,151 @@ Le roman de Philip K. Dick est sans doute l'un des chef-d'oeuvre les plus effray
 
 - **Sociétés géographiques** : Elles constitueraient donc selon Jacques Lévy **une étape intermédiaire** de l'hitoires des sociétés humaines au cours de laquelle les localisations ne sont plus impératives (sociétés pré-géographiques) mais où l'éloignement des individus dans l'espace demeurent une contrainte significative à la réalisation d'interactions sociales (entre individus) ou économiques (entre individus et ressources). 
 
-Cette vision ternaire et dialectique -probablement issue de la formation marxiste de l'auteur- peut déboucher sur une représentation plus complexe de l'histoire humaine dans laquelle co-existeraient chacune des formes pures décrites par J. Levy selon les types d'interaction considérées. Les interactions amoureuses pourraient demeurer par exemple fortement déterminées par la proximité spatiale alors que les interactions économiques seraient de moins en moins liées à la proximité. Mais le passage d'un stade à un autre ne serait pas nécessairement inéluctable et la fameuse "marche de l'histoire" pourrait connaître des retours en arrière voire obéir à des cycles. Qu'il suffise sur ce point de rappeler les nombreuses théories qui ont surgi au début du XXe siècles, au temps d'une supposée "Mondialisation heureuse"  pour prophétiser la "*fin de la géographie*" (O'Brien), la "*mort de la distance*" (Cairncross) et l'avènement d'un "*monde plat*" (ref.).
+Cette vision ternaire et dialectique -probablement issue de la formation marxiste de l'auteur- peut déboucher sur une représentation plus complexe de l'histoire humaine dans laquelle co-existeraient chacune des formes pures décrites par J. Levy selon les types d'interaction considérées. Les interactions amoureuses pourraient demeurer par exemple fortement déterminées par la proximité spatiale alors que les interactions économiques seraient de moins en moins liées à la proximité. Mais le passage d'un stade à un autre ne serait pas nécessairement inéluctable et la fameuse "marche de l'histoire" pourrait connaître des retours en arrière voire obéir à des cycles. Qu'il suffise sur ce point de rappeler les nombreuses théories qui ont surgi après la fin de la Guerre Froide, au temps d'une supposée "mondialisation heureuse"  pour prophétiser la "*fin de la géographie*" (O'Brien, 1992), la "*mort de la distance*" (F. Cairncross, 1998) et l'avènement d'un "*monde plat*" débarassé de la "*tyrannie de la distance et des frontières*" (T. Friedman, 2005).
+
+
+## La contrainte chorotaxique
+
+Si la distance géographique pose un problème aux sociétés humaines - et justifie l'existence de géographes - c'est fondamentalement en raison de la **contrainte chorotaxique** définie par Henry Reymond   parle fait que **deux objets ou deux individus ne peuvent pas aoccuper le même point de l'espace au même moment** (Isnard H., Racine J.B., Reymond H., 1981). Dès lors qu'une société procède à une première implantation en un lieu donné, elle réduit le nombre de choix pour des implantations ultérieures (rappelons que dans notre axiomatique provisoire le nombre de lieux est *fini*). Cela signifie que pour le choix d'une seconde implantation, la société disposera très précisément de trois solutions :
+
+1. **Remplacer** la première implantation en la détruisant. 
+2. **Juxtaposer** la seconde implantation à la première, que ce soit verticalement ou horizontalement, en créant une relation de *contiguïté*.
+3. **Espacer** la seconde implantation en l'**éloignant** de la première d'une certaine distance.
+
+
+::: {.callout-important title="Axiomatique d'un monde fini et discret"}
+- **Remarque** :Cette aximatique est très proche de celle qui a été proposée au début de ce cours dans la mesure où elle suppose bien l'existence d'un **monde fini** doté d'une **population finie** qui agit dans un **temps discret** (actions successives par intervalles de temps) et d'un **espace discret** (nombre fini de localisations possibles). Les règles que déduit H. Reymon ne sont donc valable que dans le cadre de ces conditions de finitude et n'auraient sans doute pas de sens dans un monde infini où les phénomènes seraient continus dans l'espace comme dans le temps. 
+:::
+
+H. Reymond déduit trois conséquences de la contrainte chorotaxique que nous allons discuter successivement.
+
+### Une obligation : l'espacement
+
+Le fait de ne pas pouvoir implanter deux choses en un même point de l'espace au même moment oblige donc les sociétés à prendre des décisions en matière d'implantations de logements, d'activités économiques, de commerces, de services...
+
+Ces décisions peuvent dans certains cas être prises librement par les individus, mais elles sont également l'objet de **règles** qui limitent les possibilités de choix et peuvent faire l'objet de **sanctions** par une autorité politique ou adminisrative. Elles peuvent évidemment faire l'objet de **conflits** lorsque plusieurs individus sont en concurrence pour une même implantation. Bref, **l'espace est politique** ce qui en soit n'est pas un scoop. Mais permet de rappeler le lien profond qui unit la géographie et le droit. Les **lois de l'espace** que formule l'analyse spatiale peuvent être d'ordre économique (décroissance des interactions en fonction du coût de transport) mais aussi sociologique (formation de ghetto) et juridique (interdiction d'implanter une pharmacie à moins d'une certaine distance d'une autre).
+
+Bref, il faut espacer mais comment s'y prendre ? Et cela justifie-t-il de faire appel à un corps de spécialistes appelés *géographes, aménageurs, architectes ou urbanistes* ?
+  
+### Une liberté : la disposition
+
+L'espacement est un problème, mais un problème qui possède généralement plusieurs solutions (rappelons la célèbre devise des Shadoks en la corrigeant légèrement : "*s'il n'y a pas de solution -* ***ou s'il y en a une seule*** - *il n'y a pas de problème !*"). La question est alors de savoir dans quelle mesure telle ou telle solution se révèle plus avantageuse pour tel individu, tel groupe d'individu ou la société dans son ensemble. En d'autres termes, comment évaluer une disposition et la déclarer préférable à une autre ? Quelle norme mettre en oeuvre ? Comment concilier les intérêts éventuellement contradictoires d'individus ou de groupes d'individus ?
+
+
+
+::: {.callout-important title="Distributon des activités et services de Goose-City en 1840 et 1850"}
+
+
+
+Dans cet exemple inspiré de Lucky Luke (*Des barbelés sur la prairie*) et tiré d'un [vieux cours d'analyse spatiale](http://grasland.script.univ-paris-diderot.fr/go303/intro/doc_int.htm) on avait imaginé un groupe de pionniers qui partent à la conquête de l'Ouest américain et s'implantent après avoir massacré les populations autochtones au nom de la "civilisation"... 
+
+:::: {.columns}
+::: {.column width="45%"}
+
+Chacun a reçu une parcelle de forme carrée où la plupart ont implanté une ferme. Mais certaines parcelles ont été réservées à l'implantation de commerces ou de services indispensables à la population décrits dans le tableau ci-dessous
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+![](img/goose0.gif){width=300}
+:::
+
+Lors de leur arrivée en 1840, les pionniers ont tiré au hasard la disposition des fermes et des activités car ils avaient lu des ouvrages religieux qui annonçaient l'avènement d'un monde plat débarassé de la tyrannie de la distance et annonçaient la mort de la géographie. Tous les géographes avaient donc été brûlés en place publique sur un bûcheer composé de cartes.  Mais dix ans après on avait observé des changements dans la répartition des fermes et des activités car quelques problèmes étaient apparus...
+
+:::
+
+
+
+:::: {.columns}
+::: {.column width="45%"}
+- **Situation en 1840**
+
+![](img/goose2.gif)
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+- **Situation en 1850**
+
+![](img/goose1.gif)
+:::
+
+:::
+
+:::
+
+
+
+### Une puissance : la surface
+
+la troisième conséquence tirée par H. Reymonde de la contrainte chorotaxique réside dans le fait que la répartition bi-dimensionnelle des activités augmente la possiblité de trouver des arrangements multiples. On peut illustrer ceci par l'exemple très simple de la répartition de 7 villages dans une plaine homogène ou une vallée de montagne plus ou moins large.
+
+
+::: {.callout-important title="Comment combiner proximité et éloignement"}
+
+Dans cet exemple théorique, il s'agit de disposer sept villages en fonction de deux demandes d'espacement :
+
+1. Chaque village veut être situé à au moins 10 kilomètre du plus proche afin de disposer d'un territoire (*finage*) suffisant pour ses activités.
+2. Chaque village veut pouvoir échanger facilement avec les six autres et en être aussi proche que possible tout en respectant la règle de distance minimale
+
+Comme le montre les cartes-ci-dessous, la seconde règle aboutit à des solutions plus satisfaisante dans un esapce à deux dimensions (plaine homogène) que dans un  espace à une dimension (vallée étroite).
+
+![](img/reymond.gif)
+
+:::
+
+On pourrait ajouter à la démonstration proposée par H. Reymond que la liberté serait encore accrue dans un espace à trois dimension comme on peut le faire dans les espaces urbains denses en jouant sur la verticalité.
+
+
+## Conclusion :  Les lois de l'espace
+
+L'exemple de Goose-City conduit à s'interroger sur l'existence de lois de l'espace. Deux points de vue s'opposent - apparemment - à ce sujet, illustrés par deux textes de R. Brunet et J. Levy
+
+
+::: {.callout-important title="Deux points de vue sur l'existence de lois de l'espace"}
+
+:::: {.columns}
+::: {.column width="47%"}
+- **"On ne fait pas ce qu'on veut de et dans l'espace" (Roger Brunet, 1990) :**
+
+La production de l'espace conserve […]une double détermination, générale et locale. Tout le problème de la recherche sur l'espace géographique est de faire le tri entre les lois et les règles, ce qui vaut à l'échelle mondiale et ce qui est propre à des modes de production, des cultures ou quoi que ce soit d'équivalent qui régionalise l'espace - et le temps. La géographie a d'abord vu le foisonnement de situations uniques, c'était même sa fonction d'exploratrice. Puis elle a cherché, à partir de là, à regrouper en types formels ce qui semblait se ressembler; faute de méthode, ce fut sa période ingrate. Elle a tendance maintenant à chercher des lois, et à évaluer des écarts aux lois; c'est aussi pour retrouver l'unique en l'appréciant mieux. Elle y reprend sel et miel. Ce faisant, elle a cru pouvoir observer que, non seulement les sociétés ont leurs lois, au sens strict et au sens large, mais encore l'espace a les siennes propres. Ces lois sont de nature topologique ou, plus largement, physique, même s'agissant de phénomènes sociaux. Leur découverte a donné lieu à une abondante littérature, et à d'infinis raffinements techniques. Au point qu'elles n'ont pas échappé aux phénomènes classiques d'aliénation et de réification, certains chercheurs s'acharnant autour des équations en perdant de vue toute relation avec les processus réels. Comme l'espace lui-même, les lois de l'espace n'ont de réalité que dans la mesure où elles expriment des relations sociales, où elles ont une logique sociale. Elles concernant des populations concrètes, leurs échanges et leurs œuvres. La géographie se déploie ici entre deux aliénations: chercher des lois sans s'interroger sur les pratiques qu'elles recouvrent, des lois comme immanentes ou célestes; ou nier toute loi de l'espace parce qu'il n'y aurait de loi que de la société, ou même de l'économie, voire du politique, non moins réifiées à leur tour. Mais on ne fait pas ce que l'on veut de et dans l'espace. Densité, distance, diffusion et quelques autres phénomènes sont spécifiquement phénomènes de l'espace. Bien entendu, quand ils concernant l'espace géographique tout entier, et pas seulement le relief ou la couverture végétale, ils n'existent qu'à travers les relations sociales; ils n'en ont pas moins leurs lois et leurs effets propres, dont les sociétés ont le plus grand intérêt à tenir compte. Il est assez d'échecs d'implantation pour le rappeler. 
+
+Source : R. Brunet, *Mondes Nouveaux / Géographie Universelle tome I*, Hachette-Reclus, 1990, p. 79
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="47%"}
+-**"La spatialité ne peut être définie en soi, indépendamment du "contenu" de réel qui l'organise" (Jacques Lévy, 1986)**
+
+Axiome 1 : L'espace est une catégorie correspondant, selon la tradition marxiste, à un mode d'existence de la matière.  La spatialité ne peut être définie en soi, indépendamment du "contenu" de réel qui l'organise. 
+
+
+Axiome 2 : L'espace social, c'est-à-dire la répartition des phénomènes sociaux selon les deux dimensions courbes de la surface terrestre ne pose pas forcément un problème intéressant à la société. Si les localisations sont rendues quasi impératives par l'absence de maîtrise des hommes sur leurs conditions de vie, on est en présence d'une société pré-spatiale ;  si, à l'inverse, la liberté d'allouer des éléments de la société ici ou là est totale, si l'ubiquité matérielle (transports) ou immatérielle (télécommunications) génère une totale isotropie, on peut dire que la société est de nature post-spatiale. On posera donc que c'est dans la phase transitoire entre ces deux situations extrêmes que prend sens une approche scientifique de l'espace social.
+
+
+Axiome 3 : Une fois rejeté le primat de l'économique, du sociologique ou du politique dans l'explication des faits sociaux (on ne peut comprendre les rapports marchands sans se référer aux rapports sociaux, ni ces derniers sans reconnaître l'existence d'un pouvoir politique), force est de reconnaître qu'il ne peut y avoir de hiérarchie entre les sciences sociales dès lors que chacune d'entre elle est capable de prendre en compte l'ensemble du réel social, la généralité des phénomènes qui constituent une société.
+
+
+Axiome 4 : Il n'est pas possible d'isoler un ensemble de "choses" de la société telles que nous puissions comprendre leur fonctionnement sans faire entrer le reste de la société dans notre raisonnement. Toutes les sciences sociales sont donc à la fois totales et partielles ; elles représentent une dimension qui est aussi un problème - une liberté et des contraintes, des choix et un enjeu - pour la société qui pousse certains de ses membres à y réfléchir.
+
+Source : J. Lévy, "L’espace et le politique : quelles rencontres ? " in Brunet R., Auriac F., 1986, *Espaces, jeux et enjeux*, Fayard-Diderot, Paris, pp. 251-268
+
+:::
+
+
+:::
+
+:::
+
+
+
 
 
 

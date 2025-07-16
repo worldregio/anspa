@@ -34,16 +34,19 @@ editor:
 
 ```{r}
 library(ggplot2)
-library(LexisPlotR)
-
 library(sf)
 library(mapsf)
+
+library(knitr)
+library(dplyr)
+library(car)
+library(reshape2)
 ```
 
 
 
 
-# Objectifs
+
 
 -----------------------------------------------------------------------
 
@@ -52,16 +55,320 @@ Ce support de cours a été créé pour la session 2025-26 du cours d'analyse sp
 :::
 
 
-# Mise en place
+# EXO1 : MESURER LA CONCENTRATION SPATIALE
 
-## Distribution 
+## Mise en place
+
+
+On considère un monde composé de 48 positions spatiales, chacune d'entre elle étant occupée par une carte à jouer d'un jeu de 52 cartes dont on a retiré les rois. Cinq tirages différents ont été effectués au hasard.
+
+```{r}
+jeu1 <- readRDS("data1/space001.RDS")
+jeu2 <- readRDS("data1/space002.RDS")
+jeu3 <- readRDS("data1/space003.RDS")
+jeu4 <- readRDS("data1/space004.RDS")
+jeu5 <- readRDS("data1/space005.RDS")
+```
+
+
+
+On choisit l'un des cinq jeux comme monde et on le visualise: 
+
+```{r}
+# Choix du Monde
+jeu <- jeu5
+
+# Visualisation
+par(mar=c(0,0,3,0), mfrow=c(1,2))
+
+# Espace
+plot(jeu$geometry, main="Espace")
+text(jeu$geometry, jeu$ID)
+
+# Société
+plot(jeu$geometry, main="Société")
+text(jeu$geometry, jeu$cards, col=jeu$col,cex=1.5)
+```
+
+
+Nous avons quatre familles d'individus correspondant à Pique, Coeur, Carreau et Trèfle. Proposez une méthode pour répondre à laquestion 
+
+> Laquelle est la plus concentrée spatialement ? La plus dispersée ?
+
+## Solution 1 : Point moyen,  distance-type et ellipse de dispersion
+
+Vous avez normalement appris en licence quelques bases de **statistique spatiale**. Celle-ci propose notamment de calculer pour chaque distribution de points de coordonnées $(X_i,Y_i)$ le centre de gravité $G(X_g,Y_g)$ 
+
+
+$X_g = \frac{\Sigma_{i=1}^n{X_i}}{n}$
+
+$Y_g = \frac{\Sigma_{i=1}^n{X_i}}{n}$
+
+On peut ensuite calculer l'écart-type de $X$ et $Y$ :
+
+$\sigma_X = \frac{\Sigma_{i=1}^n{(X_i-X_g)^2}}{n-1}$
+
+$\sigma_Y = \frac{\Sigma_{i=1}^n{(Y_i-Y_g)^2}}{n-1}$
+
+Et finalement en déduire la distance-type $\sigma_{X,Y}$ de chaque point au centre de gravité par la formule :
+
+$\sigma_{X,Y} = \sqrt{\sigma_X^2+\sigma_Y^2}$
+
+
+Passons au calcul dans R. Il suffit pour cela d'utiliser la fonction moyenne (*mean*) et la fonction écart-type (*sd*) en les combinant avec la fonction *tapply()* qui permet d'effectuer le calcul par sous-tableaux en fonction de la variable décrivant la famille des cartes.
+
+```{r}
+# Identification des familles
+col<-names(table(jeu$family))
+
+# Calcul des centre de gravité
+Xg<-tapply(jeu$X,INDEX=jeu$family,FUN=mean)
+Yg<-tapply(jeu$Y,INDEX=jeu$family,FUN=mean)
+
+# Calcul des écarts-types
+X_ect<-tapply(jeu$X,INDEX=jeu$family,FUN=sd)
+Y_ect<-tapply(jeu$Y,INDEX=jeu$family,FUN=sd)
+
+# Calcul des distances-types
+D_type <- sqrt(X_ect**2 + Y_ect**2)
+
+# Assemblage des résultats
+tabres <- cbind(Xg,Yg,X_ect, Y_ect,D_type)
+tabres <- as.data.frame(tabres)
+
+# Affichage des résultats
+kable(tabres, digits=2)
+```
+
+On déduit facilement du tableau précédent la distribution la plus dispersée et la moins dispersée.
+
+
+On peut ensuite visualiser le résultat à l'aide d'**ellipses de dispersions** qui permettent de repérer à la fois le centre de gravité et les zones de localisation les plus probables des points. Sans entrer dans les détails mathématiques, on peut voir ci-dessous comment les ellipses de dispersion correspondant aux intervalles de confiance 25%, 50% et 75% sont plus ou moins étendues.
+
+```{r, fig.height=8,fig.width=6}
+par(mfrow=c(2,2), mar=c(0,0,0,0))
+
+ref <-1
+fam <-row.names(tabres)[ref]
+sel <- jeu[jeu$family==fam,]
+plot(jeu$geometry, col="lightyellow",border="gray",lwd=0.2, cex=0.1)
+dataEllipse(sel$X,sel$Y, 
+            levels=c(0.25,0.5,0.75),
+            lwd=c(0.5,2,0.5),
+            ellipse.label = c("25%","50%","75%"),label.cex = 1,
+            fill=TRUE,
+            fill.alpha = 0.1,
+            plot.points = F,
+            add=T,
+            center.pch = 4)
+text(sel$X,sel$Y,fam,cex=1.5)
+
+
+
+ref <-2
+fam <-row.names(tabres)[ref]
+sel <- jeu[jeu$family==fam,]
+plot(jeu$geometry, col="lightyellow",border="gray",lwd=0.2, cex=0.1)
+dataEllipse(sel$X,sel$Y, 
+            levels=c(0.25,0.5,0.75),
+            lwd=c(0.5,2,0.5),
+            ellipse.label = c("25%","50%","75%"),label.cex = 1,
+            fill=TRUE,
+            fill.alpha = 0.1,
+            plot.points = F,
+            add=T,
+            center.pch = 4)
+text(sel$X,sel$Y,fam,cex=1.5)
+
+ref <-3
+fam <-row.names(tabres)[ref]
+sel <- jeu[jeu$family==fam,]
+plot(jeu$geometry, col="lightyellow",border="gray",lwd=0.2, cex=0.1)
+dataEllipse(sel$X,sel$Y, 
+            levels=c(0.25,0.5,0.75),
+            lwd=c(0.5,2,0.5),
+            ellipse.label = c("25%","50%","75%"),label.cex = 1,
+            fill=TRUE,
+            fill.alpha = 0.1,
+            plot.points = F,
+            add=T,
+            center.pch = 4)
+text(sel$X,sel$Y,fam,col="red", cex=1.5)
+
+ref <-4
+fam <-row.names(tabres)[ref]
+sel <- jeu[jeu$family==fam,]
+plot(jeu$geometry, col="lightyellow",border="gray",lwd=0.2, cex=0.1)
+dataEllipse(sel$X,sel$Y, 
+            levels=c(0.25,0.5,0.75),
+            lwd=c(0.5,2,0.5),
+            ellipse.label = c("25%","50%","75%"),label.cex = 1,
+            fill=TRUE,
+            fill.alpha = 0.1,
+            plot.points = F,
+            add=T,
+            center.pch = 4)
+text(sel$X,sel$Y,fam, col="red",cex=1.5)
+
+```
+
+- **Discussion** : La solution précédente est relativement complexe puisqu'elle fait appel à des notions statistiques pas forcément connues. Mais surtout elle comporte des hypothèses implicites concernant la distribution spatiale et l'éloignement des points. Elle se place en effet dans un **espace euclidien continu** et suppose que les distributions de X et de Y sont de nature **gaussienne**.  Or rien n'indique que ces deux hypothèses soient valides !
+
+
+## Solution 2 : Distances et métriques
+
+Supposons maintenant que l'on ne puisse pas se déplacer dans n'importe quelle direction mais seulement horizontalement et verticalement en passant d'un carreau au carreau voisin. On se trouve alors dans un espace ayant une géométrie particulière telle que la distance entre deux points est une **distance rectilinéaire** aussi appelée **distance de Manhattan** ou **distance city-block** : 
+
+$D_{ij} = |X_i-X_j| + |Y_i-Y_j|$
+
+
+Examinons la distribution des individus de la famille "Pique" :
+
+```{r}
+# Identification des familles
+col<-names(table(jeu$family))
+
+# Extraction
+sel <- jeu[jeu$family==col[1],c("cards","X","Y")]
+
+# Visualisation
+par(mar=c(0,0,3,0),mfrow=c(1,1))
+plot(jeu$geometry)
+text(sel$geometry,sel$cards)
+
+```
+
+On construit un repère orthonormé où le point situé en bas à gauche correspond à l'origine $(0,0)$ et où chaque carreau a un côté de longueur 1. On en déduit les coordonnées de chacune des cartes de la famille en supposant qu'elles sont placées au centre de leur carreau :
+
+```{r}
+tab<-st_drop_geometry(sel)
+kable(tab)
+```
+
+On en déduit la matrice de distance suivante :
+
+```{r}
+coo<-cbind(sel$X,sel$Y)
+matdis<-dist(coo,method = "manhattan",upper = T)
+matdis<-as.matrix(matdis)
+row.names(matdis)<-sel$cards
+colnames(matdis) <-sel$cards
+diag(matdis)<-NA
+matdis
+```
+
+Il est alors facile de calculer les paramètres de la **distribution des distances entre deux individus** différents de la famille pique. Il suffit de retirer du calcul la diagonale et de procéder à un résumé statistique des $12x11 = 132$ distances entre les paires d'individus composant cette famille.
+
+```{r}
+summary(as.vector(matdis))
+```
+
+
+On peut également déterminer combien de paires d'individus sont **voisins** (situées dans des cases voisines).
+
+```{r}
+table(matdis==1)
+```
+
+Et plus généralement on peut calculer la forme de la distribution des distances entre paires d'individus afin de déterminer la **distance modale** qui est le cas le plus fréquent.
+
+```{r}
+plot(as.factor(matdis), main = "Distribution des distances",
+     xlab="Nombre de paires", ylab = "Distance de Manhattan", col="lightyellow")
+```
+
+- **Discussion** : Nous avons désormais une famille de solutions plus simples et plus concrètes pour mesurer la concentration. Mais quelle solution retenir pour comparer entre elles les familles : distance moyenne, distance médiane, distance modale, distance minimale, distance maximale ... Comme le montre bien la figure précédente, la distribution des distances entre les paires d'individus peut faire l'objet de résumés très différents et il n'existe pas de solution unique. On peut en effet imaginer le cas de **distributions concentrées localement et dispersées globalement**.
+
+Considérez l'exemple suivant.
+
+```{r}
+X <- c(0.5,0.5,0.5,0.5,1.5,1.5,1.5,1.5,4.5,4.5,4.5,4.5,5.5,5.5,5.5,5.5)
+Y <- c(0.5,1.5,6.5,7.5,0.5,1.5,6.5,7.5,0.5,1.5,6.5,7.5,0.5,1.5,6.5,7.5)
+ID<-sel$cards
+
+# Visualisation
+par(mar=c(0,0,3,0),mfrow=c(1,1))
+plot(jeu$geometry)
+text(X,Y,ID)
+```
+
+```{r}
+matdis2<-dist(cbind(X,Y),method = "manhattan", upper=T)
+diag(matdis2)<-NA
+summary(matdis2)
+```
+
+```{r}
+plot(as.factor(matdis2), main = "Distribution des distances",
+     xlab="Nombre de paires", ylab = "Distance de Manhattan", col="lightyellow")
+```
+
+- **Commentaire :** cette distribution est *globalement plus dispersée* que la précédente puisque la distance moyenne entre deux individus est de 5.86 contre 4.32. Mais elle est *localement plus concentrée* puisque chaque individu a systématiquement deux voisins
+
+
+## Solution 3 : Graphe et composantes connexes
+
+Une troisième solution (qui devrait rappeler les règles du jeu de go à ceux qui le connaissent) consiste à déterminer le degré de fragmentation de chaque famille en **composantes connexes**.  On considère désormais que deux individus d'une même famille sont reliés s'il existe un chemin les reliant qui ne passe que par des membres de la même famille. On va donc définir un **graphe de voisinage** entre les cellules et considérer que la relation est possible si des membres de la même famille se trouvent de part et d'autre.
+
+
+Ceci revient à déterminer toutes les paires contigües $(C_{ij}=1)$ puis à vérifier si elles relie des individus similaires $(S_{ij}=1)$ pour déterminer si la relation entre eux est possible $(R_{ij}=1)$. On trouve 34 paires orientées soit 17 paires symétriques vérifiant les conditions.
+
+
+```{r}
+mat1 <-dist(cbind(jeu$X,jeu$Y), method="manhattan",upper = T)
+mat1<-as.matrix(mat1)
+mat1[mat1!=1]<-0
+row.names(mat1)<-jeu$cards
+colnames(mat1)<-jeu$cards
+library(reshape2)
+col1<-melt(mat1)
+names(col1)<-c("i","j","Cij")
+col1$Sij<-as.numeric(substr(col1$i,2,2)==substr(col1$j,2,2))
+col1$Rij<-col1$Sij*col1$Cij
+col1<-col1 %>% filter(as.character(i) > as.character(j), 
+                      Rij ==1)
+kable(col1)
+```
+
+On peut alors déterminer la famille qui dispose du plus grand nombre de relations de voisinage avec des membres de sa famille :
+
+```{r}
+col1$family <-substr(col1$i,2,2)
+table(col1$family)
+```
+
+On peut visualiser ce résultat sous la forme d'un graphe :
+
+```{r}
+coo<-st_drop_geometry(jeu) %>% select(i=cards, Xi=X,Yi=Y)
+col1$i<-as.character(col1$i)
+col1<-col1 %>% left_join(coo)
+
+coo<-st_drop_geometry(jeu) %>% select(j=cards, Xj=X,Yj=Y)
+col1$j<-as.character(col1$j)
+col1<-col1 %>% left_join(coo)
+
+par(mar=c(0,0,2,0),mfrow=c(1,1))
+plot(jeu$geometry, col="lightyellow",border="gray",lwd=0.3)
+segments(x0 = col1$Xi,y0=col1$Yi, x1=col1$Xj,col1$Yj, col="lightblue",lwd=5)
+text(jeu$geometry,jeu$cards,col=jeu$col,cex=1)
+
+
+```
+
+
+---
+
+# EXO2 : DYNAMIQUES DE SEGREGATION ET D'OPINION
+
+
+## Mise en place
 
 Une quarantaine d'étudiants entrent dans une salle de cours comportant 6 rangées de 8 chaises. Sans dire un mot, les enseignants leurs remettent silencieusement une carte à jouer tiré d'un jeu de 52 cartes d'où les rois ont été retirés et leurs demandent de s'installer. Les enseignants procèdent à l'appel en suivant l'ordre des rangées et chaque étudiant indique la carte à jour qui lui a été attribuée, tandis que l'enseignant lui indique sa position spatiale :
 
 - **Etudiant** : Je suis Albert Dupont et ma carte est le 8 de Pique.
 - **Enseignant** : Vous occupez la place C07.
 
-## Représentation
 
 Après avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l'écran. 
 
@@ -69,7 +376,7 @@ Après avoir saisi la position de tous les étudiants, les enseigants effectuent
 library(sf)
 library(mapsf)
 # Chargement de la carte
-map <-readRDS("data1/space001.RDS")
+map <-readRDS("data1/space005.RDS")
 
 # Nombre de présent
 n<-40
@@ -104,82 +411,215 @@ mf_layout(title = "Position sociale",
 ```
 
 
+## Le modèle d'Axelrod
 
 
-# Des individus aux interactions
 
+### Détermination des voisins
 
-## Rouge et noir
-
-- Q1: Combien y-a-t-il d'individus rouges et noirs ?
+On détermine pour chaque cellule occupée par un individu la liste de ses voisins en notant leur couleur :
 
 ```{r}
-tab<-table(map2$col)
-tab
+
+mat<-dist(cbind(map2$X,map2$Y),method="manhattan",upper=T)
+mat<-as.matrix(mat)
+colnames(mat)<-map2$ID
+row.names(mat)<-map2$ID
+#mat[mat>1]<-0
+tab<-melt(mat)
+names(tab)<-c("i","j","Rij")
+tab <- tab %>% filter(Rij<2)
+
+coli<-data.frame(i=map2$ID,coli=map2$col)
+colj<-data.frame(j=map2$ID,colj=map2$col)
+tab <- tab %>% left_join(coli) %>% left_join(colj) %>% arrange(i,j)
+head(tab,10)
 ```
 
 
-- Q2 : Combien y-a-t-il d'interactions possibles entre individus d'un même groupe ?
+- **Exemple** L'individu qui occupe la case C00 est noir et il possède un unique voisin rouge en C10. L'individu qui occupe la case C02 est rouge et il possède un voisin rouge et un voisin noir. L'individu qui occupe la case C03 est rouge avec deux voisins rouges et un voisin noir...
 
-```{r}
-vec<-as.numeric(tab)
-int<-vec*(vec-1)
-names(int)<-names(tab)
+### Règle de changement
+
+On adopte la règle du modèle d'Axelrod (qui est plus complexe que celui-ci) en supposant que chaque individu réalise au cours de chaque round une interaction tirée au hasard entre la sienne et celle de ses voisins et adopte cette opinion. Par exemple :
+
+- l'individu situé en C00 est rouge avec un voisin noir. Il a donc 50% de chances de garder son opinion initiale (noir) et 50% celle de choisir l'opinion de son voisin (rouge).
+- l'individu situé en C02 est rouge avec un voisin rouge et un voisin noir. Il a donc 67% de chances de rester rouge et 33% de devenir noir.
+- l'individu situé en C03 est rouge avec deux voisins rouges et un voisin noir. Il a donc 75% de chances de rester rouge et 25% de devenir noir.
+
+On voit donc que dans ce modèle, les individus ont une opinion qui varie en fonction de leur opinion initiale et de celle de leur voisin. Ils ont d'autant plus de chances de garder leur opinion qu'ils sont entourés d'individus ayant la même opinion. Et inversement d'autant moins de chance qu'ils sont entourés d'individus ayant des opinions différentes. 
+
+### Simulation de la dynamique
+
+> l'exercice est à faire en classe avec les étudiants. Mais on peut donner ici un exemple de résultat.
+
+
+```{r, fig.height=9, fig.width=6}
+# Archivage
+step <- map2 %>% select(ID, cards, t0=col)
+
+set.seed(42)
+### STEP1 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t1<-t
+names(t1)<-c("ID","t1")
+step <-left_join(step,t1)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+### STEP2 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t2<-t
+names(t2)<-c("ID","t2")
+step <-left_join(step,t2)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+### STEP3 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t3<-t
+names(t3)<-c("ID","t3")
+step <-left_join(step,t3)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
+
+### STEP4 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t4<-t
+names(t4)<-c("ID","t4")
+step <-left_join(step,t4)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
+### STEP5 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t5<-t
+names(t5)<-c("ID","t5")
+step <-left_join(step,t5)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
+### STEP6 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t6<-t
+names(t6)<-c("ID","t6")
+step <-left_join(step,t6)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
+
+### STEP7 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t7<-t
+names(t7)<-c("ID","t7")
+step <-left_join(step,t7)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
+### STEP5 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t8<-t
+names(t8)<-c("ID","t8")
+step <-left_join(step,t8)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+### Visualisation
+
+par(mfrow=c(3,3),mar=c(0,0,2,0))
+plot(map$geometry,col="lightgray",main="t0")
+plot(step$geometry,col=step$t0, add=T)
+text(step$geometry,step$cards,col="white")
+
+plot(map$geometry,col="lightgray",main="t1")
+plot(step$geometry,col=step$t1, add=T)
+text(step$geometry,step$cards,col="white")
+
+
+plot(map$geometry,col="lightgray",main="t2")
+plot(step$geometry,col=step$t2, add=T)
+text(step$geometry,step$cards,col="white")
+
+plot(map$geometry,col="lightgray",main="t3")
+plot(step$geometry,col=step$t3, add=T)
+text(step$geometry,step$cards,col="white")
+
+
+plot(map$geometry,col="lightgray",main="t4")
+plot(step$geometry,col=step$t4, add=T)
+text(step$geometry,step$cards,col="white")
+
+plot(map$geometry,col="lightgray",main="t5")
+plot(step$geometry,col=step$t5, add=T)
+text(step$geometry,step$cards,col="white")
+
+
+plot(map$geometry,col="lightgray",main="t6")
+plot(step$geometry,col=step$t6, add=T)
+text(step$geometry,step$cards,col="white")
+
+
+plot(map$geometry,col="lightgray",main="t7")
+plot(step$geometry,col=step$t7, add=T)
+text(step$geometry,step$cards,col="white")
+
+plot(map$geometry,col="lightgray",main="t8")
+plot(step$geometry,col=step$t8, add=T)
+text(step$geometry,step$cards,col="white")
 ```
-
-- Attention : un individu n'interagit pas avec lui-même !
-
-
-- Q3 : Combien y-a-t-il d'interactions entre individus de groupes différents ?
-
-```{r}
-vec[1]*vec[2]
-```
-
-
-## Pique, Coeur, Carreau, Trèfle
-
-
-- Q1: Combien y-a-t-il d'individus de chaque famille
-
-```{r}
-tab<-table(map2$family)
-tab
-```
-
-
-- Q2 : Combien y-a-t-il d'interactions possibles entre individus d'un même groupe ?
-
-```{r}
-vec<-as.numeric(tab)
-int<-vec*(vec-1)
-names(int)<-names(tab)
-int
-sum(int)
-```
-
-- Attention : un individu n'interagit pas avec lui-même !
-
-
-- Q3 : Combien y-a-t-il d'interactions entre individus de groupes différents ?
-
-```{r}
-n<-dim(map2)[1]
-n*(n-1) - sum(int)
-```
-
-
-
-#### Références {.unnumbered}
-
-Chapelon L., 2014, "Accessibilité", [Hypergeo, encyclopédie en ligne](https://hypergeo.eu/accessibilite/){target="_blank"}
-
-Pumain D., Saint-Julien T., 2010, *Analyse spatiale : les localisations*, Paris : Cursus Armand Colin, p.31.
-
-::: {#refs}
-:::
-
-
-
 
 

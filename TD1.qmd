@@ -311,7 +311,7 @@ plot(as.factor(matdis2), main = "Distribution des distances",
 Une troisième solution (qui devrait rappeler les règles du jeu de go à ceux qui le connaissent) consiste à déterminer le degré de fragmentation de chaque famille en **composantes connexes**.  On considère désormais que deux individus d'une même famille sont reliés s'il existe un chemin les reliant qui ne passe que par des membres de la même famille. On va donc définir un **graphe de voisinage** entre les cellules et considérer que la relation est possible si des membres de la même famille se trouvent de part et d'autre.
 
 
-Ceci revient à déterminer toutes les paires contigües $(C_{ij}=1)$ puis à vérifier si elles relie des individus similaires $(S_{ij}=1)$ pour déterminer si la relation entre eux est possible $(R_{ij}=1)$. On trouve 34 paires orientées soit 17 paires symétriques vérifiant les conditions.
+Ceci revient à déterminer toutes les paires contigües $(C_{ij}=1)$ puis à vérifier si elles relie des individus similaires $(S_{ij}=1)$ pour déterminer si la relation entre eux est possible $(R_{ij}=1)$. On trouve 44 paires orientées soit 22 paires symétriques vérifiant les conditions.
 
 
 ```{r}
@@ -323,18 +323,21 @@ colnames(mat1)<-jeu$cards
 library(reshape2)
 col1<-melt(mat1)
 names(col1)<-c("i","j","Cij")
-col1$Sij<-as.numeric(substr(col1$i,2,2)==substr(col1$j,2,2))
+col1$i<-as.character(col1$i)
+col1$j<-as.character(col1$j)
+col1$ii<-substr(col1$i,nchar(col1$i),nchar(col1$i))
+col1$jj<-substr(col1$j,nchar(col1$j),nchar(col1$j))
+col1$Sij<-as.numeric(col1$ii==col1$jj)
 col1$Rij<-col1$Sij*col1$Cij
-col1<-col1 %>% filter(as.character(i) > as.character(j), 
-                      Rij ==1)
+col1<-col1 %>% filter(Rij ==1) %>% arrange(ii,jj,i,j) 
 kable(col1)
 ```
 
 On peut alors déterminer la famille qui dispose du plus grand nombre de relations de voisinage avec des membres de sa famille :
 
 ```{r}
-col1$family <-substr(col1$i,2,2)
-table(col1$family)
+
+table(col1$ii)
 ```
 
 On peut visualiser ce résultat sous la forme d'un graphe :

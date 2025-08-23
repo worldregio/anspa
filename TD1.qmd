@@ -413,8 +413,6 @@ mf_layout(title = "Position sociale",
 
 ## Le modèle d'Axelrod
 
-
-
 ### Détermination des voisins
 
 On détermine pour chaque cellule occupée par un individu la liste de ses voisins en notant leur couleur :
@@ -564,7 +562,7 @@ names(t)<-c("j","colj")
 tab<-left_join(tab,t)
 
 
-### STEP5 ###
+### STEP8 ###
 # mutation
 t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
 t8<-t
@@ -578,9 +576,57 @@ tab<-left_join(tab,t)
 names(t)<-c("j","colj")
 tab<-left_join(tab,t)
 
+
+
+### STEP9 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t9<-t
+names(t9)<-c("ID","t9")
+step <-left_join(step,t9)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
+### STEP10 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t10<-t
+names(t10)<-c("ID","t10")
+step <-left_join(step,t10)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
+
+### STEP11 ###
+# mutation
+t <- tab %>% group_by(i) %>% summarise(col=sample(colj,1)) 
+t11<-t
+names(t11)<-c("ID","t11")
+step <-left_join(step,t11)
+
+# Recomposition de la table de voisinage
+tab<-tab %>% select(i,j) 
+names(t)<-c("i","coli")
+tab<-left_join(tab,t)
+names(t)<-c("j","colj")
+tab<-left_join(tab,t)
+
+
 ### Visualisation
 
-par(mfrow=c(3,3),mar=c(0,0,2,0))
+par(mfrow=c(3,4),mar=c(0,0,2,0))
 plot(map$geometry,col="lightgray",main="t0")
 plot(step$geometry,col=step$t0, add=T)
 text(step$geometry,step$cards,col="white")
@@ -620,6 +666,153 @@ text(step$geometry,step$cards,col="white")
 plot(map$geometry,col="lightgray",main="t8")
 plot(step$geometry,col=step$t8, add=T)
 text(step$geometry,step$cards,col="white")
+
+
+plot(map$geometry,col="lightgray",main="t9")
+plot(step$geometry,col=step$t9, add=T)
+text(step$geometry,step$cards,col="white")
+
+
+plot(map$geometry,col="lightgray",main="t10")
+plot(step$geometry,col=step$t10, add=T)
+text(step$geometry,step$cards,col="white")
+
+
+plot(map$geometry,col="lightgray",main="t11")
+plot(step$geometry,col=step$t11, add=T)
+text(step$geometry,step$cards,col="white")
+
 ```
+
+- **Commentaire** : Par rapport à la situation initiale, on évolue rapidement vers une situation de ségrégation entre une région rouge et une région noire. Seule la zone frontière entre les deux régions continue à évoluer un peu et sert d'interface limitée où les deux formes d'opinion sont échangées. Certaines "îles" survivent un certain temps mais elles sont tôt ou tard absorbées et éliminées. 
+
+## Le modèle de Schelling
+
+Le modèle de Schelling est assez voisin de celui d'Axelrod dans ses résultats mais il repose sur des hypothèses différentes. En effet, dans le modèle d'Axelrod les individus sont immobiles et ce sont les opinions qui circulent de proche en proche. Au contraire, dans le modèle de Schelling les individus sont mobiles et se déplacent lorsqu'ils ne sont pas satisfait des attributs de leurs voisins. Ils vont alors occuper des places vacantes où ils trouveront un voisinage approprié.
+
+Le modèle de Schelling est donc beaucoup plus proche des processus de ségrégation observée dans les espaces urbains et aboutissant à la formation de ghettos et de zones socialement homogènes.
+
+### Règles du modèle de Schelling
+
+En simplifiant à nouveau un peu, on peut résumer ainsi les règles du modèle de Thomas Schelling : 
+
+1. Chaque individu est localisé dans une cellule
+2. Certaines cellules sont vides
+3. Les individus examinent les caractéristiques des individus localisés dans les cellules voisines.
+4. Si la proportion de voisins différents est supérieur à un seuil \alpha, l'individu se déplace vers une cellule vide où le seuil est respecté. 
+
+
+Supposons que le seuil \alpha soit égal à 0.70 c'est à dire qu'un individu accepte que 70% de ses voisins soient différents de lui. Combien y-a-t-il d'individus mécontents de la vosinage dans la configuration suivante  en supposant que l'on considère comme voisin uniquement ceux qui ont une frontière commune : 
+
+```{r}
+par(mfrow=c(1,1))
+plot(map$geometry,col="lightgray",main="t0")
+plot(step$geometry,col=step$t0, add=T)
+text(step$geometry,step$cards,col="white")
+```
+
+Chaque étudiant évalue sa satisfaction par rapport à son voisinage et décide en fonction de cela de bouger ou non. Voici quelques exemples de calcul de la satisfaction et de la décision de bouger ou non. 
+
+- Le 7 de coeur est rouge et possède un voisin rouge donc 0% de ses voisins sont différents : il ne bouge pas
+- le 4 de couer possède deux voisins rouges et un voisins noir donc 33% de ses voisins sont différents : il ne bouge pas.
+- Le 4 de pique possède un voisin rouge et un voisin noir donc 50% de ses voisins sont différents : il ne bouge pas.
+- la dame de carreau possède trois voisins noir et un voisin rouge donc 75% de ses voisins sont différent : elle va bouger
+- le 2 de pique possède trois voisins rouge et aucun voisin noir donc 100% de ses voisins sont différents : il va bouger
+
+
+Le problème est que chaque déplacement d'un individu modifie la table de vosinage et remet en cause les calculs. On ne peut donc pas effectuer des changements simultanés comme dans le cas du modèle d'Axelrod. Il faut ici utiliser un modèle asynchrone où les individus insatisfaits se déplacent un par un et où chaque individu recalcule sa situation avant de se déplacer à son tour.
+
+
+Supposons par exemple que la dame de carreau effectue un déplacement de C43 en C20 pour rejoindre la case située entre la dame de coeur et le neuf de carreau :
+
+```{r}
+step2 <- step
+step2$geometry[step2$ID=="C43"]<-map$geometry[map$ID=="C20"]
+step2$ID[step2$ID=="C43"]<-"C20"
+
+
+par(mfrow=c(1,1))
+plot(map$geometry,col="lightgray",main="t1")
+plot(step2$geometry,col=step2$t0, add=T)
+text(step2$geometry,step2$cards,col="white")
+arrows(x0 = 4.5, y0=3.5,x1=2.5,y1=0.5,col="yellow",lwd=3)
+
+```
+
+Quelles sont les conséquences pour les individus situés :
+
+- **au point de départ** 
+  + Le 3 de carreau qui était satisfait (33% de voisins similaire) a désormais uniquement des voisins noir et va décider de partir
+  + le 6 de pique qui était mécontent (100% de voisins différents) ne l'est plus et décide de rester
+  
+- **au point d'arrivée**
+  + La dame de coeur qui était mécontente (100% de voisins différents) décide de rester
+  + la dame de pique décide de partir ...
+  + etc...
+  
+Cet exemple simple montre comment les dynamiques de ségrégation sont des systèmes complexes qui engendrent des processus cumulatifs.
+
+
+### Outils de simulation
+
+De nombreux programmes de simulation existent en ligne pour simuler l'évolution des modèles de Schelling. Voir par exemple [ce site](http://nifty.stanford.edu/2014/mccown-schelling-model-segregation/)
+
+L'un des résultats principaux de ces modèles de simulation est de montrer qu'il n'est pas besoin d'introduire une forte volonté de ségrégation pour aboutir à des configurations très ségrégées. On s'en rend compte en jouant sur le paramètre \alpha. 
+
+![Schelling model](img/schelling.png)
+
+
+# EXO3 : ACCESSIBILITE, POTENTIEL, INTERACTION
+
+
+## Préparation des données
+
+On suppose que les dames et les valets correspondent à des commerces ou services pouvant desservir au départ 30 individus pour les dames et 15  pour les valets. Les autres cartes correspondent à un nombre de personnes intéressées par ces commerces ou services. On pourra vérifier que pour chaque famille de carte il y a 45 demandes (1+2+3+...+10) et 45 offres (15 + 30) de sorte que le marché est a priori équilibré. La question qui se pose est de savoir comment va s'opérer l'ajustement de l'offre et de la demande dans l'espace, sachant que les clients cherchent à minimiser la distance qui représente pour eux un coût. On considère deux situations différentes de distribution des clients et des commerçants en utilisant les cartes de la famille "♥"  et celle de la famille "♠". 
+
+```{r, fig.width=8, fig.height=8}
+trade <-map %>% filter(family=="♥")
+trade$taille <- as.numeric(trade$level)
+trade$taille[trade$level=="A"]<-1
+trade$taille[trade$level=="D"]<-30
+trade$taille[trade$level=="V"]<-15
+trade$fonction = "demande"
+trade$fonction[trade$level=="V"]<-"offre"
+trade$fonction[trade$level=="D"]<-"offre"
+trade1<-trade
+
+trade <-map %>% filter(family=="♠")
+trade$taille <- as.numeric(trade$level)
+trade$taille[trade$level=="A"]<-1
+trade$taille[trade$level=="D"]<-30
+trade$taille[trade$level=="V"]<-15
+trade$fonction = "demande"
+trade$fonction[trade$level=="V"]<-"offre"
+trade$fonction[trade$level=="D"]<-"offre"
+trade2<-trade
+
+par(mfrow=c(1,2))
+mf_map(map, type="base",col="lightyellow")
+mf_map(trade1,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade1, var="taille",cex = 1)
+mf_layout(title = "Offre et demande pour ♥ ", scale=F, credits = "", arrow=F, frame=T)
+
+mf_map(map, type="base",col="lightyellow")
+mf_map(trade2,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade2, var="taille",cex = 1)
+mf_layout(title = "Offre et demande pour ♠ ", scale=F, credits = "", arrow=F, frame=T)
+
+```
+
+
+- **Problème 1** : Essayez de répartir au mieux les déplacements des individus vers le service le plus proche tout en respectant les capacités maximales d'accueil des commerces ou des services. Quelle distribution spatiale vous semble la plus intéressante entre "♥"  et  "♠" ? Justifiez votre réponse. 
+
+- **Problème 2** : En supposant qu'il s'agit de **services publics** (e.g. écoles) non soumis aux lois de la concurrence, quelles  améliorations pourriez vous proposer dans chacune des deux situations ? Quel en serait le coût ?
+
+- **Problème 3** : En supposant qu'il s'agit de **commerces ou services privés** (e.g. pharmacies) soumises aux lois de la concurrence, quelles décisions pourraient prendre les acteurs pour augmenter leur part de marché ? Dans quelle mesure ces décisions seraient-elles également profitables aux clients ?
+
+
+
+
+
 
 

@@ -370,7 +370,7 @@ Une quarantaine d'étudiants entrent dans une salle de cours comportant 6 rangé
 - **Enseignant** : Vous occupez la place C07.
 
 
-Après avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l'écran. 
+Après avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l'écran. On notera qu'il existe un certain nombre de places vides qui vont jouer un rôle important dans les modèles de sérégation et de diffusion d'opinion. 
 
 ```{r}
 library(sf)

@@ -1,5 +1,33 @@
 ---
 title: "Analyse spatiale"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "01/09/2025"
+author: "Claude Grasland, Malika Madelin"
+format:
+  html:
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+execute:
+  warning: false
+  message: false 
+  cache: false   
+  echo: false
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 L'objet de ce petit site web est de proposer une introduction à l'analyse spatiale destinée aux étudiants de master 1.

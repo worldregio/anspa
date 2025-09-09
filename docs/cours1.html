@@ -3953,6 +3953,7 @@ A propos de ce document
 </div>
 <div class="callout-body-container callout-body">
 <p>Ce support de cours a été créé pour la session 2025-26 du cours d’analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne.</p>
+<p><a href="cours1_diapo.html" target="_blank">Cliquez ici pour voir le diaporama du cours </a></p>
 </div>
 </div>
 <section id="introduction" class="level1" data-number="1">
@@ -4432,6 +4433,11 @@ Simmel, Georg. 1950. <em>The Sociology of Georg Simmel</em>. Free Press.
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

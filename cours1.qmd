@@ -5,6 +5,7 @@ date: "01/09/2025"
 author: "Claude Grasland, Malika Madelin"
 format:
   html:
+    link-external-newwindow: true
     embed-resources: true
     theme: yeti
     smooth-scroll: true
@@ -52,6 +53,9 @@ library(LexisPlotR)
 Ce support de cours a été créé pour la session 2025-26 du cours
 d'analyse spatiale des phénomènes sociaux destiné aux étudiants de
 géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne. 
+
+<a href="cours1_diapo.html" target="_blank">Cliquez ici pour voir le diaporama du cours </a>
+
 :::
 
 

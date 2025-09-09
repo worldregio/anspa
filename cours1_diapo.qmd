@@ -1,0 +1,68 @@
+---
+title: "Introduction à l'analyse spatiale (et temporelle) des phénomènes sociaux"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "01/09/2025"
+author: "Claude Grasland, Malika Madelin"
+title-slide-attributes:
+  data-background-color: "#BA4A00"
+  data-background-size: cover
+  data-background-opacity: "0.5"
+format:
+  revealjs:
+    margin: 0
+    code-line-numbers: false
+    embed-resources: true
+    smaller: true
+    scrollable: true
+    theme: [simple,diapos.scss]
+execute:
+  echo: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+library(knitr)
+```
+
+
+# AXIOMATIQUE
+
+
+##  Il existe une population ...
+
+- **Axiome 1** : Il existe un **monde** à l'intéreur duquel des **individus** interagissent dans le **temps** et l'**espace**.
+
+## ... dénombrable ...
+
+- **Axiome 2** : Ce monde est **fini** dans chacune de ses trois dimensions :
+    + **Axiome 2.1** : Les individus qui compose le monde forment une **population** dénombrable munie d'attributs.
+    + **Axiome 2.2** : Le temps qui **ordonne** les événements se produisant à l'intérieur du monde est segmentable en **intervalles de temps** ou périodes. 
+    + **Axiome 2.3** : L'espace à l'intérieur duquel interagisse les individus est découpable en un nombre fini de **lieux** constituant une grille ou une régionalisation.
+    
+## ... changeante ...
+
+- **Axiome 3** : Les **trajectoires** des individus peuvent être décrits par des **événements** de différents types parmi lesquels
+  +  **3.1 Apparition** : naissance d'un nouvel individu
+  +  **3.2 Disprition** : disparition d'un individu
+  +  **3.3 Mutation** : changement d'attribut social
+  +  **3.4 Mobilité** : changement de position spatiale
+
+## ... interagissante ...
+
+- **Axiome 4** : les **interactions** entre les individus sont à la fois cause et conséquence des événements qui modifient la **structure** et la **dyamique** du monde.  
+  + **4.1 : Structure** : description du monde à un instant *t* permettant de définir des interactions potentielles
+  + **4.2 : Dynamique** : description du monde au cours d'une période passée *[t-1,t]* permettant d'examiner les interactions effectivement réalisées.
+
+## ... ayant une représentation d'elle-même. 
+
+- **Axiome 5** : Toute **description du monde**produite par des individus localisés à l'intérieur de celui-ci est nécessairement **incomplète** et **partiale**.
+  + **5.1 : Incomplétude** : Conséquence des deux [théorèmes de Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), un système axiomatique de description du monde ne peut être validé qu'à l'extérieur de celui-ci.
+  + **5.2 : Partialité** : Dès lors qu'il nexiste pas de théorie unique, différents groupes d'individus peuvent proposer des descriptions du monde concurrente sans qu'il soit possible de trancher en faveur de l'une plutôt que l'autre.
+
+
+
+
+
+

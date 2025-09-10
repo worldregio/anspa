@@ -1,5 +1,5 @@
 ---
-title: "[COURS1] Introduction à l'analyse spatiale (et temporelle) des phénomènes sociaux"
+title: "[COURS1] Introduction à l'analyse spatiale "
 subtitle: "Masters Géoprisme et Carthageo"
 date: "01/09/2025"
 author: "Claude Grasland, Malika Madelin"
@@ -50,59 +50,250 @@ library(LexisPlotR)
 -----------------------------------------------------------------------
 
 ::: {.callout-note title="A propos de ce document"}
-Ce support de cours a été créé pour la session 2025-26 du cours
-d'analyse spatiale des phénomènes sociaux destiné aux étudiants de
-géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne. 
+Ce support du cours "Analyse spatiale, formes et processus" a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne. 
 
 <a href="cours1_diapo.html" target="_blank">Cliquez ici pour voir le diaporama du cours </a>
 
 :::
 
 
-# INTRODUCTION 
 
-Le terme *analyse spatiale* (en anglais *spatial analysis*) demeure largement employé par les spécialistes de géographie quantitative ou de géomatique. Mais son contenu est loin d'être clair. Il varie en effet dans le temps ou dans l'espace et constitue à cet égard un objet très intéressant d'épistémologie et d'histoire des sciences. 
+# QU'EST CE QUE L'ANALYSE SPATIALE ?
+
+
+## Des définitions fluctuantes
+
+
+Le terme *analyse spatiale* (en anglais *spatial analysis*) demeure largement employé par les spécialistes de géographie quantitative ou de géomatique. Mais son contenu est loin d'être clair. Il varie en effet dans le temps ou dans l'espace et constitue à cet égard un objet très intéressant d'épistémologie et d'histoire des sciences. En nous limitant aux auteurs francophones, examinons quelques définitions dans des dictionnaires de géographie et des encyclopédies publiées sur le web à différentes dates. Celles-ci étant souvent très longues, nous nous limitons au premier paragraphe censé fournir l'aspect le plus important du concept : 
 
 ::: {.callout-important title="Définition de l'analyse spatiale"}
-> L'**analyse spatiale** étudie les **interactions** qui se nouent au cours du temps entre
-> des **individus** et/ou des **lieux** en faisant l'hypothèse d'une
-> **décroissance des interactions** en fonction de la **distance** qui
-> sépare ces individus ou ces lieux.
+
+- **Analyse :** Le terme est employé en géographie quantitative pour désigner les opérations de programmation et de calcul permettant de traiter à l'ordinateur les données statistiques : analyse factorielle multivariée, mesure des fréquences de corrélation(sic). (**George P., 1970**, *Dictionnaire de la géographie*, PUF, Paris)
+
+- **Analyse de données spatiales :** Ces pages constituent un manuel de *méthodes*. Elles presentent des outils utiles à l'*analyse des données spatiales*. Il ne s'agit pas d'un texte de géographie fondamentale. [...] Les méthodes quantitatives d'analyse invitent à la rigueur, à la précision, à la cohérence. Mais *l'outil n'est pas neutre*. Il infleunce la manière de penser l'analyse géographique, de formuler et vérifier une hypothèse, de construire l'indispensable théorie géographique sans laquelle il n'y a pas de science. Ainsi conduit-il à se dégager du contingent et de l'unique pour mettre en évidence le général, le modèle, la "loi". Il tend à envisager l'unique comme une réalisation aléatoire d'un processus plus général fait de la combinaison de déterminisme précis. Il invite à cherche le fondamental sous le contingent. (**Beguin H., 1979**, *Méthodes d'analyse géographique quantitative*, Litec, Paris. )
+
+- **Analyse spatiale :** Ensemble de méthodes mathématiques et statistiques visant à préciser la nature, la qualité et la quantité attachées aux lieux et aux relations qu'ils entretiennent - l'ensemble constituant l'espace -, en étudiants simultanément attributs et localisations. [...] Il arrive que l'expression soit affadie comme équivalent à l'analyse de tous les phénomènes dans l'espace, et qu'à la  limite la géographie soit assimilée à l'analyse spatiale. C'est évidemment une erreur à éviter, l'analyse spatiale étant un ensemble de méthodes très exigeant,mais qui ne représente qu'une partie de la géographie et même de l'analyse géographique. [...]" (**Brunet & al., 1992**, *Les mots de la géographie : dictionnaire critique*, Reclus-Documentation française)
+
+- **Analyse spatiale : ** L'analyse spatiale est une étude formalisée de la configuration et des propriétés de l'espace des sociétés. Elle s'emploie à définir les composantes des disparités de la mise en espace de la surface de la Terre dans les relations horizontales entre lieux. Ces relations résultent de la manière dont, compte-tenu de leurs caractéristiques anthropologiques, des formes de leur organisation sociale et de l'état des techniques, ces sociétés produsent de l'espace géographique.[...] (**Saint-Julien T.  2003 ** in Levy J. & Lussault M., *Dictionnaire de la géographie et de l'espace des sociétés*, Belin, Paris. )
+
+
+- **Analyse spatiale :** L’analyse spatiale met en évidence des structures et des formes d’organisation spatiale récurrentes, que résument par exemple les modèles centre-périphérie, les champ d’interaction de type gravitaire, les trames urbaines hiérarchisées, les divers types de réseaux ou de territoires, etc. Elle analyse des processus qui sont à l’origine de ces structures, à travers des concepts comme ceux de distance, d’interaction spatiale, de portée spatiale, de polarisation, de centralité, de stratégie ou choix spatial, de territorialité… Des lois de la spatialité relient ces formes et ces processus, et sont intégrées dans des théories et des modèles du fonctionnement et de l’évolution des systèmes spatiaux.[...] (**Pumain D., 2004**, in [Hypergeo](https://hypergeo.eu/analyse-spatiale/) )
+
+
+
+- **Analyse spatiale** : En géographie, l’analyse spatiale est une démarche visant à systématiser les raisonnements géographiques en mobilisant des outils de formalisation, c’est-à-dire des modèles. Sur le plan théorique, il s’agit d’identifier les grandes configurations spatiales, en construisant les outils formels d’analyse de l’organisation de l’espace. Sur le plan pratique, l’analyse spatiale recourt notamment aux statistiques, aux mathématiques et à l’informatique. À ce titre elle relève, en tout cas à l’origine, d’une approche quantitative de la géographie.[...] ([**Géoconfluences, 2024**, *Glossaire*](https://geoconfluences.ens-lyon.fr/glossaire/analyse-spatiale))
+:::
+
+En gros on comprend qu'il s'agit d'espace, de société, de temps, de méthodes quantitatives, d'approches modélisatrice, de formes, d'interactions, ... Bref, rien de très clair ni d'aillers de très consensuel d'un auteur à l'autre.  
+
+
+## Forme et processus 
+
+On y voit cependant plus clair si on tente de distinguer dans l'analyse spatiale ce qui relève de l'analyse des **formes** et de celle des **processus**. C'est à partir de cette distinction que T. Saint-Julien et D. Pumain ont organisé leur manuel en deux volumes.
+
+
+:::: {.columns}
+
+::: {.column width="50%" .r-fit-text}
+![Pumain D., Saint-Julien T., 2001](img/anspa_tome1.jpg){width=300}
 :::
 
 
-Plutôt que de retracer l'histoire du terme, nous chercherons davantage à en proposer un cadrage théorique en définissant une **axiomatique** permettant de construire un **minimum théorique** c'est-à-dire une abstraction préalable à toute application empirique.
+::: {.column width="50%" .r-fit-text}
+![Pumain D., Saint-Julien T., 2001](img/anspa_tome2.jpg){width=300}
+:::
 
-## Axiomatique
+::::
 
-Proposons une première axiomatique provisoire de ce que pourrait être un *monde*. 
+
+C'est aussi cette approche qu'adoptent J.J. Bavoux et L. Chapelon dans leur dictionnaire d'analyse spatiale. Celui-ci est organisé en trois parties qui reprennent la distinction proposée par D. Pumain et T. Saint-Julien mais en y ajoutant un bloc conceptuel commun aux approches statiques et dynamiques. Leur définition de l'analyse spatiale est l'une des plus courtes et sans doute des plus efficaces. 
+
+
+:::: {.columns}
+
+::: {.column width="50%" .r-fit-text}
+![Bavoux J.J.,Chapelon L.,  2014](img/anspa_dico.jpg){width=300}
+:::
+
+
+::: {.column width="50%" .r-fit-text}
+
+
+
+- **Analyse spatiale : Approches des localisations et interactions spatiales en tant que composante active des fonctionnement sociétaux**. Analyser quelque  chose consiste à le décomposer pour rendre ses éléments intelligibles. [... *mais aussi * ...] examen minutieux et critique, diagnostic, expertise, application intellectuelle méthodique visant à expliquer et comprendre.  (**Bavaux J.J., Chapelon L., 2015**, *Dictinnaire d'analyse spatiale*)
+:::
+
+::::
+
+## L'exemple de la plage
+
+En introduction d'un manuel d'introduction à la géographie paru en 1975, le géographe anglais P. Haggett qui est considéré comme un des fondateurs de l'analyse spatiale et de la nouvelle géographie prend l'exemple d'une plage pour expliquer les concepts fondamentaux de la géographie. Pour Haggett, la distinction entre géographie et analyse spatiale est loin d'être claire, point sur lequel il faudra revenir. 
+
+:::: {.columns}
+
+::: {.column width="50%" .r-fit-text}
+![Haggett P., 1974](img/haggett001.jpg){width=300}
+:::
+
+
+::: {.column width="50%" .r-fit-text}
+![Haggett P., 1974](img/haggett002.jpg){width=300}
+
+:::
+
+::::
+
+Pour P. Haggett, la plage constitue un **microcosme** - on dirait aussi un **modèle** - pour l'analyse des phénomènes géographiques car il combine précisément des phénomènes physiques et humains, des formes et des processus et, serait-on tenté d'ajouter, des dimensions matérielles et idéelles. Nous reprenons ici quelques extrait de ce merveilleux chapitre introductif que tout géographe devrait avoir lu :
+
+### Plage I : Observation
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![Haggett P., 1974](img/haggett003.jpg){width=400}
+
+:::
+
+::: {.column width="5%" }
+
+:::
+
+::: {.column width="45%" .r-fit-text}
+
+*"Ces photos n'ont pas été prises depuis le sol, mais depuis un hélicoptère, ce qui donne des images semblables à des cartes de la scène en dessous. Une photographie prise depuis un hélicoptère permet d'évaluer beaucoup plus précisément l'emplacement des personnes sur une plage qu'une photographie prise au sol. L'intérêt pour les emplacements dans l'espace est une caractéristique de la curiosité des géographes; préciser l'emplacement avec exactitude est l'une des règles fondamentales du jeu géographique. Une description inexacte de l'emplacement fait grimacer un géographe, tout comme un linguiste grimacerait devant une prononciation erronée ou un historien devant une date inexacte."*
+
+:::
+
+::::
+
+
+### Plage II : Régionalisation
+
+:::: {.columns}
+
+::: {.column width="50%" .r-fit-text}
+
+![Haggett P., 1974](img/haggett004.jpg){width=400}
+:::
+
+::: {.column width="5%" }
+
+:::
+
+
+::: {.column width="45%" .r-fit-text}
+- "***Région*** :  *une région est une portion de la surface terrestre qui présente des caractéristiques, naturelles ou artificielles, qui la distinguent des zones qui l'entourent.La figure montre une coupe transversale d'une plage typique divisée en zones de cette manière. Les géographes utilisent ce processus de dissection pour établir des ensembles de régions. Les régions sont un moyen rapide de décrire efficacement le caractère variable d'une zone.*"
+:::
+
+::::
+
+### Plage III : Localisation
+
+![Haggett P., 1974](img/haggett005.jpg){width=700}
+
+-  *"La  figure montre différentes façons de cartographier une population. Nous commençons par attribuer à chaque individu présent sur la plage un emplacement correspondant sur la carte, en représentant chaque personne par un point unique. Nous plaçons ensuite une grille sur les points. En comptant le nombre de points qui se trouvent dans chaque case carrée de la grille, nous pouvons traduire la distribution des points, ou des personnes, en un tableau de chiffres qui reflète la densité de la population."*
+
+
+### Plage IV : Modélisation
+
+:::: {.columns}
+
+::: {.column width="40%" .r-fit-text}
+![Haggett P., 1974](img/haggett006.jpg){width=400}
+:::
+
+::: {.column width="5%" }
+
+:::
+
+
+::: {.column width="55%" .r-fit-text}
+
+- *"Pour déterminer l'espace interpersonnel, nous demandons « À combien de mètres se trouve une personne donnée de son voisin le plus proche, de son deuxième voisin le plus proche, de son troisième voisin le plus proche, et ainsi de suite ? ». Le résultat de l'analyse de la localisation relative d'une population sur une plage est présenté dans la figure 1-4. Les trois pics, proches de zéro, à 2 m et à 5 m, peuvent être interprétés comme étant liés à l'espace entre les couples moins préoccupés par la plage (sans parler de la géographie !) que par leur relation, aux groupes familiaux et aux étrangers."*
+:::
+
+::::
+
+
+### Plage V : Dynamique
+
+![Haggett P., 1974](img/haggett007.jpg){width=700}
+
+-  *La scène illustrée est irréelle dans la mesure où elle fige, en un seul clic de l'obturateur de l'appareil photo, un motif en constante évolution. La photographie est statique, tandis que la scène réelle sur la plage est dynamique. Une photographie similaire prise à un autre moment montrerait une image différente.*
+
+
+### Plage VI : Diffusion
+
+:::: {.columns}
+
+::: {.column width="50%" .r-fit-text}
+![Haggett P., 1974](img/haggett008.jpg){width=400}
+:::
+
+::: {.column width="5%" }
+
+:::
+
+
+::: {.column width="45%" .r-fit-text}
+- "***Diffusion spatiale***:  *Étapes du modèle de diffusion des personnes arrivant sur une plage déserte à différents moments de la matinée. Notez comment le processus de remplissage est lié au point d'accès à la plage et aux différences dans la qualité de l'environnement de la plage.*"
+
+:::
+
+::::
+
+
+### Plage VII : A vous de jouer !
+
+Peter Haggett notait à juste titre que l'analyse s'une **photographie** donnait une image fausse parce que **statique** des processus de localisation dans l'espace qui font nécessairement intervenir le temps. Il aurait certainement adoré savoir qu'il existe désormais des enregistrements de plage fournissant des **films**  montrant la **dynamique** de l'occupation d'une place sur des temps longs et presque continus, à l'instar de la webcam de l'hôtel Neptune à Rostock 
+
+
+![https://hotel-neptun.panomax.com/](img/Neptune001.jpg){width=700}
+<a href="https://hotel-neptun.panomax.com/" target="_blank">Cliquez ici pour accéder à la webcam de l'hôtel Neptune </a>
+
+
+
+
+
+# MINIMUM THEORIQUE 
+
+On retiendra de ce qui précède le fait que la vocation de l'analyse spatiale n'est pas simplement de décrire mais aussi de théoriser les relations entre des individus dans l'espace et le temps. Cela suppose de se doter non seulement d'outils descriptifs - c'est la partie la plus simple - mais aussi de concepts et d'hypothèses nécessairement sujet à débat - c'est le plus difficile. 
+
+Surtout, il paraît essentiel d'accepter que l'analyse spatiale ne soit pas la propriété exclusive des géographes mais un domaine de recherche transdisciplinaire partagé avec d'autres sciences sociales (économie, sociologie, histoire, psychologie, ...), d'autres sciences de la vie (géologie, biologie, météorologie) et enfin et surtout des sciences plus abstraites telles que les méthématiques ou la philosophie...
+
+
+
+## Population-Espace-Temps
+
+Voici un exemple de formulation théorique de l'analyse spatiale à partir d'un nombre limité d'axiomes permettant de décrire l'**évolution d'une ou plusieurs population localisées à l'intérieur d'un monde au cours du temps**. 
+
 
 - **Axiome 1** : Il existe un **monde** à l'intéreur duquel des **individus** interagissent dans le **temps** et l'**espace**.
-
-- **Axiome 2** : Ce monde est **fini** dans chacune de ses trois dimensions :
-    + **Axiome 2.1** : Les individus qui compose le monde forment une **population** dénombrable munie d'attributs.
-    + **Axiome 2.2** : Le temps qui **ordonne** les événements se produisant à l'intérieur du monde est segmentable en **intervalles de temps** ou périodes. 
-    + **Axiome 2.3** : L'espace à l'intérieur duquel interagisse les individus est découpable en un nombre fini de **lieux** constituant une grille ou une régionalisation.
+    + **Axiome 1.1** : Les individus qui compose le monde forment une **population** dénombrable munie d'attributs. Il peut y avoir plusieurs sous-population à l'intérieur d'un monde, les différences portant sur leurs attributs. 
+    + **Axiome 1.2** : Le temps qui **ordonne** les événements se produisant à l'intérieur du monde. Il est a priori continu mais peutêtre segmenté en **intervalles de temps**. Le temps peut également être découpé en **périodes** qui organisent les récits historiques produits pa les individus.  
+    + **Axiome 1.3** : L'espace à l'intérieur duquel se **localisent** les individus est découpable est également a priori continu, mais il peut être décomposé en un nombre fini de **mailles** à des fins d'analyse. Il peut aussi être organisé en **lieux** qui sont des territoires réels ou imaginaires produits par les individus. 
     
-- **Axiome 3** : Les **trajectoires** des individus peuvent être décrits par des **événements** de différents types parmi lesquels
-  +  **3.1 Apparition** : naissance d'un nouvel individu
-  +  **3.2 Disprition** : disparition d'un individu
-  +  **3.3 Mutation** : changement d'attribut social
-  +  **3.4 Mobilité** : changement de position spatiale
+- **Axiome 2** : Les individus localisées à l'intérieur du monde suivent des **trajectoires** qui peuvent être décrites par des **événements** de différents types parmi lesquels
+  +  **2.1 Apparition** : naissance d'un nouvel individu
+  +  **2.2 Disprition** : disparition d'un individu
+  +  **2.3 Mutation** : changement de position sociale d'un individu indépendant de sa localisation
+  +  **2.4 Mobilité** : changement de position spatiale d'un individu indépendant de ses autres attributs
   
-- **Axiome 4** : les **interactions** entre les individus sont à la fois cause et conséquence des événements qui modifient la **structure** et la **dyamique** du monde.  
-  + **4.1 : Structure** : description du monde à un instant *t* permettant de définir des interactions potentielles
-  + **4.2 : Dynamique** : description du monde au cours d'une période passée *[t-1,t]* permettant d'examiner les interactions effectivement réalisées.
+- **Axiome 3** : les individus **interagissent** dans le temps et l'espace lorsque leurs trajectoires se rencontrent. Ces interactions modifient la structure du monde.   
+  + **3.1 : Structure** : description du monde à un instant *t* permettant de définir des interactions potentielles
+  + **3.2 : Dynamique** : description du monde au cours d'une période passée *[t-1,t]* permettant d'examiner les interactions effectivement réalisées.
 
-- **Axiome 5** : Toute **description du monde**produite par des individus localisés à l'intérieur de celui-ci est nécessairement **incomplète** et **partiale**.
-  + **5.1 : Incomplétude** : Conséquence des deux [théorèmes de Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), un système axiomatique de description du monde ne peut être validé qu'à l'extérieur de celui-ci.
-  + **5.2 : Partialité** : Dès lors qu'il nexiste pas de théorie unique, différents groupes d'individus peuvent proposer des descriptions du monde concurrente sans qu'il soit possible de trancher en faveur de l'une plutôt que l'autre.
+- **Axiome 4** : Toute **description du monde**produite par des individus localisés à l'intérieur de celui-ci est nécessairement **incomplète** et **partiale**.
+  + **4.1 : Incomplétude** : Conséquence des deux [théorèmes de Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), un système axiomatique de description du monde ne peut être validé qu'à l'extérieur de celui-ci.
+  + **4.2 : Partialité** : Dès lors qu'il n'existe pas de théorie unique, différents groupes d'individus peuvent proposer des descriptions du monde concurrente sans qu'il soit possible de trancher en faveur de l'une plutôt que l'autre.
+
+
+
 
 ## Interaction et temps
 
-Une interaction est une relation qui se réalise à un instant donné ou
-pour une période donnée et qui modifie l'état d'un système social ou
-spatial. Une interaction implique donc plusieurs choses
+Une interaction est une relation qui se réalise à un instant donné ou pour une période donnée et qui modifie l'état d'un système social ou spatial. Une interaction implique donc plusieurs choses
 
 ### Temps linéaire ou temps cyclique ?
 

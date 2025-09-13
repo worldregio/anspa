@@ -40,26 +40,26 @@ editor:
 - 6 séances d’enseignement intégré de 2h30 
 - 4 séances d’atelier projet d’analyse spatiale 
 
-Toutes les séances on une durée de 2h30 heures. Elles ont lieu le mercredi de 14h à 16h30 , dans le Nouvel Amphi situé au rez-de-chaussée de [l'Institut de Géographie](https://geographie.pantheonsorbonne.fr/lufr-ses-membres-et-ses-lieux/centres-cours-et-recherche), 191 rue Saint-Jacques, 75005 Paris. 
+Toutes les séances ont une durée de 2h30. Elles ont lieu le mercredi de 14h à 16h30, dans le Nouvel Amphi situé au rez-de-chaussée de [l'Institut de Géographie](https://geographie.pantheonsorbonne.fr/lufr-ses-membres-et-ses-lieux/centres-cours-et-recherche), 191 rue Saint-Jacques, 75005 Paris. 
 
 ## Objectifs du cours
 
 L’objectif de ce cours est double. 
 
-- D’une part, vous amener à découvrir ou à approfondir les **concepts et méthodes d’analyse spatial**e qui visent à mettre en évidence la différenciation spatiale de phénomènes de natures diverses (inégalités de répartition de groupes sociaux, d’équipements, d’échanges matériels ou immatériels, de polluants, et à en éclairer les processus sous jacents (ségrégation, polarisation, diffusion…).
+- D’une part, vous amener à découvrir ou à approfondir les **concepts et méthodes d’analyse spatiale** qui visent à mettre en évidence la différenciation spatiale de phénomènes de natures diverses (inégalités de répartition de groupes sociaux, d’équipements, d’échanges matériels ou immatériels, de polluants, et à en éclairer les processus sous-jacents (ségrégation, polarisation, diffusion…).
 
-- D’autre part, vous sensibiliser à la **construction d’une démarche scientifique en analyse spatiale**, depuis la formulation d’une question et d’hypothèses de recherche jusqu’à la discussion des résultats produits, à travers la préparation d’un micro projet qui sera mené à l’aide du logiciel R et d'autres outils tels que Visone (analyse de graphe).
+- D’autre part, vous sensibiliser à la **construction d’une démarche scientifique en analyse spatiale**, depuis la formulation d’une question et d’hypothèses de recherche jusqu’à la discussion des résultats produits, à travers la préparation d’un micro-projet qui sera mené à l’aide du logiciel R et d'autres outils tels que Visone (analyse de graphe).
 
 Il est impossible de courir tout le domaine de l'analyse spatiale. Le programme 2025-26 privilégiera trois thèmes : 
 
 1. Analyse de l'**accessibilité spatiale** (distance, potentiel, ...)
 2. Analyse de l'**hétérogénéité spatiale** (autocorrélation, lissage, ...)
-3. Analyse de l'**interaction spatiale** (flux, rseaux, ...)
+3. Analyse de l'**interaction spatiale** (flux, réseaux, ...)
 
 
 ## Calendrier
 
-*Ce calendrier prévisionne est susceptible de modifications et d'ajustements.*
+*Ce calendrier prévisionnel est susceptible de modifications et d'ajustements.*
 
 - **17 sept. 2025** -  Cours 1 : Introduction à l'analyse spatiale (*CG & MM*)
 
@@ -73,19 +73,18 @@ Il est impossible de courir tout le domaine de l'analyse spatiale. Le programme 
 
 - **22 oct. 2025** - Cours 6 : Graphes et réseaux (*CG*)
 
-- **12 nov 2025** - Atelier 1 (*CG & MM*)
+- **12 nov. 2025** - Atelier 1 (*CG & MM*)
 
 - **19 nov. 2025** - Atelier 2 (*CG & MM*)
 
-- **26 nov 2025** - Atelier 3 (*CG & MM*)
+- **26 nov. 2025** - Atelier 3 (*CG & MM*)
 
 - **3 déc. 2025** - Atelier 4 (*CG & MM*)
 
 
 ## Mode d'évaluation
 
-- Contrôle continu :  1 rendu écrit et 1 oral sur le micro
-projet et 1 partiel (en janvier) Chaque exercice compte pour 1/3 de la note finale.
+- Contrôle continu : 1 rendu écrit et 1 vidéo sur le micro-projet et 1 partiel (en janvier). Chaque exercice compte pour 1/3 de la note finale.
 - 2e session : 1 écrit et 1 oral comptant chacun pour 50%
 
 
@@ -108,6 +107,7 @@ projet et 1 partiel (en janvier) Chaque exercice compte pour 1/3 de la note fina
 ### Regards sur l’analyse spatiale depuis les SIG, la modélisation de l’information géographique :
 
 - Aschan-Leygonie C., Cunty C., Davoine P.-A., 2019. *Les systèmes d'information géographique : principes, concepts et méthodes*, Armand Colin, Cursus : géographie, 272 p. (> en particulier le chapitre 6)
+- Caloz R., Collet C., 2011. *Analyse spatiale de l'information géographique*, Presses polytechniques et universitaires romandes, 383 p.
 - Longley P., Goodchild M., Maguire D., Rhind D., 2015, *Geographic information Science and System*, 4th edition, Wiley, 496 p. (en particulier chapitres 13 à 15)
 - Mathian H., Sanders L., 2014, *Objets géographiques et processus de changement*, ISTE éditions, 175 p. (en particulier le chapitre 1)
 

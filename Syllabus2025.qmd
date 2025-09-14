@@ -114,7 +114,6 @@ Il est impossible de courir tout le domaine de l'analyse spatiale. Le programme 
 ### Point sur les concepts, définitions :
 
 - Bavoux J.J., Chapelon L. (dir), 2014, *Dictionnaire d’analyse spatiale*, Armand-Colin, Paris, 608 p.
-
 - [Hypergeo](www.hypergeo.eu), *Encyclopédie de géographie en ligne*.
 
 ### Revues :

@@ -1,7 +1,7 @@
 ---
 title: "[TD1] Introduction à l'analyse spatiale"
 subtitle: "Masters Géoprisme et Carthageo"
-date: "01/09/2025"
+date: "09/01/2025"
 author: "Claude Grasland, Malika Madelin"
 format:
   html:
@@ -51,7 +51,7 @@ library(reshape2)
 -----------------------------------------------------------------------
 
 ::: {.callout-note title="A propos de ce document"}
-Ce support de cours a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiants de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne
+Ce support de cours “Analyse spatiale, formes et processus” a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiant·es de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne.
 :::
 
 
@@ -60,7 +60,7 @@ Ce support de cours a été créé pour la session 2025-26 du cours d'analyse sp
 ## Mise en place
 
 
-On considère un monde composé de 48 positions spatiales, chacune d'entre elle étant occupée par une carte à jouer d'un jeu de 52 cartes dont on a retiré les rois. Cinq tirages différents ont été effectués au hasard.
+On considère un monde composé de 48 positions spatiales, chacune d'entre elles étant occupée par une carte à jouer d'un jeu de 52 cartes dont on a retiré les rois. Cinq tirages différents ont été effectués au hasard.
 
 ```{r}
 jeu1 <- readRDS("data1/space001.RDS")
@@ -72,7 +72,7 @@ jeu5 <- readRDS("data1/space005.RDS")
 
 
 
-On choisit l'un des cinq jeux comme monde et on le visualise: 
+On choisit l'un des cinq jeux comme monde et on le visualise : 
 
 ```{r}
 # Choix du Monde
@@ -91,13 +91,13 @@ text(jeu$geometry, jeu$cards, col=jeu$col,cex=1.5)
 ```
 
 
-Nous avons quatre familles d'individus correspondant à Pique, Coeur, Carreau et Trèfle. Proposez une méthode pour répondre à laquestion 
+Nous avons quatre familles d'individus correspondants à Pique, Coeur, Carreau et Trèfle. Proposez une méthode pour répondre à la question 
 
-> Laquelle est la plus concentrée spatialement ? La plus dispersée ?
+> **Laquelle de ces familles est la plus concentrée spatialement ? La plus dispersée ?**
 
 ## Solution 1 : Point moyen,  distance-type et ellipse de dispersion
 
-Vous avez normalement appris en licence quelques bases de **statistique spatiale**. Celle-ci propose notamment de calculer pour chaque distribution de points de coordonnées $(X_i,Y_i)$ le centre de gravité $G(X_g,Y_g)$ 
+Vous avez sans doute appris en licence quelques bases de **statistique spatiale**. Celle-ci propose notamment de calculer pour chaque distribution de points de coordonnées $(X_i,Y_i)$ le centre de gravité $G(X_g,Y_g)$ :
 
 
 $X_g = \frac{\Sigma_{i=1}^n{X_i}}{n}$
@@ -110,7 +110,7 @@ $\sigma_X = \frac{\Sigma_{i=1}^n{(X_i-X_g)^2}}{n-1}$
 
 $\sigma_Y = \frac{\Sigma_{i=1}^n{(Y_i-Y_g)^2}}{n-1}$
 
-Et finalement en déduire la distance-type $\sigma_{X,Y}$ de chaque point au centre de gravité par la formule :
+Et finalement en déduire la distance-type $\sigma_{X,Y}$ de chaque point au centre de gravité par la formule :
 
 $\sigma_{X,Y} = \sqrt{\sigma_X^2+\sigma_Y^2}$
 
@@ -119,7 +119,7 @@ Passons au calcul dans R. Il suffit pour cela d'utiliser la fonction moyenne (*m
 
 ```{r}
 # Identification des familles
-col<-names(table(jeu$family))
+col<-names(table(jeu$family2))
 
 # Calcul des centre de gravité
 Xg<-tapply(jeu$X,INDEX=jeu$family,FUN=mean)
@@ -137,13 +137,20 @@ tabres <- cbind(Xg,Yg,X_ect, Y_ect,D_type)
 tabres <- as.data.frame(tabres)
 
 # Affichage des résultats
-kable(tabres, digits=2)
+library(kableExtra)
+kable(tabres, digits=2) %>% row_spec(c(3,4), color = "red") 
 ```
 
-On déduit facilement du tableau précédent la distribution la plus dispersée et la moins dispersée.
+On déduit facilement de ce tableau la distribution la plus dispersée et la moins dispersée.
 
 
 On peut ensuite visualiser le résultat à l'aide d'**ellipses de dispersions** qui permettent de repérer à la fois le centre de gravité et les zones de localisation les plus probables des points. Sans entrer dans les détails mathématiques, on peut voir ci-dessous comment les ellipses de dispersion correspondant aux intervalles de confiance 25%, 50% et 75% sont plus ou moins étendues.
+
+:::: {.columns}
+
+::: {.column width="20%"}
+:::
+::: {.column width="60%"}
 
 ```{r, fig.height=8,fig.width=6}
 par(mfrow=c(2,2), mar=c(0,0,0,0))
@@ -211,18 +218,23 @@ dataEllipse(sel$X,sel$Y,
 text(sel$X,sel$Y,fam, col="red",cex=1.5)
 
 ```
+:::
+::: {.column width="20%"}
+:::
 
-- **Discussion** : La solution précédente est relativement complexe puisqu'elle fait appel à des notions statistiques pas forcément connues. Mais surtout elle comporte des hypothèses implicites concernant la distribution spatiale et l'éloignement des points. Elle se place en effet dans un **espace euclidien continu** et suppose que les distributions de X et de Y sont de nature **gaussienne**.  Or rien n'indique que ces deux hypothèses soient valides !
+::: {.callout-important title="Discussion"}
+La solution précédente est relativement complexe puisqu'elle fait appel à des notions statistiques pas forcément connues. Mais surtout elle comporte des hypothèses implicites concernant la distribution spatiale et l'éloignement des points. Elle se place en effet dans un **espace euclidien continu** et suppose que les distributions de X et de Y sont de nature **gaussienne**.  Or rien n'indique que ces deux hypothèses soient valides !
+:::
 
 
 ## Solution 2 : Distances et métriques
 
-Supposons maintenant que l'on ne puisse pas se déplacer dans n'importe quelle direction mais seulement horizontalement et verticalement en passant d'un carreau au carreau voisin. On se trouve alors dans un espace ayant une géométrie particulière telle que la distance entre deux points est une **distance rectilinéaire** aussi appelée **distance de Manhattan** ou **distance city-block** : 
+Supposons maintenant que l'on ne puisse pas se déplacer dans n'importe quelle direction mais seulement horizontalement et verticalement en passant d'un carreau au carreau voisin. On se trouve alors dans un espace ayant une géométrie particulière telle que la distance entre deux points est une **distance rectilinéaire** aussi appelée **distance de Manhattan** ou **distance *city-block* **: 
 
 $D_{ij} = |X_i-X_j| + |Y_i-Y_j|$
 
 
-Examinons la distribution des individus de la famille "Pique" :
+Examinons la distribution des individus de la famille "Pique"`{r} rownames(tabres)[1]` :
 
 ```{r}
 # Identification des familles
@@ -238,14 +250,14 @@ text(sel$geometry,sel$cards)
 
 ```
 
-On construit un repère orthonormé où le point situé en bas à gauche correspond à l'origine $(0,0)$ et où chaque carreau a un côté de longueur 1. On en déduit les coordonnées de chacune des cartes de la famille en supposant qu'elles sont placées au centre de leur carreau :
+On construit un repère orthonormé où le point situé en bas à gauche correspond à l'origine $(0,0)$ et où chaque carreau a un côté de longueur 1. On en déduit les **coordonnées** de chacune des cartes de la famille en supposant qu'elles sont placées au centre de leur carreau :
 
 ```{r}
 tab<-st_drop_geometry(sel)
 kable(tab)
 ```
 
-On en déduit la matrice de distance suivante :
+On en déduit la **matrice de distance** suivante :
 
 ```{r}
 coo<-cbind(sel$X,sel$Y)
@@ -277,9 +289,11 @@ plot(as.factor(matdis), main = "Distribution des distances",
      xlab="Nombre de paires", ylab = "Distance de Manhattan", col="lightyellow")
 ```
 
-- **Discussion** : Nous avons désormais une famille de solutions plus simples et plus concrètes pour mesurer la concentration. Mais quelle solution retenir pour comparer entre elles les familles : distance moyenne, distance médiane, distance modale, distance minimale, distance maximale ... Comme le montre bien la figure précédente, la distribution des distances entre les paires d'individus peut faire l'objet de résumés très différents et il n'existe pas de solution unique. On peut en effet imaginer le cas de **distributions concentrées localement et dispersées globalement**.
+::: {.callout-important title="Discussion"}
+Nous avons désormais une famille de solutions plus simples et plus concrètes pour mesurer la concentration. Mais quelle solution retenir pour comparer entre elles les familles : distance moyenne, distance médiane, distance modale, distance minimale, distance maximale... Comme le montre bien la figure précédente, la distribution des distances entre les paires d'individus peut faire l'objet de résumés très différents et il n'existe pas de solution unique. On peut en effet imaginer le cas de **distributions concentrées localement et dispersées globalement**.
+:::
 
-Considérez l'exemple suivant.
+Considérez l'exemple suivant :
 
 ```{r}
 X <- c(0.5,0.5,0.5,0.5,1.5,1.5,1.5,1.5,4.5,4.5,4.5,4.5,5.5,5.5,5.5,5.5)
@@ -303,15 +317,17 @@ plot(as.factor(matdis2), main = "Distribution des distances",
      xlab="Nombre de paires", ylab = "Distance de Manhattan", col="lightyellow")
 ```
 
-- **Commentaire :** cette distribution est *globalement plus dispersée* que la précédente puisque la distance moyenne entre deux individus est de 5.86 contre 4.32. Mais elle est *localement plus concentrée* puisque chaque individu a systématiquement deux voisins
+::: {.callout-important title="Commentaire :"}
+Cette distribution est *globalement plus dispersée* que la précédente puisque la distance moyenne entre deux individus est de 5.86 contre 4.32. Mais elle est *localement plus concentrée* puisque chaque individu a systématiquement deux voisins
+:::
 
 
 ## Solution 3 : Graphe et composantes connexes
 
-Une troisième solution (qui devrait rappeler les règles du jeu de go à ceux qui le connaissent) consiste à déterminer le degré de fragmentation de chaque famille en **composantes connexes**.  On considère désormais que deux individus d'une même famille sont reliés s'il existe un chemin les reliant qui ne passe que par des membres de la même famille. On va donc définir un **graphe de voisinage** entre les cellules et considérer que la relation est possible si des membres de la même famille se trouvent de part et d'autre.
+Une troisième solution (qui devrait rappeler les règles du jeu de go à ceux et celles qui le connaissent) consiste à déterminer le degré de fragmentation de chaque famille en **composantes connexes**.  On considère désormais que deux individus d'une même famille sont reliés s'il existe un chemin les reliant qui ne passe que par des membres de la même famille. On va donc définir un **graphe de voisinage** entre les cellules et considérer que la relation est possible si des membres de la même famille se trouvent de part et d'autre.
 
 
-Ceci revient à déterminer toutes les paires contigües $(C_{ij}=1)$ puis à vérifier si elles relie des individus similaires $(S_{ij}=1)$ pour déterminer si la relation entre eux est possible $(R_{ij}=1)$. On trouve 44 paires orientées soit 22 paires symétriques vérifiant les conditions.
+Ceci revient à déterminer toutes les paires contiguës $(C_{ij}=1)$ puis à vérifier si elles relient des individus similaires $(S_{ij}=1)$ pour déterminer si la relation entre eux est possible $(R_{ij}=1)$. On trouve 44 paires orientées soit 22 paires symétriques vérifiant les conditions.
 
 
 ```{r}
@@ -333,14 +349,14 @@ col1<-col1 %>% filter(Rij ==1) %>% arrange(ii,jj,i,j)
 kable(col1)
 ```
 
-On peut alors déterminer la famille qui dispose du plus grand nombre de relations de voisinage avec des membres de sa famille :
+On peut alors déterminer la famille qui dispose du plus grand nombre de relations de voisinage avec des membres de sa famille :
 
 ```{r}
 
 table(col1$ii)
 ```
 
-On peut visualiser ce résultat sous la forme d'un graphe :
+On peut visualiser ce résultat sous la forme d'un graphe :
 
 ```{r}
 coo<-st_drop_geometry(jeu) %>% select(i=cards, Xi=X,Yi=Y)
@@ -362,18 +378,19 @@ text(jeu$geometry,jeu$cards,col=jeu$col,cex=1)
 
 ---
 
-# EXO2 : DYNAMIQUES DE SEGREGATION ET D'OPINION
+
+# EXO2 : DYNAMIQUES DE SÉGRÉGATION ET D'OPINION
 
 
 ## Mise en place
 
-Une quarantaine d'étudiants entrent dans une salle de cours comportant 6 rangées de 8 chaises. Sans dire un mot, les enseignants leurs remettent silencieusement une carte à jouer tiré d'un jeu de 52 cartes d'où les rois ont été retirés et leurs demandent de s'installer. Les enseignants procèdent à l'appel en suivant l'ordre des rangées et chaque étudiant indique la carte à jour qui lui a été attribuée, tandis que l'enseignant lui indique sa position spatiale :
+Une quarantaine d'étudiant·es entrent dans une salle de cours comportant 6 rangées de 8 chaises. Sans dire un mot, les enseignant·es leur remettent silencieusement une carte à jouer tirée d'un jeu de 52 cartes d'où les rois ont été retirés et leur demandent de s'installer. Les enseignant·es procèdent à l'appel en suivant l'ordre des rangées et chaque étudiant·e indique la carte à jour qui lui a été attribuée, tandis que l'enseignant·e lui indique sa position spatiale :
 
-- **Etudiant** : Je suis Albert Dupont et ma carte est le 8 de Pique.
-- **Enseignant** : Vous occupez la place C07.
+- **Étudiant·e** : Je suis Camille Dupont et ma carte est le 8 de Pique.
+- **Enseignant·e** : Vous occupez la place C36.
 
 
-Après avoir saisi la position de tous les étudiants, les enseigants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l'écran. On notera qu'il existe un certain nombre de places vides qui vont jouer un rôle important dans les modèles de sérégation et de diffusion d'opinion. 
+Après avoir saisi la position de tous les étudiant·es, les enseignants effectuent quelques manipulations sur leur ordinateur et affichent la carte suivante à l'écran. On notera qu'il existe un certain nombre de places vides qui vont jouer un rôle important dans les modèles de ségrégation et de diffusion d'opinion. 
 
 ```{r}
 library(sf)
@@ -418,7 +435,7 @@ mf_layout(title = "Position sociale",
 
 ### Détermination des voisins
 
-On détermine pour chaque cellule occupée par un individu la liste de ses voisins en notant leur couleur :
+On détermine pour chaque cellule occupée par un individu la liste de ses voisins en notant leur couleur :
 
 ```{r}
 
@@ -438,7 +455,7 @@ head(tab,10)
 ```
 
 
-- **Exemple** L'individu qui occupe la case C00 est noir et il possède un unique voisin rouge en C10. L'individu qui occupe la case C02 est rouge et il possède un voisin rouge et un voisin noir. L'individu qui occupe la case C03 est rouge avec deux voisins rouges et un voisin noir...
+>**Exemple**: L'individu qui occupe la case C00 est noir et il possède un unique voisin rouge en C10. L'individu qui occupe la case C02 est rouge et il possède un voisin rouge et un voisin noir. L'individu qui occupe la case C03 est rouge avec deux voisins rouges et un voisin noir...
 
 ### Règle de changement
 
@@ -448,11 +465,11 @@ On adopte la règle du modèle d'Axelrod (qui est plus complexe que celui-ci) en
 - l'individu situé en C02 est rouge avec un voisin rouge et un voisin noir. Il a donc 67% de chances de rester rouge et 33% de devenir noir.
 - l'individu situé en C03 est rouge avec deux voisins rouges et un voisin noir. Il a donc 75% de chances de rester rouge et 25% de devenir noir.
 
-On voit donc que dans ce modèle, les individus ont une opinion qui varie en fonction de leur opinion initiale et de celle de leur voisin. Ils ont d'autant plus de chances de garder leur opinion qu'ils sont entourés d'individus ayant la même opinion. Et inversement d'autant moins de chance qu'ils sont entourés d'individus ayant des opinions différentes. 
+On voit donc que dans ce modèle, les individus ont une opinion qui varie en fonction de leur opinion initiale et de celle de leur(s) voisin(s). Ils ont d'autant plus de chances de garder leur opinion qu'ils sont entourés d'individus ayant la même opinion. Et inversement d'autant moins de chance qu'ils sont entourés d'individus ayant des opinions différentes. 
 
 ### Simulation de la dynamique
 
-> l'exercice est à faire en classe avec les étudiants. Mais on peut donner ici un exemple de résultat.
+> L'exercice est à faire en classe avec les étudiant·es. Mais on peut donner ici un exemple de résultat.
 
 
 ```{r, fig.height=9, fig.width=6}
@@ -687,25 +704,27 @@ text(step$geometry,step$cards,col="white")
 
 ```
 
-- **Commentaire** : Par rapport à la situation initiale, on évolue rapidement vers une situation de ségrégation entre une région rouge et une région noire. Seule la zone frontière entre les deux régions continue à évoluer un peu et sert d'interface limitée où les deux formes d'opinion sont échangées. Certaines "îles" survivent un certain temps mais elles sont tôt ou tard absorbées et éliminées. 
+::: {.callout-important title="Commentaire :"}
+Par rapport à la situation initiale, on évolue rapidement vers une situation de ségrégation entre une région rouge et une région noire. Seule la zone frontière entre les deux régions continue à évoluer un peu et sert d'interface limitée où les deux formes d'opinion sont échangées. Certaines "îles" survivent un certain temps mais elles sont tôt ou tard absorbées et éliminées. 
+:::
 
 ## Le modèle de Schelling
 
-Le modèle de Schelling est assez voisin de celui d'Axelrod dans ses résultats mais il repose sur des hypothèses différentes. En effet, dans le modèle d'Axelrod les individus sont immobiles et ce sont les opinions qui circulent de proche en proche. Au contraire, dans le modèle de Schelling les individus sont mobiles et se déplacent lorsqu'ils ne sont pas satisfait des attributs de leurs voisins. Ils vont alors occuper des places vacantes où ils trouveront un voisinage approprié.
+Le modèle de Schelling est assez voisin de celui d'Axelrod dans ses résultats mais il repose sur des hypothèses différentes. En effet, dans le modèle d'Axelrod les individus sont immobiles et ce sont les opinions qui circulent de proche en proche. Au contraire, dans le modèle de Schelling, les individus sont mobiles et se déplacent lorsqu'ils ne sont pas satisfaits des attributs de leurs voisins. Ils vont alors occuper des places vacantes où ils trouveront un voisinage approprié.
 
 Le modèle de Schelling est donc beaucoup plus proche des processus de ségrégation observée dans les espaces urbains et aboutissant à la formation de ghettos et de zones socialement homogènes.
 
 ### Règles du modèle de Schelling
 
-En simplifiant à nouveau un peu, on peut résumer ainsi les règles du modèle de Thomas Schelling : 
+En simplifiant à nouveau un peu, on peut résumer ainsi les règles du modèle de Thomas Schelling : 
 
 1. Chaque individu est localisé dans une cellule
 2. Certaines cellules sont vides
 3. Les individus examinent les caractéristiques des individus localisés dans les cellules voisines.
-4. Si la proportion de voisins différents est supérieur à un seuil \alpha, l'individu se déplace vers une cellule vide où le seuil est respecté. 
+4. Si la proportion de voisins différents est supérieure à un seuil $\alpha$, l'individu se déplace vers une cellule vide où le seuil est respecté. 
 
 
-Supposons que le seuil \alpha soit égal à 0.70 c'est à dire qu'un individu accepte que 70% de ses voisins soient différents de lui. Combien y-a-t-il d'individus mécontents de la vosinage dans la configuration suivante  en supposant que l'on considère comme voisin uniquement ceux qui ont une frontière commune : 
+Supposons que le seuil $\alpha$ soit égal à 0.70, c'est à dire qu'un individu accepte que 70% de ses voisins soient différents de lui. Combien y-a-t-il d'individus mécontents du voisinage dans la configuration suivante en supposant que l'on considère comme voisin uniquement ceux qui ont une frontière commune : 
 
 ```{r}
 par(mfrow=c(1,1))
@@ -714,19 +733,19 @@ plot(step$geometry,col=step$t0, add=T)
 text(step$geometry,step$cards,col="white")
 ```
 
-Chaque étudiant évalue sa satisfaction par rapport à son voisinage et décide en fonction de cela de bouger ou non. Voici quelques exemples de calcul de la satisfaction et de la décision de bouger ou non. 
+Chaque étudiant·e évalue sa satisfaction par rapport à son voisinage et décide en fonction de cela de bouger ou non. Voici quelques exemples de calcul de la satisfaction et de la décision de bouger ou non. 
 
-- Le 7 de coeur est rouge et possède un voisin rouge donc 0% de ses voisins sont différents : il ne bouge pas
-- le 4 de couer possède deux voisins rouges et un voisins noir donc 33% de ses voisins sont différents : il ne bouge pas.
-- Le 4 de pique possède un voisin rouge et un voisin noir donc 50% de ses voisins sont différents : il ne bouge pas.
-- la dame de carreau possède trois voisins noir et un voisin rouge donc 75% de ses voisins sont différent : elle va bouger
-- le 2 de pique possède trois voisins rouge et aucun voisin noir donc 100% de ses voisins sont différents : il va bouger
-
-
-Le problème est que chaque déplacement d'un individu modifie la table de vosinage et remet en cause les calculs. On ne peut donc pas effectuer des changements simultanés comme dans le cas du modèle d'Axelrod. Il faut ici utiliser un modèle asynchrone où les individus insatisfaits se déplacent un par un et où chaque individu recalcule sa situation avant de se déplacer à son tour.
+- Le <span style=color:red>7♥</span> est rouge et possède un voisin rouge donc 0% de ses voisins sont différents : il ne bouge pas.
+- le <span style=color:red>4♥</span> possède deux voisins rouges et un voisin noir donc 33% de ses voisins sont différents : il ne bouge pas.
+- Le 4♠ possède un voisin rouge et un voisin noir donc 50% de ses voisins sont différents : il ne bouge pas.
+- la <span style=color:red>D♦</span> possède trois voisins noirs et un voisin rouge donc 75% de ses voisins sont différent : elle va bouger.
+- le 2♠ possède trois voisins rouges et aucun voisin noir donc 100% de ses voisins sont différents : il va bouger.
 
 
-Supposons par exemple que la dame de carreau effectue un déplacement de C43 en C20 pour rejoindre la case située entre la dame de coeur et le neuf de carreau :
+Le problème est que chaque déplacement d'un individu modifie la table de voisinage et remet en cause les calculs. On ne peut donc pas effectuer des changements simultanés comme dans le cas du modèle d'Axelrod. Il faut ici utiliser un modèle asynchrone où les individus insatisfaits se déplacent un par un et où chaque individu recalcule sa situation avant de se déplacer à son tour.
+
+
+Supposons par exemple que la <span style=color:red>D♦</span> effectue un déplacement de C43 en C20 pour rejoindre la case située entre la <span style=color:red>D♥</span> et le <span style=color:red>9♦</span> :
 
 ```{r}
 step2 <- step
@@ -742,35 +761,36 @@ arrows(x0 = 4.5, y0=3.5,x1=2.5,y1=0.5,col="yellow",lwd=3)
 
 ```
 
-Quelles sont les conséquences pour les individus situés :
+Quelles sont les conséquences pour les individus situés :
 
 - **au point de départ** 
-  + Le 3 de carreau qui était satisfait (33% de voisins similaire) a désormais uniquement des voisins noir et va décider de partir
-  + le 6 de pique qui était mécontent (100% de voisins différents) ne l'est plus et décide de rester
+  + Le <span style=color:red>3♦</span> qui était satisfait (33% de voisins similaires) a désormais uniquement des voisins noirs et va décider de partir
+  + le 6♠ qui était mécontent (100% de voisins différents) ne l'est plus et décide de rester
   
 - **au point d'arrivée**
-  + La dame de coeur qui était mécontente (100% de voisins différents) décide de rester
-  + la dame de pique décide de partir ...
-  + etc...
+  + La <span style=color:red>D♥</span>qui était mécontente (100% de voisins différents) décide de rester
+  + la D♠ décide de partir...
+  + etc.
   
 Cet exemple simple montre comment les dynamiques de ségrégation sont des systèmes complexes qui engendrent des processus cumulatifs.
 
 
 ### Outils de simulation
 
-De nombreux programmes de simulation existent en ligne pour simuler l'évolution des modèles de Schelling. Voir par exemple [ce site](http://nifty.stanford.edu/2014/mccown-schelling-model-segregation/)
+De nombreux programmes de simulation existent en ligne pour simuler l'évolution des modèles de Schelling. Voir par exemple [ce site](http://nifty.stanford.edu/2014/mccown-schelling-model-segregation/){target=_blank}, du colloque de l'*Association for Computing Machinery's Special Interest Group on Computer Science Education*.
 
-L'un des résultats principaux de ces modèles de simulation est de montrer qu'il n'est pas besoin d'introduire une forte volonté de ségrégation pour aboutir à des configurations très ségrégées. On s'en rend compte en jouant sur le paramètre \alpha. 
+L'un des résultats principaux de ces modèles de simulation est de montrer qu'il n'est pas besoin d'introduire une forte volonté de ségrégation pour aboutir à des configurations très ségrégées. On s'en rend compte en jouant sur le paramètre $\alpha$. 
 
 ![Schelling model](img/schelling.png)
 
+---
 
-# EXO3 : ACCESSIBILITE, POTENTIEL, INTERACTION
+# EXO3 : ACCESSIBILITÉ, POTENTIEL, INTERACTION
 
 
 ## Préparation des données
 
-On suppose que les dames et les valets correspondent à des commerces ou services pouvant desservir au départ 30 individus pour les dames et 15  pour les valets. Les autres cartes correspondent à un nombre de personnes intéressées par ces commerces ou services. On pourra vérifier que pour chaque famille de carte il y a 45 demandes (1+2+3+...+10) et 45 offres (15 + 30) de sorte que le marché est a priori équilibré. La question qui se pose est de savoir comment va s'opérer l'ajustement de l'offre et de la demande dans l'espace, sachant que les clients cherchent à minimiser la distance qui représente pour eux un coût. On considère deux situations différentes de distribution des clients et des commerçants en utilisant les cartes de la famille "♥"  et celle de la famille "♠". 
+On suppose que les dames et les valets correspondent à des commerces ou services pouvant desservir au départ 30 individus pour les dames et 15  pour les valets. Les autres cartes correspondent à un nombre de personnes intéressées par ces commerces ou services. On pourra vérifier que pour chaque famille de carte il y a 45 demandes (1+2+3+...+10) et 45 offres (15 + 30) de sorte que le marché est a priori équilibré. La question qui se pose est de savoir comment va s'opérer l'ajustement de l'offre et de la demande dans l'espace, sachant que les clients cherchent à minimiser la distance qui représente pour eux un coût. On considère deux situations différentes de distribution des clients et des commerçants en utilisant les cartes de la famille "<span style=color:red>♥</span>"  et celle de la famille "♠". 
 
 ```{r, fig.width=8, fig.height=8}
 trade <-map %>% filter(family=="♥")
@@ -807,11 +827,11 @@ mf_layout(title = "Offre et demande pour ♠ ", scale=F, credits = "", arrow=F, 
 ```
 
 
-- **Problème 1** : Essayez de répartir au mieux les déplacements des individus vers le service le plus proche tout en respectant les capacités maximales d'accueil des commerces ou des services. Quelle distribution spatiale vous semble la plus intéressante entre "♥"  et  "♠" ? Justifiez votre réponse. 
+- **Problème 1** : Essayez de répartir au mieux les déplacements des individus vers le service le plus proche tout en respectant les capacités maximales d'accueil des commerces ou des services. Quelle distribution spatiale vous semble la plus intéressante entre "<span style=color:red>♥</span>" et "♠" ? Justifiez votre réponse. 
 
-- **Problème 2** : En supposant qu'il s'agit de **services publics** (e.g. écoles) non soumis aux lois de la concurrence, quelles  améliorations pourriez vous proposer dans chacune des deux situations ? Quel en serait le coût ?
+- **Problème 2** : En supposant qu'il s'agit de **services publics** (e.g. écoles) non soumis aux lois de la concurrence, quelles  améliorations pourriez-vous proposer dans chacune des deux situations ? Quel en serait le coût ?
 
-- **Problème 3** : En supposant qu'il s'agit de **commerces ou services privés** (e.g. pharmacies) soumises aux lois de la concurrence, quelles décisions pourraient prendre les acteurs pour augmenter leur part de marché ? Dans quelle mesure ces décisions seraient-elles également profitables aux clients ?
+- **Problème 3** : En supposant qu'il s'agit de **commerces ou services privés** (e.g. pharmacies) soumis aux lois de la concurrence, quelles décisions pourraient prendre les acteurs pour augmenter leur part de marché ? Dans quelle mesure ces décisions seraient-elles également profitables aux client·es ?
 
 
 

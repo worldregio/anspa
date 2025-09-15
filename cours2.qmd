@@ -1,0 +1,284 @@
+---
+title: "[COURS2] Accessibilité"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "09/01/2025"
+author: "Claude Grasland, Malika Madelin"
+format:
+  html:
+    link-external-newwindow: true
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+    number-sections: true
+    number-depth: 3
+execute:
+  warning: false
+  message: false 
+  cache: false  
+  echo: false 
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+
+
+
+```{r}
+library(sf)
+library(mapsf)
+library(dplyr)
+library(knitr)
+
+library(ggplot2)
+library(plotly)
+library(LexisPlotR)
+```
+
+
+
+-----------------------------------------------------------------------
+
+::: {.callout-note title="A propos de ce document"}
+Ce support du cours "Analyse spatiale, formes et processus" a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiant·es de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne. 
+
+
+:::
+
+
+# DEFINITION DE L'ACCESSIBILITE
+
+
+## Définition
+
+Selon le dictionnaire d'analyse spatiale de Bavoux & Chapelon (2014), l'accessibilité se définit comme *"La plus ou moins grande facilité avec laquelle des lieux, des personnes ou des activités économiques peuvent être atteints".*
+
+Si elle a l'avantage de la simplicité, cette définition n'en demeure pas moins incomplète puisqu'elle oublie de préciser **QUI** sont les acteurs mobiles qui souhaitent accéder à des lieux, des personnes ou des activités et **POUQUOI** ils effectuent cette mobilité. Elle ne précise pas non plus **COMMENT** ces acteurs mobiles vont effectuer une mobilité et **QUAND** elle aura lieu puisqu'elle s'inscrit dans le temps. Enfin, la définition n'explicite pas **COMBIEN** sera le coût de la mobilité en temps, énergie, argent, etc...
+
+Bref, si l'on veut définir un peu la notion d'accessibilité, il faut se doter d'un cadre formel, abstrait, permettant ensuite de spécifier les différentes situations particulières d'analyse de l'accessibilité. 
+
+## Formalisation
+
+Si l'on revient sur l'axiomatique proposée lors du cours d'introduction du chapitre 1, on se rend compte que l'accessibilité met en jeu plusieurs éléments :
+
+- **une population mobile** : c'est-à-dire un ensemble d'individus dotée de moyens de déplacement au cours du temps à l'intérieur d'un certain espace.
+- **un ensemble de ressources localisées** : c'est-à-dire des éléments attractifs - ou répulsifs - localisés dans le même espace que la population et susceptible d'attirer ou au contraire de repousser les individus et de déclencher leur mobilité
+- **une géométrie commune** à la population et aux ressources permettant de définir une distance entre les uns et les autres, soit directement, soit par l'entremise de lieux.
+
+## Exemples théoriques
+
+Reprenons deux exemples vus dans le cours d'introduction :
+
+```{r, fig.width=8, fig.height=7}
+# Choix du Monde
+world <- readRDS("data1/space005.RDS")
+jeu <- world  %>% filter(family=="♥") %>% arrange(level)
+trade<-jeu
+trade$taille <- as.numeric(trade$level)
+trade$taille[trade$level=="A"]<-1
+trade$taille[trade$level=="D"]<-30
+trade$taille[trade$level=="V"]<-15
+trade$fonction = "demande"
+trade$fonction[trade$level=="V"]<-"offre"
+trade$fonction[trade$level=="D"]<-"offre"
+
+
+
+# Visualisation
+par(mar=c(0,0,3,0), mfrow=c(1,2))
+
+
+mf_map(world, type="base",col="lightyellow")
+mf_label(jeu, var="cards",cex = 1.5, col="red")
+mf_layout(title = "Exemple 1 : individus dans l'espace", scale=F, credits = "", arrow=F, frame=T)
+
+
+mf_map(world, type="base",col="lightyellow")
+mf_map(trade,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade, var="taille",cex = 1)
+mf_layout(title = "Exemple 2 : populations et ressources", scale=F, credits = "", arrow=F, frame=T)
+
+```
+
+
+# EFFICACITE OU EQUITE ?
+
+On suppose que les 12 individus représentés sur la figure de l'exemple 1 souhaitent se réunir et cherchent à choisir un lieu de rendez-vous qui soit définit de facçon objective. Quel point choisiriez vous ?
+
+
+## Distance de Manhattan entre individus
+
+On suppose que les déplacements s'effectuent en distance de Manhattan et le point de réunion est le domicile d'un des 12 individus. On peut alors établir la matrice de distance suivante entre les individus.
+
+```{r}
+mat <- as.matrix(dist(cbind(jeu$X,jeu$Y), method="manhattan", upper=T, diag=T))
+row.names(mat)<-jeu$cards
+colnames(mat)<-jeu$cards
+kable(mat, caption = "Distances de Manhattan entre les individus")
+```
+
+- **Efficacité** : La localisation la plus efficace est celle qui minimise la moyenne (ou la somme) des distances d'un indinvidu à tous les autres. On poura vérifier que le point le plus accessible est le 2♥.
+
+```{r}
+moy <- apply(mat, 1, mean, na.rm=T)
+moy<-moy[order(moy)]
+kable(moy, digits=2, caption = "Distance moyenne d'un point à tous les autres")
+```
+
+
+Mais en fait la solution optimale pourrait être obenu plus simplement puisque la distance de Manhattan est décomposable selon X et Y. Le point le plus efficace est le point médian M :
+
+$M = (mediane(X), mediane(Y)$. 
+
+
+- **Equité** : la localisation la plus efficace est celle qui minimise la distance maximale d'un point à tous les autres. On pourra vérifier que le point le plus équitable est le 3♥.
+
+```{r}
+max <- apply(mat, 1, max, na.rm=T)
+max<-max[order(max)]
+kable(max, digits=2, caption = "Distance maximale d'un moint à tous les autres")
+```
+
+Ici encore, la distance de Manhattan facilite la recherche de la solution puisque l'on peut décomposer le problème sur X et Y. Le point le plus équitable est le point central C :
+
+ $C = (\frac{max(X)-min(X)}{2}, \frac{max(Y)-min(Y)}{2})$
+
+
+## Distance euclidienne entre population et espace
+
+Si on suppose que les individus peuvent se réunir dans une case quelconque, occupée ou non par un membre de la population, on calcule la distance euclidienne entre les lieux occupés et les points potentiellement occupables ce qui crée une matrice 48 x 12 dans notre exemple. On utilise cette fois-ci la distance euclidienne.
+
+```{r}
+mat2 <- as.matrix(st_distance(st_centroid(world), st_centroid(jeu)))
+colnames(mat2) <- jeu$cards
+row.names(mat2) <-world$ID
+kable(head(mat2), digits=1, caption = "Distance entre espace et population")
+```
+
+Il n'est donc plus possible de trouver directement la solution optimale mais on peut le faire en réalisant une cartographie des scores de toutes les localisations possibles
+
+
+```{r, fig.width=8, fig.height=7}
+
+world$mean <- apply(mat2, 1,mean)
+bestmean <- world %>% filter(mean == min(mean))
+world$max <- apply(mat2, 1,max)
+bestmax <- world %>% filter(max == min(max))
+par(mfrow = c(1,2), mar=c(0,0,3,0))
+
+mf_map(world, type="choro",var="mean",leg_horiz = T, leg_pos="bottom")
+mf_map(st_centroid(jeu), type="base", col="blue", add=T, cex=3)
+mf_map(bestmean, type = "base", col=NA, add=T,border="red", lwd=4)
+mf_layout(title = "Distance euclidienne moyenne", scale=F, credits = "", arrow=F, frame=T)
+
+mf_map(world, type="choro",var="max",leg_horiz = T, leg_pos="bottom")
+mf_map(st_centroid(jeu), type="base", col="blue", add=T, cex=3)
+mf_map(bestmax, type = "base", col=NA, add=T,border="red", lwd=4)
+mf_layout(title = "Distance euclidienne maximale", scale=F, credits = "", arrow=F, frame=T)
+```
+
+
+# ACCESSIBILITE MINIMALE A UN SERVICE
+
+Considérons maintenant le problème d'accessibilité d'une population à un service. On part de l'exemple théorique n°2 qui définit deux tableaux correspondant respectivement à l'offre et la demande, c'est-à-dire aux lieux d'origine et de destination ; 
+
+## Formalisation
+
+On définit la demande comme un ensemble de n localisation 1..i..n de coordonnées (Xi, Yi) et de masses (Mi) :
+
+```{r}
+ori <- trade %>% filter(fonction == "demande") %>% 
+        mutate(i = 1:n()) %>%
+            mutate(i = paste0("ORI",i)) %>%
+        select(i , Xi = X,Yi=Y, Mi = taille, geometry)
+kable(st_drop_geometry(ori),caption = "Localisation de la demande")
+
+```
+
+On définit l'offre comme un ensemble de n localisation 1..j..p de coordonnées (Xj, Yj) et de masses (Mj) :
+
+```{r}
+des <- trade %>% filter(fonction == "offre") %>% 
+          mutate(j = 1:n()) %>%
+          mutate(j = paste0("DES",j))%>%
+          select(j, Xj=X,Yj=Y, Mj=taille, geometry)
+kable(st_drop_geometry(des), caption = "Localisation de l'offre")
+```
+
+On suppose qu'il est possible de définir une distance Dij entre les points de localisation de l'offre et de la demande. Dans le cas le plus simple, cette distance sera définir par une métrique portant sur les coordonnées des lieux où se situent respectivement l'offre et la demande. Soit par exemple la distance euclidienne entre les points de localisation de l'offre et de la demande :
+
+$D_{ij} = \sqrt{(X_i-X_j)^2 + (Y_i-Y_j)^2 }$
+
+```{r}
+mat <-as.matrix(st_distance(st_centroid(ori),st_centroid(des)))
+colnames(mat) <- des$j
+rownames(mat) <- ori$i
+kable(mat, digits=2, caption = "Distance euclidienne entre lieux d'origine et de destination")
+```
+
+
+## Distances minimale non pondérée
+
+On peut calculer pour chaque individu du lieu d'origine sa distance minimale au service ou commerce le plus proche. On obtient le tableau suivant :
+
+```{r}
+acc <-st_drop_geometry(ori) %>% select(i, Mi)
+acc$Dij <- apply(mat,1,min)
+acc<-arrange(acc, Dij)
+kable(acc)
+```
+
+On peut alors calculer les paramètres principaux d'accessibilité minimale :
+
+```{r}
+summary(acc$Dmin)
+```
+
+La distance minimale d'accès au service est de 1 et la distance maximale de 5.385. En moyenne l'offre est localisée à 2.35 de la demande. Toutefois ce calcul ne tient pas compte du nombre de personnes localisées dans les différents lieux d'origine.
+
+## Distances minimale pondérée par les origines
+
+On calcule la quantité de mouvement  MDij et on en déduit la distance moyenne franchie par un habitant en calculant la somme des mouvements divisée par la somme des individus.
+
+```{r}
+acc$MDij <- acc$Mi*acc$Dij
+sum(acc$MDij/sum(acc$Mi))
+```
+
+On voit que la valeur obtenu est plus grande (2.62) car les localisations éloignées sont aussi les plus peuplées.  Pour obtenir une vue plus complète, on calcule les fréquences cumulées de mouvements en fonction de la distance :
+
+```{r}
+acc$Cum_MDij <- cumsum(acc$MDij)
+acc$Fcum <- 100*acc$Cum_MDij/sum(acc$MDij)
+kable(acc, digits = 2, caption = "Calcul de la courbe d'accessibilité pondérée")
+```
+
+Il ne reste plus qu'à tracer la courbe des fréquences cumulées de population en fonction de la distance pour obtenur une vision synthétique de l'accessibilité de la population au service considéré. 
+
+
+```{r}
+g<- ggplot(acc, aes(x=Dij, y = Fcum)) + 
+     geom_line(col="red") +
+     geom_point()+
+     scale_x_continuous("Distance minimale au service ou commerce") +
+     scale_y_continuous("Part cumulée de la population (en %) ") +
+     ggtitle("Courbe d'accessibilité minimale de la population au service") +
+    theme_minimal()
+g
+```
+
+On peut alos appécier plus pécisément la distribution des personnes qui disposent d'une bonne accessibilité, d'une accessibilité moyenne ou d'une faible accessibilité. 
+

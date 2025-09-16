@@ -52,8 +52,6 @@ library(LexisPlotR)
 ::: {.callout-note title="A propos de ce document"}
 Ce support du cours "Analyse spatiale, formes et processus" a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiant·es de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne. 
 
-<a href="cours1_diapo.html" target="_blank">Cliquez ici pour voir le diaporama du cours </a>
-
 :::
 
 

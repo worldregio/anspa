@@ -234,6 +234,7 @@ On définit la demande comme un ensemble de *n* localisations 1..*i*..*n* de coo
 
 ```{r}
 ori <- trade %>% filter(fonction == "demande") %>% 
+        arrange(taille) %>% 
         mutate(i = 1:n()) %>%
             mutate(i = paste0("ORI",i)) %>%
         select(i , Xi = X,Yi=Y, Mi = taille, geometry)

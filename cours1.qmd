@@ -55,7 +55,7 @@ Ce support du cours "Analyse spatiale, formes et processus" a été créé pour 
 :::
 
 
-
+ 
 # QU'EST-CE QUE L'ANALYSE SPATIALE ?
 
 

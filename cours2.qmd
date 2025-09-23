@@ -53,20 +53,19 @@ library(LexisPlotR)
 -----------------------------------------------------------------------
 
 ::: {.callout-note title="A propos de ce document"}
-Ce support du cours "Analyse spatiale, formes et processus" a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiant·es de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne. 
-
+Ce support de cours “Analyse spatiale, formes et processus” a été créé pour la session 2025-26 du cours d'analyse spatiale des phénomènes sociaux destiné aux étudiant·es de géographie des universités Paris Cité et Paris 1 Panthéon-Sorbonne.
 
 :::
 
 
-# DEFINITION DE L'ACCESSIBILITE
+# DÉFINITION DE L'ACCESSIBILITÉ
 
 
 ## Définition
 
 Selon le dictionnaire d'analyse spatiale de Bavoux & Chapelon (2014), l'accessibilité se définit comme *"La plus ou moins grande facilité avec laquelle des lieux, des personnes ou des activités économiques peuvent être atteints".*
 
-Si elle a l'avantage de la simplicité, cette définition n'en demeure pas moins incomplète puisqu'elle oublie de préciser **QUI** sont les acteurs mobiles qui souhaitent accéder à des lieux, des personnes ou des activités et **POUQUOI** ils effectuent cette mobilité. Elle ne précise pas non plus **COMMENT** ces acteurs mobiles vont effectuer une mobilité et **QUAND** elle aura lieu puisqu'elle s'inscrit dans le temps. Enfin, la définition n'explicite pas **COMBIEN** sera le coût de la mobilité en temps, énergie, argent, etc...
+Si elle a l'avantage de la simplicité, cette définition n'en demeure pas moins incomplète puisqu'elle oublie de préciser **QUI** sont les acteurs mobiles qui souhaitent accéder à des lieux, des personnes ou des activités et **POUQUOI** ils effectuent cette mobilité. Elle ne précise pas non plus **COMMENT** ces acteurs mobiles vont effectuer une mobilité et **QUAND** elle aura lieu puisqu'elle s'inscrit dans le temps. Enfin, la définition n'explicite pas **COMBIEN** sera le coût de la mobilité en temps, énergie, argent, etc.
 
 Bref, si l'on veut définir un peu la notion d'accessibilité, il faut se doter d'un cadre formel, abstrait, permettant ensuite de spécifier les différentes situations particulières d'analyse de l'accessibilité. 
 
@@ -74,8 +73,8 @@ Bref, si l'on veut définir un peu la notion d'accessibilité, il faut se doter 
 
 Si l'on revient sur l'axiomatique proposée lors du cours d'introduction du chapitre 1, on se rend compte que l'accessibilité met en jeu plusieurs éléments :
 
-- **une population mobile** : c'est-à-dire un ensemble d'individus dotée de moyens de déplacement au cours du temps à l'intérieur d'un certain espace.
-- **un ensemble de ressources localisées** : c'est-à-dire des éléments attractifs - ou répulsifs - localisés dans le même espace que la population et susceptible d'attirer ou au contraire de repousser les individus et de déclencher leur mobilité
+- **une population mobile** : c'est-à-dire un ensemble d'individus dotés de moyens de déplacement au cours du temps à l'intérieur d'un certain espace.
+- **un ensemble de ressources localisées** : c'est-à-dire des éléments attractifs - ou répulsifs - localisés dans le même espace que la population et susceptibles d'attirer ou au contraire de repousser les individus et de déclencher leur mobilité
 - **une géométrie commune** à la population et aux ressources permettant de définir une distance entre les uns et les autres, soit directement, soit par l'entremise de lieux.
 
 ## Exemples théoriques
@@ -114,9 +113,9 @@ mf_layout(title = "Exemple 2 : populations et ressources", scale=F, credits = ""
 ```
 
 
-# EFFICACITE OU EQUITE ?
+# EFFICACITÉ OU ÉQUITÉ ?
 
-On suppose que les 12 individus représentés sur la figure de l'exemple 1 souhaitent se réunir et cherchent à choisir un lieu de rendez-vous qui soit définit de facçon objective. Quel point choisiriez vous ?
+On suppose que les 12 individus représentés sur la figure de l'exemple 1 souhaitent se réunir et cherchent à choisir un lieu de rendez-vous qui soit défini de façon objective. Quel point choisiriez-vous ?
 
 
 ## Distance de Manhattan entre individus
@@ -130,7 +129,7 @@ colnames(mat)<-jeu$cards
 kable(mat, caption = "Distances de Manhattan entre les individus")
 ```
 
-- **Efficacité** : La localisation la plus efficace est celle qui minimise la moyenne (ou la somme) des distances d'un indinvidu à tous les autres. On poura vérifier que le point le plus accessible est le 2♥.
+- **Efficacité** : La localisation la plus efficace est celle qui minimise la moyenne (ou la somme) des distances d'un individu à tous les autres. On pourra vérifier que le point le plus accessible est le 2♥.
 
 ```{r}
 moy <- apply(mat, 1, mean, na.rm=T)
@@ -139,17 +138,17 @@ kable(moy, digits=2, caption = "Distance moyenne d'un point à tous les autres")
 ```
 
 
-Mais en fait la solution optimale pourrait être obenu plus simplement puisque la distance de Manhattan est décomposable selon X et Y. Le point le plus efficace est le point médian M :
+Mais en fait la solution optimale pourrait être obtenue plus simplement puisque la distance de Manhattan est décomposable selon X et Y. Le point le plus efficace est le point médian M :
 
 $M = (mediane(X), mediane(Y)$. 
 
 
-- **Equité** : la localisation la plus efficace est celle qui minimise la distance maximale d'un point à tous les autres. On pourra vérifier que le point le plus équitable est le 3♥.
+- **Équité** : la localisation la plus efficace est celle qui minimise la distance maximale d'un point à tous les autres. On pourra vérifier que le point le plus équitable est le 3♥.
 
 ```{r}
 max <- apply(mat, 1, max, na.rm=T)
 max<-max[order(max)]
-kable(max, digits=2, caption = "Distance maximale d'un moint à tous les autres")
+kable(max, digits=2, caption = "Distance maximale d'un point à tous les autres")
 ```
 
 Ici encore, la distance de Manhattan facilite la recherche de la solution puisque l'on peut décomposer le problème sur X et Y. Le point le plus équitable est le point central C :
@@ -191,13 +190,13 @@ mf_layout(title = "Distance euclidienne maximale", scale=F, credits = "", arrow=
 ```
 
 
-# ACCESSIBILITE MINIMALE A UN SERVICE
+# ACCESSIBILITÉ MINIMALE À UN SERVICE
 
 Considérons maintenant le problème d'accessibilité d'une population à un service. On part de l'exemple théorique n°2 qui définit deux tableaux correspondant respectivement à l'offre et la demande, c'est-à-dire aux lieux d'origine et de destination ; 
 
 ## Formalisation
 
-On définit la demande comme un ensemble de n localisation 1..i..n de coordonnées (Xi, Yi) et de masses (Mi) :
+On définit la demande comme un ensemble de n localisations 1..i..n de coordonnées (Xi, Yi) et de masses (Mi) :
 
 ```{r}
 ori <- trade %>% filter(fonction == "demande") %>% 
@@ -208,7 +207,7 @@ kable(st_drop_geometry(ori),caption = "Localisation de la demande")
 
 ```
 
-On définit l'offre comme un ensemble de n localisation 1..j..p de coordonnées (Xj, Yj) et de masses (Mj) :
+On définit l'offre comme un ensemble de n localisations 1..j..p de coordonnées (Xj, Yj) et de masses (Mj) :
 
 ```{r}
 des <- trade %>% filter(fonction == "offre") %>% 
@@ -230,7 +229,7 @@ kable(mat, digits=2, caption = "Distance euclidienne entre lieux d'origine et de
 ```
 
 
-## Distances minimale non pondérée
+## Distance minimale non pondérée
 
 On peut calculer pour chaque individu du lieu d'origine sa distance minimale au service ou commerce le plus proche. On obtient le tableau suivant :
 
@@ -249,7 +248,7 @@ summary(acc$Dmin)
 
 La distance minimale d'accès au service est de 1 et la distance maximale de 5.385. En moyenne l'offre est localisée à 2.35 de la demande. Toutefois ce calcul ne tient pas compte du nombre de personnes localisées dans les différents lieux d'origine.
 
-## Distances minimale pondérée par les origines
+## Distance minimale pondérée par les origines
 
 On calcule la quantité de mouvement  MDij et on en déduit la distance moyenne franchie par un habitant en calculant la somme des mouvements divisée par la somme des individus.
 
@@ -258,7 +257,7 @@ acc$MDij <- acc$Mi*acc$Dij
 sum(acc$MDij/sum(acc$Mi))
 ```
 
-On voit que la valeur obtenu est plus grande (2.62) car les localisations éloignées sont aussi les plus peuplées.  Pour obtenir une vue plus complète, on calcule les fréquences cumulées de mouvements en fonction de la distance :
+On voit que la valeur obtenue est plus grande (2.62) car les localisations éloignées sont aussi les plus peuplées.  Pour obtenir une vue plus complète, on calcule les fréquences cumulées de mouvements en fonction de la distance :
 
 ```{r}
 acc$Cum_MDij <- cumsum(acc$MDij)
@@ -266,7 +265,7 @@ acc$Fcum <- 100*acc$Cum_MDij/sum(acc$MDij)
 kable(acc, digits = 2, caption = "Calcul de la courbe d'accessibilité pondérée")
 ```
 
-Il ne reste plus qu'à tracer la courbe des fréquences cumulées de population en fonction de la distance pour obtenur une vision synthétique de l'accessibilité de la population au service considéré. 
+Il ne reste plus qu'à tracer la courbe des fréquences cumulées de population en fonction de la distance pour obtenir une vision synthétique de l'accessibilité de la population au service considéré. 
 
 
 ```{r}
@@ -280,5 +279,5 @@ g<- ggplot(acc, aes(x=Dij, y = Fcum)) +
 g
 ```
 
-On peut alos appécier plus pécisément la distribution des personnes qui disposent d'une bonne accessibilité, d'une accessibilité moyenne ou d'une faible accessibilité. 
+On peut alors apprécier plus précisément la distribution des personnes qui disposent d'une bonne accessibilité, d'une accessibilité moyenne ou d'une faible accessibilité. 
 

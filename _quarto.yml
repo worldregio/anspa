@@ -10,14 +10,20 @@ website:
         href: Syllabus2025.qmd
       - text: 1. Introduction
         menu:
-          - text: Cours
+          - text: Cours1 - Qu'est-ce que l'analyse spatiale 
             href: cours1.qmd
-          - text: TD
+          - text: TD1 - Jeux de cartes
             href: TD1.qmd
       - text: 2. Accessibilité
         menu:
-          - text: Cours
-            href: cours2.qmd            
+          - text: Cours2 -  Accessibilité spatiale
+            href: cours2.qmd
+          - text: Focus -  Qu'est-ce qu'un désert médical ?
+            href: cours2_diapo.qmd
+            target: _blank
+          - text: TD2 - Accessibilité aux services de soins
+            href: https://analytics.huma-num.fr/Claude.Grasland/access/
+            target: _blank
     right: 
       - icon: github # add icons as navbar buttons
         href: https://github.com/worldregio/anspa

@@ -90,7 +90,7 @@ jeu <- world  %>% filter(family=="♥") %>% arrange(level)
 trade<-jeu
 trade$taille <- as.numeric(trade$level)
 trade$taille[trade$level=="A"]<-1
-trade$taille[trade$level=="D"]<-30
+trade$taille[trade$level=="D"]<-40
 trade$taille[trade$level=="V"]<-15
 trade$fonction = "demande"
 trade$fonction[trade$level=="V"]<-"offre"
@@ -303,8 +303,8 @@ sum(acc$MDij/sum(acc$Mi))
 On voit que la valeur obtenue est plus grande (2.62) car les localisations éloignées sont aussi les plus peuplées.  Pour obtenir une vue plus complète, on calcule les fréquences cumulées de mouvements en fonction de la distance :
 
 ```{r}
-acc$Cum_MDij <- cumsum(acc$MDij)
-acc$Fcum <- 100*acc$Cum_MDij/sum(acc$MDij)
+acc$Cum_Mi <- cumsum(acc$Mi)
+acc$Fcum <- 100*acc$Cum_Mi/sum(acc$Mi)
 kable(acc, digits = 2, caption = "Calcul de la courbe d'accessibilité pondérée")
 ```
 

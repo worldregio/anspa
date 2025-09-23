@@ -1,6 +1,6 @@
 ---
-title: "[TD1] Introduction à l'analyse spatiale"
-subtitle: "Masters Géoprisme et Carthageo"
+title: "[TD1] Jeux de cartes"
+subtitle: "Masters Géoprisme et Carthageo "
 date: "09/01/2025"
 author: "Claude Grasland, Malika Madelin"
 format:
@@ -149,7 +149,9 @@ On peut ensuite visualiser le résultat à l'aide d'**ellipses de dispersions** 
 :::: {.columns}
 
 ::: {.column width="20%"}
+
 :::
+
 ::: {.column width="60%"}
 
 ```{r, fig.height=8,fig.width=6}
@@ -219,8 +221,11 @@ text(sel$X,sel$Y,fam, col="red",cex=1.5)
 
 ```
 :::
+
 ::: {.column width="20%"}
 :::
+
+::::
 
 ::: {.callout-important title="Discussion"}
 La solution précédente est relativement complexe puisqu'elle fait appel à des notions statistiques pas forcément connues. Mais surtout elle comporte des hypothèses implicites concernant la distribution spatiale et l'éloignement des points. Elle se place en effet dans un **espace euclidien continu** et suppose que les distributions de X et de Y sont de nature **gaussienne**.  Or rien n'indique que ces deux hypothèses soient valides !
@@ -376,7 +381,7 @@ text(jeu$geometry,jeu$cards,col=jeu$col,cex=1)
 ```
 
 
----
+
 
 
 # EXO2 : DYNAMIQUES DE SÉGRÉGATION ET D'OPINION
@@ -783,20 +788,21 @@ L'un des résultats principaux de ces modèles de simulation est de montrer qu'i
 
 ![Schelling model](img/schelling.png)
 
----
+
+
 
 # EXO3 : ACCESSIBILITÉ, POTENTIEL, INTERACTION
 
 
 ## Préparation des données
 
-On suppose que les dames et les valets correspondent à des commerces ou services pouvant desservir au départ 30 individus pour les dames et 15  pour les valets. Les autres cartes correspondent à un nombre de personnes intéressées par ces commerces ou services. On pourra vérifier que pour chaque famille de carte il y a 45 demandes (1+2+3+...+10) et 45 offres (15 + 30) de sorte que le marché est a priori équilibré. La question qui se pose est de savoir comment va s'opérer l'ajustement de l'offre et de la demande dans l'espace, sachant que les clients cherchent à minimiser la distance qui représente pour eux un coût. On considère deux situations différentes de distribution des clients et des commerçants en utilisant les cartes de la famille "<span style=color:red>♥</span>"  et celle de la famille "♠". 
+On suppose que les dames et les valets correspondent à des commerces ou services pouvant desservir au départ 40 individus pour les dames et 15  pour les valets. Les autres cartes correspondent à un nombre de personnes intéressées par ces commerces ou services. On pourra vérifier que pour chaque famille de carte il y a 55 demandes (1+2+3+...+10) et 45 offres (15 + 40) de sorte que le marché est a priori équilibré. La question qui se pose est de savoir comment va s'opérer l'ajustement de l'offre et de la demande dans l'espace, sachant que les clients cherchent à minimiser la distance qui représente pour eux un coût. On considère deux situations différentes de distribution des clients et des commerçants en utilisant les cartes de la famille "<span style=color:red>♥</span>"  et celle de la famille "♠". 
 
 ```{r, fig.width=8, fig.height=8}
 trade <-map %>% filter(family=="♥")
 trade$taille <- as.numeric(trade$level)
 trade$taille[trade$level=="A"]<-1
-trade$taille[trade$level=="D"]<-30
+trade$taille[trade$level=="D"]<-40
 trade$taille[trade$level=="V"]<-15
 trade$fonction = "demande"
 trade$fonction[trade$level=="V"]<-"offre"
@@ -806,7 +812,7 @@ trade1<-trade
 trade <-map %>% filter(family=="♠")
 trade$taille <- as.numeric(trade$level)
 trade$taille[trade$level=="A"]<-1
-trade$taille[trade$level=="D"]<-30
+trade$taille[trade$level=="D"]<-40
 trade$taille[trade$level=="V"]<-15
 trade$fonction = "demande"
 trade$fonction[trade$level=="V"]<-"offre"

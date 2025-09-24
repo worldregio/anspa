@@ -12,6 +12,8 @@ website:
         menu:
           - text: Cours1 - Qu'est-ce que l'analyse spatiale 
             href: cours1.qmd
+          - text: Focus - Analyse spatio-temporelle
+            href: cours1_diapo.qmd
           - text: TD1 - Jeux de cartes
             href: TD1.qmd
       - text: 2. Accessibilité

@@ -189,6 +189,104 @@
     "text": "4. Résultat et … réactions !\n\n\n\n\nLa présentation de la carte a fait l’objet de vives réactions. A titre d’exemple, la Fédération nationale des centres de santé (FNCS) a publié le 2 août 2017 un communiqué de presse assez virulent à ce propos (« Un zonage qui renforce les inégalités sociales de santé »). En effet, si l’APL apporte des innovations méthodologiques intéressantes pour proposer une analyse des inégalités d’accès aux médecins généralistes sur tout le territoire français, l’application de la méthodologie nationale produit une « sélection automatique » de communes en décalage assez profond avec la photographie des inégalités socio-territoriales appréhendées habituellement.\n\nSource : Mangeney C., Grémy I., 2018, Les déserts médicaux en Ile-de-France, rapport de l’ORS Ile-de-France, 131 p."
   },
   {
+    "objectID": "cours1_diapo.html#il-existe-une-population",
+    "href": "cours1_diapo.html#il-existe-une-population",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Il existe une population …",
+    "text": "Il existe une population …\n\nAxiome 1 : Il existe un monde à l’intéreur duquel des individus interagissent dans le temps et l’espace."
+  },
+  {
+    "objectID": "cours1_diapo.html#dénombrable",
+    "href": "cours1_diapo.html#dénombrable",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "… dénombrable …",
+    "text": "… dénombrable …\n\nAxiome 2 : Ce monde est fini dans chacune de ses trois dimensions :\n\nAxiome 2.1 : Les individus qui compose le monde forment une population dénombrable munie d’attributs.\nAxiome 2.2 : Le temps qui ordonne les évènements se produisant à l’intérieur du monde est segmentable en intervalles de temps ou périodes.\nAxiome 2.3 : L’espace à l’intérieur duquel interagisse les individus est découpable en un nombre fini de lieux constituant une grille ou une régionalisation."
+  },
+  {
+    "objectID": "cours1_diapo.html#changeante",
+    "href": "cours1_diapo.html#changeante",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "… changeante …",
+    "text": "… changeante …\n\nAxiome 3 : Les trajectoires des individus peuvent être décrits par des événements de différents types parmi lesquels\n\n3.1 Apparition : naissance d’un nouvel individu\n3.2 Disprition : disparition d’un individu\n3.3 Mutation : changement d’attribut social\n3.4 Mobilité : changement de position spatiale"
+  },
+  {
+    "objectID": "cours1_diapo.html#interagissante",
+    "href": "cours1_diapo.html#interagissante",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "… interagissante …",
+    "text": "… interagissante …\n\nAxiome 4 : les interactions entre les individus sont à la fois cause et conséquence des événements qui modifient la structure et la dyamique du monde.\n\n4.1 : Structure : description du monde à un instant t permettant de définir des interactions potentielles\n4.2 : Dynamique : description du monde au cours d’une période passée [t-1,t] permettant d’examiner les interactions effectivement réalisées."
+  },
+  {
+    "objectID": "cours1_diapo.html#ayant-une-représentation-delle-même.",
+    "href": "cours1_diapo.html#ayant-une-représentation-delle-même.",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "… ayant une représentation d’elle-même.",
+    "text": "… ayant une représentation d’elle-même.\n\nAxiome 5 : Toute description du mondeproduite par des individus localisés à l’intérieur de celui-ci est nécessairement incomplète et partiale.\n\n5.1 : Incomplétude : Conséquence des deux théorèmes de Gödel, un système axiomatique de description du monde ne peut être validé qu’à l’extérieur de celui-ci.\n5.2 : Partialité : Dès lors qu’il nexiste pas de théorie unique, différents groupes d’individus peuvent proposer des descriptions du monde concurrente sans qu’il soit possible de trancher en faveur de l’une plutôt que l’autre."
+  },
+  {
+    "objectID": "cours1_diapo.html#individus-et-temps",
+    "href": "cours1_diapo.html#individus-et-temps",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Individus et temps",
+    "text": "Individus et temps\nOn peut tout à fait imaginer des modèles d’interaction sociale ne faisant intervenir que le temps. Mais nous verrons par la suite que l’inverse n’est pas vrai et que tout modèle d’interaction spatiale implique obligatoirement la prise en compte du temps.\nLe diagramme de Lexis utilisé en démographie permet d’illustrer le cas d’interactions sociales se déroulant uniquement dans le temps et qui dépendent à la fois du temps historique (date d’un événement) et du temps individuel (âge de la personne). Prenons par exemple quatre géographes français parisiens et demandons-nous s’ils ont eu l’occasion de se rencontrer au cours de leur vie et de débattre en face à face."
+  },
+  {
+    "objectID": "cours1_diapo.html#quatre-géographes-parisiens",
+    "href": "cours1_diapo.html#quatre-géographes-parisiens",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Quatre géographes parisiens …",
+    "text": "Quatre géographes parisiens …\n Paul Vidal de la Blache (22 janvier 1845 - 5 mars 1918)\n Emmanuel de Martonne (1er avril 1873 - 24 juillet 1955)\n Pierre Georges (11 octobre 1909 - 11 septembre 2006)\nChristian Grataloup (12 avril 1951 - présent)"
+  },
+  {
+    "objectID": "cours1_diapo.html#diagramme-de-lexis",
+    "href": "cours1_diapo.html#diagramme-de-lexis",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Diagramme de Lexis",
+    "text": "Diagramme de Lexis"
+  },
+  {
+    "objectID": "cours1_diapo.html#ont-ils-pu-se-rencontrer",
+    "href": "cours1_diapo.html#ont-ils-pu-se-rencontrer",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Ont-ils pu se rencontrer ?",
+    "text": "Ont-ils pu se rencontrer ?\n\nPaul & Emmanuel : Paul Vidal de la Blache a pu dialoguer largement avec Emmanuel de Martonne dont il a fait son héritier spirituel. Les opportunités d’interaction correspondent à la possibilité de relier deux lignes de vie par une droite verticale. Mais il faut également que l’âge autorise l’interaction.\nPierre et Paul  : Pierre Georges est certes contemporain de Paul Vidal de la Blache, mais il n’a que 9 ans au moment de la mort de ce dernier.\nEmmanuel, Pierre, et Christian  : Pierre Georges a en revanche pu interagir avec Emmanuel de Martonne et rencontrer Christian Grataloup, etc. Est-ce que ce dernier a pu interagir avec Emmanuel de Martonne ?"
+  },
+  {
+    "objectID": "cours1_diapo.html#quels-modes-de-transmission",
+    "href": "cours1_diapo.html#quels-modes-de-transmission",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Quels modes de transmission ?",
+    "text": "Quels modes de transmission ?"
+  },
+  {
+    "objectID": "cours1_diapo.html#problème-n1",
+    "href": "cours1_diapo.html#problème-n1",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Problème n°1",
+    "text": "Problème n°1\nExemple (simple) de time-geography : Le monde se réduit à une route unique de 70 lieues (une lieue fait environ 4 km). Cendrillon (en bleu) réside au point n°20 dispose d’un carrosse qui lui permet de franchir 20 lieux en 12 heures. Le Prince Charmant (en rose) réside au point n°50. Il n’est pas très sportif et peut franchir 5 lieux en 12 heures. Ils sont donc situés à 30 lieux de distance l’un de l’autre. Chacun d’eux part de chez lui à minuit et doit impérativement rentrer à son domicile avant le lendemain à minuit."
+  },
+  {
+    "objectID": "cours1_diapo.html#solution-n1",
+    "href": "cours1_diapo.html#solution-n1",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Solution n°1",
+    "text": "Solution n°1"
+  },
+  {
+    "objectID": "cours1_diapo.html#problème-n2",
+    "href": "cours1_diapo.html#problème-n2",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Problème n°2",
+    "text": "Problème n°2\nSupposons maintenant que le Prince charmant ait réussi à voler le carrosse de son père…"
+  },
+  {
+    "objectID": "cours1_diapo.html#solution-n2",
+    "href": "cours1_diapo.html#solution-n2",
+    "title": "Analyse spatio-temporelle des phénomènes sociaux",
+    "section": "Solution n°2",
+    "text": "Solution n°2"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Analyse spatiale",

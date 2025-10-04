@@ -1,0 +1,4007 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.06 [fr] (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Claude GRASLAND">
+   <TITLE>Chap4_1</TITLE>
+</HEAD>
+<BODY LINK="#0000FF" VLINK="#800080">
+
+<DIR>
+<DIR>
+<H1>
+4.1 FORME GENERALE D'UN MODELE D'INTERACTION SPATIALE</H1>
+
+<BLOCKQUOTE>.
+<BR>En accord avec Fotheringham et O’Kelly (1989) on peut donner une d&eacute;finition
+tr&egrave;s g&eacute;n&eacute;rale d’un mod&egrave;le d’interaction comme
+la mise en relation de quatre ensembles de variables (<I>Tableau 1</I>).
+<BR>&nbsp;
+<BR>&nbsp;
+<P><A NAME="_Ref358860346"></A><B>Tableau 1 : Forme g&eacute;n&eacute;rale
+d’un mod&egrave;le d’interaction spatiale</B>
+<BR>&nbsp;
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD><B>F</B> = <I>f</I>(<B>E</B>, <B>A</B>, <B>I</B>)&nbsp;
+<P>avec
+<P><B>F</B> : une ou plusieurs matrices de dimension [<I>m.n</I>] d&eacute;crivant
+les &eacute;changes entre <I>m</I> lieux d’origine et <I>n</I> lieux de
+destinations
+<BR><B>E</B> : un ou plusieurs vecteurs de dimension [<I>m</I>] d&eacute;crivant
+les capacit&eacute;s d’&eacute;mission des lieux d’origines.
+<BR><B>A</B> : un ou plusieurs vecteurs de dimension [<I>n</I>] d&eacute;crivant
+les capacit&eacute;s d’attraction des lieux de destination.
+<BR><B>I</B> : une ou plusieurs matrices de dimension [<I>m.n</I>] d&eacute;crivant
+le degr&eacute; de s&eacute;paration des lieux d’origines et de destination.</TD>
+</TR>
+</TABLE>
+
+<P>L’essence des mod&egrave;les d’interaction est donc de relier les valeurs
+de la matrice de relation <B>F</B> avec les valeurs correspondantes des
+matrices <B>E</B>, <B>A</B> et <B>I</B> sous diff&eacute;rentes hypoth&egrave;ses.
+Diff&eacute;rentes familles de mod&egrave;les peuvent donc &ecirc;tre d&eacute;finies
+en fonction du nombre et de la nature des variables (matrices ou vecteurs)
+contenues dans les ensembles <B>F</B>, <B>E</B>, <B>A</B> et <B>I</B>.
+<BR>&nbsp;
+<P>Les diff&eacute;rentes &eacute;tapes de la construction d'un mod&egrave;le
+d'interaction spatiale sont les suivantes :
+<P><A HREF="#4.1.1 Choix de la matrice d'interaction (F)">1. Choix de la
+matrice d'interaction (F)</A>
+<BR><A HREF="#4.1.2 Choix des facteurs d'émission (E) et de">2. Choix des
+facteurs d'&eacute;mission (E) et de r&eacute;ception (F)</A>
+<BR><A HREF="#4.1.3 Choix des facteurs d'éloignement (D)">3. Choix des
+facteurs d'&eacute;loignement (D)</A>
+<BR><A HREF="#4.1.4 Choix de la fonction de décroissance des">4. Choix
+de la fonction de d&eacute;croissance des interactions en fonction de la
+distance f(D)</A>
+<BR><A HREF="#4.1.5 Choix de la forme générale du modèle et des">5. Choix
+de la forme g&eacute;n&eacute;rale du mod&egrave;le et des contraintes</A>
+<BR><A HREF="#4.1.6. : Choix du critère d'ajustement et">6. Choix du crit&egrave;re
+d'ajustement et d&eacute;termination des param&egrave;tres &agrave; estimer</A>
+<BR>&nbsp;</BLOCKQUOTE>
+
+<H2>
+<A NAME="4.1.1 Choix de la matrice d'interaction (F)"></A>4.1.1 Choix de
+la matrice d'interaction (F)</H2>
+
+<BLOCKQUOTE>La nature de la matrice <B>F</B> d&eacute;crivant les flux
+entre les lieux conditionne en premier lieu la nature des mod&egrave;les
+qui pourront &ecirc;tre &eacute;labor&eacute;.
+<P><I><FONT FACE="Arial">matrice carr&eacute;e ou matrice rectangulaire</FONT></I>
+<UL>&nbsp;
+<BR>Le cas le plus fr&eacute;quent est celui de l’analyse d’une <I>matrice
+carr&eacute;e</I> o&ugrave; il y a identit&eacute; entre les lieux d’origines
+et les lieux de destination. C’est par exemple le cas lorsque l’on &eacute;tudie
+les &eacute;changes de marchandise entre les r&eacute;gions fran&ccedil;aises
+ou le nombre d’avions et de trains entre les villes europ&eacute;ennes
+de plus de 200 000 habitants.
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<TABLE BORDER CELLSPACING=2 CELLPADDING=2 WIDTH="429" >
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">A</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">B</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">C</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">D</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">total</TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">X</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">Y</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">Z</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">total</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16">A</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16">A</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16">B</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16">B</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16">C</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16">C</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">D</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">D</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">total</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17">total</TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="17"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP COLSPAN="3" WIDTH="24%" HEIGHT="16"><I>matrice carr&eacute;e</I></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="8%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP COLSPAN="5" WIDTH="40%" HEIGHT="16"><I>matrice rectangulaire</I></TD>
+</TR>
+</TABLE>
+
+<P>Mais il peut &eacute;galement arriver que les flux &eacute;tudi&eacute;s
+concernent des <I>matrices rectangulaire</I> o&ugrave; lieux d’origine
+et de destination sont diff&eacute;rents. C’est par exemple le cas lorsque
+l’on &eacute;tudie les flux de marchandise des r&eacute;gions fran&ccedil;aises
+vers les r&eacute;gions belges (sans &eacute;tudier les relations intra-France
+ou intra-Belgique) ou bien lorsque l’on &eacute;tudie les d&eacute;placements
+des &eacute;tudiants depuis leur lieu de r&eacute;sidence (36000 communes)
+vers leur lieu d’&eacute;tude (les sites universitaires).
+<BR>&nbsp;
+<P><B>N.B.</B> La distinction matrice carr&eacute;e / matrice rectangulaire
+a donc trait non pas au nombre de lignes et de colonnes (il peut arriver
+qu’une matrice " rectangulaire " comporte le m&ecirc;me nombre de lieux
+d’origine et de destination) mais &agrave; l’&eacute;quivalence ou non
+des deux listes de lieux d’origine et de destination.
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B>Les deux types de matrices de flux soul&egrave;vent des probl&egrave;mes
+d’interpr&eacute;tation et d’analyse de natures diff&eacute;rentes. En
+effet, les matrices rectangulaire sont souvent associ&eacute;es &agrave;
+des probl&egrave;mes d’allocation de ressources ou d’accessibilit&eacute;
+tandis que les matrices carr&eacute;s se rattachent plus directement &agrave;
+des probl&egrave;mes d’interaction ou d’&eacute;quilibre des &eacute;changes.
+Seules ces derni&egrave;res seront consid&eacute;r&eacute;es dans le cadre
+de ce travail.</B>
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">diagonale vide ou diagonale pleine (matrices carr&eacute;es)</FONT></I>
+<UL>&nbsp;
+<BR>Dans le cas des matrices carr&eacute;s, il faut &eacute;galement op&eacute;rer
+une distinction essentielle entre les matrices &agrave; diagonale pleines,
+pour lesquelles le flux d’une unit&eacute; spatiale vers elle-m&ecirc;me
+est d&eacute;finie et les matrices &agrave; diagonale vides pour lesquelles
+ce flux n’est pas d&eacute;fini.
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<TABLE BORDER CELLSPACING=2 CELLPADDING=2 WIDTH="464" >
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">A</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">B</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">C</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">D</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">total</TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">A</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">B</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">C</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">D</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">total</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">A</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">100</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">30</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">150</TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">A</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">-</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">30</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">50</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">B</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">200</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">40</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">20</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">270</TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">B</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">-</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">40</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">20</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">70</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">C</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">20</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">50</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">100</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">30</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">200</TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">C</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">20</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">50</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">-</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">30</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16">100</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">D</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">30</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">20</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">50</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">110</TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">D</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">10</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">30</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">20</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">-</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">60</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">total</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">140</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">290</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">190</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">110</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">730</TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">total</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">40</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">90</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">90</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">60</TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="17">280</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP COLSPAN="4" WIDTH="30%" HEIGHT="16"><I>diagonale pleine</I></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="11%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP COLSPAN="3" WIDTH="22%" HEIGHT="16"><I>diagonale vide</I></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="7%" HEIGHT="16"></TD>
+</TR>
+</TABLE>
+
+<BR>&nbsp;
+<P>Dans le cas d’une matrice d’&eacute;changes migratoires, par exemple,
+le fait de ne pas renseigner la diagonale signifie que l’on ne consid&egrave;re
+comme migrants que les individus ayant franchi les limites d’une maille
+territoriale. Ceci revient &agrave; dissocier la probabilit&eacute; g&eacute;n&eacute;rale
+de migration en deux composantes ind&eacute;pendantes, le choix d’une destination
+&agrave; l’int&eacute;rieur de sa propre maille territoriale et le choix
+d’une destination localis&eacute;e dans une autre maille territoriale.
+Or, ce postulat d’ind&eacute;pendance entre les probabilit&eacute;s de
+migration intra-maille et inter-maille n’est g&eacute;n&eacute;ralement
+pas v&eacute;rifi&eacute;, les taux de migrations variant le plus souvent
+en fonction inverse de la population ou de la superficie des unit&eacute;s
+spatiales.
+<BR>&nbsp;
+<P>Pour autant, la prise en compte des migrations intra-maille (&eacute;tude
+d’une matrice &agrave; diagonale pleine) soul&egrave;ve toute une s&eacute;rie
+de difficult&eacute;s tant sur le plan th&eacute;orique que sur le plan
+statistique. La diagonale peut en effet correspondre soit &agrave; l’ensemble
+de la population demeur&eacute;e dans la maille au cours de la p&eacute;riode
+de temps &eacute;tudi&eacute;e, soit &agrave; la population ayant effectu&eacute;e
+un d&eacute;placement &agrave; l’int&eacute;rieur de la maille. Mais dans
+ce dernier cas, l’effectif de migrant d&eacute;pend du choix d’un maillage
+interne dont la finesse va conditionner le nombre de migrant intra-maille
+(e.g. &eacute;tude des migrations intra-r&eacute;gionales &agrave; l’aide
+d’un d&eacute;coupage d&eacute;partemental, cantonal, communal, domiciliaire,
+etc). D’un point de vue statistique, la prise en compte des flux intra-maille
+pose &eacute;galement probl&egrave;me dans la mesure o&ugrave; les distances
+internes sont g&eacute;n&eacute;ralement difficiles &agrave; &eacute;valuer
+et o&ugrave; les biais introduits par cette estimation imparfaite vont
+d’autant plus se r&eacute;percuter sur l’ensemble du mod&egrave;le que
+les effectifs des flux intra-maille sont g&eacute;n&eacute;ralement tr&egrave;s
+sup&eacute;rieurs &agrave; ceux des flux inter-mailles. Seuls des mod&egrave;les
+complexes, articulant plusieurs niveaux d’analyse permettent donc de traiter
+valablement le cas des matrices &agrave; diagonale pleine.
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B>Dans le cadre de cette &eacute;tude, on se limitera donc &agrave;
+l’&eacute;tude des mod&egrave;les d’interaction portant sur des matrices
+carr&eacute;es &agrave; diagonale vide, tout en soulignant qu’il se fondent
+sur une hypoth&egrave;se forte d’ind&eacute;pendance entre le choix des
+destinations intra-maille et inter-mailles.</B>
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">agr&eacute;gation ou d&eacute;sagr&eacute;gation
+des flux en sous-populations</FONT></I>
+<BLOCKQUOTE>Qu’elles concernent des marchandises ou des individus, les
+matrices de flux ont souvent trait &agrave; des agr&eacute;gats (de population,
+de marchandise) qui peuvent &ecirc;tre segment&eacute;s en sous-populations
+(ce terme &eacute;tant pris au sens statistique et non pas au sens d&eacute;mographique).
+En amont de toute mod&eacute;lisation de l’interaction spatiale, il faut
+donc se demander si l’hypoth&egrave;se d’homog&eacute;n&eacute;it&eacute;
+du comportement de l’agr&eacute;gat est valide et si, au contraire, il
+n’y aurait pas avantage &agrave; segmenter le mod&egrave;le d’interaction
+spatiale en autant de sous-mod&egrave;le qu’il y a de sous-populations.</BLOCKQUOTE>
+<B>Tableau 2 : Effet de barri&egrave;re et frein de la distance subis par
+les marchandises &eacute;chang&eacute;es entre les r&eacute;gions belges
+et fran&ccedil;aises en 1989</B>
+<TABLE BORDER CELLSPACING=2 CELLPADDING=2 WIDTH="448" >
+<TR>
+<TD VALIGN=TOP WIDTH="19%">&nbsp;</TD>
+
+<TD VALIGN=TOP WIDTH="28%">
+<CENTER>Frein de la distance</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%">
+<CENTER>Effet de
+<BR>Barri&egrave;re</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%">
+<CENTER>Qualit&eacute; d'ajustement</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST0</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-1.59</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>4.0</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>90.5%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST1</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-1.51</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>5.6</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>93.8%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST2</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>-</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>-</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST3</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-2.17</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>4.8</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>96.1%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST4</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>-</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>-</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST5</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-0.93</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>4.3</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>92.0%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST6</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-1.72</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>8.3</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>90.5%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST7</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-1.53</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>4.5</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>90.5%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST8</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-1.10</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>3.7</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>90.5%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">NST9</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-1.25</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>4.2</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>90.6%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="18">Ensemble</TD>
+
+<TD VALIGN=TOP WIDTH="28%" HEIGHT="18">
+<CENTER>-1.60</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="23%" HEIGHT="18">
+<CENTER>5.6</CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="29%" HEIGHT="18">
+<CENTER>93.9%</CENTER>
+</TD>
+</TR>
+</TABLE>
+<FONT SIZE=-1>Les param&egrave;tres ont &eacute;t&eacute; estim&eacute;s
+&agrave; l’aide d’un mod&egrave;le &agrave; double contrainte selon&nbsp;
+le crit&egrave;re de minimisation du Chi-2</FONT>
+<BR><B><FONT SIZE=-1><I>Source :</I> Robert D., Sebire V., Grasland C.,
+Calzada C., 1996</FONT></B>
+<BLOCKQUOTE>&nbsp;
+<BR>&nbsp;
+<P>Dans le cadre d’une &eacute;tude sur les &eacute;changes de marchandises
+entre les r&eacute;gions de France et de Belgique en 1989, on a pu d&eacute;finir
+les valeurs moyennes du frein de la distance (-1.6 pour une fonction par&eacute;tienne)
+et de l’effet de barri&egrave;re subi au franchissement de la fronti&egrave;re
+(r&eacute;duction relative des flux internationaux par 5.6, comparativement
+aux flux intra-nationaux). Mais ces deux param&egrave;tres obtenus tous
+types de marchandises confondus subissent des variations importantes lorsque
+l’on effectue les m&ecirc;mes calculs par types de produits (NST), les
+produits pond&eacute;reux &agrave; faible valeur ajout&eacute;e subissant
+davantage le frein de la distance et l’effet de barri&egrave;re que les
+produits &agrave; forte valeur ajout&eacute;e.
+<BR>&nbsp;
+<P><B>Le choix d’une mod&eacute;lisation agr&eacute;g&eacute;e ou d&eacute;sagr&eacute;g&eacute;e
+par sous-populations d&eacute;pend fondamentalement des hypoth&egrave;ses
+faites sur la nature des flux &eacute;tudi&eacute;s et sur les relations
+d’ind&eacute;pendance ou au contraire de concurrence et de substitutions
+possibles entre les d&eacute;placements des diff&eacute;rentes sous-population.
+En tous les cas, l’hypoth&egrave;se de l’existence d’un comportement moyen
+ind&eacute;pendant de celui des sous-population doit dans tous les cas
+&ecirc;tre discut&eacute;e et critiqu&eacute;e lorsque l’information disponible
+le permet.</B></BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H2>
+<A NAME="4.1.2 Choix des facteurs d'émission (E) et de"></A>4.1.2 Choix
+des facteurs d'&eacute;mission (E) et de r&eacute;ception (R)</H2>
+&nbsp;
+<BLOCKQUOTE><I><FONT FACE="Arial">Variables exog&egrave;nes caract&eacute;risant
+les lieux d’&eacute;mission et de r&eacute;ception</FONT></I>
+<UL>&nbsp;
+<BR>Les mod&egrave;les d’interaction spatiale ayant une vocation pr&eacute;dictive
+privil&eacute;gient comme facteur d’&eacute;mission ou de r&eacute;ception
+des <I>variables exog&egrave;nes</I> au mod&egrave;le d’interaction spatiale,
+c’est-&agrave;-dire ne supposant pas une connaissance pr&eacute;alable
+de la matrice des flux. L’exemple le plus classique est celui de l’emploi
+de la population totale comme variable cens&eacute;e refl&eacute;ter les
+capacit&eacute;s d’&eacute;mission et de r&eacute;ception des lieux dans
+les mod&egrave;les d’interaction spatiale d&eacute;crivant les flux migratoires
+entre des villes, des r&eacute;gions ou des pays.
+<P>On remarquera toutefois qu’il existe une dissym&eacute;trie entre les
+justification th&eacute;oriques de l’emploi de la population comme mesure
+des capacit&eacute;s d’&eacute;mission et de r&eacute;ception dans les
+mod&egrave;les migratoires. En tant que capacit&eacute; d’&eacute;mission
+(facteur " push "), la population refl&egrave;te le nombre d’individus
+soumis au risque de migrer, ce qui ne soul&egrave;ve pas de difficult&eacute;s
+particuli&egrave;re, tout au moins dans les pays o&ugrave; la libert&eacute;
+de d&eacute;placement est garantie &agrave; tous les citoyens. Le choix
+de cette m&ecirc;me population comme capacit&eacute; de r&eacute;ception
+(facteur " pull ") est beaucoup moins &eacute;vident puisque ce qu’il s’agit
+de d&eacute;terminer est la capacit&eacute; d’accueil des migrants qui
+d&eacute;pend de nombreux facteurs (emplois disponibles, logements libres,
+image de marque, etc.). Ce n’est donc qu’au prix d’une hypoth&egrave;se
+assez forte de proportionnalit&eacute; entre les capacit&eacute;s d’accueil
+et la taille du lieu de destination que l’on peut utiliser la m&ecirc;me
+variable comme facteur d’&eacute;mission et de r&eacute;ception.
+<P>Cette dissym&eacute;trie saute davantage aux yeux lorsque l’on &eacute;tudie
+un ph&eacute;nom&egrave;ne tel que les navettes domicile-travail. Il est
+alors &eacute;vident que la capacit&eacute; d’&eacute;mission doit &ecirc;tre
+d&eacute;finie comme la population active au lieu de r&eacute;sidence et
+la capacit&eacute; de r&eacute;ception comme le nombre d’emploi disponibles,
+soit deux quantit&eacute;s de nature tout &agrave; fait diff&eacute;rente.
+<P>Plus g&eacute;n&eacute;ralement, l’hypoth&egrave;se de stricte proportionnalit&eacute;
+entre les variables d&eacute;crivant les capacit&eacute;s d’&eacute;mission
+ou de r&eacute;ception des lieux et la quantit&eacute; de flux qu’ils engendrent
+peut &ecirc;tre soumise &agrave; critique et de nombreux mod&egrave;les
+d’interaction spatiale pr&eacute;conisent l’emploi de param&egrave;tres
+d’&eacute;lasticit&eacute; (exposants variables) afin de tenir compte d’effets
+possibles de non lin&eacute;arit&eacute;. L’emploi de ces exposants n’est
+toutefois pleinement justifi&eacute; que si les lieux &eacute;metteurs
+et r&eacute;cepteurs correspondent &agrave; des entit&eacute;s spatiales
+pertinentes pour lesquelles la taille peut &ecirc;tre un facteur d&eacute;terminant
+des capacit&eacute;s d’&eacute;mission et de r&eacute;ception (villes,
+pays). Il est beaucoup plus discutable sur le plan th&eacute;orique lorsque
+les entit&eacute;s spatiales sont un simple cadre arbitraire d’observation
+du ph&eacute;nom&egrave;ne (r&eacute;gions, unit&eacute;s de recensement).
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B>Il existe une dissym&eacute;trie conceptuelle entre les variables
+susceptibles de refl&eacute;ter les capacit&eacute;s d’&eacute;mission
+et de r&eacute;ception, leur identit&eacute; constituant a priori un cas
+exceptionnel. L’hypoth&egrave;se de proportionnalit&eacute; entre ces variables
+et la quantit&eacute; de flux g&eacute;n&eacute;r&eacute;e n’est pas obligatoire
+et des exposants peuvent &ecirc;tre introduits pour tenir compte d’effets
+de taille non lin&eacute;aires.</B>
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">Variables endog&egrave;nes d&eacute;finies par les
+sommes marginales de la matrice des flux</FONT></I>
+<UL>&nbsp;
+<P>Les mod&egrave;les d’interaction spatiale &agrave; vocation descriptive
+ou explicative recourent fr&eacute;quemment aux sommes marginales de la
+matrice des flux pour d&eacute;finir les capacit&eacute;s d’&eacute;mission
+et de r&eacute;ception des lieux. On note habituellement <I>O<SUB>i</SUB></I>
+la somme des flux ayant pour origine le lieu <I>i </I>et <I>Dj</I> la somme
+des flux ayant pour destination le lieu <I>j</I>.
+<BR>&nbsp;
+<P><B><I><FONT SIZE=+1>O<SUB>i</SUB> = <FONT FACE="Symbol">S</FONT>
+<SUB>j</SUB>
+F<SUB>ij</SUB></FONT></I></B>
+<P><B><I><FONT SIZE=+1>D<SUB>j</SUB> = <FONT FACE="Symbol">S</FONT>
+<SUB>i</SUB>
+F<SUB>ij</SUB></FONT></I></B>
+<BR>&nbsp;
+<P>Les vecteurs <B>O</B> et <B>D</B> correspondent alors &agrave; des variables
+<I>endog&egrave;nes</I>
+du mod&egrave;le puisqu’ils supposent une connaissance au moins partielle
+de la matrice des flux. De tels mod&egrave;les ne permettent donc pas directement
+de pr&eacute;voir l’&eacute;volution globale des &eacute;changes, mais
+autorisent une reconstitution conditionnelles des &eacute;changes entre
+les lieux (affectation des flux entre les couples origine-destination),
+une fois connus ou estim&eacute;s les facteurs de g&eacute;n&eacute;ration
+des &eacute;changes. En d’autres termes, les mod&egrave;les d’interaction
+spatiale utilisant les sommes marginales des flux comme capacit&eacute;
+d’&eacute;mission et de r&eacute;ception ne constituent qu’un sous-mod&egrave;le
+dans une d&eacute;marche pr&eacute;dictive et ils imposent le recours &agrave;
+d’autres sous-mod&egrave;les pr&eacute;alables pour estimer l’&eacute;volution
+des capacit&eacute;s marginales d’&eacute;mission et de r&eacute;ception
+au cours du temps.
+<P>En r&egrave;gle g&eacute;n&eacute;rale, l’introduction des sommes marginales
+dans un mod&egrave;le d’interaction spatiale se traduit par l’apparition
+de contraintes de conservation des flux portant sur les origines, les destinations
+ou les deux &agrave; la fois . Dans ce cas, l’ajout d’autres variables
+exog&egrave;nes est le plus souvent superflu, leurs effets &eacute;tant
+absorb&eacute; par les contraintes de conservation du mod&egrave;le.
+<BR>&nbsp;
+<P><B>Les mod&egrave;les d’interaction spatiale utilisant les sommes marginales
+de la matrice des flux comme capacit&eacute;s d’&eacute;mission et de r&eacute;ception
+des lieux correspondent &agrave; une classe particuli&egrave;re de mod&egrave;les
+dont la vocation est davantage descriptive et explicative que pr&eacute;dictive.
+Ils peuvent toutefois faire partie d’une cha&icirc;ne de mod&egrave;le
+pr&eacute;dictifs, &agrave; condition que l’&eacute;volution des sommes
+marginales au cours du temps soient elles-m&ecirc;mes estim&eacute;es &agrave;
+l’aide de variables exog&egrave;nes.</B>
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">Variables d’environnement (opportunit&eacute;s interm&eacute;diaires
+et opportunit&eacute;s group&eacute;es)</FONT></I>
+<BR>&nbsp;
+<BR>&nbsp;
+<BLOCKQUOTE>Le fait de ne prendre en compte que les caract&eacute;ristiques
+de<I> site </I>dans la d&eacute;finition des capacit&eacute;s d’&eacute;mission
+et de r&eacute;ception des lieux a &eacute;t&eacute; critiqu&eacute; par
+de nombreux auteurs qui proposent d’introduire dans les mod&egrave;les
+d’interaction spatiale des variables d’environnement ayant trait &agrave;
+la <I>situation</I> des lieux. En effet, la quantit&eacute; de flux &eacute;mis
+par un lieu <I>i</I> vers un lieu <I>j </I>d&eacute;pend non seulement
+des caract&eacute;ristiques propres de ces deux lieux, mais &eacute;galement
+de l’influence d’autres lieux <I>k, l, m</I> … susceptibles d’attirer les
+flux en provenance du lieu <I>i</I> ou de saturer les opportunit&eacute;s
+d’accueil du lieu <I>j</I>. Ces ph&eacute;nom&egrave;nes d’interaction
+syst&eacute;mique peuvent &ecirc;tre pris en charge par la forme du mod&egrave;le
+(introduction de contraintes) mais ils peuvent &eacute;galement &ecirc;tre
+introduits sous la forme de variables sp&eacute;cifiques d’environnement.
+<P><FONT SIZE=-1>Le sociologue S. Stouffer (1940) a par exemple montr&eacute;
+que la d&eacute;croissance des flux en fonction de la distance pourrait
+&ecirc;tre interpr&eacute;t&eacute; comme l’effet de la pr&eacute;sence
+<I>d’opportunit&eacute;s
+interpos&eacute;es</I>, que l’on peut mod&eacute;liser &agrave; l’aide
+d’un processus d’examen s&eacute;quentiel d’examen des destinations possibles
+class&eacute;es par distance croissante. Dans ce cas, l’effet de la distance
+ne correspond pas &agrave; un effet m&eacute;canique (continu) mais &agrave;
+un mod&egrave;le de choix discret de nature s&eacute;quentielle (ordinal).
+A titre d’exemple, deux individus physiquement &eacute;loign&eacute;s mais
+s&eacute;par&eacute;s par un d&eacute;sert auront selon Stouffer plus de
+chance d’entrer en relation que deux individus physiquement proches mais
+s&eacute;par&eacute;s par une zone dens&eacute;ment peupl&eacute;. Il conviendrait
+donc de substituer aux mesures habituelles de distance une mesure du nombre
+d’opportunit&eacute;s interpos&eacute;es, cens&eacute;es mieux d&eacute;crire
+le comportement migratoire.</FONT>
+<P><FONT SIZE=-1>La th&eacute;orie des <I>opportunit&eacute;s group&eacute;es</I>
+de A.S. Fotheringham (Fotheringham &amp; O Kelly, 1989, Stilwell &amp;
+Congdom, Chap. 4, 1991) part de pr&eacute;mices similaires et aboutit &agrave;
+une conclusion de port&eacute;e plus g&eacute;n&eacute;rale sur les effets
+de l’agr&eacute;gation et de l’autocorr&eacute;lation spatiale.</FONT>
+<BR>&nbsp;
+<BR>&nbsp;
+<P><IMG SRC="Image40.gif" HEIGHT=168 WIDTH=300>
+<P><FONT SIZE=-1>Dans l’exemple pr&eacute;sent&eacute; ci-dessus, un migrant
+localis&eacute; en i se trouve &agrave; la m&ecirc;me distance d’opportunit&eacute;s
+1..7 de poids &eacute;quivalent et il a a priori autant de chance de choisir
+l’une ou l’autre de ces destinations. Mais le fait que les opportunit&eacute;s
+4 &agrave; 7 soient spatialement proches peut contribuer &agrave; les rendre
+plus attractives (effet d’agglom&eacute;ration) ou moins attractives (effet
+de comp&eacute;tition). L’introduction de variables d’environnement d&eacute;crivant
+la situation relative d’un lieux permet pr&eacute;cis&eacute;ment de mesurer
+ces effets et de d&eacute;terminer dans quels sens ils influent sur la
+distribution des flux.</FONT>
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B>On consid&egrave;re de plus en plus que la d&eacute;finition des
+capacit&eacute;s d’&eacute;mission et de r&eacute;ception des lieux ne
+doit pas se limiter aux caract&eacute;ristiques de site mais peut &eacute;galement
+prendre en compte des effets de situation. De nouvelles formulations des
+mod&egrave;les d’interaction spatiale permettent de prendre en compte ces
+effets syst&eacute;miques, soit par l’ajout de contrainte, soit par l’introduction
+de nouvelles variables d’&eacute;loignement (Stouffer), d’&eacute;mission
+ou de r&eacute;ception (Fotheringham)</B></BLOCKQUOTE>
+
+<BR>&nbsp;
+<H2>
+<A NAME="4.1.3 Choix des facteurs d'éloignement (D)"></A>4.1.3 Choix des
+facteurs d'&eacute;loignement (D)</H2>
+Le choix d’une (ou de plusieurs) matrices d’&eacute;loignement constitue
+probablement l’&eacute;tape la plus importante dans la formalisation d’un
+mod&egrave;le d’interaction spatiale. C’est en effet l’introduction d’un
+facteur d’&eacute;loignement spatial ou territorial dans l’explication
+et la mod&eacute;lisation des &eacute;changes qui constituent l’apport
+d&eacute;cisif de ce type de mod&egrave;les par rapport &agrave; des approches
+de type &eacute;conomique (flux de marchandises) ou sociologiques (d&eacute;placement
+de personnes).qui vont privil&eacute;gier d’autres d&eacute;terminants
+de l’interaction (compl&eacute;mentarit&eacute;, identit&eacute;, concurrence,
+etc.). On observera toutefois que, d’un strict point de vue math&eacute;matiques,
+il n’y a pas de diff&eacute;rence v&eacute;ritable entre les mesures de
+proximit&eacute; spatiale et les mesures de proximit&eacute; sociale ou
+de compl&eacute;mentarit&eacute; &eacute;conomique. Des mod&egrave;les
+d’interaction complexe peuvent donc tout &agrave; fait combiner des m&eacute;triques
+relevant de champs disciplinaires diff&eacute;rents, lorsque la nature
+du ph&eacute;nom&egrave;ne le justifie.
+<P>M&ecirc;me en s’en tenant provisoirement aux mesures de proximit&eacute;
+spatiale, il faut insister sur la diversit&eacute; des solutions possibles
+pour mesurer l’&eacute;loignement de deux lieux et sur les cons&eacute;quences
+du choix d’une m&eacute;trique plut&ocirc;t que d’une autre en terme de
+performance des mod&egrave;les (qualit&eacute; d’ajustement) et de signification
+des r&eacute;sultats obtenus.
+<BR>Comme il est difficile de brosser un portrait exhaustif des solutions
+possibles (le choix de la m&eacute;trique d&eacute;pendant de la nature
+du ph&eacute;nom&egrave;ne &eacute;tudi&eacute;) on se bornera &agrave;
+&eacute;voquer sur un exemple pr&eacute;cis, celui des migrations en Tch&eacute;coslovaquie,
+la diversit&eacute; des choix qui peuvent se pr&eacute;senter.
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B>Figure 1 : Les 10 r&eacute;gions de tch&eacute;coslovaquie en 1989</B>
+<BR><IMG SRC="tchkraj.JPG" HEIGHT=232 WIDTH=447>
+<BR>&nbsp;
+<BR>&nbsp;
+<P><I><FONT FACE="Arial">distance entre centres repr&eacute;sentatifs des
+unit&eacute;s spatiales</FONT></I>
+<UL>&nbsp;
+<BR>&nbsp;
+<P>On peut tout d’abord observer que le probl&egrave;me de la mesure des
+distances entre les unit&eacute;s spatiales se posent de fa&ccedil;on tr&egrave;s
+diff&eacute;rentes selon que l’on a affaire &agrave; des unit&eacute;s
+spatiales de type ponctuelles (assimilable &agrave; des points &agrave;
+un certain niveau d’observation) telles que les villes ou selon que l’on
+a affaire &agrave; des unit&eacute;s ar&eacute;ales (issues d’une partition
+exhaustive de l’espace par un maillage) telles que des r&eacute;gions ou
+des Etats. Dans le premier cas, l’erreur commise en assimilant l’ensemble
+des individus contenus dans l’unit&eacute; spatiale &agrave; un point repr&eacute;sentatif
+est n&eacute;gligeable alors que dans le second on doit consid&eacute;rer
+que la mesure d’&eacute;loignement entre les deux r&eacute;gions est une
+valeur moyenne qui peut avoir une variance assez forte.
+<P>Dans le cas des migrations tch&eacute;coslovaques, les individus qui
+partent d’une r&eacute;gion vers une autre peuvent th&eacute;oriquement
+partir de n’importe quel point de la premi&egrave;re et arriver en n’importe
+quel point de la seconde. Une premi&egrave;re solution pour mesurer la
+distance entre deux r&eacute;gions consiste &agrave; assimiler chaque population
+r&eacute;gionale &agrave; une masse unique localis&eacute;e au centre g&eacute;om&eacute;trique
+des polygones d&eacute;finissant les r&eacute;gions et &agrave; calculer
+la distance euclidienne entre ces centres g&eacute;om&eacute;triques (<I>Tableau
+3</I>) Cette m&eacute;thode pr&eacute;sente l’avantage de ne n&eacute;cessiter
+aucune information autre que le contour des unit&eacute;s territoriales.
+<P>Si l’information le permet, on pourrait substituer au centre g&eacute;om&eacute;trique
+de la superficie un point jug&eacute; plus repr&eacute;sentatif tel que
+le chef-lieu de la r&eacute;gion ou la localisation de la ville la plus
+importante.
+<P>On pourrait &eacute;galement utiliser le centre de gravit&eacute; de
+la population plut&ocirc;t que celui de la superficie, afin de tenir compte
+de l’in&eacute;gal r&eacute;partition de la population &agrave; l’int&eacute;rieur
+des r&eacute;gions et du caract&egrave;re &eacute;ventuellement excentr&eacute;
+du chef-lieu. Mais ceci implique que l’on connaisse la distribution de
+la population &agrave; un niveau plus fin que celui des r&eacute;gions
+(par exemple celui des 114 districts dans le cas tch&eacute;coslovaque).
+Or, si tel est le cas, il vaut mieux abandonner la m&eacute;thode centro&iuml;de
+et recourir &agrave; une mesure plus pr&eacute;cise de la distribution
+des distances entre les habitants.
+<BR>&nbsp;
+<P><A NAME="_Ref359029059"></A><B>Tableau 3 : Distance entre les centres
+de gravit&eacute; de la superficie des 10 r&eacute;gions de Tch&eacute;coslovaquie
+en 1989</B>
+<BR>&nbsp;
+<TABLE BORDER CELLSPACING=2 CELLPADDING=2 WIDTH="308" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>d<SUB>ij</SUB></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>97</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>108</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>71</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>101</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>175</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>227</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>307</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>365</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>497</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>97</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>126</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>165</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>151</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>154</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>241</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>264</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>347</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>490</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>108</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>126</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>120</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>208</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>264</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>331</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>386</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>460</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>597</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>71</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>165</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>120</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>136</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>235</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>267</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>369</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>415</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>539</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>101</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>151</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>208</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>136</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>115</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>131</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>246</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>280</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>404</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>175</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>154</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>264</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>235</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>115</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>101</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>134</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>196</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>337</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>227</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>241</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>331</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>267</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>131</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>101</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>163</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>156</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>273</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>307</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>264</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>386</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>369</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>246</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>134</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>163</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>113</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>254</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>365</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>347</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>460</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>415</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>280</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>196</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>156</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>113</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>146</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>497</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>490</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>597</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>539</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>404</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>337</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>273</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>254</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>146</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+</TR>
+</TABLE>
+</UL>
+<I><FONT FACE="Arial">distance moyenne entre les populations</FONT></I>
+<UL>&nbsp;
+<BR>La distance moyenne entre les habitants de deux r&eacute;gions peut
+en effet &ecirc;tre estim&eacute;e &agrave; l’aide d’une moyenne pond&eacute;r&eacute;e
+des distances entre unit&eacute;s de taille inf&eacute;rieures qui composent
+les r&eacute;gions. Ainsi, si une r&eacute;gion A se compose de n districts
+1..i..n et une r&eacute;gion B de m districts 1..j..m, la distance moyenne
+entre les habitants des r&eacute;gions A et B peut &ecirc;tre estim&eacute;e
+par la formule suivante :
+<BR>&nbsp;
+<P><B><FONT SIZE=+1>d(A,B) = (<FONT FACE="Symbol">S</FONT>
+<SUB>i</SUB>
+<FONT FACE="Symbol">S</FONT>
+<SUB>j
+</SUB>P<SUB>i</SUB>.P<SUB>j</SUB>.d<SUB>ij</SUB>) / (<FONT FACE="Symbol">S</FONT>
+<SUB>i</SUB>
+<FONT FACE="Symbol">S</FONT>
+<SUB>j
+</SUB>P<SUB>i</SUB>.P<SUB>j</SUB>)</FONT></B>
+<P>La pr&eacute;cision sera d’autant plus grande que les unit&eacute;s
+servant de base au calcul sont de petite taille. Dans le <I>Tableau 4</I>
+on a utilis&eacute; la distribution de la population des 114 districts
+en 1989 pour estimer la distance moyenne entre les habitants des 10 r&eacute;gions.
+Des diff&eacute;rences significatives apparaissent entre cette distance
+et la pr&eacute;c&eacute;dente <I>(Tableau 3). </I>Ainsi, la distance moyenne
+entre les habitants de Boh&ecirc;me-centre et de Boh&ecirc;me-nord est
+de 86 km alors que la distance entre leurs centres de gravit&eacute; n’&eacute;tait
+que de 71 km (-17%). L’&eacute;cart s’explique par l’allongement de la
+r&eacute;gion de Boh&ecirc;me-nord. Inversement la distance moyenne entre
+les populations de Moravie-Nord et de Slovaquie-Centre est de 123 km alors
+que la distance entre les centres g&eacute;om&eacute;triques des deux r&eacute;gions
+est de 156 km (+26%). L’erreur est cette fois-ci imputable &agrave; la
+localisation de la population de Moravie-Nord dont le centre de gravit&eacute;
+est situ&eacute; beaucoup plus au nord-est que le centre g&eacute;om&eacute;trique
+de la r&eacute;gion. A partir de la m&ecirc;me information (distance entre
+les districts qui composent les r&eacute;gions), on pourrait &eacute;galement
+calculer une distance minimum, une distance maximum, une distance m&eacute;diane,
+etc.
+<BR>&nbsp;
+<P><A NAME="_Ref431793224"></A><B>Tableau 4 : Distance moyenne entre les
+habitants des r&eacute;gions Tch&eacute;coslovaques en 1989 (estim&eacute;e
+&agrave; partir de la distribution par districts)</B>
+<BR>&nbsp;
+<TABLE BORDER CELLSPACING=2 CELLPADDING=2 WIDTH="308" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>d<SUB>ij</SUB></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>105</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>98</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>86</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>109</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>192</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>273</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>304</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>360</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>518</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>105</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>118</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>176</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>159</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>167</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>282</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>253</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>341</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>505</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>98</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>118</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>124</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>200</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>264</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>361</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>362</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>439</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>600</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>86</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>176</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>124</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>140</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>252</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>309</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>368</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>409</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>559</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>109</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>159</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>200</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>140</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>135</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>178</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>251</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>277</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>426</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>192</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>167</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>264</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>252</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>135</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>132</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>128</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>179</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>341</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>273</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>282</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>361</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>309</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>178</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>132</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>180</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>123</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>253</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>304</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>253</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>362</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>368</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>251</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>128</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>180</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>141</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>286</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>360</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>341</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>439</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>409</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>277</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>179</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>123</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>141</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>173</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>518</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>505</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>600</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>559</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>426</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>341</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>253</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>286</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>173</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+</TR>
+</TABLE>
+</UL>
+<I><FONT FACE="Arial">distance topologique entre les mailles (k-contigu&iuml;t&eacute;)</FONT></I>
+<UL>&nbsp;
+<BR>La distance topologique de plus court chemin se fonde sur l’examen
+du graphe de contigu&iuml;t&eacute; des r&eacute;gions. Deux r&eacute;gions
+sont situ&eacute;es &agrave; une distance topologique de 1 si elles ont
+une limite administrative commune. Elles sont situ&eacute;es &agrave; une
+distance topologique de 2 si il faut traverser au moins deux limites administratives
+pour aller de l’une &agrave; l’autre, etc. Diff&eacute;rentes formules
+math&eacute;matiques permettent de calculer l’ensemble des distances topologiques
+de plus court chemin &agrave; partir du relev&eacute; de la simple matrice
+des contigu&iuml;t&eacute;s d’ordre 1 . Dans le cas de la Tch&eacute;coslovaquie
+l’analyse des contigu&iuml;t&eacute;s permet de calculer la matrice de
+distance topologique de plus court chemin pr&eacute;sent&eacute;e dans
+le <I>Tableau 5</I>. La valeur maximale est de 4 (distance entre la Slovaquie
+orientale et les r&eacute;gions de Boh&ecirc;me-centre, Boh&ecirc;me-ouest
+ou Boh&ecirc;me-nord).
+<P><A NAME="_Ref359030334"></A><B>Tableau 5 : Distance topologique de plus
+court chemin entre les 10 r&eacute;gions de Tch&eacute;coslovaquie</B>
+<BR>&nbsp;
+<TABLE BORDER CELLSPACING=2 CELLPADDING=2 WIDTH="308" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>d<SUB>ij</SUB></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+</TR>
+</TABLE>
+
+<P>De prime abord, une m&eacute;trique topologique semble moins int&eacute;ressante
+qu’une m&eacute;trique continue et para&icirc;t soumis &agrave; toute une
+s&eacute;rie de biais (impr&eacute;cision, forme des unit&eacute;s territoriales
+pouvant introduire des raccordements sur quelques kilom&egrave;tres de
+fronti&egrave;re) mais l’exp&eacute;rience montre qu’elle donne souvent
+des r&eacute;sultats &eacute;quivalents voire sup&eacute;rieurs &agrave;
+ceux des m&eacute;triques euclidiennes (en terme de qualit&eacute; d’ajustement
+des flux migratoires). Ce r&eacute;sultat &eacute;tonnant semble li&eacute;
+au fait que les maillages territoriaux ne sont g&eacute;n&eacute;ralement
+pas des constructions arbitraires et qu’ils poss&egrave;dent des propri&eacute;t&eacute;s
+d&eacute;mographiques (variation de la superficie en fonction de la densit&eacute;),
+sociologiques (coh&eacute;sion sociale) et &eacute;conomiques (coh&eacute;rence
+du syst&egrave;me productif) qui peuvent en faire de bons marqueurs des
+proximit&eacute;s territoriales entre les lieux. Il est donc souvent int&eacute;ressant
+de confronter leurs r&eacute;sultats &agrave; ceux des m&eacute;triques
+euclidiennes, voire de combiner les deux &agrave; l’int&eacute;rieur d’un
+m&ecirc;me mod&egrave;le.
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">transformation ordinale d’une m&eacute;trique continue</FONT></I>
+<BR>&nbsp;
+<BLOCKQUOTE>On peut d&eacute;duire toute une s&eacute;rie d’autres mesures
+de distances &agrave; partir des pr&eacute;c&eacute;dentes. Ainsi, la distance
+euclidienne entre les centres g&eacute;om&eacute;trique des r&eacute;gions
+(<I>Tableau 3</I>) peut-&ecirc;tre transform&eacute;e en distance ordinale.
+Pour chaque r&eacute;gion, on remplace la distance aux autres r&eacute;gions
+par un rang, calcul&eacute; en fonction de l’ordre des distances aux autres
+r&eacute;gions. Cette matrice pr&eacute;sente toutefois le d&eacute;faut
+d’&ecirc;tre dissym&eacute;trique. Ainsi, la r&eacute;gion la plus proche
+de la Boh&ecirc;me-Sud est la Boh&ecirc;me-Centre (<I>d<SUB>ij</SUB>=1</I>)
+alors que, en sens inverse, la r&eacute;gion la plus proche de la Boh&ecirc;me-Centre
+est la Boh&ecirc;me-Nord et que la Boh&ecirc;me-Sud n’arrive qu’en deuxi&egrave;me
+position (<I>d<SUB>ji</SUB>=2</I>). Si l’on veut conserver &agrave; la
+distance sa propri&eacute;t&eacute; de sym&eacute;trie, on effectuera la
+moyenne des rangs dans les deux directions, ce qui donne une distance ordinale
+sym&eacute;trique (<I>Tableau 6</I>). On pourrait naturellement calculer
+la distance ordinale sym&eacute;trique &agrave; partir d’une autre matrice
+initiale de distance kilom&eacute;trique.</BLOCKQUOTE>
+<A NAME="_Ref359031164"></A><B>Tableau 6 : Distance ordinale sym&eacute;trique
+entre les r&eacute;gions de Tch&eacute;coslovaquie (d'apr&egrave;s la distance
+euclidienne entre les centres g&eacute;om&eacute;triques).</B>
+<BR>&nbsp;
+<TABLE BORDER CELLSPACING=2 CELLPADDING=2 WIDTH="308" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>d<SUB>ij</SUB></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>9</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8.5</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>BE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MS</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>4</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>MN</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5.5</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SO</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>2.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3.5</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="13"><FONT SIZE=-1>SC</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>7</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>8</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>3</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="13">
+<DIV ALIGN=right><FONT SIZE=-1>1.5</FONT></DIV>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="10%" HEIGHT="14"><FONT SIZE=-1>SE</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>8</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>7.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>9</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>8.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>7</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>6.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>5.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>3.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>1.5</FONT></DIV>
+</TD>
+
+<TD VALIGN=TOP WIDTH="9%" HEIGHT="14">
+<DIV ALIGN=right><FONT SIZE=-1>0</FONT></DIV>
+</TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>L’int&eacute;r&ecirc;t th&eacute;orique de la distance ordinale,
+sym&eacute;trique ou non, est de restituer, dans une certaine mesure, les
+hypoth&egrave;ses de Stouffer sur le r&ocirc;le des opportunit&eacute;s
+interm&eacute;diaires dans la d&eacute;croissance des flux avec la distance<I>
+(Cf. 1.2.3 ). </I>En effet, cette m&eacute;trique d&eacute;finit l’&eacute;loignement
+de deux r&eacute;gions non pas de fa&ccedil;on absolue mais de fa&ccedil;on
+relative, tenant compte de la position des autres r&eacute;gions, plus
+proches ou plus &eacute;loign&eacute;es. Elle ne restitue toutefois que
+tr&egrave;s partiellement les hypoth&egrave;ses de Stouffer puisqu’elle
+ne prend pas en compte la population des r&eacute;gions dans le calcul
+des &eacute;loignements relatifs.</BLOCKQUOTE>
+
+<H2>
+<A NAME="4.1.4 Choix de la fonction de décroissance des"></A>4.1.4 Choix
+de la fonction de d&eacute;croissance des interactions en fonction de la
+distance f(D)</H2>
+
+<P><BR><I><FONT FACE="Arial">fonction exponentielle et fonction puissance
+(Par&eacute;to)</FONT></I>
+<UL>&nbsp;
+<BR>Le choix d’une mesure d ’ &eacute;loignement (que l’on appellera distance
+par commodit&eacute; d’&eacute;criture) ne pr&eacute;juge pas de la forme
+de son effet sur les interactions. Inspir&eacute;s d’analogies avec la
+physique newtownienne (mod&egrave;le gravitaire) ou l’&eacute;lectricit&eacute;
+(potentiel), les premiers mod&egrave;les d’interaction spatiale utilisaient
+essentiellement des fonctions puissance n&eacute;gative &agrave; exposant
+entier, la d&eacute;croissance des flux avec la distance &eacute;tant cens&eacute;e
+ob&eacute;ir &agrave; une loi de type 1/d<SUB>ij</SUB> ou 1/d<SUB>ij</SUB><SUP>2</SUP>.
+Il est toutefois rapidement apparu aux observateurs des ph&eacute;nom&egrave;nes
+d’interaction que les param&egrave;tres empiriques optimaux pouvaient prendre
+des valeurs non enti&egrave;res et qu’il n’y avait pas de raisons th&eacute;oriques
+justifiant une stricte analogie entre les ph&eacute;nom&egrave;nes physiques
+et les ph&eacute;nom&egrave;nes sociaux ou &eacute;conomiques. On a donc
+propos&eacute; d’utiliser des fonctions param&eacute;triques de d&eacute;croissance
+des interactions avec la distance, les deux plus fr&eacute;quentes &eacute;tant
+la fonction puissance n&eacute;gative (dite aussi de Par&eacute;to) et
+la fonction exponentielle n&eacute;gative.
+<P><FONT SIZE=+1>I<SUB>ij</SUB> = exp(-<FONT FACE="Symbol">a</FONT> d<SUB>ij</SUB>)<SUP>
+</SUP>:
+fonction d’interaction spatiale exponentielle</FONT>
+<P><FONT SIZE=+1>I<SUB>ij</SUB> = d<SUB>ij</SUB><SUP>-<FONT FACE="Symbol">a</FONT>
+</SUP>:
+fonction d’interaction spatiale par&eacute;tienne</FONT>
+<P>Le param&egrave;tre <FONT FACE="Symbol">a</FONT> , g&eacute;n&eacute;ralement
+appel&eacute; <I>frein de la distance</I>, n’est pas fix&eacute; a priori
+et est estim&eacute;e empiriquement de mani&egrave;re &agrave; maximiser
+la qualit&eacute; de l’ajustement (mod&egrave;le gravitaire) ou &agrave;
+assurer une contrainte de conservation du co&ucirc;t total de d&eacute;placement
+&agrave; l’int&eacute;rieur du syst&egrave;me (mod&egrave;le de Wilson).
+<P>Ces mod&egrave;les sont au demeurant formellement identiques puisque,
+si l’on remplace la distance par son logaritme, le mod&egrave;le de Par&eacute;to
+correspond &agrave; un mod&egrave;le exponentiel . Inversement, le mod&egrave;le
+exponentiel correspond &agrave; un mod&egrave;le de Par&eacute;to si l’on
+remplace la distance par son exponentielle.On peut donc passer du mod&egrave;le
+exponentiel au mod&egrave;le puissance par une simple transformation (exponentielle
+ou logarithmique) de la matrice de distance, c’est-&agrave;-dire par l’introduction
+d’une hypoth&egrave;se sur le r&ocirc;le additif ou multiplicatif de la
+distance sur la d&eacute;croissance des probabilit&eacute;s de relation
+entre les migrants. Les &eacute;tudes empiriques sur les migrations de
+population montrent que, d’une mani&egrave;re g&eacute;n&eacute;rale, le
+mod&egrave;le exponentiel d&eacute;crit mieux le comportement des migrants
+&agrave; longue distance, tandis que le mod&egrave;le puissance d&eacute;crit
+mieux le comportement des migrants &agrave; longue distance. De ce fait,
+certains auteurs pr&eacute;conisent d’effectuer la moyenne des deux mod&egrave;les
+apr&egrave;s estimation s&eacute;par&eacute;e (Poulain M., 1981).
+<BR>&nbsp;
+<P><B>Au total, s’il semble exister un consensus pour utiliser des fonctions
+d’interaction spatiale &agrave; param&egrave;tres variables plut&ocirc;t
+qu’&agrave; valeurs fixes, le choix d’une forme par&eacute;tienne ou d’une
+forme exponentielle demeure un objet de d&eacute;bat. De nombreux auteurs
+consid&egrave;rent toutefois qu’il s’agit d’un faux probl&egrave;me et
+qu’il faut utiliser le mod&egrave;le fournissant la meilleur description
+de la situation observ&eacute;e.</B>
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">Influence du choix du facteur d’&eacute;loignement
+et de la forme de la fonction d’interaction spatiale sur les r&eacute;sultats.</FONT></I>
+<UL>&nbsp;
+<BR>Pour illustrer l’influence du choix de la distance et de la fonction
+d’interaction spatiale sur les r&eacute;sultats de la mod&eacute;lisation,
+nous avons appliqu&eacute; les quatre distances d&eacute;finies pr&eacute;c&eacute;demment
+(<I>Tableau 3 &agrave; Tableau 6</I>) et les deux fonctions d’interaction
+spatiale (exponentielle et Par&eacute;to) &agrave; l’exemple des migrations
+entre les 10 r&eacute;gions de Tch&eacute;coslovaquie en 1961-1965. Dans
+chaque cas, l’ajustement a &eacute;t&eacute; effectu&eacute; &agrave; l’aide
+d’un mod&egrave;le d’interaction spatiale multiplicatif &agrave; double
+contrainte et le param&egrave;tre de frein de la distance retenu est celui
+qui correspond &agrave; la qualit&eacute; d’ajustement la meilleure pour
+le crit&egrave;re de minimisation du chi-deux.
+<BR>&nbsp;
+<P><A NAME="_Ref359035156"></A><B>Tableau 7 : Variation de la qualit&eacute;
+d'ajustement en fonction du choix de la distance et de la fonction d'interaction
+spatiale (migration entre les r&eacute;gions de Tch&eacute;coslovaquie
+au cours de la p&eacute;riode 1961-65)</B>
+<BR>&nbsp;
+<TABLE BORDER CELLPADDING=2 WIDTH="561" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"><B><FONT SIZE=-1>Distance</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Fonction</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16"><B><FONT SIZE=-1>param&egrave;tre</FONT></B></TD>
+
+<TD VALIGN=TOP COLSPAN="2" WIDTH="30%" HEIGHT="16">
+<CENTER><B><FONT SIZE=-1>Qualit&eacute; d'ajustement</FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16"><B><FONT SIZE=-1>de la distance</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><B><FONT SIZE=-1>Chi-deux</FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><B><FONT SIZE=-1>r<SUP>2</SUP></FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><B><I><FONT SIZE=-1>r*<SUP>2</SUP></FONT></I></B></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"><B><FONT SIZE=-1>Aucune</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16">
+<CENTER><B><FONT SIZE=-1>-</FONT></B></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>327922</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>38.0%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>0.0%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"><B><FONT SIZE=-1>Euclidienne</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Par&eacute;to</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-1.34</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>52365</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>90.1%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>84.0%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Exponentiel</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-0.0056</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>92879</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>82.4%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>71.7%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"><B><FONT SIZE=-1>Moyenne</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Par&eacute;to</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-1.34</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>90316</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>82.9%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>72.5%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Exponentiel</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-0.0054</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>116680</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>77.9%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>64.4%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"><B><FONT SIZE=-1>Topologique</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Par&eacute;to</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-1.40</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>90948</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>82.8%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>72.3%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="17"></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="17"><B><FONT SIZE=-1>Exponentiel</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="17">
+<CENTER><FONT SIZE=-1>-0.743</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="17">
+<CENTER><FONT SIZE=-1>109711</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="17">
+<CENTER><FONT SIZE=-1>79.3%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="17">
+<CENTER><I><FONT SIZE=-1>66.5%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"><B><FONT SIZE=-1>Ordinale</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Par&eacute;to</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-0.89</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>36859</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>93.0%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>88.8%</FONT></I></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="19%" HEIGHT="16"></TD>
+
+<TD VALIGN=TOP WIDTH="17%" HEIGHT="16"><B><FONT SIZE=-1>Exponentiel</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>-0.267</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>48419</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><FONT SIZE=-1>90.8%</FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="15%" HEIGHT="16">
+<CENTER><I><FONT SIZE=-1>85.2%</FONT></I></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<P>Le calcul du mod&egrave;le al&eacute;atoire (double contrainte sans
+effet de la distance) montre que les diff&eacute;rences de capacit&eacute;
+d’&eacute;mission et de r&eacute;ception des r&eacute;gions expliquent
+&agrave; elle seules 38% des &eacute;carts au mod&egrave;le de r&eacute;partition
+homog&egrave;ne des flux. Quelles que soient la distance ou la fonction
+d’interaction spatiale retenue, l’introduction d’une fonction d’interaction
+spatiale permet d’am&eacute;liorer consid&eacute;rablement la qualit&eacute;
+d’ajustement (r2 > 75 %). Dans tous les cas, l’utilisation de la fonction
+puissance donne des r&eacute;sultats meilleurs que la fonction exponentielle,
+ce qui est conforme aux r&eacute;sultats empiriques obtenus par d’autres
+auteurs sur les migrations &agrave; moyenne et longue distance.
+<P>On aurait cependant tord de consid&eacute;rer que la qualit&eacute;
+d’ajustement suffit &agrave; trancher entre plusieurs hypoth&egrave;ses
+de mod&eacute;lisation (choix des distances et de la forme de la fonction
+d’interaction). Dans l’exemple tch&eacute;coslovaque, il existe en effet
+un facteur latent (effet de barri&egrave;re migratoire entre les r&eacute;gions
+des deux r&eacute;publiques tch&egrave;ques et slovaques) qui est mieux
+pris en charge par certaines m&eacute;triques que part d’autres, mais moins
+en raison de leur qualit&eacute; intrins&egrave;que qu’en raison pr&eacute;cis&eacute;ment
+de leurs d&eacute;fauts et des d&eacute;formations qu’elles imposent par
+rapport aux distances r&eacute;elles entre les habitants. Le fait que la
+distance euclidienne entre centre g&eacute;om&eacute;trique d&eacute;crivent
+mieux les flux que la distance moyenne entre habitant n’a pas d’autre explication
+et son emploi dans le cadre d’un mod&egrave;le d’interaction spatiale enrichi
+conduirait &agrave; sous-estimer la valeur de l’effet de barri&egrave;re
+entre les deux r&eacute;publiques.
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">autres fonctions d’interaction spatiale</FONT></I>
+<BR>&nbsp;
+<BLOCKQUOTE>&nbsp;
+<BR>Si la plupart des ph&eacute;nom&egrave;nes d’interaction spatiale peuvent
+&ecirc;tre correctement d&eacute;crit &agrave; l’aides des familles de
+fonction par&eacute;tienne et exponentielle, il peut arriver que l’on soit
+amener &agrave; recourir &agrave; des formes plus complexes. Ainsi, lorsque
+l’on &eacute;tudie l’intensit&eacute; des relations a&eacute;riennes entre
+les villes fran&ccedil;aises ou europ&eacute;ennes, on n’observe pas une
+fonction monotone de d&eacute;croissance des relations avec la distance
+en raison de la concurrence du rail et de la route pour les d&eacute;placements
+&agrave; courte et moyenne distance. Il est alors n&eacute;cessaire d’utiliser
+une fonction d’interaction spatiale plus complexe qui va cro&icirc;tre
+de 0 &agrave; 500-1000 kilom&egrave;tres puis d&eacute;cro&icirc;tre plus
+ou moins r&eacute;guli&egrave;rement.
+<P>D’une mani&egrave;re g&eacute;n&eacute;rale, on peut proposer une g&eacute;n&eacute;ralisation
+des fonctions par&eacute;tiennes et exponentielles &agrave; l’aide de mod&egrave;les
+polynomiaux utilisant soit la distance (mod&egrave;les exponentiel) soit
+le logarithme de celle-ci (mod&egrave;les par&eacute;tiens).
+<P><B>I<SUB>ij</SUB> = exp [a<SUB>0</SUB> + a<SUB>1</SUB>.(d<SUB>ij</SUB>)
++ a<SUB>2</SUB>.(d<SUB>ij</SUB>)<SUP>2</SUP>+ ...a<SUB>n</SUB>(d<SUB>ij</SUB>)<SUP>n</SUP>]
+<I>(fonction
+exponentielle g&eacute;n&eacute;ralis&eacute;e)</I></B>
+<P><B>I<SUB>ij</SUB> = exp [a<SUB>0</SUB> + a<SUB>1</SUB>.log(d<SUB>ij</SUB>)
++ a<SUB>2</SUB>.log<SUP>2</SUP> (d<SUB>ij</SUB>)+ ...a<SUB>n</SUB>.log<SUP>n</SUP>(d<SUB>ij</SUB>)]
+<I>(fonction
+par&eacute;tienne g&eacute;n&eacute;ralis&eacute;e)</I></B>
+<P>On peut &eacute;galement combiner les deux formes de mod&egrave;les
+dans des fonction par&eacute;to-exponentielles qui sont en fait l’expression
+de polyn&ocirc;mes combinant distance et logarithmes de la distance dans
+une fonction complexe …
+<P><B>On ne doit pas perdre de vue que les mod&egrave;les les plus utiles
+&agrave; l’analyse sont ceux qui comportent un nombre limit&eacute; de
+param&egrave;tres interpr&eacute;tables et comparables. L’emploi d’une
+fonction d’interaction spatiale complexe (comportant plusieurs param&egrave;tres)
+n’est donc justifi&eacute; que si la nature des donn&eacute;es empiriques
+le justifie (Cf. exemple du transport a&eacute;rien).</B></BLOCKQUOTE>
+
+<H2>
+<A NAME="4.1.5 Choix de la forme générale du modèle et des"></A>4.1.5 Choix
+de la forme g&eacute;n&eacute;rale du mod&egrave;le et des contraintes</H2>
+En se limitant au cas simple o&ugrave; l’on se propose de mettre en relation
+une matrice de flux homog&egrave;ne avec un unique facteur d’&eacute;mission,
+un unique facteur de r&eacute;ception et un unique facteur d’&eacute;loignement,
+on peut d&eacute;finir trois grandes familles de mod&egrave;les (sans contraintes,
+&agrave; simple contrainte, &agrave; double contrainte) et deux cas particuliers
+(mod&egrave;les de Wilson et Tobler).
+<P><I><FONT FACE="Arial">mod&egrave;le multiplicatif sans contrainte (gravitaire)</FONT></I>
+<UL>&nbsp;
+<BR>Les mod&egrave;les d’interaction spatiale gravitaire correspondent
+&agrave; une classe particuli&egrave;re de mod&egrave;les multiplicatifs
+que l’on d&eacute;signe abusivement sous l’appellation de mod&egrave;les
+sans contrainte (<I>unconstrained models</I>) mais qui incorporent en fait
+le plus souvent une hypoth&egrave;se <I>de conservation du total g&eacute;n&eacute;ral
+des flux</I>. L’hypoth&egrave;se g&eacute;n&eacute;rale des mod&egrave;les
+de ce type est l’existence d’une relation multiplicative entre les diff&eacute;rents
+facteurs d&eacute;crivant les capacit&eacute;s d’&eacute;mission ou de
+r&eacute;ception des lieux et leur degr&eacute; d’&eacute;loignement. Soit
+un mod&egrave;le du type :
+<BR>&nbsp;
+<P><B><U><FONT SIZE=+1>Mod&egrave;le multiplicatif "sans contrainte "(conservation
+du total g&eacute;n&eacute;ral)</FONT></U></B>
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD><B>F*<SUB>ij</SUB> = k. <I>f<SUB>1</SUB></I>(E<SUB>i</SUB>) . <I>f<SUB>2</SUB></I>(R<SUB>j</SUB>)
+. <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)&nbsp;</B>
+<P>avec
+<P><B>k = [<FONT FACE="Symbol">S</FONT>
+<SUB>ij</SUB> F<SUB>ij</SUB> ]
+/ [<FONT FACE="Symbol">S</FONT>
+<SUB>ij</SUB> k. <I>f<SUB>1</SUB></I>(E<SUB>i</SUB>)
+. <I>f<SUB>2</SUB></I>(R<SUB>j</SUB>) . <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)]</B></TD>
+</TR>
+</TABLE>
+
+<P>Le param&egrave;tre <I>k</I> assure la conservation du total g&eacute;n&eacute;ral
+des flux en imposant que la somme des flux observ&eacute;s (<B>F</B>) soit
+&eacute;gale &agrave; la somme des flux estim&eacute;s (<B>F*</B>). Diff&eacute;rentes
+formulations peuvent &ecirc;tre propos&eacute;es selon les hypoth&egrave;ses
+faites sur les fonctions d&eacute;crivant l’effet des facteurs d’&eacute;mission,
+de r&eacute;ception et d’&eacute;loignement. On peut distinguer des mod&egrave;les
+gravitaires simples ne comportant qu’un seul param&egrave;tre (frein de
+la distance) et des mod&egrave;les gravitaires enrichis comportant autant
+param&egrave;tres qu’il y a de facteurs explicatifs (frein de la distance,
+capacit&eacute;s d’&eacute;mission, capacit&eacute;s de r&eacute;ception).
+<BR>&nbsp;
+<P><B><U><FONT SIZE=+1>Mod&egrave;le gravitaire simple</FONT></U></B>
+<P><B>F*<SUB>ij</SUB> = k. E<SUB>i</SUB> . R<SUB>j</SUB> . d<SUB>ij</SUB><SUP>-<FONT FACE="Symbol">a</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</SUP><I>forme par&eacute;tienne</I></B>
+<P><B>F*<SUB>ij</SUB> = k. E<SUB>i</SUB> . R<SUB>j</SUB> . exp( -<FONT FACE="Symbol">a</FONT>
+. d<SUB>ij</SUB>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<I>forme exponentielle</I></B>
+<P><B><U><FONT SIZE=+1>Mod&egrave;le gravitaire enrichi</FONT></U></B>
+<P><B>F*<SUB>ij</SUB> = k. (E<SUB>i</SUB> )<FONT FACE="Symbol">b</FONT>
+<SUP>1</SUP>.
+(R<SUB>j</SUB>)<FONT FACE="Symbol">b</FONT>
+<SUP>2</SUP> . d<SUB>ij</SUB><SUP>-<FONT FACE="Symbol">a</FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</SUP><I>forme par&eacute;tienne</I></B>
+<P><B>F*<SUB>ij</SUB> = k. (E<SUB>i</SUB> )<FONT FACE="Symbol">b</FONT>
+<SUP>1</SUP>.
+(R<SUB>j</SUB>)<FONT FACE="Symbol">b</FONT>
+<SUP>2</SUP>. exp( -<FONT FACE="Symbol">a</FONT>
+. d<SUB>ij</SUB>)&nbsp;&nbsp;&nbsp;&nbsp; <I>forme exponentielle</I></B>
+<P>Toutes une s&eacute;rie de variantes peuvent &ecirc;tre introduites
+selon le degr&eacute; de complexit&eacute; introduit dans les fonctions
+f<SUB>1</SUB>, f<SUB>2</SUB>, f<SUB>3</SUB> (nombre de param&egrave;tres,
+forme) et selon le nombre de variables introduites dans chaque sous-ensemble
+explicatif (&eacute;mission, r&eacute;ception &eacute;loignement).
+<BR>&nbsp;
+<P><B>Il n’en demeure pas moins que la caract&eacute;ristique essentielle
+de ce type de mod&egrave;le est de ne faire d&eacute;pendre l’intensit&eacute;
+des flux entre deux lieux que de leurs caract&eacute;ristiques propres
+et de ne pas prendre en compte l’influence potentielle des autres lieux
+et les effets syst&eacute;miques qui y sont associ&eacute;s.</B>
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">mod&egrave;les multiplicatifs &agrave; simple contrainte</FONT></I>
+<UL>&nbsp;
+<BR>Les mod&egrave;les &agrave; simple contrainte introduisent une contrainte
+de conservation des sommes marginales de la matrice des flux qui porte
+soit sur les flux &eacute;mis (contrainte de conservation des origines),
+soit sur les flux re&ccedil;us (contrainte de conservation des destinations)
+par chaque lieu. Dans la pratique, ceci revient &agrave; supposer connu
+les sommes originales <B>O</B> ou <B>D</B> et &agrave; les utiliser en
+lieu et place des facteurs d’&eacute;mission <B>E</B> ou de r&eacute;ception
+<B>R</B>.
+Un vecteur de param&egrave;tre <I>a<SUB>1</SUB>..a<SUB>n</SUB></I> (origines)
+ou<I> b<SUB>1</SUB>…b<SUB>n</SUB> </I>(destinations) permet alors d’assurer
+la contrainte de conservation des sommes marginales. La forme g&eacute;n&eacute;rale
+des mod&egrave;les &agrave; simple contrainte est donc la suivante :
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B><U><FONT SIZE=+1>Mod&egrave;le multiplicatif &agrave; simple contrainte
+de conservation des origines</FONT></U></B>
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD><B>F*<SUB>ij</SUB> = a<SUB>i </SUB>. O<SUB>i</SUB> . <I>f<SUB>2</SUB></I>(R<SUB>j</SUB>)
+. <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)&nbsp;</B>
+<P>avec
+<P><B>a<SUB>i </SUB>= 1 / <FONT FACE="Symbol">S</FONT>
+<SUB>j</SUB> [ <I>f<SUB>2</SUB></I>(R<SUB>j</SUB>)
+. <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)]</B></TD>
+</TR>
+</TABLE>
+
+<BR>&nbsp;
+<P><B><U><FONT SIZE=+1>Mod&egrave;le multiplicatif &agrave; simple contrainte
+de conservation des destinations</FONT></U></B>
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD><B>F*<SUB>ij</SUB> = b<SUB>j </SUB>. D<SUB>j</SUB> . <I>f<SUB>1</SUB></I>(E<SUB>i</SUB>)
+. <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)&nbsp;</B>
+<P>avec
+<P><B>b<SUB>j </SUB>= 1 / <FONT FACE="Symbol">S</FONT>
+<SUB>i</SUB> [ <I>f<SUB>1</SUB></I>(E<SUB>i</SUB>)
+. <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)]</B></TD>
+</TR>
+</TABLE>
+
+<P>Les mod&egrave;les &agrave; simple contrainte sont les plus utilis&eacute;s
+dans les &eacute;tudes op&eacute;rationnelles car ils permettent de mod&eacute;liser
+plus pr&eacute;cis&eacute;ment les interactions que les mod&egrave;les
+sans contraintes, sans pour autant n&eacute;cessiter une information aussi
+compl&egrave;te que les mod&egrave;les &agrave; double contrainte. Malgr&eacute;
+la sym&eacute;trie apparente des deux variantes, il existe des diff&eacute;rences
+importantes dans les hypoth&egrave;ses sous-jacentes &agrave; ces deux
+mod&egrave;les ainsi que dans leurs domaines d’application. Les anglo-saxons
+les distinguent d’ailleurs sous les appellations de <I>" production-constrained
+model</I>s" et <I>" attraction-constrained models ".</I> (Voir par exemple,
+Fotheringham &amp; O’Kelly, 1989).
+<P><B>De loin les plus utilis&eacute;s en recherche op&eacute;rationnelle
+(planification urbaine, g&eacute;omarketing, transports, …), les mod&egrave;les
+&agrave; simple contrainte sont consid&eacute;r&eacute;s par de nombreux
+auteurs comme les plus int&eacute;ressants en terme de qualit&eacute; et
+de quantit&eacute; d’information restitu&eacute;e. Le choix d’une contrainte
+portant sur les origines ou sur les destinations n’est pas indiff&eacute;rent
+: il d&eacute;pend &eacute;troitement de la probl&eacute;matique et de
+l’information disponible.</B>
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">mod&egrave;le multiplicatif &agrave; double contrainte
+(conservation des origines ou des destinations)</FONT></I>
+<UL>&nbsp;
+<BR>Les mod&egrave;les &agrave; double contrainte assurent la conservation
+simultan&eacute;e des sommes en lignes et des sommes en colonnes de la
+matrice des flux. Supposant connue ces sommes en ligne et en colonnes,
+ils excluent de ce fait la pr&eacute;sence de tout autre facteur d&eacute;crivant
+les capacit&eacute;s d’&eacute;mission et de r&eacute;ception des lieux,
+puisque l’effet de ces derniers serait absorb&eacute; par les vecteurs
+de param&egrave;tres <I>a</I> et <I>b</I> qui assurent le respect des contraintes.
+Estim&eacute;s de fa&ccedil;on it&eacute;rative (&agrave; une constante
+pr&egrave;s) ces vecteurs de param&egrave;tres ne peuvent &ecirc;tre obtenus
+de fa&ccedil;on analytique et le temps de calcul n&eacute;cessaire &agrave;
+l’ajustement de mod&egrave;le &agrave; double contrainte est g&eacute;n&eacute;ralement
+beaucoup plus &eacute;lev&eacute; que pour les mod&egrave;les sans contraintes
+ou les mod&egrave;les &agrave; simple contrainte.
+<BR>&nbsp;
+<P><B><U><FONT SIZE=+1>Mod&egrave;le multiplicatif &agrave; double contrainte
+de conservation des origines et destinations</FONT></U></B>
+<BR>&nbsp;
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD><B>F*<SUB>ij</SUB> = a<SUB>i </SUB>. O<SUB>i</SUB> . b<SUB>j </SUB>.
+D<SUB>j </SUB>. <I>f<SUB>3 </SUB></I>(d<SUB>ij</SUB>)&nbsp;</B>
+<P>avec
+<P><B>a<SUB>i </SUB>= 1 / <FONT FACE="Symbol">S</FONT>
+<SUB>j</SUB> [b<SUB>j
+</SUB>.
+D<SUB>j</SUB> . <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)]</B>
+<P><B>b<SUB>j </SUB>= 1 / <FONT FACE="Symbol">S</FONT>
+<SUB>i</SUB> [a<SUB>i
+</SUB>.
+O<SUB>i </SUB>. <I>f<SUB>3</SUB></I>(d<SUB>ij</SUB>)]</B>
+<P><I><FONT SIZE=-1>(les deux vecteurs de param&egrave;tres &eacute;tant
+estim&eacute;s de fa&ccedil;on it&eacute;rative &agrave; une constante
+pr&egrave;s)</FONT></I></TD>
+</TR>
+</TABLE>
+
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;
+<P>Bien qu’ils fournissent en g&eacute;n&eacute;ral des ajustements de
+qualit&eacute; sensiblement sup&eacute;rieure aux mod&egrave;les sans contraintes
+ou aux mod&egrave;les &agrave; simple contrainte, les mod&egrave;les &agrave;
+double contrainte n’ont en g&eacute;n&eacute;ral pas vocation &agrave;
+servir directement d’outil de pr&eacute;vision ou de planification puisqu’ils
+supposent connu une quantit&eacute; d’information beaucoup plus &eacute;lev&eacute;e
+que les pr&eacute;c&eacute;dents (la qualit&eacute; d’ajustement ne faisant
+que traduire m&eacute;caniquement le poids plus important des variables
+endog&egrave;nes dans ce type de mod&egrave;le).
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B>L’int&eacute;r&ecirc;t principal des mod&egrave;les &agrave; double
+contrainte est l’&eacute;tude des d&eacute;terminants de l’interaction
+spatiale proprement dite, c’est-&agrave;-dire du choix des destinations
+toutes choses &eacute;gales quant aux capacit&eacute;s d’&eacute;mission
+et de r&eacute;ception des lieux. Prenant en compte des effets syst&eacute;miques
+(par exemple, le fait que les migrants localis&eacute;s dans des zones
+p&eacute;riph&eacute;riques peuvent &ecirc;tre amen&eacute;s &agrave; parcourir
+en moyenne des distances plus importantes que des migrants localis&eacute;s
+dans les zones centrales), ces mod&egrave;les sont particuli&egrave;rement
+utiles lorsque l’on cherche &agrave; mettre en &eacute;vidence l’effet
+de d&eacute;terminants spatiaux multiples affectant &agrave; des degr&eacute;s
+divers le choix des migrants. Nous verrons en particulier dans la seconde
+partie de ce travail qu’ils permettent de mettre &agrave; jour l’existence
+d’interaction entre des facteurs quantitatifs (distance) et qualitatifs
+(appartenance territoriale) de localisation g&eacute;ographique.</B>
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">Le mod&egrave;le entropique de Wilson</FONT></I>
+<UL>&nbsp;
+<BR>Sans entrer dans les d&eacute;tails de ses pr&eacute;suppos&eacute;s
+th&eacute;oriques (entropie), on peut dire que le mod&egrave;le de Wilson
+(1967) est une variante des mod&egrave;les d’interaction spatiale multiplicatifs
+&agrave; double contrainte o&ugrave; la fonction d’interaction spatiale
+est de type exponentiel et o&ugrave; la valeur du param&egrave;tre de frein
+de la distance est d&eacute;termin&eacute; par l’introduction d’une contrainte
+suppl&eacute;mentaire de conservation de l’&eacute;nergie disponible &agrave;
+l’int&eacute;rieur du syst&egrave;me.
+<BR>&nbsp;
+<P><B><U><FONT SIZE=+1>Mod&egrave;le multiplicatif &agrave; double contrainte
+de Wilson</FONT></U></B>
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD><B>F*<SUB>ij</SUB> = a<SUB>i </SUB>. O<SUB>i</SUB> . b<SUB>j </SUB>.
+D<SUB>j </SUB>. exp( -<FONT FACE="Symbol">a</FONT> . d<SUB>ij</SUB>)</B>
+<P>avec
+<P><B>a<SUB>i </SUB>= 1 / <FONT FACE="Symbol">S</FONT>
+<SUB>j</SUB> [b<SUB>j
+</SUB>.
+D<SUB>j</SUB> exp( -<FONT FACE="Symbol">a</FONT> . d<SUB>ij</SUB>)]</B>
+<P><B>b<SUB>j </SUB>= 1 / <FONT FACE="Symbol">S</FONT>
+<SUB>i</SUB> [a<SUB>i
+</SUB>.
+O<SUB>i </SUB>exp( -<FONT FACE="Symbol">a</FONT> . d<SUB>ij</SUB>)]</B>
+<P><I><FONT SIZE=-1>(les deux vecteurs de param&egrave;tres &eacute;tant
+estim&eacute;s de fa&ccedil;on it&eacute;rative &agrave; une constante
+pr&egrave;s)</FONT></I>
+<P><FONT SIZE=+1><FONT FACE="Symbol">a</FONT> </FONT>est la valeur (unique)
+du frein de la distance assurant la conservation du co&ucirc;t total de
+d&eacute;placement C d&eacute;finie par :
+<P><B>C = <FONT FACE="Symbol">S</FONT>
+<SUB>ij</SUB> [ F<SUB>ij</SUB> .
+d<SUB>ij</SUB>] = <FONT FACE="Symbol">S</FONT>
+<SUB>ij</SUB> [ F*<SUB>ij</SUB>
+. d<SUB>ij</SUB>]</B>
+<BR>&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>L’importance du mod&egrave;le de Wilson tient moins &agrave; ses caract&eacute;ristiques
+propres (on peut consid&eacute;rer qu’il s’agit d’un cas particulier de
+mod&egrave;le multiplicatif &agrave; double contrainte) qu’aux recherches
+qu’il a suscit&eacute; et aux fondements th&eacute;oriques propos&eacute;s
+par l’auteur pour lier les &eacute;tats macroscopiques et microscopiques
+d’un syst&egrave;me d’interaction. La discussion de ces questions d&eacute;passant
+toutefois le cadre de cet expos&eacute;, nous n’y entrerons pas et renvoyons
+le lecteur aux tr&egrave;s nombreux travaux qui ont &eacute;t&eacute; consacr&eacute;s
+au mod&egrave;les de Wilson (voir en particulier la synth&egrave;se de
+Senior, 1979).
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+<I><FONT FACE="Arial">Le mod&egrave;le additif de Tobler</FONT></I>
+<BR>&nbsp;
+<BR>&nbsp;
+<BLOCKQUOTE>Bien qu’il ait suscit&eacute; peu de recherches, le mod&egrave;le
+propos&eacute; par W. Tobler est probablement d’une importance th&eacute;orique
+aussi grande, si ce n’est plus grande que celui de Wilson. Mod&egrave;le
+&agrave; double contrainte utilisant une fonction par&eacute;tienne d’exposant
+fixe (1/d<SUB>ij</SUB>), le mod&egrave;le de Tobler pr&eacute;sente la
+particularit&eacute; d’utiliser une formulation additive dans la d&eacute;finition
+de la relation entre les facteurs " push " et les facteurs " pull ".
+<BR>&nbsp;
+<BR>&nbsp;
+<P><B><U><FONT SIZE=+1>Mod&egrave;le additif &agrave; double contrainte
+de Tobler (version originale)</FONT></U></B></BLOCKQUOTE>
+
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD>
+<BLOCKQUOTE><B>F*<SUB>ij</SUB> = (A<SUB>i</SUB> + B<SUB>j</SUB>) / d<SUB>ij</SUB></B>
+<P>avec
+<P><B>A</B> et <B>B</B>, deux vecteurs de param&egrave;tres estim&eacute;s
+&agrave; une constante pr&egrave;s et assurant la conservation de la somme
+des flux &eacute;mis et re&ccedil;us par chaque unit&eacute; territoriale
+et d&eacute;crivant respectivement les facteurs " push " et " pull ".</BLOCKQUOTE>
+</TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>&nbsp;
+<P>Cette diff&eacute;rence en apparence minime (choix d’une forme additive
+plut&ocirc;t que multiplicative) a en fait des cons&eacute;quences th&eacute;oriques
+tr&egrave;s profondes qui ont &eacute;t&eacute; discut&eacute;s de fa&ccedil;on
+d&eacute;taill&eacute;es par Dorigo &amp; Tobler (1983) et qui donnent
+au mod&egrave;le de Tobler des propri&eacute;t&eacute;s remarquables, notamment
+en ce qui concerne la question de la d&eacute;sagr&eacute;gation des matrices
+de flux en unit&eacute; spatiales de tailles de plus en plus r&eacute;duites
+et l’&eacute;tablissement de repr&eacute;sentations cartographiques des
+champs de transfert (analyse de la composante dissym&eacute;trique des
+flux).
+<P>Malheureusement ce mod&egrave;le demeure &agrave; ce jour peu &eacute;tudi&eacute;
+et la plupart des auteurs de manuel sur l’interaction spatiale se contentent
+d’un coup de chapeau rituel aux qualit&eacute;s intrins&egrave;ques du
+mod&egrave;le de Tobler, sans chercher v&eacute;ritablement &agrave; en
+approfondir les hypoth&egrave;ses et &agrave; les confronter &agrave; celles
+des mod&egrave;les d’interaction de type multiplicatif.</BLOCKQUOTE>
+
+<H2>
+<A NAME="4.1.6. : Choix du critère d'ajustement et"></A>4.1.6. : Choix
+du crit&egrave;re d'ajustement et d&eacute;termination des param&egrave;tres
+&agrave; estimer</H2>
+En se limitant au cas simple o&ugrave; le mod&egrave;le comporte un seul
+param&egrave;tre &agrave; estimer (le frein de la distance ou de la fonction
+de c&ocirc;ut g&eacute;n&eacute;ralis&eacute;), nous allons discuter quelques
+solutions propos&eacute;s pour d&eacute;terminer la valeur optimale du
+param&egrave;tre et mesurer la qualit&eacute; d'ajustement globale d'un
+mod&egrave;le d'interaction spatiale
+<P><I><FONT FACE="Arial,Helvetica">Les solutions statistiques classiques
+fond&eacute;es sur la lin&eacute;arisation</FONT></I>
+<BLOCKQUOTE>Les solutions statistiques classiques au probl&egrave;me de
+l'ajustement consistent &agrave; se ramener &agrave; un probl&egrave;me
+d'ajustement lin&eacute;aire ou non-lin&eacute;aire fond&eacute; sur le
+crit&egrave;re des moindres carr&eacute;s.
+<P>Si l'on prend l'exemple du mod&egrave;le multiplicatif sans contrainte
+dans sa variante gravitaire enrichie (Cf. 4.1.3) on voit que la transformation
+logarithmique permet d'&eacute;crire l'&eacute;quation sous la forme d'un
+mod&egrave;le de r&eacute;gression lin&eacute;aire :
+<P><B>ln(F*<SUB>ij</SUB> )= ln(k) + <FONT FACE="Symbol">b</FONT><SUB> 1</SUB>.ln
+(E<SUB>i</SUB> ) + <FONT FACE="Symbol">b</FONT>
+<SUB>2</SUB>. ln(R<SUB>j</SUB>)
++ <FONT FACE="Symbol">a</FONT> .(d<SUB>ij</SUB><SUP> </SUP><I>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+forme exponentielle</I></B>
+<BR><B>ln(F*<SUB>ij</SUB> )= ln(k) + <FONT FACE="Symbol">b</FONT><SUB>
+1</SUB>.ln (E<SUB>i</SUB> ) + <FONT FACE="Symbol">b</FONT>
+<SUB>2</SUB>.
+ln(R<SUB>j</SUB>) + <FONT FACE="Symbol">a</FONT> . ln(d<SUB>ij</SUB><SUP>
+</SUP><I>)&nbsp;&nbsp;&nbsp;&nbsp; forme par&eacute;tienne</I></B>
+<P>Le crit&egrave;re de minimisation (implicite) est alors la somme des
+diff&eacute;rences &eacute;lev&eacute;es au carr&eacute; entre les logarithmes
+des flux observ&eacute;s et des flux estim&eacute;s, la qualit&eacute;
+de l'ajustement &eacute;tant mesur&eacute;e par le coefficient de d&eacute;termination
+de la r&eacute;gression multiple.
+<P>Si l'on souhaite utiliser un mod&egrave;le gravitaire simple (sans exposant
+sur les facteurs d'&eacute;mission et de r&eacute;ception, on peut &eacute;galement
+utiliser une autre transformation qui am&egrave;ne &agrave; une &eacute;quation
+de r&eacute;gression simple :
+<P><B>ln[F*<SUB>ij</SUB> /(E<SUB>i</SUB> . R<SUB>j</SUB>)]= ln(k) + <FONT FACE="Symbol">a</FONT>
+.(d<SUB>ij</SUB><SUP>
+</SUP><I>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+forme exponentielle</I></B>
+<BR><B>ln[F*<SUB>ij</SUB> /(E<SUB>i</SUB> . R<SUB>j</SUB>)]= ln(k) + <FONT FACE="Symbol">a</FONT>.
+ln(d<SUB>ij</SUB><SUP> </SUP><I>)&nbsp;&nbsp;&nbsp;&nbsp; forme par&eacute;tienne</I></B>
+<P>Le crit&egrave;re de minimisation est alors diff&eacute;rent puisqu'il
+s'agit de la minimisation non plus du logarithme des flux mais du logarithme
+de l'intensit&eacute; des flux (d&eacute;finie comme le rapport entre le
+flux observ&eacute; et le produit des capacit&eacute;s d'&eacute;mission
+et de r&eacute;ception).
+<P>Ces deux solutions ont l'avantage d'une tr&egrave;s grande simplicit&eacute;
+de mise en oeuvre et autorisent toute une s&eacute;rie d'enrichissements
+du mod&egrave;le (il est fracile d'introduire plusieurs facteurs explicatifs
+d'&eacute;mission, de r&eacute;ception ou d'&eacute;loignement si leurs
+effets sont suppos&eacute;s multiplicatifs), mais elles achoppent sur plusieurs
+difficult&eacute;s pratiques et th&eacute;oriques qui conduisent actuellement
+&agrave; leur abandon par la plupart des sp&eacute;cialistes des mod&egrave;les
+d'interaction spatiale :
+<P>1- Les flux nuls ne peuvent pas &ecirc;tre introduits dans des mod&egrave;les
+de ce type (le logarithme de 0 n'&eacute;tant pas d&eacute;fini) et il
+faut opter pour une solution arbitraire consistant soit &agrave; les retirer
+de l'analyse, soit &agrave; leur donner une valeur minimum.
+<BR>2- La contrainte de conservation du total des flux n'est plus assur&eacute;e
+par le param&egrave;tre k (puisque la minismisation se fait sur le logarithme
+des flux ou de leur intensit&eacute; et non pas sur les flux eux-m&ecirc;mes)
+ce qui oblige &agrave; une correction ex post du mod&egrave;le et qui introduit
+une nouvelle forme d'arbitraire.
+<BR>3- La minimisation sur le logarithme des flux (ou de leur intensit&eacute;)
+conduit &agrave; accorder une importance consid&eacute;rable aux petits
+flux dans l'ajustement du mod&egrave;le, alors que les flux de faibles
+intensit&eacute; sont ceux pour lesquels l'incertitude de mesure est la
+plus forte. On risque alors d'obtenir une mauvaise estimation des flux
+les plus importants (ce qui est g&ecirc;nant dans le cadre d'un mod&egrave;le
+de pr&eacute;vision) et de subir des biais li&eacute;s &agrave; la pr&eacute;sence
+de points-individus exceptionnels (sans parler des probl&egrave;mes d'autocorr&eacute;lation
+et d'h&eacute;t&eacute;rosc&eacute;dasticit&eacute; des r&eacute;sidus).
+<BR>4- les mod&egrave;les de r&eacute;gression logarithmique ne sont applicables
+facilement qu'au cas des mod&egrave;les sans containte mais ils sont beaucoup
+plus difficile &agrave; mettre en oeuvre pour la r&eacute;alisation de
+mod&egrave;les &agrave; simple ou double contraintes.
+<P>Au total, les ajustements par r&eacute;gression log-lin&eacute;aire
+constituent aujourd'hui une &eacute;tape d&eacute;pass&eacute;e et des
+m&eacute;thodes &eacute;quivalentes mais beaucoup plus puissantes (r&eacute;gression
+poissonnienne) constitue des alternatives beaucoup plus puissantes et tout
+aussi faciles d'emploi.
+<BR>&nbsp;</BLOCKQUOTE>
+<I><FONT FACE="Arial">L'approche heuristique de M. Poulain (crit&egrave;re
+du Chi-2)</FONT></I>
+<BLOCKQUOTE>Bien qu'elle soit davantage heuristique que statistique, l'approche
+sugg&eacute;r&eacute;e par M. Poulain au d&eacute;but des ann&eacute;es
+1980 a constitu&eacute; une &eacute;tape importante et toujours d'actualit&eacute;
+dans les recherches sur l'ajustement des mod&egrave;les d'interaction spatiale.
+<P>Partant d'une observation empirique sur les mouvements migratoires en
+Belgique, M. Poulain avait constat&eacute; qu'il &eacute;tait possible
+d'estimer l'ordre de grandeur de l'incertitude de mesure des flux migratoires
+en comparant deux sources diff&eacute;rentes : celle fournie par le lieu
+de destination et celle fournie par le lieu d'origine des migrants. La
+Belgique est en effet un pays dot&eacute; d'un registre de migration, de
+sorte que tout d&eacute;placement est enregistr&eacute; &agrave; la fois
+au lieu de d&eacute;part et au lieu d'arriv&eacute;e. Ainsi, le flux Anvers-Bruxelles
+peut-&ecirc;tre connu soit par le d&eacute;pouillement du registre des
+migrants qui ont d&eacute;clar&eacute; leur d&eacute;part d'Anvers, soit
+par le d&eacute;pouillement du registre des migrants qui ont d&eacute;clar&eacute;
+leur arriv&eacute;e &agrave; Bruxelles. Or, il existe de nombreux cas de
+non-co&iuml;ncidence entre les deux flux puisqu'un migrant peut changer
+d'avis apr&egrave;s avoir fait sa d&eacute;claration ou bien peut effectuer
+une d&eacute;claration fausse ou impr&eacute;cise. Il arrive ainsi fr&eacute;quemment
+qu'un migrant se d&eacute;pla&ccedil;ant vers une commune de banlieue d'une
+grande ville n'indique pas cette commune pr&eacute;cise mais le nom de
+la ville-centre dont elle d&eacute;pend.
+<P>La comparaison d'un &eacute;chantillon de flux d&eacute;crits par les
+deux sources a permis &agrave; M. Poulain d'&eacute;tablir que les diff&eacute;rences
+entre les deux sources &eacute;taient proportionnelles au racine carr&eacute;
+de la valeur du flux, ce qui est un r&eacute;sultat classique mais important
+puisqu'il indique que l'erreur relative est de son c&ocirc;t&eacute; inversement
+proportionnelle &agrave; la racine carr&eacute;e de la taille du flux (un
+flux de 4 personnes sera connu avec une incertitude 2 fois plus forte qu'un
+flux de 16 personnes).
+<P>Partant de ce r&eacute;sultat (dont il faudrait examiner s'il est g&eacute;n&eacute;ralisable
+&agrave; d'autres types de flux), M. Poulain a conclu que le crit&egrave;re
+d'ajustement le plus logique &eacute;tait celui qui ferait jouer aux flux
+un r&ocirc;le inversement proportionnel &agrave; leur erreur de mesure,
+ce qui revient au vu des r&eacute;sultats empiriques &agrave; utiliser
+le crit&egrave;re de minimisation du chi-deux de la diff&eacute;rence entre
+flux observ&eacute;s et flux estim&eacute;s. L'erreur du mod&egrave;le
+est donc d&eacute;finie par la somme du chi-2 de l'erreur sur chacun des
+flux observ&eacute;s et estim&eacute;s :
+<P><B>ERR(Mod) =&nbsp; <FONT FACE="Symbol">S</FONT>
+<SUB>ij</SUB> [(F<SUB>ij</SUB>
+- F*<SUB>ij</SUB>)<SUP>2</SUP>/F*<SUB>ij</SUB>]</B>
+<P>Pour exprimer la qualit&eacute; d'ajustement sous la forme d'un coefficient
+de d&eacute;termination variant entre 0 et 1, on peut d&eacute;finir une
+erreur maximale correspondant &agrave; un mod&egrave;le de r&eacute;f&eacute;rence.
+M. Poulain utilise comme r&eacute;f&eacute;rence le mod&egrave;le de flux
+moyen qui est bien adapt&eacute; au cas des mod&egrave;les sans contraintes
+mais qui serait plus discutable dans le cas de mod&egrave;les &agrave;
+simple ou double contrainte.
+<P><B>ERR(Max) =&nbsp; <FONT FACE="Symbol">S</FONT>
+<SUB>ij</SUB> [(F<SUB>ij</SUB>
+- <I>F</I>)<SUP>2</SUP>/<I>F</I>]&nbsp;&nbsp;&nbsp;&nbsp; </B>avec <B><I>F</I></B>
+= moyenne des flux
+<P>La qualit&eacute; d'ajustement est alors d&eacute;finie comme la part
+de l'incertitude initiale (erreur maximale) qui a &eacute;t&eacute; r&eacute;duite
+par le mod&egrave;le utilis&eacute;e :
+<P><B>AJU (Mod, Max) = [ERR(Max) - ERR(Mod)] / ERR(Max)</B>
+<P>Plus g&eacute;n&eacute;ralement, lorsque l'on introduit successivement
+plusieurs variables explicatives (1,2,...z) dans un mod&egrave;le d'interaction
+spatiale (mod&egrave;les 1, 2, ...z) on peut peut mesurer la contribution
+relative de l'ajout d'une variable suppl&eacute;mentaire &agrave; la r&eacute;duction
+de l'incertitude non prise en compte par les mod&egrave;les pr&eacute;c&eacute;dents
+:
+<P><B>AJU (k) = [ERR(Mod<SUB>k-1</SUB>) - ERR(Mod<SUB>k</SUB>)] / ERR(Mod<SUB>k-1</SUB>)</B>
+<P>Ainsi, si l'on veut mesurer les apports respectifs des masses et de
+la distance dans un mod&egrave;le de type gravitaire on d&eacute;finira
+trois mod&egrave;les successifs correspondant &agrave; l'absence de variable
+explicative (Mod0), &agrave; la pr&eacute;sence des masses (Mod1) et &agrave;
+la pr&eacute;sence des masses et de la distance (Mod2). Et on calculera
+les coefficients d'ajustement correspondant aux passages successifs du
+mod&egrave;le 0 au mod&egrave;le 1 (pouvoir explicatif des masses) puis
+du mod&egrave;le 1 au mod&egrave;le 2 (pouvoir explicatif de la distance
+toutes choses &eacute;gales quant aux masses) et pas simplement du mod&egrave;le
+0 au mod&egrave;le 2 (pouvoir explicatif conjoint des masses et de la distance).
+<BR>&nbsp;</BLOCKQUOTE>
+<I><FONT FACE="Arial">Les solutions statistiques modernes : maximisation
+de l'entropie et r&eacute;gression poissonienne</FONT></I>
+<BLOCKQUOTE>Dans une perspective plus th&eacute;orique que celle propos&eacute;e
+par M. Poulain, de nombreux auteurs ont cherch&eacute; &agrave; fonder
+le choix du crit&egrave;re d'ajustement sur la nature du processus g&eacute;n&eacute;rateur
+des flux, ce qui est la solution la plus satisfaisante puisqu'elle permet
+(en th&eacute;orie) d'adapter le choix du crit&egrave;re &agrave; la nature
+probabiliste du ph&eacute;nom&egrave;ne consid&eacute;r&eacute;.
+<P>Si la premi&egrave;re approche de ce type revient aux travaux de Wilson
+sur la maximisation de l'entropie sous contrainte, elle a depuis lors &eacute;t&eacute;
+g&eacute;n&eacute;ralis&eacute;e par des auteurs tels que Fotheringham
+&amp; O Kelly (1989) et surtout dans l'ouvrage de r&eacute;f&eacute;rence
+de Sen &amp; Smith (1995). La solution propos&eacute;e par Wilson correspond
+en effet &agrave; un corpus particulier d'hypoth&egrave;se sur la distribution
+des flux, issu d'une analogie avec la physique, qui n'est pas n&eacute;cessairement
+v&eacute;rifi&eacute; dans les situations concr&egrave;tes d'application
+des mod&egrave;les d'interaction spatiale. La notion d'entropie et les
+travaux &eacute;quivalents de la synerg&eacute;tiques se fonde sur l'hypoth&egrave;se
+non n&eacute;cessairement v&eacute;rifi&eacute;e que la probabilit&eacute;
+macroscopique d'&eacute;tat du syst&egrave;me d&eacute;pend de la distribution
+la plus probable des micro-&eacute;tats de celui-ci. Or cette hypoth&egrave;se
+n'est valide que si le processus g&eacute;n&eacute;rateur des flux est
+de type poissonien, sans effets d'agr&eacute;gation (ensemble de flux li&eacute;s
+&agrave; une m&ecirc;me date) ou d'autocorr&eacute;lation temporelle (influence
+des flux pass&eacute;s sur les flux futurs).
+<P>La solution propos&eacute;e par Wilson revient dans la pratique &agrave;
+l'ajustement d'un mod&egrave;le de r&eacute;gression poissonienne selon
+le crit&egrave;re du maximum de vraisemblance (Flowerdew) mais elle constitue
+un cas particulier d'un corpus plus g&eacute;n&eacute;ral de solution o&ugrave;
+la distribution des flux pourrait d&eacute;pendre d'un processus g&eacute;n&eacute;rateur
+quelconque et suivre d'autres lois que la loi de Poisson (par exemple une
+loi binomiale n&eacute;gative). Des recherches sont en cours (Calzada C.,
+d'Aubigny G., Grasland C., Viho G., Vincent J.M.) pour mettre au point
+de nouveaux outils d'ajustement adapt&eacute;s &agrave; ces hypoth&egrave;ses
+et v&eacute;rifier leur ad&eacute;quation sur des donn&eacute;es empiriques.
+<P>Sans entrer dans plus de d&eacute;tail on notera que les approches statistiques
+modernes fond&eacute;es sur la r&eacute;gression poissonienne (ou ses variantes)
+et le crit&egrave;re du maximum de vraisemblance pr&eacute;sentent des
+avantages certains par rapport aux m&eacute;thodes ant&eacute;rieures :
+<P>1- L'introduction des contraintes (simple, double) est une simple cons&eacute;quence
+du choix des variables explicatives introduites dans le mod&egrave;le,
+c'est-&agrave;-dire de l'information disponible. Elle est donc beaucoup
+plus naturelle et beaucoup plus claire.
+<BR>2- L'examen de la r&eacute;duction de la d&eacute;viance en fonction
+du nombre de facteurs explicatifs introduits dans le mod&egrave;le permet
+d'assigner &agrave; chaque param&egrave;tre un niveau de significativit&eacute;
+partiel, analogue aux coefficients de r&eacute;gression multiples. On peut
+donc d&eacute;terminer quelles variables explicatives jouent un r&ocirc;le
+significatif dans l'explication du ph&eacute;nom&egrave;ne et lesquelles
+doivent &ecirc;tre retir&eacute;es. Elle permet &eacute;galement de d&eacute;terminer
+si le mod&egrave;le est "complet", c'est-&agrave;-dire si des variables
+latentes restent &agrave; d&eacute;couvrir ou non.
+<BR>3- La (relative) simplicit&eacute; de la technique de r&eacute;gression
+poissonnienne permet d'ajuster des mod&egrave;les complexes o&ugrave; les
+d&eacute;terminants de l'interaction sont multiples et o&ugrave; leurs
+effets respectifs sont contr&ocirc;l&eacute;s r&eacute;ciproquement. On
+peut donc mesurer l'effet de chaque facteur explicatif (distance, capacit&eacute;s
+d'&eacute;mission ou de r&eacute;ception) toutes choses &eacute;gales quant
+&agrave; celui des autres, ce qui est extr&ecirc;mement utile d'un point
+de vue th&eacute;orique et d'un point de vue pratique (Cf. Br&ouml;cker
+&amp; Rohweder).
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>&nbsp;</BLOCKQUOTE>
+</BLOCKQUOTE>
+</DIR>
+</DIR>
+
+<DIR>
+<DIR>
+<OL>&nbsp;
+<TABLE BORDER COLS=1 WIDTH="70%" >
+<TR>
+<TD>
+<CENTER><A HREF="Chap4_2.htm">Suite du chapitre</A></CENTER>
+</TD>
+</TR>
+</TABLE>
+</OL>
+</DIR>
+</DIR>
+
+</BODY>
+</HTML>

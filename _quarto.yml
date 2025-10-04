@@ -26,6 +26,10 @@ website:
           - text: TD2 - Accessibilité aux services de soins
             href: https://analytics.huma-num.fr/Claude.Grasland/access/
             target: _blank
+      - text: 3. Interaction
+        menu:    
+          - text: Archives - cours C. Grasland (1998)
+            href: cours3.qmd
     right: 
       - icon: github # add icons as navbar buttons
         href: https://github.com/worldregio/anspa

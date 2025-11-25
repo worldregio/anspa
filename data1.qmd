@@ -38,7 +38,7 @@ editor:
 ```{r}
 library(sf)
 library(dplyr)
-library(mapview)
+library(mapsf)
 ```
 
 ## Introduction
@@ -46,6 +46,8 @@ library(mapview)
 Le jeu de données présenté ici a été constitué par les membres du projet openflight étudier les relations aériennes entre les villes du Monde en 2014 
 
 La base a été harmonisée par C. Grasland dans le cadre d'un cours de L3 Géographie Structures du Monde Actuel. L'harmonisation concerne notamment l'agrégation des aéroports d'une même ville et le codage commun des deux sources.
+
+Les données décrites peuvent être récupérées [dans ce dossier sur gihub](https://github.com/worldregio/anspa/tree/main/openflight)
 
 
 
@@ -58,6 +60,7 @@ Il s'agit d'un fichier sf qu'il faut donc ouvrir après avoir chargé ce package
 ```{r}
 library(sf)
 cities <- readRDS("openflight/cities.RDS")
+states <- readRDS("openflight/states.RDS")
 dim(cities)
 head(cities)
 ```
@@ -68,8 +71,8 @@ On note pour chaque ville le nombre de vols (V) selon qu'ils sont nationaux (VN)
 
 
 ```{r}
-library(mapview)
-mapview(cities)
+plot(states$geometry,col="lightyellow")
+plot(cities$geometry, col="red",cex=0.1, pch=20, add=T)
 ```
 
 Comme on peut le voir, la base offre uune très large couverture du Monde avec une grande finesse de détail.
@@ -96,7 +99,7 @@ La base comporte 34036 liens correspondant à des vols directs.
 
 ### Visualisation des liens 
 
-La géométrie associée permet de tracer les vols en suivant le plus court chemin à vol d'oiseau. Essayons par exemple de tracer le lien Paris-Tokyo en 2014
+La géométrie associée permet de tracer les vols en suivant le plus court chemin à vol d'oiseau. Essayons par exemple de tracer le lien Paris-Tokyo en 2014.
 
 ```{r}
 lien <- links %>% filter(Cit_i =="Paris**",
@@ -124,20 +127,18 @@ plot(chine$geometry, col="lightyellow")
 plot(lien$geometry, col="red",add=T, lwd=1, alpha=0.3)
 ```
 
-## Les fichier **states_link.RDS, states_nodes.RDS, states.RDS**
+## Les fichier **states_link.RDS, states_nodes.RDS**
 
 Ce fichier agrège les flux par pays et leur attribue comme référence l'aéroport  le plus important du pays en nombre de liaisons. On peut ainsi tracer des liaisons entre pays sous la forme de nombre de liaions directes.
 
 
 ```{r}
-states_link <- readRDS("openflight/states_link.RDS")
-head(states_link)
 
 states_nodes <- readRDS("openflight/states_nodes.RDS")
 head(states_nodes)
 
-states <- readRDS("openflight/states.RDS")
-head(states)
+states_link <- readRDS("openflight/states_link.RDS")
+head(states_link)
 ```
 
 On retrouve les indicateurs déjà vus pour les villes en terme de nombres de vols nationaux ou internationaux et de somme des distances. On peut ainsi proposer différentes cartographies de l'intensité des liaisons aériennes entre les pays. Supposons par exemple qu'on veuille visualiser le nombre liaisons directes du Brésil vers d'autres pays. 

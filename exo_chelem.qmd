@@ -1,0 +1,814 @@
+---
+title: "[EXO3] Modélisation des flux commerciaux"
+subtitle: "Application à la base CHELEM (1967-2020)"
+date: "09/01/2025"
+author: "Claude Grasland"
+format:
+  html:
+    link-external-newwindow: true
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+    number-sections: false
+    number-depth: 3
+execute:
+  warning: false
+  message: false 
+  cache: false  
+  echo: false 
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+```{r}
+### PACKAGES ###
+# Affichage
+library(knitr)
+
+# Manipulation de bases de données
+library(dplyr) 
+library(data.table)
+
+# Graphiques
+library(ggplot2)
+library(plotly)
+library(RColorBrewer)
+
+# Cartographie
+library(sf)
+library(mapsf)
+
+### DONNEES
+dt<-readRDS("chelem/data_chelem.RDS")
+
+### CARTES
+map<-readRDS("chelem/map_Chelem.RDS")
+ctr<-readRDS("chelem/map_Chelem_ctr.RDS")
+
+```
+
+
+# LA BASE CHELEM
+
+On propose ici de modéliser les échanges commerciaux entre un pays et le reste du monde à partir de la base de données CHELEM mise au point par le CEPII. Cette base extrêmement riche permet de faire varier aussi bien le temps que le type de produit et offre ainsi la possibilité d'examiner en détail la composition des échanges et leur évolution dans le temps. Elle offre néanmoins deux limites :
+
+- Certains pays ont été regroupés en agrégats compte-tenu de leur faible volume commercial ou de changements de frontières.
+- La liste des produits a été simplifiée pour faciliter l'analyse et tenir compte de l'apparition ou de la disparition de certains.
+
+
+## Pays et agrégats de pays
+
+```{r}
+
+chelem<-readRDS("chelem/map_Chelem.RDS") 
+
+ns<-c("MLT","BLX","MOA","AFA","AFZ","SAF","AMA","AOZ","CAL","AOA","CAU","CEA","GOA")
+agr<-chelem %>% filter(code %in% ns)
+
+
+mypal<-rainbow(20)
+mf_theme("agolalight")
+mf_map(chelem, type="base", col="lightyellow")
+mf_map(agr,
+       type = "typo",
+       var="name",
+       leg_pos = "left",
+       leg_title = "Groupes",
+       add=T,
+       pal=mypal
+       )
+
+mf_layout(title = "Agrégats de pays dans la base CHELEM",
+          credits = "Source : CEPII, Base CHELEM",
+          frame = T,
+          arrow = F
+          )
+
+```
+
+-   **Commentaire** : Afin d'assurer la continuité de la collecte des données commerciales sur une période très longue (1968- Présent), la base CHELEM a mise en place des agrégats de pays qui rendent plus facile la maintenance de la base mais réduisent la résolution géographique de l'analyse et éliminent de facto une partie des flux internationaux. Il s'agit souvent de groupes de petits pays jouant un faible rôle dans le commerce mondial(Amérique centrale, états insulaires du Pacifique, Cambodge et Laos, ...). Mais dans deux cas au moins les agrégats s'avèrent plus problématiques : (1) pour l'Afrique subsaharienne où seuls quelques pays sont identifiés individuellement (2) pour les états du Proche et Moyen Orient où l'un des agrégats mélange Iran, Irak et Koweit et un autre Syrie, Liban et Jordanie.
+
+
+## Produits
+
+La base CHELEM a réussi l'exploit de constituer une catégorisation des produits échangés sur plus de 50 ans malgré l'évolution des types de production et les changements de nomenclature. Nous adoptons ici une version simplifié de cette classification en 9 familles de produits correspondant à différents niveaux d'insertion dans les chaînes de valeur et la division internationale du travail (@grasland2010, @grataloup2014)
+
+- (1) ENE : Energie
+- (2) MIN : Mines, produits intermédiaires
+- (3) AGR : Produits agricoles, alimentation
+- (4) TEX : Textile, habillement
+- (5) ELE : Electronique
+- (6) EQU : Equipement, Machines
+- (7) TRA : Transport
+- (8) CHE : Chimie, Pharmacie
+- (9) MIS : Divers
+
+
+
+```{r}
+Fkt<-dt[k!="TOT",.(Fkt=sum(Fijkt)),.(k,t)]
+Ft<-dt[k!="TOT",.(Ft=sum(Fijkt)),.(t)]
+tab<-left_join(Fkt,Ft) %>% mutate(pct=100*Fkt/Ft)
+g<-ggplot(tab) + aes(x=t, y=pct,fill=k) +
+               geom_bar(stat="identity") +
+       scale_x_discrete("Année") +
+       scale_y_continuous("% flux mondiaux") +
+       ggtitle("Echanges commerciaux mondiaux en 9 groupes",subtitle = "Source : CEPII, Base CHELEM")
+ggplotly(g)
+```
+
+- **Commentaires** : Le graphique montre que les 9 groupes de produits réalisent une partition relativement équilibrée des échanges mondiaux tout en permettant de suivre les tendances longues à la hausse (électronique, chimie), la stabilité (transport,textile )  ou à la baisse (agriculture) de la part de chaque produit en valeur. Les fluctuations les plus importantes concernent les produits énergétiques qui voient leur part osciller entre 8% et 24%  selon les années. La série de données s'arrêtant en 2020, on ne voit pas l'accroissement spectaculaire de leur part qui intervient à partir de 2022 en raison de la crise russo-ukrainienne. On ne voit pas non plus l'effet corrélatif du renchérissement des produits agricoles. 
+
+
+## Définition de régions économiques
+
+Pour faciliter les analyses des échanges mondiaux nous avons proposé avec J.L. Guigou un découpage du Monde en 4 régions verticales.
+
+```{r}
+gui1<-readRDS("chelem/map_Chelem_Reg1.RDS") 
+
+gui1$code<-paste(gui1$GUI1,gui1$GUI1_Name,sep=":")
+gui1$code[1]<-"???"
+mypal<-c("gray","blue","red","orange","green")
+mf_theme("agolalight")
+mf_map(gui1,
+       type = "typo",
+       var="code",
+       leg_pos = "left",
+       leg_title = "Régions",
+       pal=mypal
+       )
+mf_layout(title = "Découpage du monde en 4 régions verticales",
+          credits = "Source : adapté de J.L. Guigou & al., IPEMED, 2023",
+          frame = T,
+          arrow = F
+          )
+
+```
+
+-   **Commentaire** : Les trois premières régions reprennent le découpage proposé par J.L. Guigou et les chercheurs de l'IPEMED à une différence près : les pays pétroliers du Golfe persique n'ont pas été rattachés à la verticale Europe-Méditerranée-Afrique car leur commerce est clairement mondialisé et ne se rattache à aucune verticale.
+
+Quelques rattachements non voulus ont par ailleurs été imposés par la structure de la base CHELEM du fait de l'existence d'agrégats de pays non séparables (e.g. rattachement de l'Afghanistan à l'ensemble Asie-Pacifique ou du Yemen à l'ensemble Europe-Méditerranée-Afriqe)
+
+La quatrième région "reste du Monde" n'est pas a priori une zone d'intégration régionale mais elle doit être prise en compte pour compléter l'analyse et lui donner une dimension globale. Elle comporte des pays qui sont tiraillés entre plusieurs orientations régionales à l'instar de la Russie, L'Inde ou l'Arabie Saoudite.
+
+```{r}
+Fit<-dt[k=="TOT",.(Fit=sum(Fijkt)),.(reg1i,t)]
+Ft<-dt[k=="TOT",.(Ft=sum(Fijkt)),.(t)]
+tab<-left_join(Fit,Ft) %>% mutate(pct=100*Fit/Ft)
+g<-ggplot(tab) + aes(x=t, y=pct,fill=reg1i) +
+               geom_bar(stat="identity") +
+       scale_x_discrete("Année") +
+       scale_y_continuous("% flux mondiaux") +
+       ggtitle("Part des exportations mondiales (y compris internes)",subtitle = "Source : CEPII, Base CHELEM")
+ggplotly(g)
+
+Fjt<-dt[k=="TOT",.(Fjt=sum(Fijkt)),.(reg1j,t)]
+Ft<-dt[k=="TOT",.(Ft=sum(Fijkt)),.(t)]
+tab<-left_join(Fjt,Ft) %>% mutate(pct=100*Fjt/Ft)
+g<-ggplot(tab) + aes(x=t, y=pct,fill=reg1j) +
+               geom_bar(stat="identity") +
+       scale_x_discrete("Année") +
+       scale_y_continuous("% flux mondiaux") +
+       ggtitle("Part des importations mondiales (y compris internes)",subtitle = "Source : CEPII, Base CHELEM")
+ggplotly(g)
+```
+
+- **Commentaire** : En apparence la région Europe-Méditerranée-Afrique semble jouer le rôle le plus important dans les importations comme dans les exportations mondiales, même si sa part diminue au fil du temps au profit de la région Asie-Pacifique. Toutefois **ce résultat est dans une large mesure une illusion** liée au fait que cette région est subdivisée en un très grand nombre de pays qui échangent avec leur voisins, à la différence de l'Amérique ou de l'Asie pacifique pour lesquels le trafic intérieur aux grands pays n'est pas visible. La vision des échanges serait à l'évidence très différente si on avait pris en compte les échanges entre les provinces chinoises ou les états fédérés des USA. 
+
+
+## Définition de sous-régions économiques
+
+A l'intérieur de chaque région verticale, nous avons ensuite créée trois sous-régions en se basant davantage sur des critères de développement économique et correspondant à une subdivision en centre, semi-périphérie et périphérie.
+
+```{r}
+
+gui2<-readRDS("chelem/map_Chelem_Reg2.RDS") 
+
+
+gui2$code<-paste(gui2$GUI2,gui2$GUI2_Name)
+gui2$code[1]<-"???"
+
+mypal<-c("gray",
+         rev(brewer.pal(5,"Blues")[1:3]),
+         rev(brewer.pal(5, "Reds")[1:3]),
+        rev(brewer.pal(5,"YlOrBr")[1:3]),
+         rev(brewer.pal(5,"Greens")[1:3])
+
+         )
+#mypal<-rainbow(12)
+mf_theme("agolalight")
+mf_map(gui2,
+       type = "typo",
+       var="code",
+       leg_pos = "left",
+       leg_title = "Régions",
+       pal=mypal,
+       )
+
+mf_layout(title = "Découpage vertical en 12 sous régions",
+          credits = "Source : C. Grasland, 2024",
+          frame = T,
+          arrow = F
+          )
+
+```
+
+-   **Commentaire :** Chacune des quatre régions a été découpée en 3 sous-régions en suivant à nouveau approximativement les propositions de J.L. Guigou et de l'IPEMED mais avec quelques adaptations. Nous avons notamment choisi de rattacher le Mexique à l'Amérique Centrale plutôt que l'Amérique du Nord dans la mesure où la période d'étude est longue (1968-2020) et ne correspond pas à l'existence permanente de l'ALENA. Nous avons par ailleurs maintenu l'ex-URSS dans une seule région (exception faite des pays baltes) afin de pouvoir suivre son évolution sur toute la période.
+
+```{r}
+Fit<-dt[k=="TOT" & reg2i!=reg2j,.(Fit=sum(Fijkt)),.(reg1i,t)]
+Ft<-dt[k=="TOT"  & reg2i!=reg2j,.(Ft=sum(Fijkt)),.(t)]
+tab<-left_join(Fit,Ft) %>% mutate(pct=100*Fit/Ft)
+g<-ggplot(tab) + aes(x=t, y=pct,fill=reg1i) +
+               geom_bar(stat="identity") +
+       scale_x_discrete("Année") +
+       scale_y_continuous("% flux mondiaux") +
+       ggtitle("Part des exportations vers d'autres sous-régions",subtitle = "Source : CEPII, Base CHELEM")
+ggplotly(g)
+
+Fjt<-dt[k=="TOT" & reg2i!=reg2j,.(Fjt=sum(Fijkt)),.(reg1j,t)]
+Ft<-dt[k=="TOT" & reg2i!=reg2j,.(Ft=sum(Fijkt)),.(t)]
+tab<-left_join(Fjt,Ft) %>% mutate(pct=100*Fjt/Ft)
+g<-ggplot(tab) + aes(x=t, y=pct,fill=reg1j) +
+               geom_bar(stat="identity") +
+       scale_x_discrete("Année") +
+       scale_y_continuous("% flux mondiaux") +
+       ggtitle("Part des importations depuis d'autres sous-régions",subtitle = "Source : CEPII, Base CHELEM")
+ggplotly(g)
+```
+
+- **Commentaire** : En éliminant les échanges internes à chacune des sous-régions on obtient une mesure plus juste du rôle de chacune des quatre grandes régions dans le commerce mondial. La région Europe-Méditerranée-Afrique totalisait 40 à 45% des importations ou exportations dans les années 1970 contre 20 à 25% en 2020. La région Amériques conserve une part relativement stable d'environ 30% des importations au cours du temps  mais voit sa part des exportations diminuer de 30 à 20%. La région Asie Pacifique voit quant à elle sa part des eportations mondiales doubler, passant de 16 à 43%. La progression est également remarquable pour les importations qui passent de 18 à 33%. Quant à la région résiduelle "reste du monde" elle joue un rôle relativement mineur dans les importations tout au long de la période (10 à 15%) mais connaît des fluctuations forte dans sa part des exportations (8 à 22%) en raison des variations de prix des produits énergétiques. 
+
+# EXO1 : EXPLORATION PAS A PAS
+
+## Préparation des données
+
+On extrait de la base de données les exportations (Fij) d'un pays (i)  à une date donnée avec les autres pays du Monde (j) et on y ajoute quatre variables explicatives :
+
+- Dj : la somme des importations du pays de destination
+- DISTij : la distance entre le pays de destination et le pays d'origine
+- COLOij : l'existence d'une relation coloniale passée (1) ou non (0) entre les deux pays
+- LANGij : l'existence d'une langue commune entre les deux pays
+
+```{r}
+mycountry <- "FRA"
+myperiod  <- "2016-20"
+
+exp <- dt %>% filter(i==mycountry, t==myperiod) %>% 
+              group_by(i,j, namei,namej) %>%
+              summarise( Fij = sum(Fijkt)/1000,
+                         Dj = sum(Fjkt)/1000,
+                         DISTij = min(DISTij),
+                         COLOij = mean(COL1ij),
+                         LANGij = mean(LANGij)) %>%
+              ungroup() %>%
+              mutate(rnk = rank(-Fij)) %>%
+              select(rnk,i,j,namei,namej,Fij,Dj,DISTij,COLOij,LANGij) %>%
+              arrange(rnk)
+kable(head(exp,20), digits=1,
+      caption = "20 pemiers flux d'exportation de la France en 2016-2020 (millions de $)")
+
+
+```
+
+
+## Cartographie des flux
+
+On procède à une cartographie des flux (Fij) pour visualiser les principales destinations :
+
+```{r}
+mapdon <- merge(map, exp, by.x="code",by.y="j")
+
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="prop",
+       var="Fij",
+       col="red",
+       inches=0.2, 
+       leg_title = "en millions de $",
+       add=T)
+mf_layout(title = "Flux d'exportation de la France en 2016-20",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+
+```
+
+
+## Modèle 1 : marché parfait
+
+Que se passerait-t-il si le commerce ne dépendait que des lois de l'offre et la demande, à l'exclusion de tout autre facteur ? Logiquement, la France devrait exporter vers l'ensemble des autres pays du Monde de façon équitable. Mais comme certains pays importent plus que d'autres elle leur enverrait plus de marchandises. On peut donc visualiser la demande en cartographiant les importations de chaque pays : 
+
+
+```{r}
+mapdon <- merge(map, exp, by.x="code",by.y="j")
+
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="prop",
+       var="Dj",
+       col="red",
+       inches=0.2, 
+       leg_title = "en millions de $",
+       add=T)
+mf_layout(title = "Importations 2016-20 (France exclue)",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+
+```
+
+Les exportations de la France correspondent-elles à un marché parfait ? Si tel était le cas on devrait avoir une relation proportionnelle entre les exportation de la France et les importations des pays. Soit :
+
+```{r}
+expfra <- sum(exp$Fij)
+impwld <- sum(exp$Dj)
+pctfra <- 100*expfra/impwld
+
+paste("Exportations totale de la France :",round(expfra),"Millions de $")
+paste("Importation totales du Monde (hors France) :", round(impwld), "Millions de $")
+paste("Part de la France dans les importations mondiales : ",round(pctfra,2), "%")
+```
+
+Nous allons vérifier si cette part de la France est bien égale à cette valeur dans tous les pays du Monde. 
+
+```{r}
+mapdon$pct<-100*mapdon$Fij/mapdon$Dj
+mypal<-brewer.pal(6,"RdYlGn")
+mybreaks <- c(min(mapdon$pct), pctfra/4, pctfra/2,pctfra,pctfra*2,pctfra*4, max(mapdon$pct))
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="choro",
+       var="pct",
+       pal=mypal,
+       breaks=mybreaks,
+       col_na = "gray",
+       leg_title = "% import venant de France",
+       add=T)
+mf_layout(title = "Spécialisation des exportations françaises en 2016-20",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+
+```
+
+Les pays en vert sont ceux qui importent plus que prévu de France, ceux qui sont en orange importent moins que prévu, par rapport à l'hypothèse du marché parfait.
+
+
+## Modèle 2 : friction de la distance
+
+On sait que l'éloignement augmente le prix de transport des marchandises ainsi que les risques éventuels de rupture d'approvisionnement. On va donc examiner si l'importance relative des exportations de la France dépend de la distance, mesurée ici à vol d'oiseau.
+
+```{r}
+ggplot(mapdon) + aes(x=DISTij, y=pct) + 
+                 geom_point() + 
+                 geom_smooth(method = "lm",fill = NA)+
+                 scale_x_continuous("Distance à vol d'oiseau (en km)") +
+                 scale_y_continuous("Intensité relative des échanges (Fij/Dj) en %",limits = c(0, max(mapdon$pct))) +
+                 geom_hline(yintercept = pctfra,col="red")
+                 ggtitle("Distance et intensité des exportations de la France en 2016-20",subtitle = "Source : CEPII")
+```
+
+- **La droite rouge** correspond à l'hypothèse d'un marché parfait (tous les pays reçoivent le même pourcentage de leurs importations en provenance de France)
+- **la droite bleue** correspond à la situation moyenne observée et révèle une décroissance de l'intensité des échanges avec la distance.
+
+Il y a donc bien une décroissance des échanges avec la distance mais la forme du nuage de points suggère que cette décroissance n'est pas de forme linéaire. On va donc tester les différents modèles statistiques de relation pour voir celui qui correspond le mieux à la situation observée.
+
+```{r}
+par(mfrow=c(2,2))
+# Linéaire
+X<-mapdon$DISTij
+Y<-mapdon$pct
+reg<-lm(Y~X)
+r2<-cor(X,Y)**2
+titre <- paste("Y=a.X+b - r2 =", round(100*r2,1),"%")
+plot(X,Y, pch=20,col="red", main = titre, xlab="Distance",ylab = "Intensité")
+abline(reg, col="blue", lwd=2)
+grid()
+
+# Exponentiel
+X<-mapdon$DISTij
+Y<-log(mapdon$pct)
+reg<-lm(Y~X)
+r2<-cor(X,Y)**2
+titre <- paste("log(Y)=a.X+b - r2 =", round(100*r2,1),"%")
+plot(X,Y, pch=20,col="red", main = titre, xlab="Distance",ylab = "log(Intensité)")
+abline(reg, col="blue", lwd=2)
+grid()
+
+# Logarithmique
+X<-log(mapdon$DISTij)
+Y<-mapdon$pct
+reg<-lm(Y~X)
+r2<-cor(X,Y)**2
+titre <- paste("Y=a.log(X)+b - r2 =", round(100*r2,1),"%")
+plot(X,Y, pch=20,col="red", main = titre, xlab="log(Distance)",ylab = "Intensité")
+abline(reg, col="blue", lwd=2)
+grid()
+
+# Puissance
+X<-log(mapdon$DISTij)
+Y<-log(mapdon$pct)
+reg<-lm(Y~X)
+r2<-cor(X,Y)**2
+titre <- paste("log(Y)=a.log(X)+b - r2 =", round(100*r2,1),"%")
+plot(X,Y, pch=20,col="red", main = titre, xlab="log(Distance)",ylab = "log(Intensité)")
+abline(reg, col="blue", lwd=2)
+grid()
+
+```
+
+
+On découvre sans surprise que le meilleur modèle de prédiction est le modèle puissance dont on peut déduire l'équation à l'aide des transformations suivantes
+
+$log(Y) = a.log(X)+b$
+$Y = exp[a.log(X)+b]$
+$Y = exp(a).exp[log(X)+b]$
+$Y = exp(a).X^b$
+
+Dans notre exemple, le modèle de régression donne :
+
+```{r}
+logX<-log(mapdon$DISTij)
+logY<-log(mapdon$pct)
+mod<-lm(logY~logX)
+summary(mod)
+exp(5.170)
+```
+
+On en déduit l'équation suivante du modèle : 
+
+$(F_{ij}/P_j) = exp(5.1710).D_{ij}^{-0.53}$ 
+$(F_{ij}/P_j) = 175.9.D_{ij}^{-0.53}$ 
+
+On peut alors calculer pour chaque pays l'intensité attendue des exportations en provenance de France fonction de la distance et examiner les résidus les plus forts et les plus faibles : 
+
+```{r}
+mapdon$pct_theo <- 175.9*(mapdon$DISTij)^-0.53
+mapdon$pct_res <-mapdon$pct-mapdon$pct_theo
+mapdon$pct_res2 <-mapdon$pct/mapdon$pct_theo
+
+# Résidus
+resid<-mapdon %>% st_drop_geometry() %>% 
+                  select(name, DISTij, pct, pct_theo, pct_res, pct_res2) %>%
+                  arrange(pct_res)
+
+kable(head(resid,10),digits=2,col.names = c("Pays ou zone","Distance","% observé","% attendu","résidu absolu","résidu relatif"), caption = "Intensité des échanges plus faible que prévu par un modèle de distance")
+
+resid<- resid %>% arrange(-pct_res)
+kable(head(resid,10),digits=2,col.names = c("Pays ou zone","Distance","% observé","% attendu","résidu absolu","résidu relatif"), caption = "Intensité des échanges plus forte que prévus par un modèle de distance")
+```
+
+
+On procède à une cartographie générale des résidus en utilisant le rapport entre intensité observée et intensité estimée
+
+
+```{r}
+par(mfrow=c(1,1))
+mapdon$res_rel<-mapdon$pct/mapdon$pct_theo
+mypal<-brewer.pal(6,"RdYlBu")
+mybreaks <- c(0, 0.25,0.5,1,2,4, max(mapdon$res_rel))
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="choro",
+       var="res_rel",
+       pal=mypal,
+       breaks=mybreaks,
+       col_na = "gray",
+       leg_title = "Observé/Estimé",
+       add=T)
+mf_layout(title = "Exportations résiduelles de la France en 2016-20 (hors distance)",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+```
+
+
+On remarque alors tres clairement un effet spectaculaire de relation avec l'Afrique qui paraît lié aux héritages de la colonisation (la "Françafrique") mais aussi sans doute à la présence de la langue française dans les pays concernés.
+
+
+## Modèle 3 : héritage historique
+
+
+On peut examiner rapidement l'effet des variables COLOij et LANGij sur les résidus du modèle précédent.
+
+```{r}
+par(mfrow=c(1,2))
+boxplot(mapdon$pct_res2~mapdon$COLOij,
+        log ="y",
+        col=c("red","blue"),
+        xlab = "Colonisation par la France",
+        ylab="Résidus relatif")
+
+boxplot(mapdon$pct_res2~mapdon$LANGij,
+        log ="y",
+        col=c("red","blue"),
+        xlab = "Langue commune",
+        ylab="Résidus relatif")
+```
+
+Les graphiques montrent clairement que, toutes choses égales quant à la distance, les pays qui ont été colonisés par la France ou qui partagent avec elle une langue commune ont des échanges plus intenses que les autres. Il est toutefois difficile de démêler les effets respectifs des trois variables explicatives que sont la distance, la colonisation et la présence d'une langue commune car elles sont corrélées entre elles. Nous verrons dans l'exercice suivant comment y parvenir.
+
+
+
+# EXO2 : MODELISATION GRAVITAIRE
+
+
+On reprend les données de l'exercice précédent mais en adoptant une démarche de modélisation gravitaire où le but est de prévoir les flux et non plus l'intensité des flux à l'aide d'un modèle unique intégrant l'ensemble des variables explicatives.
+
+
+## Exportations 
+
+On extrait de la base de données les exportations (Fij) d'un pays (i)  à une date donnée avec les autres pays du Monde (j) et on y ajoute quatre variables explicatives :
+
+- Mj : la somme des importations du pays de destination
+- DISTij : la distance entre le pays de destination et le pays d'origine
+- CONTij : l'existence d'une frontière commune
+- COLOij : l'existence d'une relation coloniale passée (1) ou non (0) entre les deux pays
+- LANGij : l'existence d'une langue commune entre les deux pays
+
+```{r}
+mycountry <- "FRA"
+myperiod  <- "2016-20"
+
+exp <- dt %>% filter(i==mycountry, t==myperiod) %>% 
+              group_by(i,j, namei,namej) %>%
+              summarise( Fij = sum(Fijkt)/1000,
+                         Mj = sum(Fjkt)/1000,
+                         DISTij = min(DISTij),
+                         CONTij = min(CONTij),
+                         COLOij = mean(COL1ij),
+                         LANGij = mean(LANGij)) %>%
+              ungroup() %>%
+              mutate(rnk = rank(-Fij)) %>%
+              select(rnk,i,j,namei,namej,Fij,Mj,DISTij,CONTij,COLOij,LANGij) %>%
+              arrange(rnk)
+kable(head(exp,20), digits=1,
+      caption = "20 pemiers flux d'exportation de la France en 2016-2020 (millions de $)")
+
+
+```
+
+
+## Cartographie des flux observés
+
+On procède à une cartographie des flux (Fij) pour visualiser les principales destinations :
+
+```{r}
+par(mfrow=c(1,1))
+mapdon <- merge(map, exp, by.x="code",by.y="j")
+
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="prop",
+       var="Fij",
+       col="red",
+       inches=0.2, 
+       leg_title = "en millions de $",
+       add=T)
+mf_layout(title = "Flux observés",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+
+```
+
+
+
+
+## Modèle 1 : effet de masse 
+
+La variable la plus évidente pour prédire les flux Fij est la capacité d'importation des pays de destination que l'on va noter cette fois-ci Mj puisqu'on aurait pu la remplacer par d'autres variables telles que la population ou le PIB en volume. Soit le modèle :
+
+$F_{ij} = k\times (M_j)^\alpha$
+
+On peut résoudre ce modèle par une transformation logarithmique de l'équation qui donne un modèle de régression linéaire de la forme $Y=a_0+a_1.X_1$
+
+$log(F_{ij}) = log(k)+\alpha.log(M_j)$
+
+```{r}
+mod1a <- lm(log(Fij)~log(Mj),data=exp)
+summary(mod1a)
+exp(-4.305)
+```
+
+On obtient donc l'équation suivante :
+
+$log(F_{ij}) = -4.305+1.076.log(M_j)$
+
+Ce qui donne après rétablissement de la formule gravitaire :
+
+$F_{ij} = 0.0135\times(M_j)^{1.076}$
+
+Ce modèle 1 nous apprend plusieurs choses :
+
+1. L'ajustement obtenu permet de résumer 73.7% de la variance des flux (plus précisément de leur logarithme). La simple connaissance des masses permet donc de prédire dans une large mesure les flux
+2. L'exposant des masses ($\alpha$) n'est pas strictement proportionnel (ce qui supposerait $\alpha=1$) et favorise les échanges avec les grands pays puisque $\alpha > 1$.)
+
+On calcule alors les résidus de ce modèle que l'on cartographie pour répérer les pays dont les flux ont été surestimés ou sous estimés.
+
+
+
+```{r}
+exp$EST <-0.0135*(exp$Mj)^1.076
+exp$RES <- exp$Fij-exp$EST
+exp$RES2 <- as.factor(exp$RES>0)
+levels(exp$RES2)<-c("Négatif","Positif")
+
+  
+  
+par(mfrow=c(1,1))
+mapdon <- merge(map, exp, by.x="code",by.y="j")
+
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="prop_typo",
+       var=c("RES","RES2"),
+       col=c("red","blue"),
+       inches=0.15, 
+       leg_title = "en millions de $",
+       add=T)
+mf_layout(title = "Résidus du modèle 1 (Masses)",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+
+```
+
+
+Le modèle suggère qu'il manque un facteur essentiel : la distance !
+
+
+## Modèle 2 : Masse + Distance
+
+Nous ajoutons maintenant à notre modèle l'effet de la distance en supposant qu'elle suit une loi puissance. Soit le modèle gravitaire classique suivant : 
+
+$F_{ij} = k\times (M_j)^\alpha \times (DIST_{ij})^{\beta}$
+
+On peut résoudre ce modèle par une transformation logarithmique de l'équation qui donne un modèle de régression multiple de la forme $Y=a_0+a_1.X_1+a_2.X_2$
+
+$log(F_{ij}) = log(k)+\alpha.log(M_j)+\beta.log(DIST_{ij})$
+
+```{r}
+library(gtsummary)
+mod2 <- lm(log(Fij)~log(Mj)+log(DISTij),data=exp)
+summary(mod2)
+exp(0.1854)
+```
+
+On obtient donc l'équation suivante :
+
+$log(F_{ij}) = 0.185+1.052.log(M_j) -0.529.log(DIST_{ij})$
+
+Ce qui donne après rétablissement de la formule gravitaire :
+
+$F_{ij} = 1.204\times(M_j)^{1.052}\times (DIST_{ij})^{-0.529}$
+
+Ce modèle nous apprend plusieurs choses :
+
+1. L'ajustement obtenu permet de résumer 81.9% de la variance des flux ce qui est un peu plus que le modèle précédent
+2. L'exposant des masses ($\alpha$) n'est toujours pas strictement proportionnel (ce qui supposerait $\alpha=1$) et favorise les échanges avec les grands pays puisque $\alpha > 1$.)
+3. L'effet de la distance est assez faible ($\beta = -0.53$) mais très significatif.
+
+
+On calcule alors les résidus de ce nouveau modèle que l'on cartographie pour répérer les pays dont les flux ont été surestimés ou sous estimés.
+
+
+```{r}
+exp$EST <-1.204*(exp$Mj)^1.052*exp$DISTij^-0.53
+exp$RES <- exp$Fij-exp$EST
+exp$RES2 <- as.factor(exp$RES>0)
+levels(exp$RES2)<-c("Négatif","Positif")
+
+  
+  
+par(mfrow=c(1,1))
+mapdon <- merge(map, exp, by.x="code",by.y="j")
+
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="prop_typo",
+       var=c("RES","RES2"),
+       col=c("red","blue"),
+       inches=0.15, 
+       leg_title = "en millions de $",
+       add=T)
+mf_layout(title = "Résidus du modèle 2 (Masses + Distance)",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+
+```
+
+
+On repère un effet de relation préférentielle avec des pays francophones, mais aussi les pays ayant été olonisés par la France et enfin les pays ayant une frontière commune.
+
+## Modèle 3 : Masse + Distance + Contiguïté + Langue + Colonisation
+
+Nous ajoutons maintenant à notre modèle les différents effets repérés sous la forme d'un paramètre multiplicateur ($\gamma_1, \gamma_2, \gamma_3$)
+
+$F_{ij} = k\times (M_j)^\alpha \times (DIST_{ij})^{\beta} \times (\gamma_1)^{CONT_{ij}}+ \times (\gamma_2)^{LANG_{ij}}+\times (\gamma_3)^{COLO_{ij}}$
+
+On peut résoudre ce nouveau modèle par une transformation logarithmique de l'équation qui donne un modèle de régression multiple de la forme $Y=a_0+a_1.X_1+a_2.X_2+a_3.X_3+a_4.X_4+a_5.X_5$
+
+$log(F_{ij}) = log(k)+\alpha.log(M_j)+\beta.log(DIST_{ij}+\gamma_1.CONT_{ij}+\gamma.LANG_{ij}+\gamma.COLO_{ij}$
+
+```{r}
+
+mod3 <- lm(log(Fij)~log(Mj)+log(DISTij)+CONTij+LANGij+COLOij,data=exp)
+summary(mod3)
+exp(mod3$coefficients)
+
+```
+
+On obtient donc l'équation suivante après rétablissement de la formule gravitaire :
+
+$F_{ij} = 0.54\times (M_j)^{1.064} \times (DIST_{ij})^{-0.46} \times (1.38)^{CONT_{ij}}+ \times (2.18)^{LANG_{ij}}+\times (1.63)^{COLO_{ij}}$
+
+Ce modèle nous apprend plusieurs choses :
+
+1. L'ajustement obtenu permet de résumer 85.2% de la variance des flux ce qui est un peu plus que le modèle précédent
+2. L'exposant des masses ($\alpha$) n'est toujours pas strictement proportionnel (ce qui supposerait $\alpha=1$) et favorise les échanges avec les grands pays puisque $\alpha > 1$.)
+3. L'effet de la distance est faible ($\beta = -0.46$) mais demeure très significatif, même si on ajoute la contiguïté
+4. L'effet de contiguiïté augmenter les flux de 32% (x 1.32) mais apparaît non signifcatif.
+5. L'effet de langue commune entraîne une multiplication des échanges par 2.18  et son effet est significatif (p <0.05)
+6. L'effet de colonisation augmente les flux de 63% (x 1.63) mais il n'est pas tout effet signicatif (0.05 < p < 0.10), sans doute parce qu'il est redondant avec l'effet de langue commune.
+
+On calcule alors les résidus de ce troisième modèle que l'on cartographie pour répérer les pays dont les flux ont été surestimés ou sous estimés.
+
+
+```{r}
+exp$EST <-0.54*(exp$Mj)^1.064*(exp$DISTij^-0.46)*(1.32^exp$CONTij)*(2.18^exp$LANGij)*(1.63^exp$COLOij)
+exp$RES <- exp$Fij-exp$EST
+exp$RES2 <- as.factor(exp$RES>0)
+levels(exp$RES2)<-c("Négatif","Positif")
+
+  
+  
+par(mfrow=c(1,1))
+mapdon <- merge(map, exp, by.x="code",by.y="j")
+
+mf_map(map, 
+       type="base",
+       col="lightyellow")
+mf_graticule(map, lty=2,col="gray90")
+mf_map(mapdon, 
+       type="prop_typo",
+       var=c("RES","RES2"),
+       col=c("red","blue"),
+       inches=0.15, 
+       leg_title = "en millions de $",
+       add=T)
+mf_layout(title = "Résidus du modèle 3 (Masses + Distance+ Autres effets)",
+          credits = "Source : CEPII",
+          scale = F,
+          arrow = F,
+          frame = T)
+
+```
+
+Les résidus mettent en valeur un dernier effet qui est l'appartenance des pays à des zones de libre-échange. On voit ainsi particulièrement bien les effets respectifs de l'Union Européenne (renforcement des flux avec la France) et de l'ALENA (réduction des flux avec la France)
+

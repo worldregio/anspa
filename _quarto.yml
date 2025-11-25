@@ -30,6 +30,10 @@ website:
         menu:    
           - text: Archives - cours C. Grasland (1998)
             href: cours3.qmd
+      - text: Mini-programmes
+        menu:    
+          - text: Matrice de dissimilarité
+            href: pgm1.qmd      
     right: 
       - icon: github # add icons as navbar buttons
         href: https://github.com/worldregio/anspa

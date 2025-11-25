@@ -1,0 +1,159 @@
+---
+title: "[DATA1] Flux aériens entre les villes du Monde en 2014"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "09/01/2025"
+author: "Claude Grasland"
+format:
+  html:
+    link-external-newwindow: true
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+    number-sections: true
+    number-depth: 3
+execute:
+  warning: false
+  message: false 
+  cache: false  
+  echo: true 
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+
+```{r}
+library(sf)
+library(dplyr)
+library(mapview)
+```
+
+## Introduction
+
+Le jeu de données présenté ici a été constitué par les membres du projet openflight étudier les relations aériennes entre les villes du Monde en 2014 
+
+La base a été harmonisée par C. Grasland dans le cadre d'un cours de L3 Géographie Structures du Monde Actuel. L'harmonisation concerne notamment l'agrégation des aéroports d'une même ville et le codage commun des deux sources.
+
+
+
+## Le fichier **cities.RDS**
+
+### Chargement du fichier
+
+Il s'agit d'un fichier sf qu'il faut donc ouvrir après avoir chargé ce package.
+
+```{r}
+library(sf)
+cities <- readRDS("openflight/cities.RDS")
+dim(cities)
+head(cities)
+```
+
+Le fichier comporte 3133 lignes correspondant à des aéroports ou groupes d'aéroports rattachés à une même ville dans certains cas
+
+On note pour chaque ville le nombre de vols (V) selon qu'ils sont nationaux (VN) ou de  internationaux (VI) ainsi que la somme des distances  (D) intranationales (DN) ou internationales (DI) parcourues par ces vols. 
+
+
+```{r}
+library(mapview)
+mapview(cities)
+```
+
+Comme on peut le voir, la base offre uune très large couverture du Monde avec une grande finesse de détail.
+
+
+
+## Le fichier **cities_links.RDS**
+
+### Chargement du fichier
+
+Il s'agit d'un fichier sf qu'il faut donc ouvrir après avoir chargé ce package.
+
+```{r}
+library(sf)
+links <- readRDS("openflight/cities_links.RDS")
+states <- readRDS("openflight/states.RDS")
+dim(links)
+head(links)
+```
+
+La base comporte 34036 liens correspondant à des vols directs.
+
+
+
+### Visualisation des liens 
+
+La géométrie associée permet de tracer les vols en suivant le plus court chemin à vol d'oiseau. Essayons par exemple de tracer le lien Paris-Tokyo en 2014
+
+```{r}
+lien <- links %>% filter(Cit_i =="Paris**",
+                         Cit_j=="Tokyo")
+plot(states$geometry, col="lightyellow")
+plot(lien$geometry, col="red",add=T, lwd=2)
+```
+
+
+Essayons ensuite de visualiser tous les liens au départ d'Istanbul :
+
+```{r}
+lien <- links %>% filter(Cit_i =="Istanbul")
+plot(states$geometry, col="lightyellow")
+plot(lien$geometry, col="red",add=T, lwd=1)
+```
+
+
+Ou enfin tous les liens internes à la Chine :
+
+```{r}
+lien <- links %>% filter(Sta_iso3_i =="CHN", Sta_iso3_j=="CHN")
+chine<-states %>% filter(ISO3=="CHN")
+plot(chine$geometry, col="lightyellow")
+plot(lien$geometry, col="red",add=T, lwd=1, alpha=0.3)
+```
+
+## Les fichier **states_link.RDS, states_nodes.RDS, states.RDS**
+
+Ce fichier agrège les flux par pays et leur attribue comme référence l'aéroport  le plus important du pays en nombre de liaisons. On peut ainsi tracer des liaisons entre pays sous la forme de nombre de liaions directes.
+
+
+```{r}
+states_link <- readRDS("openflight/states_link.RDS")
+head(states_link)
+
+states_nodes <- readRDS("openflight/states_nodes.RDS")
+head(states_nodes)
+
+states <- readRDS("openflight/states.RDS")
+head(states)
+```
+
+On retrouve les indicateurs déjà vus pour les villes en terme de nombres de vols nationaux ou internationaux et de somme des distances. On peut ainsi proposer différentes cartographies de l'intensité des liaisons aériennes entre les pays. Supposons par exemple qu'on veuille visualiser le nombre liaisons directes du Brésil vers d'autres pays. 
+
+
+```{r}
+library(mapsf)
+maroc_links <- states_link %>% filter(ISO3_i=="BRA")
+mf_map(states, type="base", col="lightyellow")
+mf_map(maroc_links, type = "prop", var="Vij",col="red",alpha = 0.6)
+mf_layout(title = "Nombre de liaisons aériennes du Brésil vers d'autres pays en 2014",
+          credits = "Source : openflight",
+          scale = F, 
+          frame = T,
+          arrow = F
+          )
+
+```
+

@@ -33,7 +33,11 @@ website:
       - text: Mini-programmes
         menu:    
           - text: Matrice de dissimilarité
-            href: pgm1.qmd      
+            href: pgm1.qmd  
+      - text: Jeux de données
+        menu:    
+          - text: Flux aériens en 2000 et 2014
+            href: data1.qmd    
     right: 
       - icon: github # add icons as navbar buttons
         href: https://github.com/worldregio/anspa

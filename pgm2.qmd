@@ -1,0 +1,165 @@
+---
+title: "[PGM2] Calcul de l'accessibilité d'une population à un service avec meric.osrm"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "09/01/2025"
+author: "Claude Grasland"
+format:
+  html:
+    link-external-newwindow: true
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+    number-sections: true
+    number-depth: 3
+execute:
+  warning: false
+  message: false 
+  cache: false  
+  echo: true 
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+## Exemple des pharmacies de Sucy-en-Brie en 2019-22
+
+
+```{r}
+library(sf)
+library(dplyr)
+library(mapview)
+```
+
+
+On souhaite mesurer l'accessibilité des habitants de la commune de Sucy-en-Brie à une pharmacie. On a extrait de la base de données INSEE Inracommunal des données relatives à l'offre et la demande
+
+![Extraction du site INSEE Infracommunal](exo2/sucy_pharmacie.jpg)
+
+### Données sur l'offre
+
+Le fichier comporte la localisation des pharmacies extraites du site de l'INSEE. On le lit à l'aide de la fonction *st_read()* du package **sf**. 
+
+```{r}
+offre <- st_read("exo2/bpe.geojson")
+class(offre)
+head(offre)
+st_crs(offre)
+```
+
+La projection est de type EPSG=4326, c'est-à-dire latitudes et longitudes non projetées. On peut en effectuer une visualisation rapide avec le package **mapview** : 
+
+```{r}
+mapview(offre)
+```
+
+
+### Données sur grille
+
+On procède de la même façon pour le fichier relatif à la population sur grille de 200 m :
+
+
+```{r}
+grille <- st_read("exo2/grille.geojson")
+class(grille)
+head(grille)
+st_crs(grille)
+```
+
+La projection est de toujours type EPSG=4326, c'est-à-dire latitudes et longitudes non projetées. On peut en effectuer une visualisation rapide avec le package **mapview** : 
+
+```{r}
+mapview(grille)
+```
+
+
+### Données sur la demande
+
+On va transformer le fonds de carte pour obtenir les centroïdes et afficher des cercles proportionnels à la population des carreaux. Ici on choisit de prendre comme demande le nombre total d'individus et on negarde que les carreaux de Sucy-en-Brie
+
+```{r}
+demande <- grille %>% st_centroid() %>%
+                      filter(substr(lcog_geo,1,5)=="94071")%>%
+                      select(id=GEO, size=ind)
+```
+
+On représente sur une même carte l'offre et la demande :
+
+
+```{r}
+map1 <- mapview(offre, 
+                col.regions="red", 
+                alpha.regions=1)
+map2 <- mapview(demande, 
+                cex="size", 
+                col.regions="blue", 
+                legend = F)
+map<-map1+map2
+map
+```
+
+### Calcul de l'accessibilité
+
+On utilise le package metric.osrm pour calculer la distance routière en temps entre toutes les origines et toutes les destinations. Voici le programme typique de calcul :
+
+```{r}
+library(metric.osrm)
+
+# Choix du serveur
+options(osrm.server = "https://metric-osrm-backend.lab.sspcloud.fr/")
+
+# Specification du profil
+options(osrm.profile = "driving")
+
+# préparation des données
+# (Osrm attends des fichiers de type id/lat/lon)
+#coo <-st_coordinates(offre)
+#offre$lon<-coo[,1]
+#offre$lat <- coo[,2]
+
+coo <-st_coordinates(demande)
+demande$lon<-coo[,1]
+demande$lat <- coo[,2]
+
+
+# Requête
+tab<-metricOsrmTable(src = demande,
+                       dst = offre,
+                       duree = TRUE,
+                       faceAFace = F,
+                       distance = TRUE, 
+                       allerRetour = FALSE,
+                       optiMeasure = "duree",
+                       nbDstVolOiseau =  3,  # Nb de dist. euclidiennes présélectionnées
+                       nbDstMeasure = 1,  # Nb de dist routières retenues  
+                       exclude ="ferry")
+
+
+```
+
+A noter que la requête peut prendre plus ou moins de temps selon la taille du calcul (nb origines x nb destinations).
+
+### Analyse des résultats
+
+
+Le tableau donne les distances routières en temps et km pour toutes les origines et destinations :
+
+```{r}
+head(tab)
+```
+
+
+
+

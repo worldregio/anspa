@@ -34,6 +34,8 @@ website:
         menu:    
           - text: Matrice de dissimilarité
             href: pgm1.qmd  
+          - text: Calculs d'accessibilité 
+            href: pgm2.qmd              
       - text: Jeux de données
         menu:    
           - text: Flux aériens en 2000 et 2014

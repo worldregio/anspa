@@ -1,0 +1,94 @@
+---
+title: "[DATA2] Flux domicile-travail 2022"
+subtitle: "Masters Géoprisme et Carthageo"
+date: "09/01/2025"
+author: "Claude Grasland"
+format:
+  html:
+    link-external-newwindow: true
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+    number-sections: true
+    number-depth: 3
+execute:
+  warning: false
+  message: false 
+  cache: false  
+  echo: true 
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+
+```{r}
+library(sf)
+library(dplyr)
+library(mapsf)
+library(data.table)
+```
+
+## Introduction
+
+
+
+### Chargement et sélection des données
+```{r}
+don <- fread("data2/base-flux-mobilite-domicile-lieu-travail-2022.csv")
+
+seldon <- flow %>% filter(DCLT=="94054",
+                       substr(CODGEO,1,2) %in% c("75","92","93","94","91","77","95","78"))
+
+```
+
+
+### Chargement et sélection du fonds de carte
+```{r}
+map <- st_read("data2/georef-france-commune-arrondissement-municipal.geojson")
+names(map)
+selmap <- map %>% filter(dep_code %in% c("75","92","93","94","91","77","95","78")) %>%
+                    mutate(CODGEO = as.character(com_arm_code)) %>%
+                   select(CODGEO)
+
+```
+
+### Jointure
+
+```{r}
+sel <- selmap %>% left_join(seldon) %>% filter(CODGEO !="94054")
+
+loc <- 
+```
+
+
+### Visualisation
+
+
+```{r}
+mf_map(selmap, type="base", col="lightyellow", lwd=0.5,border="gray")
+
+mf_map(sel, type="prop", 
+       var="NBFLUX_C22_ACTOCC15P",
+       col="red",
+       inches = 0.1)
+
+mf_layout("Actifs travaillant à Orly", 
+          credits = "Source : INSEE, RP 2022",
+          frame=T)
+
+```
+

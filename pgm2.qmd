@@ -34,8 +34,6 @@ editor:
 ---
 
 
-## Exemple des pharmacies de Sucy-en-Brie en 2019-22
-
 
 ```{r}
 library(sf)
@@ -43,6 +41,8 @@ library(dplyr)
 library(mapview)
 ```
 
+
+## Données
 
 On souhaite mesurer l'accessibilité des habitants de la commune de Sucy-en-Brie à une pharmacie. On a extrait de la base de données INSEE Inracommunal des données relatives à l'offre et la demande
 
@@ -110,7 +110,10 @@ map<-map1+map2
 map
 ```
 
-### Calcul de l'accessibilité
+## Calcul de l'accessibilité
+
+
+### Utilisation de metric.osrm
 
 On utilise le package metric.osrm pour calculer la distance routière en temps entre toutes les origines et toutes les destinations. Voici le programme typique de calcul :
 
@@ -146,20 +149,82 @@ tab<-metricOsrmTable(src = demande,
                        nbDstMeasure = 1,  # Nb de dist routières retenues  
                        exclude ="ferry")
 
-
+head(tab)
 ```
 
 A noter que la requête peut prendre plus ou moins de temps selon la taille du calcul (nb origines x nb destinations).
 
-### Analyse des résultats
+### Jointure avec la grille
 
-
-Le tableau donne les distances routières en temps et km pour toutes les origines et destinations :
+On effectue une jointure avec les données de grille
 
 ```{r}
+grille <- merge(grille, tab, by.x="GEO",by.y="idSrc")
+```
+
+
+### Calcul des fréquences cumulées
+
+On choisit une population et une distance puis on construit la courbe indiquant la part des personnes ayant accès au service en dessous d'une certaine distance.
+
+
+```{r}
+# Choix de la population et de la distance
+pop <- grille$ind
+dis <- grille$duree
+
+# Ajout de labels
+nompop <- "% des individus"
+nomdis <- "distance routière en minutes"
+
+# Création d'un tableau
+tab<-data.frame(pop,dis)
+
+# Transformation de la population en fréquence
+tab$pct <- 100*tab$pop/sum(tab$pop)
+
+# Tri du tableau par distances croissantes
+tab <- tab[order(tab$dis),]
+
+# Calcul de la fréquence cumulée ascendante
+tab$pctcum <- cumsum(tab$pct)
+
+# Affichage du tableau
 head(tab)
 ```
 
 
+### Graphique d'accessibilité
 
 
+#### Avec R-base
+
+```{r}
+plot(tab$dis,tab$pctcum, 
+     type="l",
+     col="red",
+     xlab = nomdis,
+     ylab = nompop,
+     main = "Courbe d'accessibilité au service",
+     sub = "Source : INSEE, RP2022 et BPE")
+grid()
+```
+
+
+#### Avec ggplot
+
+```{r}
+library(ggplot2)
+g<- ggplot(tab) + aes(x=dis, y=pctcum) +
+                  geom_line() +
+                  scale_x_continuous(nomdis) +
+                  scale_y_continuous(nompop) +
+                  ggtitle(label = "Courbe d'accessibilité au service",
+                          subtitle = "Source : INSEE, RP2022 et BPE")
+g
+```
+
+
+## Cartographie
+
+On peut l'effectuer sur les supports de son choix (Qgis, Magrit, etc, ...)

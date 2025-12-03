@@ -189,8 +189,13 @@ tab <- tab[order(tab$dis),]
 # Calcul de la fréquence cumulée ascendante
 tab$pctcum <- cumsum(tab$pct)
 
+# Calcul de l'accessibilité moyenne pondéree
+moy = sum(tab$dis*tab$pct)/100
+paste("L'accessibilité moyenne est de ", round(moy,1), "minutes")
+
 # Affichage du tableau
 head(tab)
+
 ```
 
 
@@ -207,6 +212,8 @@ plot(tab$dis,tab$pctcum,
      ylab = nompop,
      main = "Courbe d'accessibilité au service",
      sub = "Source : INSEE, RP2022 et BPE")
+abline(v=moy,col="blue")
+text(moy,100,paste("moyenne = ",round(moy,1), "mn"),col="blue")
 grid()
 ```
 
@@ -216,9 +223,11 @@ grid()
 ```{r}
 library(ggplot2)
 g<- ggplot(tab) + aes(x=dis, y=pctcum) +
-                  geom_line() +
+                  geom_line(col="red") +
                   scale_x_continuous(nomdis) +
                   scale_y_continuous(nompop) +
+                  geom_vline(xintercept=moy,col="blue")+
+                  geom_text(aes(x=moy,y=100, label=paste("moyenne = ",round(moy,1), "mn")))+
                   ggtitle(label = "Courbe d'accessibilité au service",
                           subtitle = "Source : INSEE, RP2022 et BPE")
 g
@@ -227,4 +236,19 @@ g
 
 ## Cartographie
 
-On peut l'effectuer sur les supports de son choix (Qgis, Magrit, etc, ...)
+On peut l'effectuer sur les supports de son choix (Qgis, Magrit, etc, ...). Le résultat devrait ressembler à ceci :
+
+
+```{r}
+map1 <- mapview(offre, 
+                col.regions="red", 
+                alpha.regions=1)
+map2 <- mapview(grille, 
+                zcol = "duree",
+                cat = c(0, moy, 2*moy, 3*moy, max(moy)),
+                col.regions=c("green","lightyellow","yellow","orange"),
+                legend = T)
+map<-map2+map1
+map
+```
+

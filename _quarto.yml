@@ -7,7 +7,7 @@ website:
   navbar:
     left:
       - text: Syllabus
-        href: Syllabus2025.qmd
+        href: Syllabus2026.qmd
       - text: 1. Introduction
         menu:
           - text: Cours1 - Qu'est-ce que l'analyse spatiale 

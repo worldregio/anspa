@@ -33,8 +33,8 @@ editor:
 ## Contacts 
 
 - Claude Grasland : [claude.grasland@parisgeo.cnrs.fr](mailto:claude.grasland@parisgeo.cnrs.fr)
-- Malika Madelin : [malika.madelin@u-paris.fr](mailto:malika.madelin@u-paris.fr)
 - Marianne Guérois : [marianne.guerois@u-paris.fr](mailto:marianne.guerois@u-paris.fr)
+- Malika Madelin : [malika.madelin@u-paris.fr](mailto:malika.madelin@u-paris.fr)
 
 ## Organisation générale
 
@@ -51,7 +51,7 @@ L’objectif de ce cours est double.
 
 - D’autre part, vous sensibiliser à la **construction d’une démarche scientifique en analyse spatiale**, depuis la formulation d’une question et d’hypothèses de recherche jusqu’à la discussion des résultats produits, à travers la préparation d’un micro-projet qui sera mené à l’aide du logiciel R et d'autres outils tels que Visone (analyse de graphe).
 
-Il est impossible de courir tout le domaine de l'analyse spatiale. Le programme 2025-26 privilégiera trois thèmes : 
+Il est impossible de courir tout le domaine de l'analyse spatiale. Le programme 2026-27 privilégiera trois thèmes : 
 
 1. Analyse de l'**accessibilité spatiale** (distance, potentiel, ...)
 2. Analyse de l'**hétérogénéité spatiale** (autocorrélation, lissage, ...)
@@ -62,30 +62,31 @@ Il est impossible de courir tout le domaine de l'analyse spatiale. Le programme 
 
 *Ce calendrier prévisionnel est susceptible de modifications et d'ajustements.*
 
-- **17 sept. 2025** -  Cours 1 : Introduction à l'analyse spatiale (*CG & MM*)
+- **16 sept. 2026** -  Cours 1 : Introduction à l'analyse spatiale (*CG,MM,MG*)
 
-- **24 sept. 2025** - Cours 2 : Accessibilité (*CG*)
+- **23 sept. 2026** - Cours 2 : Accessibilité (*CG,MG*)
 
-- **1er oct. 2025** - Cours 3 : Hétérogénéité et inégalités (*MM*)
+- **30 sept. 2026** - Cours 3 : Graphes et réseaux (*CG,MG*)
 
-- **8 oct. 2025** - Cours 4 : Lissage et interpolation (*MM*)
+- **7 oct. 2026** - Cours 4 : Hétérogénéité et inégalités (*MM,MG*)
 
-- **15 oct. 2025** - Cours 5 : Flux et interactions (*CG*)
+- **14 oct. 2026** - Cours 5 : Lissage et interpolation (*MM,MG*)
 
-- **22 oct. 2025** - Cours 6 : Graphes et réseaux (*CG*)
+- **21 oct. 2025** - Cours 6 : Flux et interactions (*CG,MG*)
 
-- **12 nov. 2025** - Atelier 1 (*CG & MM*)
 
-- **19 nov. 2025** - Atelier 2 (*CG & MM*)
+- **4 nov. 2026** - Atelier 1 
 
-- **26 nov. 2025** - Atelier 3 (*CG & MM*)
+- **18 nov. 2026** - Atelier 2 
 
-- **3 déc. 2025** - Atelier 4 (*CG & MM*)
+- **25 nov. 2026** - Atelier 3 
+
+- **2 déc. 2026** - Atelier 4 
 
 
 ## Mode d'évaluation
 
-- Contrôle continu : 1 rendu écrit et 1 vidéo sur le micro-projet et 1 partiel (en janvier). Chaque exercice compte pour 1/3 de la note finale.
+- Contrôle continu : 1 rendu écrit et 1 vidéo sur le micro-projet et 1 partiel (16 décembre 2026). Chaque exercice compte pour 1/3 de la note finale.
 - 2e session : 1 écrit et 1 oral comptant chacun pour 50%
 
 

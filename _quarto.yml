@@ -46,7 +46,7 @@ website:
         target: _blank
   page-footer:
     background: dark
-    left: Copyright 2025-2026, Claude Grasland & Malika Madelin
+    left: Copyright 2026-2027, Claude Grasland & Malika Madelin
 format:
   html:
     theme: 

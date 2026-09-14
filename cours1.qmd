@@ -1,8 +1,8 @@
 ---
 title: "[COURS1] Introduction à l'analyse spatiale"
 subtitle: "Masters Géoprisme et Carthageo"
-date: "09/01/2025"
-author: "Claude Grasland, Malika Madelin"
+date: "09/01/2026"
+author: "Claude Grasland, Marianne Guérois, Malika Madelin"
 format:
   html:
     link-external-newwindow: true
@@ -89,7 +89,7 @@ En gros, on comprend qu'il s'agit d'espace, de société, de temps, de méthodes
 
 ## Forme et processus 
 
-On y voit cependant plus clair si on tente de distinguer dans l'analyse spatiale ce qui relève de l'analyse des **[formes]{.mark}** et de celle des **[processus]{.mark}**. C'est à partir de cette distinction que T. Saint-Julien et D. Pumain ont organisé leur manuel sur l'analyse spatiale en deux volumes.
+On y voit cependant plus clair si on tente de distinguer dans l'analyse spatiale ce qui relève de l'analyse des **[formes]{.mark}** et de celle des **[processus]{.mark}**. C'est à partir de cette distinction que T. Saint-Julien et D. Pumain ont organisé leur manuel sur l'analyse spatiale en deux volumes portant respectivement sur les localisations @pumain2010loc et sur les interactions @pumain2010int.
 
 
 :::: {.columns}
@@ -649,16 +649,6 @@ Source : J. Lévy, "L’espace et le politique : quelles rencontres ? " in Bru
 
 
 
-
-
-
-#### Références {.unnumbered}
-
-Chapelon L., 2014, "Accessibilité", [Hypergeo, encyclopédie en
-ligne](https://hypergeo.eu/accessibilite/){target=_blank}
-
-Pumain D., Saint-Julien T., 2010, *Analyse spatiale : les
-localisations*, Paris : Cursus Armand Colin, p.31.
 
 ::: {#refs}
 :::

@@ -16,6 +16,7 @@ website:
             href: cours1_diapo.qmd
           - text: TD1 - Jeux de cartes
             href: TD1.qmd
+    drafts:
       - text: 2. Accessibilité
         menu:
           - text: Cours2 -  Accessibilité spatiale
@@ -39,14 +40,15 @@ website:
       - text: Jeux de données
         menu:    
           - text: Flux aériens en 2000 et 2014
-            href: data1.qmd    
+            href: data1.qmd 
+    draft-mode: unlinked            
     right: 
       - icon: github # add icons as navbar buttons
         href: https://github.com/worldregio/anspa
         target: _blank
   page-footer:
     background: dark
-    left: Copyright 2026-2027, Claude Grasland & Malika Madelin
+    left: Copyright 2026-2027, Claude Grasland, Marianne Guérois & Malika Madelin
 format:
   html:
     theme: 

@@ -1,8 +1,8 @@
 ---
 title: "Analyse spatiale"
 subtitle: "Masters Géoprisme et Carthageo"
-date: "01/09/2025"
-author: "Claude Grasland, Malika Madelin"
+date: "01/09/2026"
+author: "Claude Grasland, Marianne Guerois, Malika Madelin"
 format:
   html:
     embed-resources: true

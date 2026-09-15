@@ -2,7 +2,7 @@
 title: "Analyse spatio-temporelle des phénomènes sociaux"
 subtitle: "Masters Géoprisme et Carthageo"
 date: "01/09/2025"
-author: "Claude Grasland, Malika Madelin"
+author: "Claude Grasland, Marianne Guerois, Malika Madelin"
 title-slide-attributes:
   data-background-color: "#BA4A00"
   data-background-size: cover

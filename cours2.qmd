@@ -2,7 +2,7 @@
 title: "[COURS2] Accessibilité"
 subtitle: "Masters Géoprisme et Carthageo"
 date: "09/01/2025"
-author: "Claude Grasland, Malika Madelin"
+author: "Claude Grasland, Marianne Guérois, Malika Madelin"
 format:
   html:
     link-external-newwindow: true

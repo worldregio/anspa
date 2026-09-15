@@ -2,7 +2,7 @@
 title: "Qu'est-ce qu'un désert médical ?"
 subtitle: "Analyse spatiale forme et processus - Chap 2 : Accessibilité spatiale"
 date: "01/09/2025"
-author: "Claude Grasland, Malika Madelin"
+author: "Claude Grasland, Marianne Guérois, Malika Madelin"
 title-slide-attributes:
   data-background-color: "#BA4A00"
   data-background-size: cover

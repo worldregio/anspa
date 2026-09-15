@@ -1,8 +1,8 @@
 ---
 title: "[TD1] Jeux de cartes"
 subtitle: "Masters Géoprisme et Carthageo "
-date: "09/01/2025"
-author: "Claude Grasland, Malika Madelin"
+date: "09/01/2026"
+author: "Claude Grasland, Marianne Guérois, Malika Madelin"
 format:
   html:
     embed-resources: true

@@ -41,7 +41,7 @@ editor:
 - 6 séances d’enseignement intégré de 2h30 
 - 4 séances d’atelier projet d’analyse spatiale 
 
-Toutes les séances ont une durée de 2h30. Elles ont lieu le mercredi de 14h à 16h30, dans le Nouvel Amphi situé au rez-de-chaussée de [l'Institut de Géographie](https://geographie.pantheonsorbonne.fr/lufr-ses-membres-et-ses-lieux/centres-cours-et-recherche), 191 rue Saint-Jacques, 75005 Paris. 
+Toutes les séances ont une durée de 2h30. Elles ont lieu le mercredi de 15h à 17h30, dans le Nouvel Amphi situé au rez-de-chaussée de [l'Institut de Géographie](https://geographie.pantheonsorbonne.fr/lufr-ses-membres-et-ses-lieux/centres-cours-et-recherche), 191 rue Saint-Jacques, 75005 Paris. 
 
 ## Objectifs du cours
 

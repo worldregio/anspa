@@ -17,7 +17,6 @@ format:
     css: custom.css
     crossrefs-hover: false
     number-sections: true
-    number-depth: 3
 execute:
   warning: false
   message: false 
@@ -211,7 +210,7 @@ mf_layout(title = "Distance euclidienne maximale", scale=F, credits = "", arrow=
 
 
 
-# ACCESSIBILITÉ MINIMALE À UN SERVICE
+# ACCESSIBILITÉ MINIMALE
 
 Considérons maintenant le problème d'accessibilité d'une population à un service. On part de l'exemple théorique n°2 qui définit deux tableaux correspondant respectivement à l'offre et la demande, c'est-à-dire aux lieux d'origine et de destination. 
 
@@ -277,6 +276,7 @@ rownames(mat) <- ori$i
 kable(mat, digits=2, caption = "Distance euclidienne entre lieux d'origine et de destination")
 ```
 
+::::
 
 ## Distance minimale non pondérée
 
@@ -329,6 +329,7 @@ g
 ```
 
 On peut alors apprécier plus précisément la distribution des personnes qui disposent d'une bonne accessibilité, d'une accessibilité moyenne ou d'une faible accessibilité. 
+
 
 
 # AJUSTEMENT OFFRE/DEMANDE

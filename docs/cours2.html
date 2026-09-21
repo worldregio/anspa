@@ -4272,9 +4272,18 @@ background-repeat: no-repeat;
   <li><a href="#distance-euclidienne-entre-population-et-espace" id="toc-distance-euclidienne-entre-population-et-espace" class="nav-link" data-scroll-target="#distance-euclidienne-entre-population-et-espace"><span class="header-section-number">2.2</span> Distance euclidienne entre population et espace</a></li>
   <li><a href="#exercice-la-distance-de-cotonou" id="toc-exercice-la-distance-de-cotonou" class="nav-link" data-scroll-target="#exercice-la-distance-de-cotonou"><span class="header-section-number">2.3</span> Exercice : la distance de Cotonou</a></li>
   </ul></li>
-  <li><a href="#accessibilité-minimale-à-un-service" id="toc-accessibilité-minimale-à-un-service" class="nav-link" data-scroll-target="#accessibilité-minimale-à-un-service"><span class="header-section-number">3</span> ACCESSIBILITÉ MINIMALE À UN SERVICE</a>
+  <li><a href="#accessibilité-minimale" id="toc-accessibilité-minimale" class="nav-link" data-scroll-target="#accessibilité-minimale"><span class="header-section-number">3</span> ACCESSIBILITÉ MINIMALE</a>
   <ul class="collapse">
   <li><a href="#formalisation-1" id="toc-formalisation-1" class="nav-link" data-scroll-target="#formalisation-1"><span class="header-section-number">3.1</span> Formalisation</a></li>
+  <li><a href="#distance-minimale-non-pondérée" id="toc-distance-minimale-non-pondérée" class="nav-link" data-scroll-target="#distance-minimale-non-pondérée"><span class="header-section-number">3.2</span> Distance minimale non pondérée</a></li>
+  <li><a href="#distance-minimale-pondérée-par-les-origines" id="toc-distance-minimale-pondérée-par-les-origines" class="nav-link" data-scroll-target="#distance-minimale-pondérée-par-les-origines"><span class="header-section-number">3.3</span> Distance minimale pondérée par les origines</a></li>
+  </ul></li>
+  <li><a href="#ajustement-offredemande" id="toc-ajustement-offredemande" class="nav-link" data-scroll-target="#ajustement-offredemande"><span class="header-section-number">4</span> AJUSTEMENT OFFRE/DEMANDE</a>
+  <ul class="collapse">
+  <li><a href="#scenario-1-ajustement-de-la-demande-à-loffre" id="toc-scenario-1-ajustement-de-la-demande-à-loffre" class="nav-link" data-scroll-target="#scenario-1-ajustement-de-la-demande-à-loffre"><span class="header-section-number">4.1</span> Scenario 1 : Ajustement de la demande à l’offre</a></li>
+  <li><a href="#scenario-2-réduction-de-la-demande" id="toc-scenario-2-réduction-de-la-demande" class="nav-link" data-scroll-target="#scenario-2-réduction-de-la-demande"><span class="header-section-number">4.2</span> Scenario 2 : Réduction de la demande</a></li>
+  <li><a href="#scenario-3-ajustement-de-loffre-à-la-demande" id="toc-scenario-3-ajustement-de-loffre-à-la-demande" class="nav-link" data-scroll-target="#scenario-3-ajustement-de-loffre-à-la-demande"><span class="header-section-number">4.3</span> Scenario 3 : Ajustement de l’offre à la demande</a></li>
+  <li><a href="#scenario-4-ajout-dune-nouvelle-offre" id="toc-scenario-4-ajout-dune-nouvelle-offre" class="nav-link" data-scroll-target="#scenario-4-ajout-dune-nouvelle-offre"><span class="header-section-number">4.4</span> Scenario 4 : Ajout d’une nouvelle offre</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4844,8 +4853,8 @@ A propos de ce document
 <p><a href="https://ee-cist.github.io/SPA2-Distance/cours.html#b.1.3-la-distance-rectilin%C3%A9aire">cliquez ici</a></p>
 </section>
 </section>
-<section id="accessibilité-minimale-à-un-service" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> ACCESSIBILITÉ MINIMALE À UN SERVICE</h1>
+<section id="accessibilité-minimale" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> ACCESSIBILITÉ MINIMALE</h1>
 <p>Considérons maintenant le problème d’accessibilité d’une population à un service. On part de l’exemple théorique n°2 qui définit deux tableaux correspondant respectivement à l’offre et la demande, c’est-à-dire aux lieux d’origine et de destination.</p>
 <section id="formalisation-1" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="formalisation-1"><span class="header-section-number">3.1</span> Formalisation</h2>
@@ -5039,7 +5048,10 @@ A propos de ce document
 </tbody>
 </table>
 </div>
-</div><section id="distance-minimale-non-pondérée" class="level2" data-number="3.2">
+</div>
+</div>
+</section>
+<section id="distance-minimale-non-pondérée" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="distance-minimale-non-pondérée"><span class="header-section-number">3.2</span> Distance minimale non pondérée</h2>
 <p>On peut calculer pour chaque individu du lieu d’origine sa distance minimale au service ou commerce le plus proche. On obtient le tableau suivant :</p>
 <div class="cell">
@@ -5115,7 +5127,8 @@ A propos de ce document
 </div>
 </div>
 <p>La distance minimale d’accès au service est de 1 et la distance maximale de 5.39. En moyenne l’offre est localisée à 2.35 de la demande. Toutefois ce calcul ne tient pas compte du nombre de personnes localisées dans les différents lieux d’origine.</p>
-</section><section id="distance-minimale-pondérée-par-les-origines" class="level2" data-number="3.3">
+</section>
+<section id="distance-minimale-pondérée-par-les-origines" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="distance-minimale-pondérée-par-les-origines"><span class="header-section-number">3.3</span> Distance minimale pondérée par les origines</h2>
 <p>On calcule la quantité de mouvement <em>MDij</em> et on en déduit la distance moyenne franchie par un habitant en calculant la somme des mouvements divisée par la somme des individus.</p>
 <div class="cell">
@@ -5234,7 +5247,9 @@ A propos de ce document
 </div>
 </div>
 <p>On peut alors apprécier plus précisément la distribution des personnes qui disposent d’une bonne accessibilité, d’une accessibilité moyenne ou d’une faible accessibilité.</p>
-</section><section id="ajustement-offredemande" class="level1" data-number="4">
+</section>
+</section>
+<section id="ajustement-offredemande" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> AJUSTEMENT OFFRE/DEMANDE</h1>
 <section id="scenario-1-ajustement-de-la-demande-à-loffre" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="scenario-1-ajustement-de-la-demande-à-loffre"><span class="header-section-number">4.1</span> Scenario 1 : Ajustement de la demande à l’offre</h2>
@@ -5322,9 +5337,6 @@ A propos de ce document
 </div>
 
 
-</section>
-</section>
-</div>
 </section>
 </section>
 

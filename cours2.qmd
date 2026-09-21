@@ -205,6 +205,12 @@ mf_layout(title = "Distance euclidienne maximale", scale=F, credits = "", arrow=
 ---
 
 
+## Exercice : la distance de Cotonou
+
+[cliquez ici](https://ee-cist.github.io/SPA2-Distance/cours.html#b.1.3-la-distance-rectilin%C3%A9aire)
+
+
+
 # ACCESSIBILITÉ MINIMALE À UN SERVICE
 
 Considérons maintenant le problème d'accessibilité d'une population à un service. On part de l'exemple théorique n°2 qui définit deux tableaux correspondant respectivement à l'offre et la demande, c'est-à-dire aux lieux d'origine et de destination. 
@@ -324,3 +330,204 @@ g
 
 On peut alors apprécier plus précisément la distribution des personnes qui disposent d'une bonne accessibilité, d'une accessibilité moyenne ou d'une faible accessibilité. 
 
+
+# AJUSTEMENT OFFRE/DEMANDE
+
+## Scenario 1 : Ajustement de la demande à l'offre
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, width=6, height=8}
+par(mar=c(0,0,3,0), mfrow=c(1,1))
+mf_map(world, type="base",col="lightyellow")
+mf_map(trade,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade, var="taille",cex = 1)
+
+seg<-function(i,j,mycol,mysize){
+  coo<-c(st_coordinates(st_centroid(trade[i,]))
+       ,st_coordinates(st_centroid(trade[j,])))
+arrows(x0 = coo[1],y0=coo[2],x1=coo[3],y1=coo[4],col=mycol,lwd=sqrt(mysize),angle = 10)
+}
+seg(2,12,"red",2)
+seg(7,12,"red",7)
+seg(6,12,"red",6)
+
+seg(1,11,"blue",10)
+seg(3,11,"blue",3)
+seg(4,11,"blue",4)
+seg(5,11,"blue",5)
+seg(8,11,"blue",8)
+seg(9,11,"blue",9)
+seg(10,11,"blue",1)
+mf_layout(title = "Scenario 1", scale=F, credits = "", arrow=F, frame=T)
+
+
+
+
+
+```
+
+:::
+
+::: {.column width="40%"}
+ 
+- Les individus les plus proches bénéficient en premier du service et obligent les autres à accepter une offre plus éloignée.
+- Ceux qui sont les plus éloignés doivent accepter un coût de transport très important
+- L'Etat peut le prende en charge ... mais pour combien de temps ?
+ 
+:::
+
+::::
+
+## Scenario 2 : Réduction de la demande
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, width=6, height=8}
+par(mar=c(0,0,3,0), mfrow=c(1,1))
+mf_map(world, type="base",col="lightyellow")
+mf_map(trade,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade, var="taille",cex = 1)
+
+seg<-function(i,j,mycol,mysize){
+  coo<-c(st_coordinates(st_centroid(trade[i,]))
+       ,st_coordinates(st_centroid(trade[j,])))
+arrows(x0 = coo[1],y0=coo[2],x1=coo[3],y1=coo[4],col=mycol,lwd=sqrt(mysize),angle = 10)
+}
+seg(2,12,"red",2)
+seg(7,12,"red",7)
+seg(6,12,"red",6)
+
+seg(1,11,"blue",10)
+seg(3,11,"blue",3)
+seg(4,11,"blue",4)
+#seg(5,11,"blue",5)
+#seg(8,11,"blue",)
+seg(9,11,"blue",9)
+seg(10,11,"blue",1)
+mf_layout(title = "Scenario 2", scale=F, credits = "", arrow=F, frame=T)
+
+
+
+
+
+```
+
+:::
+
+::: {.column width="40%"}
+ 
+- Les individus situés à une distance trop grande renoncent au service parce que le coût est trop élevé et  que l'état ne veut plus les rembourser.
+- Du coup on peut réduire la capacité d'accueil du service dans les pôles qui perdent de l'activité.
+ 
+:::
+
+::::
+
+
+## Scenario 3 : Ajustement de l'offre à la demande
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, width=6, height=8}
+trade2 <- trade
+trade2$taille[11]<-24
+trade2$taille[12]<-31
+par(mar=c(0,0,3,0), mfrow=c(1,1))
+mf_map(world, type="base",col="lightyellow")
+mf_map(trade2,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade2, var="taille",cex = 1)
+
+seg<-function(i,j,mycol,mysize){
+  coo<-c(st_coordinates(st_centroid(trade[i,]))
+       ,st_coordinates(st_centroid(trade[j,])))
+arrows(x0 = coo[1],y0=coo[2],x1=coo[3],y1=coo[4],col=mycol,lwd=sqrt(mysize),angle = 10)
+}
+seg(2,12,"red",2)
+seg(7,12,"red",7)
+seg(6,12,"red",6)
+
+seg(1,11,"blue",10)
+seg(3,12,"red",3)
+seg(4,11,"blue",4)
+seg(5,12,"red",5)
+seg(8,12,"red",8)
+seg(9,11,"blue",9)
+seg(10,11,"blue",1)
+mf_layout(title = "Scenario 3", scale=F, credits = "", arrow=F, frame=T)
+
+
+
+
+
+```
+
+:::
+
+::: {.column width="40%"}
+ 
+- On transfère une partie des capacité d'offre d'un cente à un autre pour minimiser les distances au service.
+- Cela peut mécontenter les personnels des services concernés ...
+:::
+
+::::
+
+## Scenario 4 : Ajout d'une nouvelle offre
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, width=6, height=8}
+trade3 <- rbind(trade, trade[1,])
+trade3$X[13]<-4.5
+trade3$Y[13]<-6.5
+trade3$fonction[13]<-"offre"
+trade3$geometry[13]<-world$geometry[42]
+trade3$taille[11]<-24
+trade3$taille[12]<-18
+trade3$taille[13]<-13
+par(mar=c(0,0,3,0), mfrow=c(1,1))
+mf_map(world, type="base",col="lightyellow")
+mf_map(trade3,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade3, var="taille",cex = 1)
+
+seg<-function(i,j,mycol,mysize){
+  coo<-c(st_coordinates(st_centroid(trade3[i,]))
+       ,st_coordinates(st_centroid(trade3[j,])))
+arrows(x0 = coo[1],y0=coo[2],x1=coo[3],y1=coo[4],col=mycol,lwd=sqrt(mysize),angle = 10)
+}
+seg(2,12,"red",2)
+seg(7,12,"red",7)
+seg(6,12,"red",6)
+
+seg(1,11,"blue",10)
+seg(3,12,"red",3)
+seg(4,11,"blue",4)
+seg(5,13,"darkgreen",5)
+seg(8,13,"darkgreen",8)
+seg(9,11,"blue",9)
+seg(10,11,"blue",1)
+mf_layout(title = "Scenario 4", scale=F, credits = "", arrow=F, frame=T)
+
+
+
+
+
+```
+
+:::
+
+::: {.column width="40%"}
+ 
+- On ajoute un nouveau centre pour désservir les habitants des régions périphériqus
+- Cela permet de réduire l'ensemble des coûts de transport et d'améliorer la qualité de service.
+:::
+
+::::

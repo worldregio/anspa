@@ -1,0 +1,389 @@
+---
+title: "[PGM3] Analyse d'une enquête sur les pays attractifs et répulsifs"
+subtitle: "Etudiants M1 des Masters Géoprisme et Carthageo (2026)"
+date: "2026-09-17"
+author: "Claude Grasland"
+format:
+  html:
+    link-external-newwindow: true
+    embed-resources: true
+    theme: yeti
+    smooth-scroll: true
+    fontsize: 0.9em
+    toc: true
+    toc-depth: 2
+    toc-title: "."
+    bibliography: [bib.bib]
+    css: custom.css
+    crossrefs-hover: false
+    number-sections: true
+    number-depth: 3
+execute:
+  warning: false
+  message: false 
+  cache: false  
+  echo: true 
+knitr:
+  opts_chunk:
+    out.width: "100%"
+editor_options: 
+  chunk_output_type: console
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r}
+library(knitr)
+
+library(dplyr)
+library(tidyr)
+
+library(ggplot2)
+library(ggrepel)
+
+library(sf)
+library(mapsf)
+
+library(visNetwork)
+library(igraph)
+```
+
+## (A) PREPARATION DES DONNEES
+
+On a demandé aux 36 étudiants inscrits à l'enseignement d'analyse spatiale des phénomènes sociaux de remplir un formulaire indiquant 5 pays où ils souhaiteraient vivre et 5 pays où ils ne souhaiteraient pas vivre, ainsi que leur université d'enseignement, leur sexe et leur option de master. L'enquête était anonyme, chaque étudiant indiquant un pseudonyme de 6 caractères maximum.
+
+Les étudiants avaient pour consigne de donner si possible 10 réponses (5 pays attractifs et 5 répulsifs). On a retiré 3 étudiants qui avaient fourni moins de 8 réponses, l'échantillon final se limitant à 33 étudiant. 
+
+Le programme de collecte imposait une liste finie de pays et a converti le nom du pays choisi en code ISO3 pour faciliter les analyses graphiques et cartographiques. 
+
+
+
+### Tableau de données initial
+
+```{r}
+don <- read.csv2("data_network/anspa2026.csv")
+kable(don, caption = "Tableau de données")
+don<-don[1:10,]
+```
+
+- **Exemple** : le premier étudiant a pris le pseudonyme *AAA*. Il s'agit d'un étudiant de master *Carthageo*, inscrit à l'*Université Paris Cité*, de sexe *masculin*. Il a déclaré vouloir vivre dans les pays suivants : *Italie, Japon, Australie, Croatie, Canada*. Il a déclaré ne pas vouloir vivre dans les pays suivants : *Iran, Russie, Belarus, Ukraine, Arabie Saoudite*. 
+
+### Permutation verticale du tableau
+
+Pour faciliter les analyses, on va faire pivoter le tableau en ajoutant deux nouvelles colonne intitulées rang et opinion. On va pour cela utiliser la procédure *pivot_longer* du package `tidyr` et l'appliquer successivement aux opinions positives et négatives.
+
+#### Pays attractifs
+
+```{r}
+att <- don %>% select(pseudo, master, univ, sex, 
+                      LIK1, LIK2,LIK3, LIK4, LIK5) %>%
+               pivot_longer(cols = c(LIK1,LIK2,LIK3,LIK4,LIK5)) %>%
+               mutate(opi = "att", rnk = substr(name,4,4), ISO3=value) %>%
+               select(pseudo, master, univ, sex, opi,rnk, ISO3)
+kable(head(att,10), caption ="Tableau pivoté des pays attractifs")
+```
+
+- *Exemple : * On retrouve les choix de pays attractifs de l'étudiant *AAA* mais répartis désormais sur 5 lignes avec indication du rang dans lequel l'étudiant a répondu.
+
+#### Pays répulsifs
+
+On applique la même procédure por les pays répulsifs
+
+```{r}
+rep <- don %>% select(pseudo, master, univ, sex, 
+                      UNL1, UNL2,UNL3, UNL4, UNL5) %>%
+               pivot_longer(cols = c(UNL1,UNL2,UNL3,UNL4,UNL5)) %>%
+               mutate(opi = "rep", rnk = substr(name,4,4), ISO3=value) %>%
+               select(pseudo, master, univ, sex, opi,rnk, ISO3)
+kable(head(rep,10), caption ="Tableau pivoté des pays répulsifs")
+```
+
+- *Exemple : * On retrouve les choix de pays négatifs de l'étudiant *AAA* mais répartis désormais sur 5 lignes 
+
+#### Jointure des deux tableaux
+
+On combine les deux tableaux en un seul par une concaténation verticale. Celle-ci suppose que le nom des variables soit le même.
+
+```{r}
+attrep <- rbind(att,rep) %>% arrange(pseudo)
+
+exemple <- attrep %>% filter(pseudo=="LUCSPY")
+kable(exemple, caption="Réponses de l'étudiante LUCSPY")
+```
+
+- *Exemple* : l'étudiant ayant le pseudo *LUCSPY* n'a donné que 9 réponses que 9 réponses sur les 10 demandées. On indique une valeur manquante pour le choix du 5e pays attractif.
+
+
+#### Choix données supplémentaires
+
+On va se servir du code ISO3 pour faire la jointure avec un fichier des pays du Monde comportant notamment le nom complet, le continent et quelques indicateurs sociaux et économiques. On réduit la longueur de certains noms de pays
+
+
+```{r}
+sup <- st_read("data_network/world_209.geojson") %>% 
+       select(ISO3,
+              name = NAMEen, 
+              reg = REGION_UN,
+              sup = AREA_2021,
+              pop = POP_2023,
+              esp = LIFE_EXP_2022,
+              pib = GNI_POP_2023) %>%
+        mutate(sup=sup/1000,
+               pop = pop/1000000) %>%
+         st_drop_geometry()
+
+sup$name[sup$ISO3=="USA"]<-"U.S.A."
+sup$name[sup$ISO3=="ARE"] <- "U.A.E."
+sup$name[sup$ISO3=="PSE"] <- "Palestine"
+sup$name[sup$ISO3=="VAT"] <- "Vatican"
+
+kable(head(sup),digits=1, caption = "Variables supplémentaires")
+
+
+
+```
+
+- *Commentaire* : On ajoute pour chaque pays son nom en anglais, sa région (continent), sa superficie en 2021 (en milliers de km2), sa population en 2023 (en millions d'habitant), son espérance de vie en 2022 (en année) et son pib par habitant en 2023 (en $/hab.)
+
+#### Tableau final
+
+On effectue la dernière jointure avec le code ISO3 en se servant de l'instruction *left_join* du package `dplyr` :
+
+```{r}
+tabfin <- attrep %>% left_join(sup)
+
+tabfin$ISO3[tabfin$ISO3==""]<-NA
+
+exemple <- tabfin %>% filter(pseudo=="LEG47")
+kable(exemple, digits=c(rep(0,9),1,0,1,1,0))
+
+
+```
+
+- *Exemple* : L'ajout de données supplémentaires permet de formuler des hypothèses sur les choix effectués par les étudiants. Ainsi, l'étudiant *LEG47* n'a retenu que des pays européens dnas sa liste des pays attractifs et des pays d'Asie ou d'Afrique dans sa lite des pays répulsifs. On pourra par ailleurs noter que les pays attractifs sont des pays plus riches et à plus forte espérane de vie que les pays répulsifs, etc. On pourrait évidemment ajouter d'autres informations sur les droits de l'homme, les guerres, la condition des femmes, etc...
+
+```{r}
+saveRDS(tabfin,"data_network/attrep.RDS")
+
+```
+
+
+## (B) ANALYSE DE POLARISATION
+
+Il existe une infinité de possibilités d'analyse exploratoire de ce jeu de données que nous ne détaillerons pas ici. On se limitera à présenter rapidement une analyse de la polarisation des choix.
+
+```{r}
+tabfin<-readRDS("data_network/attrep.RDS")
+```
+
+
+On peut se demander quels sont les pays attractifs et répulsifs en se reportant à la méthodologie du projet Altermap et son application sur des étudiants de Licence 3 de Paris et Dakar [voir ici](https://worldregio.github.io/altermap/posts/2026-06-19-axe1-test/#c.-polarisation)
+
+### Pays attractifs
+
+On calcule pour chaque pays le nombre de fois où il a été cité positvement, peu importe le rang, et on divise par le nombre d'étudiant interrogé.
+
+```{r}
+nbetud<-length(unique(tabfin$pseudo))
+topatt <- tabfin %>% filter(opi=="att",is.na(ISO3)==F) %>% 
+  group_by(ISO3, name) %>%
+  count() %>%
+  ungroup() %>% 
+  mutate ( nb=n, rnk = rank(-n), sal=100*n/nbetud) %>%
+  select(rnk, ISO3, name,nb, sal) %>%
+  arrange(rnk)
+
+sel <- topatt %>% filter(nb>1)
+kable(sel, digits=1, caption = "Pays attractifs cités par au moins trois étudiants")
+
+```
+
+- **Commentaire** : La France est le pays le plus cité positivement puisqu'il a été retenu par 20 étudiants sur 33 (soit 61%). On trouve ensuite ex-aequo le Canada et le Royaume-Uni (45% des étudiants). Puis l'Espagne (36%), l'Italie (33%), la Suisse (30%), l'Allemagne (27%) , etc. Si on excepte le Japon et l'Australie (cités par 4 étudiants), la liste despays cités par au moins trois étudiants est strictement cantonnée à l'Europe. On s'étonnera de l'absence des USA qui n'ont été cités que par ... un seul étudiant !
+
+### Pays répulsifs
+
+```{r}
+nbetud<-length(unique(tabfin$pseudo))
+toprep <- tabfin %>% filter(opi=="rep",is.na(ISO3)==F) %>% 
+  group_by(ISO3, name) %>%
+  count() %>%
+  ungroup() %>% 
+  mutate ( nb=n, rnk = rank(-n), sal=100*n/nbetud) %>%
+  select(rnk, ISO3, name,nb, sal) %>%
+  arrange(rnk)
+
+sel <- toprep %>% filter(nb>2)
+kable(sel, digits=1, caption = "Pays répulsifs cités par au moins trois étudiants")
+
+```
+
+- **Commentaire** : L'Afghanistan est le pays le plus cité négativement puisqu'il apparaît dans 19 réponses (58% des étudiants). Il est suivi de près par les USA (46%), Israël (42%), la Corée du Nord et la Russie (36%). On trouve ensuite un groupe de pays du Moyen Orient avec les émirats arabes Unis (21%), l'Iran (18%), l'Arabie Saoudite et la Syrie (15%) , Irak et Yemen (12%). La Chine est peu citée (12%) et aucun pays d'Afrique n'apparaît en dehors du Soudan (9%). On peut s'étonner de ne retrouver aucun des pays cités dans la liste précédente dans la mesure où la plupart des enquêtes antérieures mettaient en évidence des pays hybrides accueillant aussi bien des avis positifs que négatifs (USA, Allemagne, Japon, Chine, ...).
+
+
+### Synthèse
+
+Ce que montrent bien les analyses précédentes est le fait que l'appréciation que les étudiants donnent d'un pays doit être envisagé selon deux dimensions complémentaires, la saillance et l'opinion
+
+- **la saillance** (en anglais *salience*) est le fait qu'un pays se présente à l'esprit d'un étudiant lorsqu'on lui demande de porter un jugement. Peu importe  que le jugement soit positif ou négatif, si un pays est cité par l'étudiant c'est qu'il possède des informations sur lui, qu'il en a reçu et a choisi de les retenir. Bref, la saillance manifeste une reconnaissance de l'existence d'un pays et signale sa présence dans la carte mentale de la personne. On la définira donc comme le % des étudiants qui ont cité un pays positivement ou négativement et on la mesurera sur une échelle de 0 à 100
+
+$Saillance_i = 100\times \frac{Pos_i + Neg_i}{n}$
+
+- **la polarisation** est le positionnement d'un individu et par la suite d'un groupe d'individu sur une échelle de jugement allant du négatif au positif. Elle ne peut exister que si le pays est déjà connu par l'individu et - dans le cas d'un groupe - possède une saillance suffisante. On mesure classiquement la polarisation sur un intervalle allant de -1 (tous les avis sont positifs) à +1 (tous les avis sont négatifs).
+
+$Polarisation_i = \frac{Pos_i-Neg_i}{Pos_i+Neg_i}$
+
+
+On ne retient que les pays ayant été cités par au moins 10% des étudiants 
+
+```{r}
+nbetud<-length(unique(tabfin$pseudo))
+synt <- tabfin %>% filter(is.na(ISO3)==F) %>%
+                     group_by(ISO3,name,opi) %>% 
+                      count() %>%
+                      pivot_wider(names_from = opi,
+                                  values_from = n,
+                                  values_fill = 0) %>%
+                       mutate(tot=att+rep,
+                              saillance = 100*tot/nbetud,
+                              polarisation=(att-rep)/(att+rep)) %>%
+                      arrange(-saillance) %>%
+                      filter(saillance>=10) 
+
+kable(synt, digits=c(0,0,0,0,0,1,2), caption="Saillance et polarisation des pays")
+
+```
+
+- **Commentaire** : Presque tous les pays affichent un indice égal ou proche +1 (tous les avis sont positifs ou presque ) ou de -1 (tous les avis sont négatifs ou presque). Le seul pays qui fasse un peu exception est l'Australie qui a reçu 2 avis négatif et 6 avis positifs. Cela témoigne d'une vision collective du Monde chez les étudiants observés qui est très unanime et très binaire...
+
+
+
+
+```{r}
+ggplot(synt, aes(x=saillance, y = polarisation)) + 
+        geom_point() + 
+        geom_text_repel(aes(label = name),cex=3.5)+
+        scale_x_log10("Saillance (% citation)",
+                      breaks=c(10,20,30,40,50,60,70),
+                      minor_breaks=NULL,
+                      lim =c(10,70))+
+  scale_y_continuous("Polarisation = (att-rep)/(att+rep)")+
+        ggtitle(label = "Diagramme de saillance et polarisation" ,
+                subtitle = "Enquête sur les étudiants de M1 Géoprisme et Carthageo, 2026") +
+         theme_light()
+        
+```
+
+
+## (C) ANALYSE DE GRAPHE (non orienté)
+
+Nous avons vu précédemment les pays les plus cités positivement ou négativement. Mais nous ignorons s'il existe des **associations préférentielles de pays dans les réponses**. Par exemple, les étudiants qui aimeraient vivre en Italie sont-ils également ceux qui souhaiteraient vivre en Espagne ? Ou bien les étudiants qui n'aimeraient pas vivre en Russie sont-ils les mêmes que ceux qui n'aimeraient pas vivre aux USA ? etc.
+
+Pour répondre à ces questions, nous devons construire un nouveau tableau permettant de définir des choix conjoints de pays puis transformer ceci en graphe. Cdela suppose de passer par un travail mathématique sur des objets de type **matrice**. 
+
+
+## Associations de pays Répulsifs
+
+
+### Matrice étudiants x pays
+
+
+
+```{r}
+
+
+tab<- readRDS("data_network/attrep.RDS") 
+
+# Repérage des pays cités positivement trois fois ou plus
+sel <- tab %>% filter(opi=="rep") %>% 
+               group_by(ISO3) %>% 
+               count() %>% 
+               filter(n>2, is.na(ISO3)==F) %>%
+               select(ISO3)
+
+# Sélection des réponses
+rep <- tab %>% filter(opi=="rep",
+                      ISO3 %in% sel$ISO3) %>%
+              mutate(OK=1)%>%        
+               select(pseudo,ISO3,OK)
+
+
+# Passage en matrice
+mat <- as.matrix(table(rep$pseudo, rep$ISO3))
+
+kable(mat,caption = "Matrice des réponses négatives")
+```
+
+- **Commentaire** : 
+
+
+
+```{r}
+library(bipartite)
+colsum<-apply(mat,2,sum)
+
+
+plotweb_deprecated(mat,
+                   low.lablength = 10,
+                   y.width.low = 0,
+                   text.rot = 90)
+
+title("Graphe biparti des pays répulsifs pour les étudiants français")
+```
+
+### Matrice étudiant x étudiant
+
+
+
+
+```{r}
+mat_etu <- mat %*% t(mat)
+diag(mat_etu)<-NA
+kable(mat_etu)
+```
+
+
+```{r}
+
+mat2<-mat_etu
+
+#mat3[mat3>2]<-1
+net<-graph_from_adjacency_matrix(mat2,mode = "undirected",weighted = T,diag = F)
+net2<-visIgraph(net)
+nod<-net2$x$nodes
+edg<-net2$x$edges
+
+visNetwork(nod, edg)
+
+```
+
+### Matrice pays x pays
+
+On utilise la même astuce mathématique
+
+
+```{r}
+mat_pays <- t(mat) %*% mat
+diag(mat_pays)<-NA
+kable(mat_pays)
+```
+
+
+```{r}
+library(visNetwork)
+library(igraph)
+mat3<-mat_pays
+mat3[mat3<2]<-0
+mat3
+#mat3[mat3>2]<-1
+net<-graph_from_adjacency_matrix(mat3,mode = "undirected",weighted = T,diag = F)
+net2<-visIgraph(net)
+nod<-net2$x$nodes
+edg<-net2$x$edges
+
+visNetwork(nod, edg)
+
+```
+
+
+

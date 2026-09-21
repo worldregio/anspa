@@ -16,7 +16,6 @@ website:
             href: cours1_diapo.qmd
           - text: TD1 - Jeux de cartes
             href: TD1.qmd
-    drafts:
       - text: 2. Accessibilité
         menu:
           - text: Cours2 -  Accessibilité spatiale
@@ -27,6 +26,7 @@ website:
           - text: TD2 - Accessibilité aux services de soins
             href: https://analytics.huma-num.fr/Claude.Grasland/access/
             target: _blank
+    draft:            
       - text: 3. Interaction
         menu:    
           - text: Archives - cours C. Grasland (1998)

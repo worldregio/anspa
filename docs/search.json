@@ -712,5 +712,26 @@
     "title": "[PGM3] Analyse d’une enquête sur les pays attractifs et répulsifs",
     "section": "4 Associations de pays Répulsifs",
     "text": "4 Associations de pays Répulsifs\n\n4.1 Matrice étudiants x pays\n\ntab&lt;- readRDS(\"data_network/attrep.RDS\") \n\n# Repérage des pays cités positivement trois fois ou plus\nsel &lt;- tab %&gt;% filter(opi==\"rep\") %&gt;% \n               group_by(ISO3) %&gt;% \n               count() %&gt;% \n               filter(n&gt;2, is.na(ISO3)==F) %&gt;%\n               select(ISO3)\n\n# Sélection des réponses\nrep &lt;- tab %&gt;% filter(opi==\"rep\",\n                      ISO3 %in% sel$ISO3) %&gt;%\n              mutate(OK=1)%&gt;%        \n               select(pseudo,ISO3,OK)\n\n\n# Passage en matrice\nmat &lt;- as.matrix(table(rep$pseudo, rep$ISO3))\n\nkable(mat,caption = \"Matrice des réponses négatives\")\n\n\nMatrice des réponses négatives\n\n\n\nAFG\nIRN\nISR\nSAU\nUSA\n\n\n\n\nAAA\n0\n1\n0\n1\n0\n\n\nCOME\n1\n0\n0\n0\n0\n\n\nCOUCOU\n1\n0\n1\n0\n1\n\n\nENEXTO\n1\n0\n1\n0\n0\n\n\nLDLD05\n0\n0\n0\n1\n1\n\n\nLUCSPY\n0\n1\n1\n0\n0\n\n\nR\n1\n0\n1\n1\n1\n\n\nSIMCA\n1\n1\n0\n0\n0\n\n\nYUTYUT\n1\n0\n0\n1\n1\n\n\n\n\n\n\nCommentaire :\n\n\nlibrary(bipartite)\ncolsum&lt;-apply(mat,2,sum)\n\n\nplotweb_deprecated(mat,\n                   low.lablength = 10,\n                   y.width.low = 0,\n                   text.rot = 90)\n\ntitle(\"Graphe biparti des pays répulsifs pour les étudiants français\")\n\n\n\n\n\n\n\n\n\n\n4.2 Matrice étudiant x étudiant\n\nmat_etu &lt;- mat %*% t(mat)\ndiag(mat_etu)&lt;-NA\nkable(mat_etu)\n\n\n\n\n\nAAA\nCOME\nCOUCOU\nENEXTO\nLDLD05\nLUCSPY\nR\nSIMCA\nYUTYUT\n\n\n\n\nAAA\nNA\n0\n0\n0\n1\n1\n1\n1\n1\n\n\nCOME\n0\nNA\n1\n1\n0\n0\n1\n1\n1\n\n\nCOUCOU\n0\n1\nNA\n2\n1\n1\n3\n1\n2\n\n\nENEXTO\n0\n1\n2\nNA\n0\n1\n2\n1\n1\n\n\nLDLD05\n1\n0\n1\n0\nNA\n0\n2\n0\n2\n\n\nLUCSPY\n1\n0\n1\n1\n0\nNA\n1\n1\n0\n\n\nR\n1\n1\n3\n2\n2\n1\nNA\n1\n3\n\n\nSIMCA\n1\n1\n1\n1\n0\n1\n1\nNA\n1\n\n\nYUTYUT\n1\n1\n2\n1\n2\n0\n3\n1\nNA\n\n\n\n\n\n\nmat2&lt;-mat_etu\n\n#mat3[mat3&gt;2]&lt;-1\nnet&lt;-graph_from_adjacency_matrix(mat2,mode = \"undirected\",weighted = T,diag = F)\nnet2&lt;-visIgraph(net)\nnod&lt;-net2$x$nodes\nedg&lt;-net2$x$edges\n\nvisNetwork(nod, edg)\n\n\n\n\n\n\n\n4.3 Matrice pays x pays\nOn utilise la même astuce mathématique\n\nmat_pays &lt;- t(mat) %*% mat\ndiag(mat_pays)&lt;-NA\nkable(mat_pays)\n\n\n\n\n\nAFG\nIRN\nISR\nSAU\nUSA\n\n\n\n\nAFG\nNA\n1\n3\n2\n3\n\n\nIRN\n1\nNA\n1\n1\n0\n\n\nISR\n3\n1\nNA\n1\n2\n\n\nSAU\n2\n1\n1\nNA\n3\n\n\nUSA\n3\n0\n2\n3\nNA\n\n\n\n\n\n\nlibrary(visNetwork)\nlibrary(igraph)\nmat3&lt;-mat_pays\nmat3[mat3&lt;2]&lt;-0\nmat3\n\n     \n      AFG IRN ISR SAU USA\n  AFG  NA   0   3   2   3\n  IRN   0  NA   0   0   0\n  ISR   3   0  NA   0   2\n  SAU   2   0   0  NA   3\n  USA   3   0   2   3  NA\n\n#mat3[mat3&gt;2]&lt;-1\nnet&lt;-graph_from_adjacency_matrix(mat3,mode = \"undirected\",weighted = T,diag = F)\nnet2&lt;-visIgraph(net)\nnod&lt;-net2$x$nodes\nedg&lt;-net2$x$edges\n\nvisNetwork(nod, edg)"
+  },
+  {
+    "objectID": "cours2.html#scenario-4-ajout-dune-nouvelle-offre-p-médiane",
+    "href": "cours2.html#scenario-4-ajout-dune-nouvelle-offre-p-médiane",
+    "title": "[COURS2] Accessibilité",
+    "section": "4.4 Scenario 4 : Ajout d’une nouvelle offre (P-Médiane)",
+    "text": "4.4 Scenario 4 : Ajout d’une nouvelle offre (P-Médiane)\n\n\n\n\n\n\n\n\n\n\n\n\n\nOn cherche à maximiser l’efficacité (ou l’équité) en disposant plusieurs centres d’accès au service.\nIl s’agit de ce qu’on appelle un problème de P-médiane puisqu’on doit trouver plusieurs points médians.\nCf. Article de Arnorld & Peeters, 1995"
+  },
+  {
+    "objectID": "cours2.html#scenario-5-problème-du-voyageur-de-commerce",
+    "href": "cours2.html#scenario-5-problème-du-voyageur-de-commerce",
+    "title": "[COURS2] Accessibilité",
+    "section": "4.5 Scenario 5 : Problème du voyageur de commerce",
+    "text": "4.5 Scenario 5 : Problème du voyageur de commerce\n\n\n\n\n\n\n\n\n\n\n\n\n\nOn apporte le service en effectuant un parcours qui minimise le coût total de déplacement et est plus économique en distance\nLe choix de la solution optimale est un problème mathématique et informatique classique qui ne dispose pas de solution analytique simple mais nécessite un algorithme . Pour plus de détails voir ici"
+  },
+  {
+    "objectID": "cours2.html#scenario-6-problème-des-k-voyageurs-de-commerce",
+    "href": "cours2.html#scenario-6-problème-des-k-voyageurs-de-commerce",
+    "title": "[COURS2] Accessibilité",
+    "section": "4.6 Scenario 6 : Problème des K-voyageurs de commerce",
+    "text": "4.6 Scenario 6 : Problème des K-voyageurs de commerce\n\n\n\n\n\n\n\n\n\n\n\n\n\nOn garde la logique du voyageur de commerce pour réduire le coût total de déplacement. Mais on multiplie les circuits indépendants pour raccourcir le parcours de chaque voyageur.\nLe problème informatique est encore plus compliqué que celui du voyageur de commerce unique"
   }
 ]

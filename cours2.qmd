@@ -479,7 +479,7 @@ mf_layout(title = "Scenario 3", scale=F, credits = "", arrow=F, frame=T)
 
 ::::
 
-## Scenario 4 : Ajout d'une nouvelle offre
+## Scenario 4 : Ajout d'une nouvelle offre (P-Médiane)
 
 :::: {.columns}
 
@@ -527,8 +527,124 @@ mf_layout(title = "Scenario 4", scale=F, credits = "", arrow=F, frame=T)
 
 ::: {.column width="40%"}
  
-- On ajoute un nouveau centre pour désservir les habitants des régions périphériqus
-- Cela permet de réduire l'ensemble des coûts de transport et d'améliorer la qualité de service.
+- On cherche à maximiser l'efficacité (ou l'équité) en disposant plusieurs centres d'accès au service.
+- Il s'agit de ce qu'on appelle un problème de P-médiane puisqu'on doit trouver plusieurs points médians.
+- [Cf. Article de Arnorld & Peeters, 1995](https://www.persee.fr/doc/spgeo_0046-2497_1995_num_24_1_3343)
+:::
+
+::::
+
+
+
+## Scenario 5 : Problème du voyageur de commerce
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, width=6, height=8}
+trade4 <- trade[-11,]
+
+trade4$taille[11]<-55
+par(mar=c(0,0,3,0), mfrow=c(1,1))
+mf_map(world, type="base",col="lightyellow")
+mf_map(trade4,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade4, var="taille",cex = 1)
+
+seg<-function(i,j,mycol,mysize){
+  coo<-c(st_coordinates(st_centroid(trade4[i,]))
+       ,st_coordinates(st_centroid(trade4[j,])))
+segments(x0 = coo[1],y0=coo[2],x1=coo[3],y1=coo[4],col=mycol,lwd=sqrt(mysize),angle = 10)
+}
+seg(11,6,"red",2)
+seg(6,7,"red",2)
+seg(7,8,"red",2)
+seg(8,5,"red",2)
+seg(5,1,"red",2)
+
+seg(1,10,"red",2)
+seg(10,4,"red",2)
+seg(4,9,"red",2)
+seg(9,3,"red",2)
+seg(3,2,"red",2)
+seg(2,11,"red",2)
+
+mf_layout(title = "Scenario 5", scale=F, credits = "", arrow=F, frame=T)
+
+
+
+
+
+```
+
+:::
+
+::: {.column width="40%"}
+ 
+- On apporte le service en effectuant un parcours qui minimise le coût total de déplacement et est plus économique en distance
+- Le choix de la solution optimale est un problème mathématique et informatique classique qui ne dispose pas de solution analytique simple mais nécessite un algorithme . Pour plus de détails voir [ici](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce)
+:::
+
+::::
+
+
+
+## Scenario 6 : Problème des K-voyageurs de commerce 
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, width=6, height=8}
+trade3 <- rbind(trade, trade[1,])
+trade3$X[13]<-4.5
+trade3$Y[13]<-6.5
+trade3$fonction[13]<-"offre"
+trade3$geometry[13]<-world$geometry[42]
+trade3$taille[11]<-24
+trade3$taille[12]<-18
+trade3$taille[13]<-13
+par(mar=c(0,0,3,0), mfrow=c(1,1))
+mf_map(world, type="base",col="lightyellow")
+mf_map(trade3,type="prop_typo",var=c("taille","fonction"),add=T, leg_pos = c("bottomright" ,"bottomleft"))
+mf_label(trade3, var="taille",cex = 1)
+
+seg<-function(i,j,mycol,mysize){
+  coo<-c(st_coordinates(st_centroid(trade3[i,]))
+       ,st_coordinates(st_centroid(trade3[j,])))
+segments(x0 = coo[1],y0=coo[2],x1=coo[3],y1=coo[4],col=mycol,lwd=sqrt(mysize),angle = 10)
+}
+seg(12,2,"red",2)
+seg(2,3,"red",2)
+seg(3,7,"red",2)
+seg(7,6,"red",2)
+seg(6,12,"red",2)
+
+seg(11,10,"blue",2)
+seg(10,1,"blue",2)
+seg(1,9,"blue",2)
+seg(9,4,"blue",2)
+seg(4,11,"blue",2)
+
+
+seg(13,5,"darkgreen",2)
+seg(5,8,"darkgreen",2)
+seg(8,13,"darkgreen",2)
+
+mf_layout(title = "Scenario 6", scale=F, credits = "", arrow=F, frame=T)
+
+
+
+
+
+```
+
+:::
+
+::: {.column width="40%"}
+ 
+- On garde la logique du voyageur de commerce pour réduire le coût total de déplacement. Mais on multiplie les circuits indépendants pour raccourcir le parcours de chaque voyageur.
+- Le problème informatique est encore plus compliqué que celui du voyageur de commerce unique
 :::
 
 ::::
